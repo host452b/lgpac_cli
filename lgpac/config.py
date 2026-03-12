@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict
 
-TARGET_URL = os.environ.get("LGPAC_TARGET_URL", "http://lgpac.culture.cn")
+TARGET_URL = os.environ.get("LGPAC_TARGET_URL", "").strip() or "http://lgpac.culture.cn"
 
 
 @dataclass
