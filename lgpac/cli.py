@@ -90,8 +90,9 @@ def crawl(
 def monitor(
     price: float = typer.Option(120.0, "--price", "-p", help="max ticket price to watch"),
     rss: bool = typer.Option(False, "--rss", help="update RSS.md"),
-    page: bool = typer.Option(False, "--page", help="generate docs/index.html for GitHub Pages"),
+    page: bool = typer.Option(False, "--page", help="generate docs/index.md for GitHub Pages"),
     notify: bool = typer.Option(False, "--notify", "-n", help="send webhook notification"),
+    email: bool = typer.Option(False, "--email", help="send email for NEW shows (needs SMTP env vars)"),
     debug: bool = typer.Option(False, "--debug", "-d"),
     output: str = typer.Option("data", "--output", "-o"),
 ):
@@ -100,7 +101,10 @@ def monitor(
     config = _make_config(debug, output)
 
     from lgpac.spider import LgpacSpider
-    from lgpac.monitor import analyze_shows, format_alerts_text, format_alerts_markdown, send_webhook
+    from lgpac.monitor import (
+        analyze_shows, format_alerts_text, format_alerts_markdown,
+        send_webhook, send_email_alert,
+    )
 
     spider = LgpacSpider(config=config)
     shows, diff = spider.crawl_all(fetch_details=True)
@@ -125,9 +129,16 @@ def monitor(
         in_stock = [a for a in alerts if a.status in ("new", "available", "back_in_stock")]
         if in_stock:
             send_webhook(text)
-            console.print("[green]notification sent[/green]")
+            console.print("[green]webhook sent[/green]")
         else:
-            console.print("[dim]no in-stock alerts, notification skipped[/dim]")
+            console.print("[dim]no in-stock alerts, webhook skipped[/dim]")
+
+    if email:
+        ok = send_email_alert(alerts, price)
+        if ok:
+            console.print("[green]email sent[/green]")
+        else:
+            console.print("[dim]email skipped (no new shows or not configured)[/dim]")
 
 
 # ------------------------------------------------------------------ #

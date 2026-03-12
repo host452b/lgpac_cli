@@ -67,14 +67,23 @@ def generate_page(
     # --- all shows ---
     lines.append("## 📋 All Shows")
     lines.append("")
-    lines.append("| # | Category | Name | Date | Price | Venue | Status |")
-    lines.append("|---|----------|------|------|-------|-------|--------|")
+    lines.append("| # | Category | Name | Date | Min Available | Listed Price | Status |")
+    lines.append("|---|----------|------|------|--------------|-------------|--------|")
     for i, s in enumerate(shows, 1):
         cat = s.category.display_name if s.category else ""
-        price = s.min_price_info.display if s.min_price_info else ""
+        listed = s.min_price_info.display if s.min_price_info else ""
+        real_min = _real_min_price(s)
         status = "❌ SOLD OUT" if s.sold_out else "✅"
-        venue = s.venue_name or ""
-        lines.append(f"| {i} | {cat} | {_esc(s.name)} | {s.show_date} | {price} | {venue} | {status} |")
+
+        if real_min is None:
+            avail_str = "—"
+        elif s.min_price and real_min > s.min_price:
+            avail_str = f"¥{real_min:.0f}起 ⚠️"
+            status = "⚠️ cheapest sold out"
+        else:
+            avail_str = f"¥{real_min:.0f}起"
+
+        lines.append(f"| {i} | {cat} | {_esc(s.name)} | {s.show_date} | {avail_str} | {listed} | {status} |")
     lines.append("")
 
     # --- price breakdown per show ---
@@ -125,6 +134,16 @@ def generate_page(
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
     logger.info(f"page generated: {path}")
+
+
+def _real_min_price(show: Show) -> Optional[float]:
+    """find the cheapest ACTUALLY AVAILABLE (canBuyCount > 0) ticket price."""
+    prices = []
+    for sess in show.sessions:
+        for plan in sess.seat_plans:
+            if plan.truly_available and plan.original_price > 0:
+                prices.append(plan.original_price)
+    return min(prices) if prices else None
 
 
 def _esc(text: str) -> str:
