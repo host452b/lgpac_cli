@@ -228,6 +228,7 @@ class SiteTraverser:
             engine.screenshot(page, f"tab_{tab_text}")
             self._page_count += 1
             self._visited.add(self._normalize_url(virtual_url))
+            self._save_page_archive(page, child)
             logger.info(f"  tab: {tab_text} ({len(child.meta.get('clickables', []))} clickables)")
         except Exception as e:
             child.error = str(e)
@@ -238,30 +239,54 @@ class SiteTraverser:
         self, engine: BrowserEngine, page: Page, parent: PageNode,
         card: Dict, fallback_url: str,
     ):
-        """click a show card and visit the resulting detail page."""
-        card_text = card.get("text", "")[:40]
+        """click a show card and visit the detail page."""
+        card_text = card.get("text", "")
+        label = card_text.split("\n")[0].strip()[:30] if card_text else "card"
+
         url_before = page.url
+        content_before = page.evaluate("() => document.body.innerText.substring(0, 200)")
 
-        # try clicking by a portion of the card text
-        first_line = card_text.split("\n")[0].strip()
-        if not first_line:
+        # uni-app uses Vue event binding — dispatch tap/click on the specific card element
+        clicked = page.evaluate("""(needle) => {
+            const selectors = [
+                'uni-view.horizontal-show-card',
+                'uni-view.recommend-show-card',
+                'uni-view.show-card-item',
+                '[class*="show-card"]',
+                '[class*="recommend"] uni-view[class*="card"]',
+            ];
+            for (const sel of selectors) {
+                const els = document.querySelectorAll(sel);
+                for (const el of els) {
+                    if (el.innerText.includes(needle)) {
+                        el.dispatchEvent(new Event('tap', {bubbles: true}));
+                        el.click();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }""", label[:15])
+
+        if not clicked:
             return
 
-        success = ActionLibrary.click_by_text(page, first_line, exact=False)
-        if not success:
-            return
-
-        engine.wait_for_load(page, 3)
+        engine.wait_for_load(page, 4)
         ActionLibrary.dismiss_popups(page)
-        url_after = page.url
 
-        if ActionLibrary.is_same_page(url_before, url_after):
+        url_after = page.url
+        content_after = page.evaluate("() => document.body.innerText.substring(0, 200)")
+
+        # detect navigation by URL change OR content change
+        navigated = (not ActionLibrary.is_same_page(url_before, url_after)
+                     or content_before != content_after)
+        if not navigated:
             return
 
         child = self._visit_page(
             engine, page, url_after,
             depth=parent.depth + 1,
-            trigger=f"card:{first_line}",
+            trigger=f"card:{label}",
         )
         parent.children.append(child)
 

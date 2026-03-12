@@ -17,6 +17,11 @@ jobs:
     env:
       LGPAC_TARGET_URL: ${{ vars.LGPAC_TARGET_URL }}
       LGPAC_WEBHOOK_URL: ${{ secrets.LGPAC_WEBHOOK_URL }}
+      LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
+      LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
+      LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
+      LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
+      LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
 
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +35,7 @@ jobs:
         run: pip install requests typer rich pyyaml
 
       - name: run monitor
-        run: python lgpac_cli.py monitor --price 120 --rss --page --notify
+        run: python lgpac_cli.py monitor --price 120 --rss --page --notify --email
 
       - name: commit results
         run: |

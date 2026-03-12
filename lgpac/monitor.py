@@ -201,6 +201,62 @@ def send_webhook(text: str, webhook_url: Optional[str] = None):
         logger.warning(f"webhook failed: {e}")
 
 
+def send_email_alert(alerts: List[TicketAlert], max_price: float) -> bool:
+    """
+    send email for NEW shows that have affordable tickets in stock.
+    email address is read from LGPAC_NOTIFY_EMAIL env var (never logged).
+    uses GitHub Actions SMTP or a simple sendmail approach.
+    """
+    import smtplib
+    from email.mime.text import MIMEText
+
+    to_addr = os.environ.get("LGPAC_NOTIFY_EMAIL", "").strip()
+    if not to_addr:
+        logger.debug("email: LGPAC_NOTIFY_EMAIL not set, skipped")
+        return False
+
+    new_with_stock = [a for a in alerts if a.status == "new"]
+    if not new_with_stock:
+        logger.info("email: no new shows to notify")
+        return False
+
+    # build email body
+    lines = [f"detected {len(new_with_stock)} new show(s) with tickets under ¥{max_price:.0f}:\n"]
+    for a in new_with_stock:
+        in_stock_plans = [p for p in a.plans if p["available"]]
+        prices = sorted(set(p["price"] for p in in_stock_plans))
+        price_str = " / ".join(f"¥{p:.0f}" for p in prices)
+        lines.append(f"  [{a.category}] {a.show_name}")
+        lines.append(f"  date: {a.show_date}")
+        lines.append(f"  prices: {price_str} ({len(in_stock_plans)} tier(s) in stock)")
+        lines.append("")
+    body = "\n".join(lines)
+
+    smtp_server = os.environ.get("LGPAC_SMTP_SERVER", "smtp.qq.com")
+    smtp_port = int(os.environ.get("LGPAC_SMTP_PORT", "465"))
+    smtp_user = os.environ.get("LGPAC_SMTP_USER", "").strip()
+    smtp_pass = os.environ.get("LGPAC_SMTP_PASS", "").strip()
+
+    if not smtp_user or not smtp_pass:
+        logger.warning("email: SMTP credentials not set, skipped")
+        return False
+
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = f"[lgpac] {len(new_with_stock)} new show(s) with affordable tickets"
+    msg["From"] = smtp_user
+    msg["To"] = to_addr
+
+    try:
+        with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=15) as s:
+            s.login(smtp_user, smtp_pass)
+            s.sendmail(smtp_user, [to_addr], msg.as_string())
+        logger.info("email: sent successfully")
+        return True
+    except Exception as e:
+        logger.warning(f"email: send failed - {type(e).__name__}")
+        return False
+
+
 # ------------------------------------------------------------------ #
 # history persistence
 # ------------------------------------------------------------------ #
