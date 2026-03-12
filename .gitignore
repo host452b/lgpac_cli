@@ -1,0 +1,23 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# crawl run history (timestamped dirs, only docs/ and RSS.md are committed)
+data/
+
+# images from debug/traversal screenshots
+*.png
+*.jpg
+
+# env
+.env
+.venv/
+venv/
+
+# os
+.DS_Store
+Thumbs.db
