@@ -6,7 +6,6 @@ Two independent monitors running on a shared infrastructure. Built for learning 
 >
 > This project is for **educational and research purposes only**. It is not intended for commercial use, unauthorized data collection, or any activity that violates applicable laws or the target website's terms of service. The authors assume no liability for any misuse. Use at your own risk and responsibility.
 >
-> 本项目**仅供学习与研究使用**。不得用于商业目的、未经授权的数据采集，或任何违反相关法律法规及目标网站服务条款的行为。作者不对任何滥用行为承担责任。使用者需自行承担风险与责任。
 
 ---
 
