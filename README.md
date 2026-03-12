@@ -1,6 +1,6 @@
 # lgpac
 
-A crawler & browser automation toolkit for a performing arts ticketing platform. Built for learning and research purposes.
+A crawler & monitoring toolkit for performing arts venues and youth activity centers. Built for learning and research purposes.
 
 > **DISCLAIMER / 免责声明**
 >
@@ -10,112 +10,96 @@ A crawler & browser automation toolkit for a performing arts ticketing platform.
 
 ## Features
 
-- **API Crawl** — extract show listings, sessions, seat plans, and pricing via public API
-- **Recursive Traversal** (`-r`) — browser-based DFS of the entire site tree, recording page structure and metadata at each node
-- **Replay Playbooks** — deterministic YAML-driven browser automation for repeatable query flows (no AI involved)
+- **Show Monitor** — track ticket prices and real-time stock via public API, alert on new shows or restocked cheapest tiers
+- **WeChat Article Monitor** — watch for enrollment/activity notices from WeChat public accounts via search engines (sogou → baidu → bing fallback chain)
+- **Recursive Traversal** — browser-based DFS of site tree, archiving full HTML + metadata per page
+- **Replay Playbooks** — deterministic YAML-driven browser automation (no AI involved)
+- **GitHub Pages Dashboard** — auto-generated `docs/index.md` with ticket listing, stock status, and price breakdown
+- **Email Alerts** — notifications for new shows with affordable tickets, or new activity articles
 - **Debug Mode** (`-d`) — screenshots at each step for human inspection
-- **Diff Tracking** — automatic change detection between crawl runs (new/removed/changed shows)
-- **Scheduled Crawling** — built-in interval-based scheduler
 
 ## Requirements
 
 - Python >= 3.9
-- Playwright (with Chromium or system Chrome)
+- Playwright (optional, only for `traverse` and `replay` commands)
 
 ## Install
 
 ```bash
-# install dependencies
-pip install requests typer rich pyyaml playwright
+pip install requests typer rich pyyaml
 
-# install playwright browser (or use system Chrome as fallback)
-python -m playwright install chromium
+# optional: for browser commands (traverse, replay)
+pip install playwright && python -m playwright install chromium
 ```
 
-## Usage
-
-All commands run via the entry point script:
+## Commands
 
 ```bash
 python lgpac_cli.py <command> [options]
 ```
 
-### Crawl — API data extraction
+### monitor — ticket price & stock monitoring
 
 ```bash
-# full crawl: show list + detail enrichment (sessions, prices, notes)
-python lgpac_cli.py crawl
+# monitor shows with tickets under ¥120
+python lgpac_cli.py monitor --price 120
 
-# quick mode: list only, no detail API calls
-python lgpac_cli.py crawl -q
-
-# with debug screenshots
-python lgpac_cli.py crawl -d
+# full pipeline: monitor + update RSS + generate page + webhook + email
+python lgpac_cli.py monitor --price 120 --rss --page --notify --email
 ```
 
-Output saved to `data/latest/`:
-- `shows.json` — all shows with full detail
-- `shop_config.json` — site configuration
-- `categories.json` — show categories
-- `diff.json` — changes since last run
+Checks real-time stock via `canBuyCount` from the dynamic API. Sends email only when:
+- a **new show** appears with affordable tickets in stock
+- an **old show's cheapest tier** comes back in stock (was sold out, now available again)
 
-Add `--rss` to also update `RSS.md`:
+### lgycp — WeChat article monitor
 
 ```bash
-python lgpac_cli.py crawl --rss
+# check for new activity/enrollment articles
+python lgpac_cli.py lgycp
+
+# with email notification on new articles
+python lgpac_cli.py lgycp --notify
 ```
 
-### Traverse — recursive site exploration
+Searches WeChat articles via sogou, with automatic fallback to baidu and bing if sogou is blocked. Filters by keywords: 报名, 通知, 开课, 招生, 招募, 儿童剧, 舞蹈, 体能, etc.
+
+Archives are stored in `archs_lgycp/archive.json` — only new (unseen) articles trigger notifications.
+
+### crawl — raw API data extraction
 
 ```bash
-# DFS traversal, max depth 3, up to 30 pages
-python lgpac_cli.py traverse
-
-# custom depth and page limit, with screenshots
-python lgpac_cli.py traverse --depth 2 --pages 15 -d
+python lgpac_cli.py crawl            # full crawl with detail enrichment
+python lgpac_cli.py crawl -q         # quick: list only
+python lgpac_cli.py crawl --rss      # also update RSS.md
 ```
 
-Output saved to `data/traversal/<timestamp>/`:
-- `site_tree.json` — hierarchical page structure
-- `all_pages.json` — flat list of visited pages
-
-### Replay — YAML playbook execution
+### traverse — recursive site exploration
 
 ```bash
-# run a playbook
-python lgpac_cli.py replay playbooks/check_show.yaml
-
-# with debug screenshots
-python lgpac_cli.py replay playbooks/browse_categories.yaml -d
+python lgpac_cli.py traverse                         # default DFS
+python lgpac_cli.py traverse --archs --depth 2 -d    # archive to archs/, with screenshots
 ```
 
-Playbook format:
+Archives each page as `.html` + `.json` in `archs/pages/`.
 
-```yaml
-name: example_flow
-steps:
-  - action: navigate
-    url: http://example.com
-  - action: dismiss_popup
-  - action: click_text
-    text: "some button"
-  - action: screenshot
-    name: result
-  - action: extract_meta
+### replay — YAML playbook execution
+
+```bash
+python lgpac_cli.py replay playbooks/check_show.yaml -d
 ```
 
 Available actions: `navigate`, `wait`, `dismiss_popup`, `click`, `click_text`, `scroll_bottom`, `screenshot`, `extract`, `extract_meta`, `assert_visible`, `assert_url_contains`, `go_back`, `type_text`
 
-### Info — site overview
+### info — site overview
 
 ```bash
 python lgpac_cli.py info
 ```
 
-### Schedule — periodic crawling
+### schedule — periodic local crawling
 
 ```bash
-# crawl every 60 minutes
 python lgpac_cli.py schedule -i 60
 ```
 
@@ -123,50 +107,58 @@ python lgpac_cli.py schedule -i 60
 
 ```
 ├── lgpac_cli.py              # entry point
-├── pyproject.toml             # packaging config
-├── lgpac/                     # core package
+├── pyproject.toml             # packaging
+├── lgpac/
 │   ├── cli.py                 # typer CLI commands
 │   ├── config.py              # site config & API routing
 │   ├── client.py              # HTTP client (retry, rate-limit)
 │   ├── api.py                 # public API wrappers
-│   ├── models.py              # data models
-│   ├── storage.py             # JSON persistence + diff
+│   ├── models.py              # data models (Show, Session, SeatPlan)
+│   ├── monitor.py             # ticket monitor + email alerts
+│   ├── lgycp.py               # WeChat article monitor (sogou/baidu/bing)
+│   ├── page.py                # docs/index.md generator
+│   ├── rss.py                 # RSS.md incremental feed
 │   ├── spider.py              # crawl orchestration
+│   ├── storage.py             # JSON persistence + diff
 │   ├── scheduler.py           # interval scheduler
 │   └── browser/
 │       ├── engine.py          # Playwright lifecycle & screenshots
-│       ├── actions.py         # smart action library (popup, click, scroll)
+│       ├── actions.py         # smart action library
 │       ├── traversal.py       # recursive DFS traversal
 │       └── replay.py          # YAML playbook engine
 ├── playbooks/                 # replay definitions
-│   ├── check_show.yaml
-│   └── browse_categories.yaml
-├── SITE_STRUCTURE.md          # API structure & patterns reference
-├── RSS.md                     # auto-updated show feed
-├── .github/workflows/crawl.yml
-└── data/                      # output (git-ignored except latest)
+├── docs/index.md              # GitHub Pages dashboard (auto-updated)
+├── RSS.md                     # incremental show feed (auto-updated)
+├── monitor_history.json       # show monitor state (auto-updated)
+├── archs_lgycp/archive.json   # article archive (auto-updated)
+├── SITE_STRUCTURE.md          # API structure reference
+└── .github/workflows/crawl.yml
 ```
 
 ## GitHub Actions
 
-A workflow runs `crawl --rss` every 4 hours and commits results automatically.
+A single workflow runs both monitors every 12 hours (Beijing 08:00 / 20:00):
 
-- Workflow: `.github/workflows/crawl.yml`
-- Schedule: `cron: "0 */4 * * *"` (every 4h)
-- Also supports manual trigger via `workflow_dispatch`
-- Commits `RSS.md` + `data/latest/` back to the repo
+1. **Show monitor** — crawl all shows, check stock, update `RSS.md` + `docs/index.md`, email if new/restocked
+2. **Article monitor** — search WeChat articles, archive new ones, email if new matches found
 
-`RSS.md` is incrementally updated — each run prepends a new entry with the current show table and a diff summary.
+Supports manual trigger via **Actions → scheduled monitor → Run workflow**.
 
 ## Configuration
 
-Set `LGPAC_TARGET_URL` environment variable to override the default target:
+### Environment Variables
 
-```bash
-export LGPAC_TARGET_URL="http://your-target-site.example.com"
-```
+| Variable | Purpose | Where |
+|----------|---------|-------|
+| `LGPAC_TARGET_URL` | override target site URL | `vars` (optional) |
+| `LGPAC_NOTIFY_EMAIL` | email recipient | `secrets` |
+| `LGPAC_SMTP_USER` | SMTP sender address | `secrets` |
+| `LGPAC_SMTP_PASS` | SMTP auth code | `secrets` |
+| `LGPAC_SMTP_SERVER` | SMTP server (default: `smtp.qq.com`) | `secrets` |
+| `LGPAC_SMTP_PORT` | SMTP port (default: `465`) | `secrets` |
+| `LGPAC_WEBHOOK_URL` | webhook URL for instant notifications | `secrets` (optional) |
 
-For GitHub Actions, add it as a repository secret or variable.
+All sensitive values are stored as GitHub Secrets — never in code or logs.
 
 ## License
 
