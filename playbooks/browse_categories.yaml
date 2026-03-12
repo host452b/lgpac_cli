@@ -1,10 +1,11 @@
 # playbook: browse each category tab and capture results
+# set LGPAC_TARGET_URL env var to override the default target
 name: browse_categories
 description: click each category tab on homepage and capture page state
 
 steps:
   - action: navigate
-    url: ${LGPAC_TARGET_URL:-http://lgpac.culture.cn}
+    url: __TARGET_URL__
     wait_after: 5
 
   - action: dismiss_popup

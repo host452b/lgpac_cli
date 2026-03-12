@@ -1,11 +1,11 @@
 # playbook: check the first show on homepage
-# note: replace LGPAC_TARGET_URL or edit the url below before running
+# set LGPAC_TARGET_URL env var to override the default target
 name: check_first_show
 description: open homepage, click first show, extract detail info
 
 steps:
   - action: navigate
-    url: ${LGPAC_TARGET_URL:-http://lgpac.culture.cn}
+    url: __TARGET_URL__
     wait_after: 5
 
   - action: dismiss_popup
