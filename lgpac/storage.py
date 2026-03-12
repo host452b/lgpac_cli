@@ -65,11 +65,26 @@ class JsonStorage:
         return filepath
 
     def save_latest_symlink(self, run_dir: Path):
-        """create/update a 'latest' symlink pointing to the most recent run."""
+        """point 'latest' to the most recent run dir (symlink or marker file)."""
         latest = self.base_dir / "latest"
-        if latest.is_symlink() or latest.exists():
-            latest.unlink()
-        latest.symlink_to(run_dir.name)
+
+        # try symlink first, fall back to a plain marker file (Windows compat)
+        try:
+            if latest.is_symlink() or latest.exists():
+                if latest.is_dir() and not latest.is_symlink():
+                    import shutil
+                    shutil.rmtree(latest)
+                else:
+                    latest.unlink()
+            latest.symlink_to(run_dir.name)
+        except OSError:
+            latest.mkdir(exist_ok=True)
+            marker = latest / "_source"
+            marker.write_text(str(run_dir.name))
+            import shutil
+            for f in run_dir.iterdir():
+                shutil.copy2(f, latest / f.name)
+
         logger.info(f"updated latest -> {run_dir.name}")
 
     def load_latest_shows(self) -> List[Dict]:

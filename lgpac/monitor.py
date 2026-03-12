@@ -17,7 +17,7 @@ from lgpac.models import Show, SeatPlan
 
 logger = logging.getLogger("lgpac.monitor")
 
-HISTORY_FILE = "data/monitor_history.json"
+HISTORY_FILE = "monitor_history.json"
 
 
 @dataclass

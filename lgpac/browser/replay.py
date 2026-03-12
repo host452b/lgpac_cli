@@ -79,7 +79,11 @@ class PlaybookRunner:
             raise FileNotFoundError(f"playbook not found: {playbook_path}")
 
         with open(path, "r", encoding="utf-8") as f:
-            playbook = yaml.safe_load(f)
+            raw = f.read()
+
+        # resolve __TARGET_URL__ placeholder
+        raw = raw.replace("__TARGET_URL__", self.config.base_url)
+        playbook = yaml.safe_load(raw)
 
         return self.run(playbook)
 

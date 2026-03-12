@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add RSS.md docs/ data/
+          git add RSS.md docs/ monitor_history.json
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
