@@ -31,7 +31,7 @@ class PageNode:
         self.children: List["PageNode"] = []
         self.error: Optional[str] = None
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self, full: bool = False) -> Dict[str, Any]:
         result = {
             "url": self.url,
             "title": self.title,
@@ -39,16 +39,19 @@ class PageNode:
             "trigger": self.trigger,
         }
         if self.meta:
-            result["text_preview"] = (self.meta.get("text_content") or "")[:300]
             result["link_count"] = len(self.meta.get("links", []))
             result["image_count"] = len(self.meta.get("images", []))
             result["clickable_count"] = len(self.meta.get("clickables", []))
-        if self.dom_tree:
-            result["has_dom_tree"] = True
+            if full:
+                result["text_content"] = self.meta.get("text_content", "")
+                result["links"] = self.meta.get("links", [])
+                result["images"] = self.meta.get("images", [])
+            else:
+                result["text_preview"] = (self.meta.get("text_content") or "")[:300]
         if self.error:
             result["error"] = self.error
         if self.children:
-            result["children"] = [c.to_dict() for c in self.children]
+            result["children"] = [c.to_dict(full=full) for c in self.children]
         return result
 
 
@@ -70,19 +73,30 @@ class SiteTraverser:
         config: Optional[SiteConfig] = None,
         max_depth: int = 3,
         max_pages: int = 50,
+        output_dir: Optional[str] = None,
+        overwrite: bool = False,
     ):
         self.config = config or SiteConfig()
         self.max_depth = max_depth
         self.max_pages = max_pages
+        self.overwrite = overwrite
+        self._custom_output_dir = output_dir
         self._visited: Set[str] = set()
         self._page_count = 0
         self._output_dir: Optional[Path] = None
 
     def traverse(self) -> PageNode:
         """run the full traversal. returns the root node of the site tree."""
-        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self._output_dir = self.config.output_path / "traversal" / ts
+        if self._custom_output_dir:
+            self._output_dir = Path(self._custom_output_dir)
+            if self.overwrite and self._output_dir.exists():
+                import shutil
+                shutil.rmtree(self._output_dir)
+        else:
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            self._output_dir = self.config.output_path / "traversal" / ts
         self._output_dir.mkdir(parents=True, exist_ok=True)
+        (self._output_dir / "pages").mkdir(exist_ok=True)
 
         logger.info(f"starting traversal (max_depth={self.max_depth}, max_pages={self.max_pages})")
 
@@ -139,12 +153,14 @@ class SiteTraverser:
 
             engine.screenshot(page, f"d{depth}_{self._page_count:03d}_{trigger[:20]}")
 
+            # save full page content to archs/pages/
+            self._save_page_archive(page, node)
+
             logger.info(
                 f"[{self._page_count}/{self.max_pages}] depth={depth} "
                 f"url={url[:80]} links={len(node.meta.get('links', []))}"
             )
 
-            # find and visit child pages
             if depth < self.max_depth:
                 self._traverse_children(engine, page, node)
 
@@ -164,20 +180,17 @@ class SiteTraverser:
         cards = [t for t in targets if t["type"] == "show_card"]
         links = [t for t in targets if t["type"] == "link"]
 
-        # visit tabs (they change content without navigation)
-        for tab in tabs[:6]:
+        for tab in tabs:
             if self._page_count >= self.max_pages:
                 break
             self._visit_tab(engine, page, parent, tab)
 
-        # visit show cards (click to navigate to detail)
-        for card in cards[:6]:
+        for card in cards:
             if self._page_count >= self.max_pages:
                 break
             self._visit_clickable(engine, page, parent, card, current_url)
 
-        # visit internal links
-        for link in links[:10]:
+        for link in links:
             if self._page_count >= self.max_pages:
                 break
             href = link.get("href", "")
@@ -312,6 +325,36 @@ class SiteTraverser:
     # helpers
     # ------------------------------------------------------------------ #
 
+    def _save_page_archive(self, page: Page, node: PageNode):
+        """save full HTML and structured meta for each visited page."""
+        if not self._output_dir:
+            return
+
+        pages_dir = self._output_dir / "pages"
+        safe_name = f"{self._page_count:03d}_{node.trigger[:30]}"
+        safe_name = "".join(c if c.isalnum() or c in "-_" else "_" for c in safe_name)
+
+        try:
+            html = page.content()
+            html_file = pages_dir / f"{safe_name}.html"
+            html_file.write_text(html, encoding="utf-8")
+        except Exception as e:
+            logger.debug(f"failed to save HTML for {safe_name}: {e}")
+
+        meta_file = pages_dir / f"{safe_name}.json"
+        archive = {
+            "url": node.url,
+            "title": node.title,
+            "depth": node.depth,
+            "trigger": node.trigger,
+            "text_content": node.meta.get("text_content", ""),
+            "links": node.meta.get("links", []),
+            "images": node.meta.get("images", []),
+            "clickables": node.meta.get("clickables", []),
+        }
+        with open(meta_file, "w", encoding="utf-8") as f:
+            json.dump(archive, f, ensure_ascii=False, indent=2)
+
     def _normalize_url(self, url: str) -> str:
         parsed = urlparse(url)
         path = parsed.path.rstrip("/") or "/"
@@ -332,16 +375,20 @@ class SiteTraverser:
 
         tree_file = self._output_dir / "site_tree.json"
         with open(tree_file, "w", encoding="utf-8") as f:
-            json.dump(root.to_dict(), f, ensure_ascii=False, indent=2)
+            json.dump(root.to_dict(full=False), f, ensure_ascii=False, indent=2)
         logger.info(f"site tree saved to {tree_file}")
 
-        # save flat list of all visited pages for easy querying
+        tree_full = self._output_dir / "site_tree_full.json"
+        with open(tree_full, "w", encoding="utf-8") as f:
+            json.dump(root.to_dict(full=True), f, ensure_ascii=False, indent=2)
+        logger.info(f"full tree saved to {tree_full}")
+
         flat = []
         self._flatten(root, flat)
         flat_file = self._output_dir / "all_pages.json"
         with open(flat_file, "w", encoding="utf-8") as f:
             json.dump(flat, f, ensure_ascii=False, indent=2)
-        logger.info(f"flat page list saved to {flat_file} ({len(flat)} pages)")
+        logger.info(f"page list saved to {flat_file} ({len(flat)} pages)")
 
     def _flatten(self, node: PageNode, result: List[Dict]):
         entry = {

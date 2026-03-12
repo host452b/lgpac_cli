@@ -105,6 +105,7 @@ class SeatPlan:
     combo_display_tag: str = ""
     category: str = "BASE"
     is_stop_sale: bool = False
+    can_buy_count: int = -1  # -1 = unknown, 0 = sold out, >0 = available
     combo_items: List[Dict[str, Any]] = field(default_factory=list)
 
     @classmethod
@@ -131,6 +132,15 @@ class SeatPlan:
             is_stop_sale=data.get("isStopSale", False),
             combo_items=items,
         )
+
+    @property
+    def truly_available(self) -> bool:
+        """check real availability using dynamic stock data."""
+        if self.is_stop_sale:
+            return False
+        if self.can_buy_count == 0:
+            return False
+        return True
 
 
 @dataclass
@@ -319,6 +329,8 @@ class Show:
                             "price": sp.original_price,
                             "is_combo": sp.is_combo,
                             "is_stop_sale": sp.is_stop_sale,
+                            "can_buy_count": sp.can_buy_count,
+                            "available": sp.truly_available,
                             "combo_items": sp.combo_items,
                         }
                         for sp in s.seat_plans
