@@ -271,11 +271,52 @@ def send_email(new_articles: List[Dict]) -> bool:
         return False
 
 
-def run_monitor(query: str = "临港少年宫", notify: bool = False) -> List[Dict]:
-    """full pipeline: fetch (with fallback) -> filter -> archive -> notify."""
+def generate_page(output_path: str = "docs_lgycp/index.md"):
+    """generate a markdown page listing all archived articles."""
+    archive = _load_archive()
+    titles = archive.get("titles", {})
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    lines = []
+    lines.append("# 📢 Article Monitor")
+    lines.append("")
+    lines.append(f"> updated: {now} · {len(titles)} articles archived")
+    lines.append("")
+
+    if not titles:
+        lines.append("*waiting for first run...*")
+    else:
+        lines.append("| # | Title | Source | Found |")
+        lines.append("|---|-------|--------|-------|")
+
+        sorted_items = sorted(titles.items(), key=lambda x: x[1].get("found_at", ""), reverse=True)
+        for i, (title, info) in enumerate(sorted_items, 1):
+            url = info.get("url", "")
+            source = info.get("source", "")
+            found = info.get("found_at", "")[:10]
+            title_esc = title.replace("|", "∣")
+            if url:
+                title_cell = f"[{title_esc}]({url})"
+            else:
+                title_cell = title_esc
+            lines.append(f"| {i} | {title_cell} | {source} | {found} |")
+
+    lines.append("")
+
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
+    logger.info(f"lgycp page generated: {path}")
+
+
+def run_monitor(query: str = "临港少年宫", notify: bool = False, page: bool = False) -> List[Dict]:
+    """full pipeline: fetch (with fallback) -> filter -> archive -> page -> notify."""
     articles = fetch_articles(query)
     relevant = filter_relevant(articles)
     new_articles = check_and_archive(relevant)
+
+    if page:
+        generate_page()
 
     if new_articles and notify:
         send_email(new_articles)

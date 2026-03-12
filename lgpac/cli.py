@@ -90,7 +90,7 @@ def crawl(
 def monitor(
     price: float = typer.Option(120.0, "--price", "-p", help="max ticket price to watch"),
     rss: bool = typer.Option(False, "--rss", help="update RSS.md"),
-    page: bool = typer.Option(False, "--page", help="generate docs/index.md for GitHub Pages"),
+    page: bool = typer.Option(False, "--page", help="generate docs_lgpac/index.md for GitHub Pages"),
     notify: bool = typer.Option(False, "--notify", "-n", help="send webhook notification"),
     email: bool = typer.Option(False, "--email", help="send email for NEW shows (needs SMTP env vars)"),
     debug: bool = typer.Option(False, "--debug", "-d"),
@@ -123,7 +123,7 @@ def monitor(
     if page:
         from lgpac.page import generate_page
         generate_page(shows, alerts, max_price=price, diff=diff)
-        console.print("[green]docs/index.md generated[/green]")
+        console.print("[green]docs_lgpac/index.md generated[/green]")
 
     if notify:
         in_stock = [a for a in alerts if a.status in ("new", "available", "back_in_stock")]
@@ -312,6 +312,7 @@ def schedule(
 def lgycp(
     query: str = typer.Option("临港少年宫", "--query", "-q", help="search query"),
     notify: bool = typer.Option(False, "--notify", "-n", help="send email on new articles"),
+    page: bool = typer.Option(False, "--page", help="generate docs_lgycp/index.md"),
     debug: bool = typer.Option(False, "--debug", "-d"),
 ):
     """monitor weixin articles for activity/enrollment notices."""
@@ -319,7 +320,7 @@ def lgycp(
 
     from lgpac.lgycp import run_monitor, _load_archive
 
-    new_articles = run_monitor(query=query, notify=notify)
+    new_articles = run_monitor(query=query, notify=notify, page=page)
 
     if new_articles:
         table = Table(title=f"{len(new_articles)} new article(s)")
@@ -332,7 +333,9 @@ def lgycp(
         console.print("[dim]no new articles matching keywords[/dim]")
 
     archive = _load_archive()
-    console.print(f"[green]archive: {archive.get('total_count', 0)} articles in archs_lgycp/[/green]")
+    console.print(f"[green]archive: {archive.get('total_count', 0)} articles[/green]")
+    if page:
+        console.print("[green]docs_lgycp/index.md generated[/green]")
 
 
 # ------------------------------------------------------------------ #

@@ -18,7 +18,7 @@ def generate_page(
     alerts: List[TicketAlert],
     max_price: float = 120.0,
     diff: Optional[Dict[str, Any]] = None,
-    output_path: str = "docs/index.md",
+    output_path: str = "docs_lgpac/index.md",
 ):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     lines = []
