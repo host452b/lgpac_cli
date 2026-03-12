@@ -305,6 +305,37 @@ def schedule(
 
 
 # ------------------------------------------------------------------ #
+# lgycp - weixin article monitor
+# ------------------------------------------------------------------ #
+
+@app.command()
+def lgycp(
+    query: str = typer.Option("临港少年宫", "--query", "-q", help="search query"),
+    notify: bool = typer.Option(False, "--notify", "-n", help="send email on new articles"),
+    debug: bool = typer.Option(False, "--debug", "-d"),
+):
+    """monitor weixin articles for activity/enrollment notices."""
+    _setup_logging(debug)
+
+    from lgpac.lgycp import run_monitor, _load_archive
+
+    new_articles = run_monitor(query=query, notify=notify)
+
+    if new_articles:
+        table = Table(title=f"{len(new_articles)} new article(s)")
+        table.add_column("title", style="bold")
+        table.add_column("source", style="dim")
+        for a in new_articles:
+            table.add_row(a["title"], a.get("source", ""))
+        console.print(table)
+    else:
+        console.print("[dim]no new articles matching keywords[/dim]")
+
+    archive = _load_archive()
+    console.print(f"[green]archive: {archive.get('total_count', 0)} articles in archs_lgycp/[/green]")
+
+
+# ------------------------------------------------------------------ #
 # version
 # ------------------------------------------------------------------ #
 
