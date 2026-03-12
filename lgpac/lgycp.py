@@ -58,6 +58,10 @@ def _fetch_sogou(query: str) -> List[Dict[str, str]]:
         re.DOTALL,
     )
 
+    # article publish timestamps: timeConvert('1769445871')
+    time_pattern = re.compile(r"timeConvert\('(\d+)'\)")
+    timestamps = [int(m.group(1)) for m in time_pattern.finditer(resp.text)]
+
     results = []
     for m in title_pattern.finditer(resp.text):
         link, idx, raw = m.group(1), m.group(2), m.group(3)
@@ -66,7 +70,19 @@ def _fetch_sogou(query: str) -> List[Dict[str, str]]:
             continue
         if link.startswith("/link?"):
             link = "https://weixin.sogou.com" + link
-        results.append({"title": title, "url": html_mod.unescape(link), "index": idx, "source": ""})
+
+        pub_date = ""
+        idx_int = int(idx)
+        if idx_int < len(timestamps):
+            pub_date = datetime.fromtimestamp(timestamps[idx_int], tz=timezone.utc).strftime("%Y-%m-%d")
+
+        results.append({
+            "title": title,
+            "url": html_mod.unescape(link),
+            "index": idx,
+            "source": "",
+            "pub_date": pub_date,
+        })
 
     for m in source_pattern.finditer(resp.text):
         src = _clean_html(m.group(2))
@@ -202,6 +218,7 @@ def check_and_archive(articles: List[Dict]) -> List[Dict]:
             archive.setdefault("titles", {})[title] = {
                 "url": article.get("url", ""),
                 "source": article.get("source", ""),
+                "pub_date": article.get("pub_date", ""),
                 "found_at": now,
             }
 
@@ -239,18 +256,21 @@ def send_email(new_articles: List[Dict]) -> bool:
         title = a["title"]
         url = a.get("url", "#")
         source = a.get("source", "")
+        pub_date = a.get("pub_date", "")
         rows.append(
             f'<tr><td style="padding:6px 8px;">'
             f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{title}</a>'
-            f'</td><td style="padding:6px 8px;color:#666;">{source}</td></tr>'
+            f'</td><td style="padding:6px 8px;color:#666;">{source}</td>'
+            f'<td style="padding:6px 8px;color:#888;">{pub_date}</td></tr>'
         )
 
     body = (
-        '<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:600px;margin:0 auto;">'
+        '<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:700px;margin:0 auto;">'
         f'<h2 style="color:#2da44e;">📢 {len(new_articles)} new article(s)</h2>'
         '<table style="border-collapse:collapse;width:100%;font-size:14px;">'
         '<tr style="background:#f6f8fa;"><th style="padding:6px 8px;text-align:left;">Title</th>'
-        '<th style="padding:6px 8px;text-align:left;">Source</th></tr>'
+        '<th style="padding:6px 8px;text-align:left;">Source</th>'
+        '<th style="padding:6px 8px;text-align:left;">Published</th></tr>'
         + "".join(rows)
         + '</table></body></html>'
     )
@@ -286,20 +306,21 @@ def generate_page(output_path: str = "docs_lgycp/index.md"):
     if not titles:
         lines.append("*waiting for first run...*")
     else:
-        lines.append("| # | Title | Source | Found |")
-        lines.append("|---|-------|--------|-------|")
+        lines.append("| # | Title | Source | Published | Found |")
+        lines.append("|---|-------|--------|-----------|-------|")
 
         sorted_items = sorted(titles.items(), key=lambda x: x[1].get("found_at", ""), reverse=True)
         for i, (title, info) in enumerate(sorted_items, 1):
             url = info.get("url", "")
             source = info.get("source", "")
+            pub_date = info.get("pub_date", "")
             found = info.get("found_at", "")[:10]
             title_esc = title.replace("|", "∣")
             if url:
                 title_cell = f"[{title_esc}]({url})"
             else:
                 title_cell = title_esc
-            lines.append(f"| {i} | {title_cell} | {source} | {found} |")
+            lines.append(f"| {i} | {title_cell} | {source} | {pub_date} | {found} |")
 
     lines.append("")
 
