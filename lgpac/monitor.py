@@ -183,15 +183,19 @@ def format_alerts_markdown(alerts: List[TicketAlert], max_price: float) -> str:
 
 def send_webhook(text: str, webhook_url: Optional[str] = None):
     """
-    send alert via webhook.
-    supports generic JSON POST — works with bark, telegram bot, slack, dingtalk, etc.
+    send alert via webhook. auto-detects platform by URL:
+      - feishu/lark: open.feishu.cn or open.larksuite.com
+      - dingtalk: oapi.dingtalk.com
+      - slack: hooks.slack.com
+      - generic: plain JSON {"text": "..."}
     set LGPAC_WEBHOOK_URL env var or pass directly.
     """
     url = webhook_url or os.environ.get("LGPAC_WEBHOOK_URL", "")
     if not url:
         return
 
-    payload = json.dumps({"text": text, "content": text}, ensure_ascii=False).encode("utf-8")
+    body = _build_webhook_payload(url, text)
+    payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
     req = Request(url, data=payload, headers={"Content-Type": "application/json"})
 
     try:
@@ -199,6 +203,24 @@ def send_webhook(text: str, webhook_url: Optional[str] = None):
             logger.info(f"webhook sent: {resp.status}")
     except URLError as e:
         logger.warning(f"webhook failed: {e}")
+
+
+def _build_webhook_payload(url: str, text: str) -> Dict:
+    """format payload for the target platform."""
+    if "feishu.cn" in url or "larksuite.com" in url:
+        return {
+            "msg_type": "text",
+            "content": {"text": text},
+        }
+    if "dingtalk.com" in url:
+        return {
+            "msgtype": "text",
+            "text": {"content": text},
+        }
+    if "hooks.slack.com" in url:
+        return {"text": text}
+    # generic fallback
+    return {"text": text, "content": text}
 
 
 def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path: str = "docs_lgpac/index.md") -> bool:
