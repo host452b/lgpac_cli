@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lgpac"
-version = "0.2.0"
+version = "0.9.1"
 description = "crawler & browser automation toolkit for a performing arts venue"
 readme = "README.md"
 requires-python = ">=3.9"
