@@ -34,14 +34,17 @@ jobs:
       - name: install dependencies
         run: pip install requests typer rich pyyaml
 
-      - name: run monitor
+      - name: run show monitor
         run: python lgpac_cli.py monitor --price 120 --rss --page --notify --email
+
+      - name: run weixin article monitor
+        run: python lgpac_cli.py lgycp --notify
 
       - name: commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add RSS.md docs/ monitor_history.json
+          git add RSS.md docs/ monitor_history.json archs_lgycp/
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
