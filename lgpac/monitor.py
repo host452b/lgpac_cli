@@ -201,7 +201,7 @@ def send_webhook(text: str, webhook_url: Optional[str] = None):
         logger.warning(f"webhook failed: {e}")
 
 
-def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path: str = "docs/index.md") -> bool:
+def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path: str = "docs_lgpac/index.md") -> bool:
     """
     send email when:
       1. a NEW show appears with affordable tickets in stock
