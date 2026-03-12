@@ -1,6 +1,6 @@
 # 🎭 Show Monitor
 
-> updated: 2026-03-12 07:58 UTC · price threshold: ¥120
+> updated: 2026-03-12 08:00 UTC · price threshold: ¥120
 
 ## 🎫 Affordable Tickets
 
@@ -107,4 +107,4 @@
 
 ## 📝 Changes
 
-- 🔄 百老汇镜框式中文版音乐剧《LIZZIE 丽兹》 (`show_date`: 2026.05.30 15:00 → 2026年05月30日 15:00)
+*first run*
