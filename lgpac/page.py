@@ -7,7 +7,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from typing import List, Optional, Dict, Any
 
-from lgpac.models import Show
+from lgpac.models import Show, SeatPlan
 from lgpac.monitor import TicketAlert
 
 logger = logging.getLogger("lgpac.page")
@@ -64,26 +64,21 @@ def generate_page(
             lines.append("</details>")
             lines.append("")
 
-    # --- all shows ---
+    # --- all shows with ticket listing ---
     lines.append("## 📋 All Shows")
     lines.append("")
-    lines.append("| # | Category | Name | Date | Min Available | Listed Price | Status |")
-    lines.append("|---|----------|------|------|--------------|-------------|--------|")
+    lines.append("| # | Category | Name | Date | All Tickets | Cheapest Available | Status |")
+    lines.append("|---|----------|------|------|------------|-------------------|--------|")
+
     for i, s in enumerate(shows, 1):
         cat = s.category.display_name if s.category else ""
-        listed = s.min_price_info.display if s.min_price_info else ""
-        real_min = _real_min_price(s)
-        status = "❌ SOLD OUT" if s.sold_out else "✅"
-
-        if real_min is None:
-            avail_str = "—"
-        elif s.min_price and real_min > s.min_price:
-            avail_str = f"¥{real_min:.0f}起 ⚠️"
-            status = "⚠️ cheapest sold out"
-        else:
-            avail_str = f"¥{real_min:.0f}起"
-
-        lines.append(f"| {i} | {cat} | {_esc(s.name)} | {s.show_date} | {avail_str} | {listed} | {status} |")
+        all_plans = _collect_all_plans(s)
+        tickets_str = _format_ticket_list(all_plans)
+        avail_str, status = _cheapest_status(all_plans, s.min_price, max_price)
+        lines.append(
+            f"| {i} | {cat} | {_esc(s.name)} | {s.show_date} "
+            f"| {tickets_str} | {avail_str} | {status} |"
+        )
     lines.append("")
 
     # --- price breakdown per show ---
@@ -129,21 +124,87 @@ def generate_page(
 
     lines.append("")
 
-    # write
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
     logger.info(f"page generated: {path}")
 
 
-def _real_min_price(show: Show) -> Optional[float]:
-    """find the cheapest ACTUALLY AVAILABLE (canBuyCount > 0) ticket price."""
-    prices = []
+# ------------------------------------------------------------------ #
+# helpers
+# ------------------------------------------------------------------ #
+
+def _collect_all_plans(show: Show) -> List[Dict[str, Any]]:
+    """flatten all seat plans across sessions, deduplicate by price+name."""
+    seen = set()
+    plans = []
     for sess in show.sessions:
         for plan in sess.seat_plans:
-            if plan.truly_available and plan.original_price > 0:
-                prices.append(plan.original_price)
-    return min(prices) if prices else None
+            key = (plan.name, plan.original_price)
+            if key in seen:
+                continue
+            seen.add(key)
+            plans.append({
+                "name": plan.name,
+                "price": plan.original_price,
+                "available": plan.truly_available,
+                "is_combo": plan.is_combo,
+            })
+    plans.sort(key=lambda p: p["price"])
+    return plans
+
+
+def _format_ticket_list(plans: List[Dict]) -> str:
+    """render all ticket tiers inline: ¥80✅ ¥180✅ ¥280❌ ..."""
+    if not plans:
+        return "—"
+    parts = []
+    for p in plans:
+        icon = "✅" if p["available"] else "❌"
+        combo = "🎫" if p["is_combo"] else ""
+        parts.append(f"¥{p['price']:.0f}{icon}{combo}")
+    return " ".join(parts)
+
+
+def _cheapest_status(
+    plans: List[Dict],
+    listed_min: float,
+    max_price: float,
+) -> tuple:
+    """
+    determine cheapest available price and status.
+    focus on tiers <= min(listed_min, max_price) as the "target floor".
+    """
+    if not plans:
+        return "—", "—"
+
+    target_floor = listed_min if listed_min > 0 else max_price
+    if target_floor > max_price:
+        target_floor = max_price
+
+    # all tiers at or below the target floor
+    floor_plans = [p for p in plans if p["price"] <= target_floor]
+
+    # cheapest available across ALL tiers
+    available_prices = [p["price"] for p in plans if p["available"] and p["price"] > 0]
+    cheapest_available = min(available_prices) if available_prices else None
+
+    if not floor_plans:
+        # no tiers under threshold
+        if cheapest_available is not None:
+            return f"¥{cheapest_available:.0f}起", "✅ (above threshold)"
+        return "—", "❌ SOLD OUT"
+
+    floor_available = [p for p in floor_plans if p["available"]]
+
+    if floor_available:
+        cheapest_floor = min(p["price"] for p in floor_available)
+        return f"¥{cheapest_floor:.0f}起", "✅"
+
+    # floor tiers all sold out
+    if cheapest_available is not None:
+        return f"¥{cheapest_available:.0f}起 ⚠️", f"⚠️ ¥{target_floor:.0f} sold out"
+    return "—", "❌ ALL SOLD OUT"
 
 
 def _esc(text: str) -> str:
