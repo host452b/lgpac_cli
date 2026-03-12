@@ -1,0 +1,45 @@
+# playbook: browse each category tab and capture results
+name: browse_categories
+description: click each category tab on homepage and capture page state
+
+steps:
+  - action: navigate
+    url: ${LGPAC_TARGET_URL:-http://lgpac.culture.cn}
+    wait_after: 5
+
+  - action: dismiss_popup
+
+  - action: screenshot
+    name: home_default
+
+  - action: click_text
+    text: "脱口秀"
+    wait_after: 2000
+  - action: screenshot
+    name: tab_talkshow
+  - action: extract_meta
+
+  - action: click_text
+    text: "舞蹈"
+    wait_after: 2000
+  - action: screenshot
+    name: tab_dance
+
+  - action: click_text
+    text: "话剧"
+    wait_after: 2000
+  - action: screenshot
+    name: tab_drama
+
+  - action: click_text
+    text: "音乐会&演唱会"
+    wait_after: 2000
+    on_fail: continue
+  - action: screenshot
+    name: tab_concert
+
+  - action: click_text
+    text: "精选"
+    wait_after: 2000
+  - action: screenshot
+    name: tab_featured

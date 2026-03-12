@@ -1,0 +1,34 @@
+# playbook: check the first show on homepage
+# note: replace LGPAC_TARGET_URL or edit the url below before running
+name: check_first_show
+description: open homepage, click first show, extract detail info
+
+steps:
+  - action: navigate
+    url: ${LGPAC_TARGET_URL:-http://lgpac.culture.cn}
+    wait_after: 5
+
+  - action: dismiss_popup
+
+  - action: screenshot
+    name: homepage
+
+  - action: extract_meta
+
+  # click the first visible show card — replace text as needed
+  - action: click_text
+    text: "银河喜剧群星秀"
+    wait_after: 3000
+    on_fail: continue
+
+  - action: dismiss_popup
+
+  - action: wait_for_load
+    timeout: 10000
+
+  - action: screenshot
+    name: show_detail
+
+  - action: extract_meta
+
+  - action: go_back
