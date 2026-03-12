@@ -2,8 +2,8 @@ name: scheduled monitor
 
 on:
   schedule:
-    # every 4 hours
-    - cron: "0 */4 * * *"
+    # every 12 hours (UTC 00:00 and 12:00 -> Beijing 08:00 and 20:00)
+    - cron: "0 0,12 * * *"
   workflow_dispatch:
 
 permissions:
