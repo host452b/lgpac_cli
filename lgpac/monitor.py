@@ -49,12 +49,12 @@ def analyze_shows(
         if not affordable_plans:
             continue
 
-        in_stock = [p for p in affordable_plans if not p["is_stop_sale"]]
+        in_stock = [p for p in affordable_plans if p["available"]]
 
         prev = history.get(show.show_id)
 
         if not prev:
-            status = "new"
+            status = "new" if in_stock else "sold_out"
             first_seen = now
         elif prev.get("had_stock") and not in_stock:
             status = "sold_out"
@@ -97,7 +97,7 @@ def analyze_shows(
 
 
 def _find_affordable_plans(show: Show, max_price: float) -> List[Dict[str, Any]]:
-    """collect all seat plans under the price threshold."""
+    """collect all seat plans under the price threshold with real stock status."""
     results = []
     for session in show.sessions:
         for plan in session.seat_plans:
@@ -108,6 +108,8 @@ def _find_affordable_plans(show: Show, max_price: float) -> List[Dict[str, Any]]
                     "price": plan.original_price,
                     "is_combo": plan.is_combo,
                     "is_stop_sale": plan.is_stop_sale,
+                    "can_buy_count": plan.can_buy_count,
+                    "available": plan.truly_available,
                 })
     return results
 
@@ -124,7 +126,7 @@ def format_alerts_text(alerts: List[TicketAlert], max_price: float) -> str:
 
     if in_stock:
         for a in in_stock:
-            plans_in_stock = [p for p in a.plans if not p["is_stop_sale"]]
+            plans_in_stock = [p for p in a.plans if p["available"]]
             prices = sorted(set(p["price"] for p in plans_in_stock))
             price_str = "/".join(f"¥{p:.0f}" for p in prices)
 
@@ -164,7 +166,7 @@ def format_alerts_markdown(alerts: List[TicketAlert], max_price: float) -> str:
     lines.append("|--------|----------|------|------|--------|-------|-------|")
 
     for a in alerts:
-        in_stock_plans = [p for p in a.plans if not p["is_stop_sale"]]
+        in_stock_plans = [p for p in a.plans if p["available"]]
         prices = sorted(set(p["price"] for p in a.plans))
         price_str = " / ".join(f"¥{p:.0f}" for p in prices)
         stock_str = f"{len(in_stock_plans)}/{len(a.plans)}"

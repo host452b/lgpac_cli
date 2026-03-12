@@ -42,7 +42,7 @@ def generate_page(
             lines.append("| | Category | Name | Date | Prices | Stock | Since |")
             lines.append("|---|----------|------|------|--------|-------|-------|")
             for a in in_stock:
-                stock_plans = [p for p in a.plans if not p["is_stop_sale"]]
+                stock_plans = [p for p in a.plans if p["available"]]
                 prices = " / ".join(f"¥{p:.0f}" for p in sorted(set(p_["price"] for p_ in a.plans)))
                 stock = f"{len(stock_plans)}/{len(a.plans)}"
                 icon = {"new": "🆕", "available": "✅", "back_in_stock": "🔄"}.get(a.status, "✅")
@@ -90,7 +90,7 @@ def generate_page(
         for sess in s.sessions:
             for plan in sess.seat_plans:
                 combo = "✓" if plan.is_combo else ""
-                avail = "❌" if plan.is_stop_sale else "✅"
+                avail = "✅" if plan.truly_available else "❌"
                 lines.append(f"| {sess.name} | {plan.name} | ¥{plan.original_price:.0f} | {combo} | {avail} |")
         lines.append("")
     lines.append("</details>")

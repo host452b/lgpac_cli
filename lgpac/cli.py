@@ -137,20 +137,29 @@ def monitor(
 @app.command()
 def traverse(
     max_depth: int = typer.Option(3, "--depth", help="max traversal depth"),
-    max_pages: int = typer.Option(30, "--pages", help="max pages to visit"),
+    max_pages: int = typer.Option(200, "--pages", help="max pages to visit"),
+    archs: bool = typer.Option(False, "--archs", "-a", help="save to archs/ and overwrite each run"),
     debug: bool = typer.Option(False, "--debug", "-d", help="enable screenshots"),
     output: str = typer.Option("data", "--output", "-o", help="output directory"),
 ):
-    """recursively traverse the site via browser, recording page structure."""
+    """recursively traverse the site via browser, recording all page content."""
     _setup_logging(debug)
     config = _make_config(debug, output)
 
+    out_dir = "archs" if archs else None
     from lgpac.browser.traversal import SiteTraverser
-    traverser = SiteTraverser(config=config, max_depth=max_depth, max_pages=max_pages)
+    traverser = SiteTraverser(
+        config=config,
+        max_depth=max_depth,
+        max_pages=max_pages,
+        output_dir=out_dir,
+        overwrite=archs,
+    )
     root = traverser.traverse()
 
     _print_tree(root)
-    console.print(f"\n[green]traversal data saved to:[/green] {config.output_dir}/traversal/")
+    target = "archs/" if archs else f"{config.output_dir}/traversal/"
+    console.print(f"\n[green]traversal data saved to:[/green] {target}")
 
 
 def _print_tree(node, indent: int = 0):

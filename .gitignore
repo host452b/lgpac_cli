@@ -6,8 +6,9 @@ dist/
 build/
 .eggs/
 
-# crawl run history (timestamped dirs, only docs/ and RSS.md are committed)
+# crawl data (runtime generated)
 data/
+archs/
 
 # images from debug/traversal screenshots
 *.png

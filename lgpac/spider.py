@@ -179,7 +179,22 @@ class LgpacSpider:
             session.seat_plans = [SeatPlan.from_api(p) for p in plans]
         except ApiError as e:
             logger.warning(
-                f"seat plans failed for {show_id}/{session.session_id}: {e}"
+                f"seat plans static failed for {show_id}/{session.session_id}: {e}"
+            )
+            return
+
+        # merge real-time stock from dynamic API
+        try:
+            dyn_resp = self.api.get_seat_plans_dynamic(show_id, session.session_id)
+            dyn_data = dyn_resp.get("data", {})
+            dyn_plans = {p["seatPlanId"]: p for p in dyn_data.get("seatPlans", [])}
+            for plan in session.seat_plans:
+                dyn = dyn_plans.get(plan.seat_plan_id)
+                if dyn:
+                    plan.can_buy_count = dyn.get("canBuyCount", -1)
+        except ApiError as e:
+            logger.warning(
+                f"seat plans dynamic failed for {show_id}/{session.session_id}: {e}"
             )
 
     def _enrich_service_notes(self, show: Show):

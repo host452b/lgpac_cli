@@ -122,9 +122,16 @@ class LgpacApi:
     # ------------------------------------------------------------------ #
 
     def get_seat_plans_static(self, show_id: str, session_id: str) -> Dict[str, Any]:
-        """all ticket tiers for a given session: prices, combo packs, availability."""
+        """all ticket tiers for a given session: prices, combo packs."""
         url = self.config.show_url(
             f"pub/v3/show/{show_id}/show_session/{session_id}/seat_plans_static_data"
+        )
+        return self.client.get(url)
+
+    def get_seat_plans_dynamic(self, show_id: str, session_id: str) -> Dict[str, Any]:
+        """real-time stock: canBuyCount per seat plan (0 = sold out)."""
+        url = self.config.show_url(
+            f"pub/v3/show/{show_id}/show_session/{session_id}/seat_plans_dynamic_data"
         )
         return self.client.get(url)
 
