@@ -201,40 +201,69 @@ def check_and_archive(all_posts: Dict[str, List[Dict]]) -> List[Dict]:
 # page generation
 # ------------------------------------------------------------------ #
 
+STAGE_META = {
+    0: ("🔬 Stage 0: Ignition", "raw signal — papers, prototypes, technical breakthroughs"),
+    1: ("📡 Stage 1: Momentum", "domain amplification — experts interpreting within their circle"),
+    2: ("🚀 Stage 2: Explosion", "cross-industry spread — business analysis, tool reviews, mainstream influencers"),
+    3: ("📺 Stage 3: Decay", "mass awareness — media, generalists, popularization"),
+    4: ("💀 Stage 4: Fading", "outdated — hustle content, common knowledge"),
+}
+
+
 def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output_path: str = "docs_xbirds/index.md"):
     tracked = load_tracked()
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     active = len(all_posts)
     total = len(tracked)
 
-    lines = ["# 🐦 X/Twitter Tracker", "", f"> updated: {now} · {active}/{total} users active", ""]
+    # build username -> entry lookup
+    entry_map = {e["username"]: e for e in tracked}
 
-    categories = {}
-    for entry in tracked:
-        cat = entry.get("category", "other")
-        categories.setdefault(cat, []).append(entry)
+    lines = [
+        "# 🐦 X/Twitter Tracker",
+        "",
+        f"> updated: {now} · {active}/{total} users active",
+        "> grouped by **wave_stage** — read top-down to see how information propagates",
+        "",
+    ]
 
-    for cat, entries in categories.items():
-        active_in_cat = [e for e in entries if e["username"] in all_posts]
-        if not active_in_cat:
+    # group active posts by wave_stage
+    stage_groups = {s: [] for s in range(5)}
+    for username, posts in all_posts.items():
+        if not posts:
             continue
-        lines.append(f"### {cat}")
+        entry = entry_map.get(username, {})
+        stage = entry.get("wave_stage", 2)
+        stage_groups[stage].append((username, entry, posts))
+
+    for stage in range(5):
+        title, desc = STAGE_META[stage]
+        users_in_stage = stage_groups.get(stage, [])
+
+        lines.append(f"## {title}")
+        lines.append(f"> {desc}")
         lines.append("")
-        lines.append("| User | Latest Post | Date | Likes |")
-        lines.append("|------|------------|------|-------|")
-        for entry in active_in_cat:
-            username = entry["username"]
-            posts = all_posts.get(username, [])
-            if not posts:
-                continue
+
+        if not users_in_stage:
+            lines.append("*no active posts in this stage*")
+            lines.append("")
+            continue
+
+        lines.append(f"| User | Category | Latest Post | Date | Likes |")
+        lines.append(f"|------|----------|------------|------|-------|")
+
+        for username, entry, posts in users_in_stage:
             p = posts[0]
+            cat = entry.get("category", "")
             date = parse_tweet_date(p.get("created_at", ""))
             text = p.get("text", "")[:80].replace("|", "∣").replace("\n", " ")
             url = p.get("url", "")
             likes = p.get("favorite_count", 0)
-            lines.append(f"| @{username} | [{text}]({url}) | {date} | {likes} |")
+            lines.append(f"| @{username} | {cat} | [{text}]({url}) | {date} | {likes} |")
+
         lines.append("")
 
+    # warnings
     if warnings:
         lines.append(f"<details><summary>⚠️ warnings ({len(warnings)} accounts)</summary>")
         lines.append("")
@@ -260,24 +289,51 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
     if not new_posts:
         return False
 
-    rows = []
-    for p in new_posts:
-        date = parse_tweet_date(p.get("created_at", ""))
-        text = p.get("text", "")[:150]
-        url = p.get("url", "#")
-        username = p.get("username", "")
-        rows.append([
-            f'<span style="color:#1da1f2;">@{username}</span>',
-            f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{text}</a>',
-            f'<span style="color:#888;">{date}</span>',
-        ])
+    tracked = load_tracked()
+    entry_map = {e["username"]: e for e in tracked}
 
-    html = build_html_email(
-        title=f"🐦 {len(new_posts)} new post(s)",
-        heading_color="#1da1f2",
-        table_headers=["User", "Post", "Date"],
-        table_rows=rows,
-    )
+    # group by wave_stage
+    stage_posts = {s: [] for s in range(5)}
+    for p in new_posts:
+        username = p.get("username", "")
+        entry = entry_map.get(username, {})
+        stage = entry.get("wave_stage", 2)
+        stage_posts[stage].append(p)
+
+    stage_colors = {0: "#6e40c9", 1: "#1f6feb", 2: "#d29922", 3: "#da3633", 4: "#8b949e"}
+
+    parts = ['<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:700px;margin:0 auto;">']
+    parts.append(f'<h2 style="color:#1da1f2;">🐦 {len(new_posts)} new post(s)</h2>')
+
+    for stage in range(5):
+        posts = stage_posts.get(stage, [])
+        if not posts:
+            continue
+        title, desc = STAGE_META[stage]
+        color = stage_colors[stage]
+        parts.append(f'<h3 style="color:{color};margin-top:20px;">{title}</h3>')
+        parts.append(f'<p style="color:#666;font-size:13px;">{desc}</p>')
+        parts.append('<table style="border-collapse:collapse;width:100%;font-size:14px;">')
+        parts.append(
+            '<tr style="background:#f6f8fa;">'
+            '<th style="padding:6px 8px;text-align:left;">User</th>'
+            '<th style="padding:6px 8px;text-align:left;">Post</th>'
+            '<th style="padding:6px 8px;text-align:left;">Date</th></tr>'
+        )
+        for p in posts:
+            date = parse_tweet_date(p.get("created_at", ""))
+            text = p.get("text", "")[:150]
+            url = p.get("url", "#")
+            username = p.get("username", "")
+            parts.append(
+                f'<tr><td style="padding:6px 8px;color:#1da1f2;">@{username}</td>'
+                f'<td style="padding:6px 8px;"><a href="{url}" style="color:#1a73e8;text-decoration:none;">{text}</a></td>'
+                f'<td style="padding:6px 8px;color:#888;">{date}</td></tr>'
+            )
+        parts.append('</table>')
+
+    parts.append('</body></html>')
+    html = "\n".join(parts)
     return send_email(f"[xbirds] {len(new_posts)} new post(s)", html)
 
 
