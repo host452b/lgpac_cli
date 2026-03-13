@@ -1,6 +1,6 @@
-# lgpac & lgycp
+# lgpac & lgycp & xbirds
 
-Two independent monitors running on a shared infrastructure. Built for learning and research purposes.
+Three independent monitors running on a shared infrastructure. Built for learning and research purposes.
 
 > **DISCLAIMER / 免责声明**
 >
@@ -140,8 +140,8 @@ Both support manual trigger via **Actions → Run workflow**.
 | `LGPAC_SMTP_SERVER` | SMTP server (default: `smtp.qq.com`) |
 | `LGPAC_SMTP_PORT` | SMTP port (default: `465`) |
 | `LGPAC_WEBHOOK_URL` | webhook URL for dingtalk/slack (optional) |
-| `LGPAC_TARGET_URL` | target site URL (set as `vars`) |
-| `LGYCP_QUERY` | article monitor search query (set as `vars`) |
+| `LGPAC_TARGET_URL` | override target site URL (optional, set as `vars`) |
+| `LGYCP_QUERY` | override article search query (optional, set as `vars`) |
 
 ### Project Structure
 
@@ -176,7 +176,7 @@ Both support manual trigger via **Actions → Run workflow**.
 ├── RSS.md                       # show feed (auto-updated)
 ├── monitor_history.json         # show state (auto-updated)
 ├── archs_lgycp/archive.json     # article archive (auto-updated)
-├── archs_xbirds/tracked.yml     # tracked X accounts (131 users)
+├── archs_xbirds/tracked.yml     # tracked X accounts (210 users, with wave_stage)
 ├── archs_xbirds/archive.json    # tweet archive (auto-updated)
 ├── SITE_STRUCTURE.md            # API reference
 ├── .github/workflows/crawl.yml  # 12h monitor
@@ -185,4 +185,4 @@ Both support manual trigger via **Actions → Run workflow**.
 
 ## License
 
-MIT — see [DISCLAIMER](#lgpac--lgycp) above.
+MIT — see [DISCLAIMER](#lgpac--lgycp--xbirds) above.
