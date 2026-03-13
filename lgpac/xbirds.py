@@ -7,11 +7,11 @@ invalid accounts are skipped and collected as warnings.
 import re
 import json
 import logging
-import time
 import yaml
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from lgpac.archive import JsonArchive
 from lgpac.notify import send_email, build_html_email
@@ -29,7 +29,8 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-REQUEST_DELAY = 1.0
+MAX_WORKERS = 10
+RECENT_HOURS = 24
 
 
 # ------------------------------------------------------------------ #
@@ -135,8 +136,21 @@ def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
     return posts
 
 
-def fetch_all_users() -> tuple:
-    """returns (results_dict, warnings_list)."""
+def _fetch_one(entry: Dict) -> tuple:
+    """fetch posts for a single entry. returns (username, entry, posts_or_none)."""
+    username = entry.get("username", "")
+    if not username:
+        return username, entry, None
+    posts = fetch_user_posts(username)
+    return username, entry, posts
+
+
+def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
+    """
+    fetch posts for all tracked users using thread pool.
+    filters to posts within recent_hours (default 24h).
+    returns (results_dict, warnings_list).
+    """
     tracked = load_tracked()
     if not tracked:
         return {}, []
@@ -144,27 +158,52 @@ def fetch_all_users() -> tuple:
     results = {}
     warnings = []
     total = len(tracked)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=recent_hours)
 
-    for i, entry in enumerate(tracked):
-        username = entry.get("username", "")
-        if not username:
-            continue
-        posts = fetch_user_posts(username)
-        if posts:
-            results[username] = posts
-            logger.debug(f"[{i+1}/{total}] @{username}: {len(posts)} posts")
-        else:
-            warnings.append({
-                "username": username,
-                "name": entry.get("name", username),
-                "category": entry.get("category", ""),
-                "issue": "no_data_or_not_found",
-            })
-        if i < total - 1:
-            time.sleep(REQUEST_DELAY)
+    logger.info(f"fetching {total} users with {MAX_WORKERS} workers, cutoff={recent_hours}h")
 
-    logger.info(f"fetched {len(results)}/{total} users, {len(warnings)} warnings")
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = {pool.submit(_fetch_one, entry): entry for entry in tracked}
+        done = 0
+        for future in as_completed(futures):
+            done += 1
+            username, entry, posts = future.result()
+            if not username:
+                continue
+
+            if posts:
+                recent = _filter_recent(posts, cutoff)
+                if recent:
+                    results[username] = recent
+                    logger.debug(f"[{done}/{total}] @{username}: {len(recent)} recent posts")
+                else:
+                    logger.debug(f"[{done}/{total}] @{username}: {len(posts)} posts, 0 recent")
+            else:
+                warnings.append({
+                    "username": username,
+                    "name": entry.get("name", username),
+                    "category": entry.get("category", ""),
+                    "issue": "no_data_or_not_found",
+                })
+
+    logger.info(f"fetched {len(results)}/{total} users with recent posts, {len(warnings)} warnings")
     return results, warnings
+
+
+def _filter_recent(posts: List[Dict], cutoff: datetime) -> List[Dict]:
+    """keep only posts newer than cutoff."""
+    recent = []
+    for p in posts:
+        raw = p.get("created_at", "")
+        if not raw:
+            continue
+        try:
+            dt = datetime.strptime(raw, "%a %b %d %H:%M:%S %z %Y")
+            if dt >= cutoff:
+                recent.append(p)
+        except ValueError:
+            recent.append(p)
+    return recent
 
 
 # ------------------------------------------------------------------ #
