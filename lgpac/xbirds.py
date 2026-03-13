@@ -293,17 +293,19 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
 
         posts = fetch_user_posts(username)
 
+        stage = entry.get("wave_stage", "?")
         if posts:
             recent = _filter_recent(posts, cutoff)
             if recent:
                 results[username] = recent
                 success_count += 1
-                logger.debug(f"[{i+1}/{total}] @{username}: {len(recent)} recent / {len(posts)} total")
+                logger.info(f"  [{i+1}/{total}] ✅ @{username} (s{stage}): {len(recent)} recent posts")
             else:
                 empty_count += 1
-                logger.debug(f"[{i+1}/{total}] @{username}: 0 recent (oldest in window: {len(posts)} total)")
+                logger.info(f"  [{i+1}/{total}] ⏭  @{username} (s{stage}): {len(posts)} posts, 0 in window")
         else:
             error_count += 1
+            logger.info(f"  [{i+1}/{total}] ❌ @{username} (s{stage}): no data")
             warnings.append({
                 "username": username,
                 "name": entry.get("name", username),
@@ -311,14 +313,16 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
                 "issue": "no_data_or_not_found",
             })
 
-        # progress log every 25 users
-        if (i + 1) % 25 == 0:
+        # summary progress every 10 users
+        if (i + 1) % 10 == 0:
             elapsed = time.time() - start_time
             rate = (i + 1) / elapsed if elapsed > 0 else 0
             eta = (total - i - 1) / rate if rate > 0 else 0
+            pct = (i + 1) * 100 // total
             logger.info(
-                f"progress: {i+1}/{total} ({success_count} active, {error_count} errors) "
-                f"elapsed={elapsed:.0f}s, eta={eta:.0f}s"
+                f"  --- {pct}% ({i+1}/{total}) "
+                f"✅{success_count} ⏭{empty_count} ❌{error_count} "
+                f"| {elapsed:.0f}s elapsed, ~{eta:.0f}s remaining ---"
             )
 
         # polite delay with random jitter
