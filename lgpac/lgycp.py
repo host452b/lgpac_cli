@@ -5,6 +5,7 @@ fallback: baidu / bing site:mp.weixin.qq.com
 
 all providers return normalized format: [{"title", "url", "source", "pub_date"}]
 """
+import os
 import re
 import logging
 import html as html_mod
@@ -141,7 +142,12 @@ def _fetch_bing(query: str) -> List[Dict[str, str]]:
 PROVIDERS = [("sogou", _fetch_sogou), ("baidu", _fetch_baidu), ("bing", _fetch_bing)]
 
 
-def fetch_articles(query: str = "临港少年宫") -> List[Dict[str, str]]:
+def fetch_articles(query: str = "") -> List[Dict[str, str]]:
+    if not query:
+        query = os.environ.get("LGYCP_QUERY", "").strip()
+    if not query:
+        logger.warning("no search query provided (set LGYCP_QUERY or use -q)")
+        return []
     for name, fetcher in PROVIDERS:
         try:
             articles = fetcher(query)
@@ -270,7 +276,7 @@ def send_email_alert(new_articles: List[Dict]) -> bool:
 # run
 # ------------------------------------------------------------------ #
 
-def run_monitor(query: str = "临港少年宫", notify: bool = False, page: bool = False) -> List[Dict]:
+def run_monitor(query: str = "", notify: bool = False, page: bool = False) -> List[Dict]:
     articles = fetch_articles(query)
     relevant = filter_relevant(articles)
     new_articles = check_and_archive(relevant)
