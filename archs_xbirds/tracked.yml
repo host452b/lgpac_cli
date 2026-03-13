@@ -1,0 +1,671 @@
+# X/Twitter tracked accounts
+# format: list of entries, each with username, category, name, tags
+# edit this file to add/remove tracked users
+# the bot skips invalid accounts and reports them as warnings
+
+# ---- titans ----
+- username: sama
+  name: Sam Altman
+  category: titan
+  tags: [agi, openai]
+
+- username: elonmusk
+  name: Elon Musk
+  category: titan
+  tags: [xai, grok, compute]
+
+- username: ylecun
+  name: Yann LeCun
+  category: titan
+  tags: [meta, llama, open-source]
+
+- username: demishassabis
+  name: Demis Hassabis
+  category: titan
+  tags: [deepmind, gemini, alphafold]
+
+- username: nvidia
+  name: Jensen Huang (NVIDIA)
+  category: titan
+  tags: [gpu, compute, ecosystem]
+
+# ---- foundation builders ----
+- username: arthurmensch
+  name: Arthur Mensch
+  category: foundation
+  tags: [mistral, open-source, europe]
+
+- username: Clem
+  name: Clem Delangue
+  category: foundation
+  tags: [huggingface, open-source, community]
+
+- username: daboramodei
+  name: Dario Amodei
+  category: foundation
+  tags: [anthropic, claude, safety]
+
+- username: hwchase17
+  name: Harrison Chase
+  category: foundation
+  tags: [langchain, agent-framework]
+
+# ---- top scientists ----
+- username: ilyasut
+  name: Ilya Sutskever
+  category: scientist
+  tags: [ssi, agi-safety]
+
+- username: karpathy
+  name: Andrej Karpathy
+  category: scientist
+  tags: [education, tesla-ai, eureka-labs]
+
+- username: AndrewYNg
+  name: Andrew Ng
+  category: scientist
+  tags: [deeplearning-ai, agentic-workflow]
+
+- username: drfeifei
+  name: Fei-Fei Li
+  category: scientist
+  tags: [world-labs, spatial-intelligence]
+
+- username: DrJimFan
+  name: Jim Fan
+  category: scientist
+  tags: [nvidia, embodied-ai, robotics]
+
+- username: fchollet
+  name: François Chollet
+  category: scientist
+  tags: [keras, arc-benchmark]
+
+- username: JeffDean
+  name: Jeff Dean
+  category: scientist
+  tags: [google, compute-optimization]
+
+- username: geoffreyhinton
+  name: Geoffrey Hinton
+  category: scientist
+  tags: [deep-learning, risk-warning]
+
+- username: YoshuaBengio
+  name: Yoshua Bengio
+  category: scientist
+  tags: [deep-learning, governance]
+
+- username: noamshazeer
+  name: Noam Shazeer
+  category: scientist
+  tags: [transformer, character-ai]
+
+- username: id_aa_carmack
+  name: John Carmack
+  category: scientist
+  tags: [agi, keen-technologies]
+
+- username: BlinkDL_AI
+  name: BlinkDL
+  category: scientist
+  tags: [rwkv, non-transformer]
+
+- username: SuJianlin
+  name: 苏剑林
+  category: scientist
+  tags: [rope, algorithm]
+
+- username: clattner_llvm
+  name: Chris Lattner
+  category: scientist
+  tags: [llvm, swift, modular]
+
+- username: svlevine
+  name: Sergey Levine
+  category: scientist
+  tags: [reinforcement-learning, robotics]
+
+- username: chelseabfinn
+  name: Chelsea Finn
+  category: scientist
+  tags: [meta-learning, robotics]
+
+- username: pieterabbeel
+  name: Pieter Abbeel
+  category: scientist
+  tags: [robotics, reinforcement-learning]
+
+- username: oriolvinyals
+  name: Oriol Vinyals
+  category: scientist
+  tags: [deepmind, gemini]
+
+- username: AnimaAnandkumar
+  name: Anima Anandkumar
+  category: scientist
+  tags: [tensor-algorithms, nvidia]
+
+- username: KaimingHe
+  name: 何恺明
+  category: scientist
+  tags: [resnet, computer-vision]
+
+# ---- core figures ----
+- username: peakji
+  name: Peak Ji
+  category: core
+  tags: [manus, agent]
+
+- username: YJJMinimax
+  name: 闫俊杰
+  category: core
+  tags: [minimax, model]
+
+- username: kaifulee
+  name: 李开复
+  category: core
+  tags: [01-ai, investment]
+
+- username: gdb
+  name: Greg Brockman
+  category: core
+  tags: [openai, co-founder]
+
+- username: miramurati
+  name: Mira Murati
+  category: core
+  tags: [openai, gpt4, sora]
+
+- username: mustafasuleyman
+  name: Mustafa Suleyman
+  category: core
+  tags: [microsoft-ai, deepmind]
+
+- username: jiayq
+  name: 贾扬清
+  category: core
+  tags: [caffe, lepton-ai]
+
+- username: wangxiaochuan
+  name: 王小川
+  category: core
+  tags: [baichuan]
+
+- username: ZhilinYang_
+  name: 杨植麟
+  category: core
+  tags: [moonshot, kimi]
+
+- username: LiDahai_AI
+  name: 李大海
+  category: core
+  tags: [edge-ai, mindslab]
+
+- username: ZhouBowen_AI
+  name: 周伯文
+  category: core
+  tags: [xianyuan, tsinghua]
+
+- username: satyanadella
+  name: Satya Nadella
+  category: core
+  tags: [microsoft, ai-strategy]
+
+- username: sundarpichai
+  name: Sundar Pichai
+  category: core
+  tags: [google, gemini]
+
+- username: zuck
+  name: Mark Zuckerberg
+  category: core
+  tags: [meta, llama, open-source]
+
+- username: lisasu
+  name: Lisa Su
+  category: core
+  tags: [amd, compute]
+
+- username: tim_cook
+  name: Tim Cook
+  category: core
+  tags: [apple, apple-intelligence]
+
+- username: aidangomez
+  name: Aidan Gomez
+  category: core
+  tags: [cohere, transformer-author]
+
+- username: ilblackdragon
+  name: Illia Polosukhin
+  category: core
+  tags: [transformer-author, near]
+
+- username: shanelegg
+  name: Shane Legg
+  category: core
+  tags: [deepmind, co-founder]
+
+- username: btaylor
+  name: Bret Taylor
+  category: core
+  tags: [openai-board, sierra]
+
+- username: natfriedman
+  name: Nat Friedman
+  category: core
+  tags: [github, ai-investment]
+
+- username: danielgross
+  name: Daniel Gross
+  category: core
+  tags: [ai-investment]
+
+- username: arvindkrishna
+  name: Arvind Krishna
+  category: core
+  tags: [ibm, watsonx]
+
+- username: thomas_kurian
+  name: Thomas Kurian
+  category: core
+  tags: [google-cloud]
+
+- username: adamdangelo
+  name: Adam D'Angelo
+  category: core
+  tags: [quora, poe]
+
+- username: jackclarkSF
+  name: Jack Clark
+  category: core
+  tags: [anthropic, policy]
+
+- username: danielaamodei
+  name: Daniela Amodei
+  category: core
+  tags: [anthropic, operations]
+
+# ---- core teams / orgs ----
+- username: deepseek_ai
+  name: DeepSeek
+  category: org
+  tags: [open-source, model]
+
+- username: ManusAI_HQ
+  name: Manus
+  category: org
+  tags: [agent, platform]
+
+- username: hey_im_monica
+  name: Monica AI
+  category: org
+  tags: [efficiency, plugin]
+
+- username: ZhipuAI
+  name: Zhipu AI
+  category: org
+  tags: [glm, china]
+
+- username: Kimi_Moonshot
+  name: Moonshot AI
+  category: org
+  tags: [kimi, china]
+
+- username: flowith_ai
+  name: Flowith
+  category: org
+  tags: [canvas, ui]
+
+- username: genspark_ai
+  name: Genspark
+  category: org
+  tags: [ai-search]
+
+- username: UnitreeRobotics
+  name: 宇树科技
+  category: org
+  tags: [robotics, humanoid]
+
+# ---- influencers (cn) ----
+- username: zarazhangrui
+  name: 张咋啦 (Zara)
+  category: influencer-cn
+  tags: [product, ai-learning, bytedance]
+
+- username: dotey
+  name: 宝玉
+  category: influencer-cn
+  tags: [news, paper-analysis, chinese-ai]
+
+- username: linyi_lyi
+  name: 林亦 LYi
+  category: influencer-cn
+  tags: [geek, hands-on]
+
+- username: quxiaoyin
+  name: 屈晓音
+  category: influencer-cn
+  tags: [heyboss, meta, hiring]
+
+- username: lijigang
+  name: 李继刚
+  category: influencer-cn
+  tags: [prompt-engineering, claude]
+
+- username: guicang
+  name: 归藏
+  category: influencer-cn
+  tags: [visual, midjourney, comfyui]
+
+- username: ruima
+  name: 马睿
+  category: influencer-cn
+  tags: [investment, tech-buzz-china]
+
+- username: henryyorkbb
+  name: Henry York
+  category: influencer-cn
+  tags: [monica-ai, observation]
+
+- username: panluan
+  name: 潘乱
+  category: influencer-cn
+  tags: [business, deep-talk]
+
+- username: jian_shuo
+  name: 王建硕
+  category: influencer-cn
+  tags: [philosophy, logic]
+
+- username: shaonan
+  name: 少楠
+  category: influencer-cn
+  tags: [flomo, knowledge-management]
+
+- username: foxshuo
+  name: 阑夕
+  category: influencer-cn
+  tags: [tech-media, commentary]
+
+- username: tim_pan_
+  name: 影视飓风 Tim
+  category: influencer-cn
+  tags: [video-gen, film]
+
+- username: muyao
+  name: 木遥
+  category: influencer-cn
+  tags: [tech-criticism, humanities]
+
+- username: AxtonLiu
+  name: Axton Liu
+  category: influencer-cn
+  tags: [tool-review, rag, workflow]
+
+- username: gefei55
+  name: 哥飞
+  category: influencer-cn
+  tags: [indie-dev, overseas]
+
+- username: bw_developer
+  name: 白宦成
+  category: influencer-cn
+  tags: [coding, cursor, indie-dev]
+
+- username: dousha_ai
+  name: 逗砂
+  category: influencer-cn
+  tags: [visual-art, ai-video]
+
+- username: kazike_ai
+  name: 卡兹克
+  category: influencer-cn
+  tags: [business, monetization]
+
+- username: vista8
+  name: 向阳乔木
+  category: influencer-cn
+  tags: [search-trend, geo]
+
+- username: hejiayan
+  name: 何加盐
+  category: influencer-cn
+  tags: [model-review, startup-analysis]
+
+- username: sexinfochina
+  name: AI 骆驼
+  category: influencer-cn
+  tags: [trend, evangelist]
+
+- username: kbhero21
+  name: Delia Dou
+  category: influencer-cn
+  tags: [personal-growth, tool-explore]
+
+- username: vikingmute
+  name: Viking
+  category: influencer-cn
+  tags: [startup, saas]
+
+- username: eryouhao
+  name: Zayn Hao
+  category: influencer-cn
+  tags: [fintech, innovation]
+
+- username: fengbuyou
+  name: fengbuyou
+  category: influencer-cn
+  tags: [observation, content-gen]
+
+- username: ilovek8s
+  name: ilovek8s
+  category: influencer-cn
+  tags: [infra, geek]
+
+# ---- influencers (global) ----
+- username: rowancheung
+  name: Rowan Cheung
+  category: influencer-en
+  tags: [rundown-ai, news-aggregation]
+
+- username: emollick
+  name: Ethan Mollick
+  category: influencer-en
+  tags: [wharton, workplace-ai]
+
+- username: lexfridman
+  name: Lex Fridman
+  category: influencer-en
+  tags: [podcast, deep-interview]
+
+- username: swyx
+  name: Swyx (Shawn Wang)
+  category: influencer-en
+  tags: [ai-engineer, latent-space]
+
+- username: SullyOmarr
+  name: Sully Omarr
+  category: influencer-en
+  tags: [automation, cognosys]
+
+- username: mckaywrigley
+  name: McKay Wrigley
+  category: influencer-en
+  tags: [cursor, ai-coding]
+
+- username: rachel_woods
+  name: Rachel Woods
+  category: influencer-en
+  tags: [enterprise, ai-exchange]
+
+- username: ykilcher
+  name: Yannic Kilcher
+  category: influencer-en
+  tags: [paper-review, youtube]
+
+- username: _karenhao
+  name: Karen Hao
+  category: influencer-en
+  tags: [journalism, ethics]
+
+# ---- indie devs ----
+- username: levelsio
+  name: Pieter Levels
+  category: indie-dev
+  tags: [photo-ai, solo-dev]
+
+- username: mattshumer_
+  name: Matt Shumer
+  category: indie-dev
+  tags: [fine-tune, hyperbolic]
+
+- username: rauchg
+  name: Guillermo Rauch
+  category: indie-dev
+  tags: [vercel, v0-dev, frontend]
+
+- username: thesephist
+  name: Linus Lee
+  category: indie-dev
+  tags: [hci, notion-ai]
+
+- username: ammaar
+  name: Ammaar Reshi
+  category: indie-dev
+  tags: [ai-creation, elevenlabs]
+
+- username: altryne
+  name: Alex Volkov
+  category: indie-dev
+  tags: [thursdai, api-hacking]
+
+- username: lxfater
+  name: 铁锤人
+  category: indie-dev
+  tags: [open-source, blog]
+
+- username: JefferyTatsuya
+  name: Jeffery Tatsuya
+  category: indie-dev
+  tags: [felo, glarity, japan]
+
+# ---- startup founders ----
+- username: AravSrinivas
+  name: Aravind Srinivas
+  category: startup
+  tags: [perplexity, ai-search]
+
+- username: alexandr_wang
+  name: Alexandr Wang
+  category: startup
+  tags: [scale-ai, data]
+
+- username: chiguangyao
+  name: 池光耀
+  category: startup
+  tags: [gen-z, yuhe-tech]
+
+# ---- investors ----
+- username: pmarca
+  name: Marc Andreessen
+  category: investor
+  tags: [a16z, eacc, optimism]
+
+- username: saranormous
+  name: Sarah Guo
+  category: investor
+  tags: [conviction, no-priors]
+
+- username: eladgil
+  name: Elad Gil
+  category: investor
+  tags: [angel, unicorns]
+
+- username: vkhosla
+  name: Vinod Khosla
+  category: investor
+  tags: [khosla-ventures, early-stage]
+
+- username: reidhoffman
+  name: Reid Hoffman
+  category: investor
+  tags: [linkedin, inflection]
+
+- username: yusendai
+  name: 戴雨森
+  category: investor
+  tags: [zhenge, tech-investment]
+
+- username: NathanBenaich
+  name: Nathan Benaich
+  category: investor
+  tags: [air-street, state-of-ai]
+
+- username: mvolpi
+  name: Mike Volpi
+  category: investor
+  tags: [index-ventures]
+
+# ---- prompt / workflow ----
+- username: goodside
+  name: Riley Goodside
+  category: prompt
+  tags: [scale-ai, prompt-engineer]
+
+- username: elder_pliny
+  name: Pliny the Prompter
+  category: prompt
+  tags: [red-team, jailbreak]
+
+- username: OfficialLoganK
+  name: Logan Kilpatrick
+  category: workflow
+  tags: [google, devrel, api]
+
+- username: LinusEkenstam
+  name: Linus Ekenstam
+  category: workflow
+  tags: [visual, midjourney]
+
+# ---- thinkers ----
+- username: GaryMarcus
+  name: Gary Marcus
+  category: thinker
+  tags: [skeptic, hallucination]
+
+- username: ESYudkowsky
+  name: Eliezer Yudkowsky
+  category: thinker
+  tags: [miri, doomer, alignment]
+
+- username: paulg
+  name: Paul Graham
+  category: thinker
+  tags: [yc, startup-philosophy]
+
+- username: BasedBeffJezos
+  name: Beff Jezos
+  category: thinker
+  tags: [eacc, anti-regulation]
+
+- username: balajis
+  name: Balaji Srinivasan
+  category: thinker
+  tags: [crypto-ai, restructuring]
+
+- username: nickbostrom
+  name: Nick Bostrom
+  category: thinker
+  tags: [superintelligence, philosophy]
+
+- username: tegmark
+  name: Max Tegmark
+  category: thinker
+  tags: [fli, life-3-0]
+
+- username: stuartj_russell
+  name: Stuart Russell
+  category: thinker
+  tags: [compatible-ai, berkeley]
