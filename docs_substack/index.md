@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-13 08:15 UTC · 0/47 feeds active
+> updated: 2026-03-13 08:29 UTC · 1/36 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
@@ -16,7 +16,9 @@
 ## 🚀 Stage 2: Industry Impact
 > business analysis, wide adoption discussion
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| Last Week in AI | [LWiAI Podcast #236 - GPT 5.4, Gemini 3.1 Flash Lite, Supply Chain Risk](https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31) | 2026-03-13 |
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
@@ -28,25 +30,14 @@
 
 *no recent articles*
 
-<details><summary>⚠️ warnings (47 feeds)</summary>
+<details><summary>⚠️ warnings (35 feeds)</summary>
 
 | Slug | Name | Issue |
 |------|------|-------|
-| therundown | The Rundown AI | feed_not_found |
-| superhuman | Superhuman AI | feed_not_found |
-| bensbites | Ben's Bites | feed_not_found |
-| tldr | TLDR AI | feed_not_found |
-| neuron | The Neuron | feed_not_found |
-| lastweekinai | Last Week in AI | feed_not_found |
 | aitidbits | AI Tidbits | feed_not_found |
-| theresanaiforthat | There's An AI For That | feed_not_found |
-| futuretools | Future Tools Weekly | feed_not_found |
-| mindstream | Mindstream AI | feed_not_found |
 | importai | Import AI | feed_not_found |
 | thegradientpub | The Gradient | feed_not_found |
 | cameronrwolfe | Deep (Learning) Focus | feed_not_found |
-| thesequence | TheSequence | feed_not_found |
-| thebatch | The Batch (DeepLearning.AI) | feed_not_found |
 | latentspace | Latent Space | feed_not_found |
 | thealgorithmicbridge | The Algorithmic Bridge | feed_not_found |
 | gradientascent | Gradient Ascent | feed_not_found |
@@ -73,7 +64,6 @@
 | responsibleai | Responsible AI Digest | feed_not_found |
 | agentops | AgentOps Newsletter | feed_not_found |
 | agentstack | Agent Stack | feed_not_found |
-| langchain | LangChain Newsletter | feed_not_found |
 | mlops | MLOps Community Newsletter | feed_not_found |
 | aiforeveryone | AI For Everyone | feed_not_found |
 | datascienceweekly | Data Science Weekly | feed_not_found |
