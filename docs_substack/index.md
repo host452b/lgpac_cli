@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-13 07:20 UTC · 0/68 feeds active
+> updated: 2026-03-13 07:50 UTC · 13/69 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
@@ -11,94 +11,64 @@
 ## 📡 Stage 1: Expert Interpretation
 > practitioner breakdowns, early implications
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| TheSequence | [The Sequence Opinion #823: SaaSmagedon, Is SaaS Dead?: Vibe Coding, Agentic Engi](https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon) | 2026-03-12 |
+| Marcus on AI | [Is the US military actually afraid of Claude? A new theory of why Anthropic was ](https://garymarcus.substack.com/p/is-the-us-military-actually-afraid) | 2026-03-12 |
+| Don't Worry About the Vase | [AI #159: See You In Court](https://thezvi.substack.com/p/ai-159-see-you-in-court) | 2026-03-12 |
+| Astral Codex Ten | [Spring Meetups Everywhere 2026 - Call For Organizers](https://www.astralcodexten.com/p/spring-meetups-everywhere-2026-call) | 2026-03-13 |
+| Semianalysis | [The Great AI Silicon Shortage](https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage) | 2026-03-12 |
 
 ## 🚀 Stage 2: Industry Impact
 > business analysis, wide adoption discussion
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| Ben's Bites | [Make any media searchable](https://www.bensbites.com/p/make-any-media-searchable) | 2026-03-12 |
+| Last Week in AI | [LWiAI Podcast #236 - GPT 5.4, Gemini 3.1 Flash Lite, Supply Chain Risk](https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31) | 2026-03-13 |
+| The Algorithmic Bridge | [How AI Will Erase Entire Industries Without Automating Them](https://www.thealgorithmicbridge.com/p/how-ai-will-erase-entire-industries) | 2026-03-12 |
+| ByteByteGo | [Stateless Architecture: Benefits and Tradeoffs](https://blog.bytebytego.com/p/stateless-architecture-benefits-and) | 2026-03-12 |
+| The Pragmatic Engineer | [The Pulse: What will the Staff Engineer role look like in 2027 and beyond?](https://newsletter.pragmaticengineer.com/p/the-pulse-what-will-the-staff-engineer) | 2026-03-12 |
+| Sasha Chapin | [Random opinions about the path](https://sashachapin.substack.com/p/random-opinions-about-the-path) | 2026-03-12 |
+| ChinaTalk | [Making Money in Chinese AI Safety](https://www.chinatalk.media/p/the-business-behind-chinese-ai-safety) | 2026-03-12 |
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| Data Science Weekly | [Data Science Weekly - Issue 642](https://datascienceweekly.substack.com/p/data-science-weekly-issue-642) | 2026-03-12 |
 
 ## 💀 Stage 4: Hustle/Fading
 > repackaged content, low signal
 
 *no recent articles*
 
-<details><summary>⚠️ warnings (68 feeds)</summary>
+<details><summary>⚠️ warnings (22 feeds)</summary>
 
 | Slug | Name | Issue |
 |------|------|-------|
-| therundown | The Rundown AI | fetch_error |
-| superhuman | Superhuman AI | fetch_error |
-| bensbites | Ben's Bites | fetch_error |
-| tldr | TLDR AI | fetch_error |
-| neuron | The Neuron | fetch_error |
-| lastweekinai | Last Week in AI | fetch_error |
-| aitidbits | AI Tidbits | fetch_error |
-| theresanaiforthat | There's An AI For That | fetch_error |
-| futuretools | Future Tools Weekly | fetch_error |
-| mindstream | Mindstream AI | fetch_error |
-| aifire | AI Fire | fetch_error |
-| neatprompts | Neat Prompts | fetch_error |
-| importai | Import AI | fetch_error |
-| interconnects | Interconnects | fetch_error |
-| aheadofai | Ahead of AI | fetch_error |
-| thegradientpub | The Gradient | fetch_error |
-| cameronrwolfe | Deep (Learning) Focus | fetch_error |
-| thesequence | TheSequence | fetch_error |
-| nlpower | DAIR.AI | fetch_error |
-| thebatch | The Batch (DeepLearning.AI) | fetch_error |
-| latentspace | Latent Space | fetch_error |
-| onesusefulthing | One Useful Thing | fetch_error |
-| thealgorithmicbridge | The Algorithmic Bridge | fetch_error |
-| gradientascent | Gradient Ascent | fetch_error |
-| every | Every | fetch_error |
-| normcoretech | Normcore Tech | fetch_error |
-| bytebytego | ByteByteGo | fetch_error |
-| pragmaticengineer | The Pragmatic Engineer | fetch_error |
-| aisnakeoil | AI Snake Oil | fetch_error |
-| understandingai | Understanding AI | fetch_error |
-| garymarcus | Marcus on AI | fetch_error |
-| thezvi | Don't Worry About the Vase | fetch_error |
-| astralcodexten | Astral Codex Ten | fetch_error |
-| theintrinsicperspective | The Intrinsic Perspective | fetch_error |
-| sashachapin | Sasha Chapin | fetch_error |
-| aiweirdness | AI Weirdness | fetch_error |
-| roemmele | Multiplex | fetch_error |
+| aifire | AI Fire | feed_not_found |
+| neatprompts | Neat Prompts | feed_not_found |
+| interconnects | Interconnects | feed_not_found |
+| aheadofai | Ahead of AI | feed_not_found |
+| nlpower | DAIR.AI | feed_not_found |
+| onesusefulthing | One Useful Thing | feed_not_found |
+| normcoretech | Normcore Tech | feed_not_found |
+| theintrinsicperspective | The Intrinsic Perspective | feed_not_found |
+| roemmele | Multiplex | feed_not_found |
 | charlieguo | Artificial Ignorance | fetch_error |
-| semianalysis | Semianalysis | fetch_error |
-| airstreet | Air Street Press | fetch_error |
-| aisupremacy | AI Supremacy | fetch_error |
-| chinatalk | ChinaTalk | fetch_error |
-| notboring | Not Boring | fetch_error |
-| thediff | The Diff | fetch_error |
 | lennysnewsletter | Lenny's Newsletter | fetch_error |
-| thebenshi | The Benshi | fetch_error |
-| aibrews | AI Brews | fetch_error |
-| theaientrepreneurs | The AI Entrepreneurs | fetch_error |
-| chinai | ChinAI Newsletter | fetch_error |
-| pandaily | PanDaily AI | fetch_error |
-| aisafety | AI Safety Newsletter | fetch_error |
-| aipolicybrief | AI Policy Brief | fetch_error |
-| responsibleai | Responsible AI Digest | fetch_error |
-| agentops | AgentOps Newsletter | fetch_error |
-| agentstack | Agent Stack | fetch_error |
-| langchain | LangChain Newsletter | fetch_error |
+| thebenshi | The Benshi | feed_not_found |
+| theaientrepreneurs | The AI Entrepreneurs | feed_not_found |
+| aipolicybrief | AI Policy Brief | feed_not_found |
 | multiagent | Multi-Agent Digest | fetch_error |
-| agentdev | Agent Dev Weekly | fetch_error |
-| deeplearningai | DeepLearning.AI Newsletter | fetch_error |
-| jalammar | Jay Alammar's Newsletter | fetch_error |
-| mlops | MLOps Community Newsletter | fetch_error |
-| aiforeveryone | AI For Everyone | fetch_error |
-| datascienceweekly | Data Science Weekly | fetch_error |
-| aihustleexample1 | AI Hustle Daily | fetch_error |
-| chatgptpromptsdaily | ChatGPT Prompts Daily | fetch_error |
-| aimoneymachine | AI Money Machine | fetch_error |
+| agentdev | Agent Dev Weekly | feed_not_found |
+| deeplearningai | DeepLearning.AI Newsletter | feed_not_found |
+| jalammar | Jay Alammar's Newsletter | feed_not_found |
+| aihustleexample1 | AI Hustle Daily | feed_not_found |
+| chatgptpromptsdaily | ChatGPT Prompts Daily | feed_not_found |
+| aimoneymachine | AI Money Machine | feed_not_found |
 | aitooldaily | AI Tool Daily | fetch_error |
-| autopilotai | Autopilot AI | fetch_error |
 
 </details>
