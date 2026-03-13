@@ -1,5 +1,5 @@
 # ============================================================
-# X/Twitter Tracked Accounts (165 total)
+# X/Twitter Tracked Accounts (196 total)
 # ============================================================
 #
 # edit this file to add/remove users
@@ -231,7 +231,7 @@
   tags: [deepmind, ai-safety]
 
 
-# ---- Core Figures (37) ----
+# ---- Core Figures (38) ----
 # founders, executives, and key decision makers
 
 - seq: 30
@@ -456,9 +456,15 @@
   category: core
   tags: [01-ai, investment]
 
+- seq: 178
+  username: jeffbezos
+  name: Jeff Bezos
+  category: core
+  tags: [amazon, blue-origin]
 
-# ---- Organizations (13) ----
-# official accounts of AI companies and teams
+
+# ---- Organizations (29) ----
+# official accounts of companies, teams, and media
 
 - seq: 57
   username: deepseek_ai
@@ -538,9 +544,105 @@
   category: org
   tags: [edge-ai, chip]
 
+- seq: 167
+  username: SCMP_News
+  name: South China Morning Post
+  category: org
+  tags: [news, china, media]
 
-# ---- Influencers (CN) (34) ----
-# Chinese-speaking AI thought leaders
+- seq: 179
+  username: TechCrunch
+  name: TechCrunch
+  category: org
+  tags: [tech-media, startups]
+
+- seq: 180
+  username: Wired
+  name: WIRED
+  category: org
+  tags: [tech-media, culture]
+
+- seq: 181
+  username: MITTechReview
+  name: MIT Technology Review
+  category: org
+  tags: [tech-media, deep-analysis]
+
+- seq: 182
+  username: Verge
+  name: The Verge
+  category: org
+  tags: [tech-media, products]
+
+- seq: 183
+  username: ArsTechnica
+  name: Ars Technica
+  category: org
+  tags: [tech-media, deep-tech]
+
+- seq: 184
+  username: engadget
+  name: Engadget
+  category: org
+  tags: [tech-media, gadgets]
+
+- seq: 185
+  username: fastcompany
+  name: Fast Company
+  category: org
+  tags: [tech-media, innovation]
+
+- seq: 186
+  username: business
+  name: Bloomberg Business
+  category: org
+  tags: [finance, business-news]
+
+- seq: 187
+  username: reutersTech
+  name: Reuters Tech
+  category: org
+  tags: [tech-media, wire-service]
+
+- seq: 188
+  username: CNET
+  name: CNET
+  category: org
+  tags: [tech-media, reviews]
+
+- seq: 190
+  username: Synced_AI
+  name: 机器之心
+  category: org
+  tags: [tech-media, ai-news, china]
+
+- seq: 191
+  username: AI_Era_
+  name: 新智元
+  category: org
+  tags: [tech-media, ai-news, china]
+
+- seq: 192
+  username: BAAI_Org
+  name: 智源社区
+  category: org
+  tags: [research, ai-news, china]
+
+- seq: 193
+  username: Ai_News_
+  name: AI News
+  category: org
+  tags: [news-aggregation, automated]
+
+- seq: 194
+  username: AIDaily_
+  name: AI Daily
+  category: org
+  tags: [news-aggregation, market]
+
+
+# ---- Influencers (CN) (37) ----
+# Chinese-speaking thought leaders
 
 - seq: 65
   username: zarazhangrui
@@ -746,9 +848,27 @@
   category: influencer-cn
   tags: [startup, saas]
 
+- seq: 166
+  username: HuXijin_GT
+  name: 胡锡进
+  category: influencer-cn
+  tags: [media, commentary]
 
-# ---- Influencers (EN) (13) ----
-# English-speaking AI thought leaders
+- seq: 189
+  username: AIAxiety
+  name: AI 焦虑症
+  category: influencer-cn
+  tags: [ai-anxiety, discussion]
+
+- seq: 196
+  username: liyongle_
+  name: 李永乐老师
+  category: influencer-cn
+  tags: [education, science-popularization]
+
+
+# ---- Influencers (EN) (20) ----
+# English-speaking thought leaders and media personalities
 
 - seq: 92
   username: rowancheung
@@ -828,6 +948,48 @@
   category: influencer-en
   tags: [video-analysis, deep-review]
 
+- seq: 168
+  username: joerogan
+  name: Joe Rogan
+  category: influencer-en
+  tags: [podcast, culture]
+
+- seq: 169
+  username: StephenAtHome
+  name: Stephen Colbert
+  category: influencer-en
+  tags: [late-show, satire]
+
+- seq: 170
+  username: jimmyfallon
+  name: Jimmy Fallon
+  category: influencer-en
+  tags: [tonight-show, entertainment]
+
+- seq: 171
+  username: JimmyKimmel
+  name: Jimmy Kimmel
+  category: influencer-en
+  tags: [late-night, entertainment]
+
+- seq: 172
+  username: billmaher
+  name: Bill Maher
+  category: influencer-en
+  tags: [political-commentary]
+
+- seq: 173
+  username: TuckerCarlson
+  name: Tucker Carlson
+  category: influencer-en
+  tags: [political-commentary]
+
+- seq: 195
+  username: TwoMinutePapers
+  name: Two Minute Papers
+  category: influencer-en
+  tags: [education, paper-review, youtube]
+
 
 # ---- Indie Developers (9) ----
 # solo builders and open-source creators
@@ -888,7 +1050,7 @@
 
 
 # ---- Startup Founders (4) ----
-# next-gen AI startup founders
+# next-gen startup founders
 
 - seq: 109
   username: AravSrinivas
@@ -915,8 +1077,8 @@
   tags: [ai-social, date-drop]
 
 
-# ---- Investors (8) ----
-# VCs and angel investors in AI
+# ---- Investors (12) ----
+# VCs, angels, and finance voices
 
 - seq: 112
   username: pmarca
@@ -965,6 +1127,30 @@
   name: Mike Volpi
   category: investor
   tags: [index-ventures]
+
+- seq: 174
+  username: mdubel
+  name: Michael D. Brown
+  category: investor
+  tags: [tech-investment, commentary]
+
+- seq: 175
+  username: bgurley
+  name: Bill Gurley
+  category: investor
+  tags: [vc, business-insight]
+
+- seq: 176
+  username: michaeljina
+  name: Michael Jin
+  category: investor
+  tags: [finance, analysis]
+
+- seq: 177
+  username: AswathDamodaran
+  name: Aswath Damodaran
+  category: investor
+  tags: [valuation, business-analysis]
 
 
 # ---- Prompt Engineers (2) ----
