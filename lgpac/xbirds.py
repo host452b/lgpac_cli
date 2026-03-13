@@ -283,7 +283,7 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
     success_count = 0
     empty_count = 0
     error_count = 0
-    rate_limited = 0
+    consecutive_429 = 0
     start_time = time.time()
 
     for i, entry in enumerate(tracked):
@@ -291,10 +291,23 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
         if not username:
             continue
 
+        # if we hit consecutive 429s, do a long cooldown before continuing
+        if consecutive_429 >= 3:
+            cooldown = 30 + consecutive_429 * 10
+            logger.warning(f"  ⏸  {consecutive_429} consecutive 429s — cooling down {cooldown}s")
+            time.sleep(cooldown)
+            consecutive_429 = 0
+
         posts = fetch_user_posts(username)
 
         stage = entry.get("wave_stage", "?")
+        if posts is None:
+            # fetch_user_posts returns [] on failure, None not possible
+            # but handle the 429 tracking via a different mechanism
+            pass
+
         if posts:
+            consecutive_429 = 0
             recent = _filter_recent(posts, cutoff)
             if recent:
                 results[username] = recent
@@ -305,6 +318,7 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
                 logger.info(f"  [{i+1}/{total}] ⏭  @{username} (s{stage}): {len(posts)} posts, 0 in window")
         else:
             error_count += 1
+            consecutive_429 += 1
             logger.info(f"  [{i+1}/{total}] ❌ @{username} (s{stage}): no data")
             warnings.append({
                 "username": username,
@@ -325,9 +339,10 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
                 f"| {elapsed:.0f}s elapsed, ~{eta:.0f}s remaining ---"
             )
 
-        # polite delay with random jitter
+        # polite delay with random jitter — longer after errors
         if i < total - 1:
-            delay = random.uniform(REQUEST_DELAY_MIN, REQUEST_DELAY_MAX)
+            base_delay = REQUEST_DELAY_MIN if consecutive_429 == 0 else 3.0
+            delay = random.uniform(base_delay, base_delay + 1.0)
             time.sleep(delay)
 
     elapsed_total = time.time() - start_time
