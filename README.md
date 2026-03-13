@@ -18,7 +18,7 @@ Monitors a performing arts venue's ticketing platform for show listings, real-ti
 - Crawls all shows via public API (list → detail → sessions → seat plans)
 - Checks real-time stock using `canBuyCount` from the dynamic API
 - Tracks price changes, new shows, and sold-out events across runs
-- Generates a GitHub Pages dashboard (`docs/index.md`) with inline ticket stock icons
+- Generates a GitHub Pages dashboard (`docs_lgpac/index.md`) with inline ticket stock icons
 - Sends email when a **new show** appears or a **sold-out cheapest tier** comes back in stock
 
 ### Commands
@@ -114,13 +114,21 @@ pip install playwright && python -m playwright install chromium
 
 ### GitHub Actions
 
-A single workflow (`.github/workflows/crawl.yml`) runs both monitors every 12 hours (Beijing 08:00 / 20:00):
+Two workflows run on schedule:
 
-1. `python lgpac_cli.py monitor --price 120 --rss --page --notify --email`
-2. `python lgpac_cli.py lgycp --notify`
-3. Commits `RSS.md`, `docs/`, `monitor_history.json`, `archs_lgycp/` back to repo
+**`crawl.yml`** — every 12 hours (Beijing 08:00 / 20:00):
 
-Also supports manual trigger: **Actions → scheduled monitor → Run workflow**.
+1. `monitor --price 120 --rss --page --notify --email` (ticket monitor)
+2. `lgycp --notify --page` (WeChat article monitor)
+3. `xbirds --page` (X/Twitter tracker, page only)
+4. Commits `RSS.md`, `docs_lgpac/`, `docs_lgycp/`, `docs_xbirds/`, `monitor_history.json`, `archs_lgycp/`, `archs_xbirds/`
+
+**`xbirds-daily.yml`** — once daily (Beijing 08:00):
+
+1. `xbirds --page --notify` (daily digest email if new posts found)
+2. Commits `docs_xbirds/`, `archs_xbirds/`
+
+Both support manual trigger via **Actions → Run workflow**.
 
 ### Configuration (GitHub Secrets)
 
@@ -131,7 +139,7 @@ Also supports manual trigger: **Actions → scheduled monitor → Run workflow**
 | `LGPAC_SMTP_PASS` | SMTP authorization code |
 | `LGPAC_SMTP_SERVER` | SMTP server (default: `smtp.qq.com`) |
 | `LGPAC_SMTP_PORT` | SMTP port (default: `465`) |
-| `LGPAC_WEBHOOK_URL` | webhook URL (optional) |
+| `LGPAC_WEBHOOK_URL` | webhook URL for dingtalk/slack (optional) |
 | `LGPAC_TARGET_URL` | override target site URL (optional, set as `vars`) |
 
 ### Project Structure
@@ -145,9 +153,12 @@ Also supports manual trigger: **Actions → scheduled monitor → Run workflow**
 │   ├── client.py               # HTTP client (retry, rate-limit)
 │   ├── api.py                  # ticketing API wrappers
 │   ├── models.py               # data models (Show, Session, SeatPlan)
-│   ├── monitor.py              # ticket monitor + email (lgpac)
-│   ├── lgycp.py                # article monitor + email (lgycp)
-│   ├── page.py                 # docs/index.md generator
+│   ├── notify.py               # shared email + webhook
+│   ├── archive.py              # shared JSON archive
+│   ├── monitor.py              # ticket monitor (lgpac)
+│   ├── lgycp.py                # article monitor (lgycp)
+│   ├── xbirds.py               # X/Twitter tracker (xbirds)
+│   ├── page.py                 # docs_lgpac/index.md generator
 │   ├── rss.py                  # RSS.md incremental feed
 │   ├── spider.py               # crawl orchestration
 │   ├── storage.py              # JSON persistence + diff
@@ -160,11 +171,15 @@ Also supports manual trigger: **Actions → scheduled monitor → Run workflow**
 ├── playbooks/                  # replay definitions
 ├── docs_lgpac/index.md          # ticket monitor page (auto-updated)
 ├── docs_lgycp/index.md          # article monitor page (auto-updated)
-├── RSS.md                      # show feed (auto-updated)
-├── monitor_history.json        # show state (auto-updated)
-├── archs_lgycp/archive.json    # article archive (auto-updated)
-├── SITE_STRUCTURE.md           # API reference
-└── .github/workflows/crawl.yml
+├── docs_xbirds/index.md         # X/Twitter tracker page (auto-updated)
+├── RSS.md                       # show feed (auto-updated)
+├── monitor_history.json         # show state (auto-updated)
+├── archs_lgycp/archive.json     # article archive (auto-updated)
+├── archs_xbirds/tracked.yml     # tracked X accounts (131 users)
+├── archs_xbirds/archive.json    # tweet archive (auto-updated)
+├── SITE_STRUCTURE.md            # API reference
+├── .github/workflows/crawl.yml  # 12h monitor
+└── .github/workflows/xbirds-daily.yml  # daily xbirds digest
 ```
 
 ## License
