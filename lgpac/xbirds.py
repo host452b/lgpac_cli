@@ -88,10 +88,19 @@ def _save_tracked(tracked: List[Dict]):
 # fetch posts (polite, with retry and jitter)
 # ------------------------------------------------------------------ #
 
-def fetch_user_posts(username: str) -> List[Dict[str, Any]]:
+# fetch result status codes
+FETCH_OK = "ok"             # got posts
+FETCH_EMPTY = "empty"       # account exists but 0 posts (or protected)
+FETCH_NOT_FOUND = "404"     # account does not exist
+FETCH_RATE_LIMITED = "429"  # rate limited after retries
+FETCH_ERROR = "error"       # network/server/parse error
+
+
+def fetch_user_posts(username: str) -> tuple:
     """
     fetch recent posts via the public syndication embed endpoint.
-    retries once on transient errors with backoff.
+    returns (status, posts_list).
+    status is one of: FETCH_OK, FETCH_EMPTY, FETCH_NOT_FOUND, FETCH_RATE_LIMITED, FETCH_ERROR.
     """
     import requests
 
@@ -102,36 +111,45 @@ def fetch_user_posts(username: str) -> List[Dict[str, Any]]:
         "Accept-Language": "en-US,en;q=0.9",
     }
 
+    last_status = FETCH_ERROR
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             resp = requests.get(url, headers=headers, timeout=15)
 
             if resp.status_code == 404:
-                return []
+                return FETCH_NOT_FOUND, []
             if resp.status_code == 429:
+                last_status = FETCH_RATE_LIMITED
                 wait = 5 * attempt
                 logger.warning(f"[@{username}] rate limited, waiting {wait}s")
                 time.sleep(wait)
                 continue
             if resp.status_code >= 500:
+                last_status = FETCH_ERROR
                 logger.debug(f"[@{username}] server error {resp.status_code}, retrying")
                 time.sleep(2 * attempt)
                 continue
 
             resp.raise_for_status()
-            return _parse_syndication(resp.text, username)
+            posts = _parse_syndication(resp.text, username)
+            if posts:
+                return FETCH_OK, posts
+            return FETCH_EMPTY, []
 
         except requests.Timeout:
+            last_status = FETCH_ERROR
             logger.debug(f"[@{username}] timeout (attempt {attempt})")
             time.sleep(2)
         except requests.ConnectionError:
+            last_status = FETCH_ERROR
             logger.debug(f"[@{username}] connection error (attempt {attempt})")
             time.sleep(3)
         except Exception as e:
+            last_status = FETCH_ERROR
             logger.debug(f"[@{username}] error: {e}")
             break
 
-    return []
+    return last_status, []
 
 
 def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
@@ -298,15 +316,10 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
             time.sleep(cooldown)
             consecutive_429 = 0
 
-        posts = fetch_user_posts(username)
-
+        status, posts = fetch_user_posts(username)
         stage = entry.get("wave_stage", "?")
-        if posts is None:
-            # fetch_user_posts returns [] on failure, None not possible
-            # but handle the 429 tracking via a different mechanism
-            pass
 
-        if posts:
+        if status == FETCH_OK:
             consecutive_429 = 0
             recent = _filter_recent(posts, cutoff)
             if recent:
@@ -316,16 +329,28 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
             else:
                 empty_count += 1
                 logger.info(f"  [{i+1}/{total}] ⏭  @{username} (s{stage}): {len(posts)} posts, 0 in window")
-        else:
+        elif status == FETCH_EMPTY:
+            consecutive_429 = 0
+            empty_count += 1
+            logger.info(f"  [{i+1}/{total}] 📭 @{username} (s{stage}): account exists, 0 posts")
+        elif status == FETCH_NOT_FOUND:
+            consecutive_429 = 0
             error_count += 1
+            logger.info(f"  [{i+1}/{total}] 🚫 @{username} (s{stage}): account not found (404)")
+            warnings.append({"username": username, "name": entry.get("name", username),
+                             "category": entry.get("category", ""), "issue": "account_not_found"})
+        elif status == FETCH_RATE_LIMITED:
             consecutive_429 += 1
-            logger.info(f"  [{i+1}/{total}] ❌ @{username} (s{stage}): no data")
-            warnings.append({
-                "username": username,
-                "name": entry.get("name", username),
-                "category": entry.get("category", ""),
-                "issue": "no_data_or_not_found",
-            })
+            error_count += 1
+            logger.info(f"  [{i+1}/{total}] 🚦 @{username} (s{stage}): rate limited (429)")
+            warnings.append({"username": username, "name": entry.get("name", username),
+                             "category": entry.get("category", ""), "issue": "rate_limited"})
+        else:
+            consecutive_429 += 1
+            error_count += 1
+            logger.info(f"  [{i+1}/{total}] ❌ @{username} (s{stage}): fetch error")
+            warnings.append({"username": username, "name": entry.get("name", username),
+                             "category": entry.get("category", ""), "issue": "fetch_error"})
 
         # summary progress every 10 users
         if (i + 1) % 10 == 0:
