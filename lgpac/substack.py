@@ -25,7 +25,9 @@ ARCHIVE_FILE = "archs_substack/archive.json"
 RECENT_HOURS = 24
 
 USER_AGENT = (
-    "Mozilla/5.0 (compatible; lgpac/0.9; +https://github.com)"
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/120.0.0.0 Safari/537.36"
 )
 
 REQUEST_DELAY_MIN = 0.3
