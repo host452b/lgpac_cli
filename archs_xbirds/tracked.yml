@@ -14,16 +14,19 @@
 #
 
 
+
 # ---- Titans (5) ----
 # industry leaders shaping the AI landscape
 
+# OpenAI CEO. posts are product launches & strategic signals. when he tweets, the industry reacts.
 - seq: 1
   username: sama
   name: Sam Altman
   category: titan
   tags: [agi, openai]
-  wave_stage: 1
+  wave_stage: 2
 
+# xAI/Tesla. high-noise, high-reach. mixes AI with politics and memes. treat as sentiment indicator.
 - seq: 2
   username: elonmusk
   name: Elon Musk
@@ -31,6 +34,7 @@
   tags: [xai, grok, compute]
   wave_stage: 2
 
+# Meta chief scientist. strong opinions on open-source vs closed. defends JEPA, critiques LLMs.
 - seq: 3
   username: ylecun
   name: Yann LeCun
@@ -38,6 +42,7 @@
   tags: [meta, llama, open-source]
   wave_stage: 1
 
+# DeepMind CEO. rare poster but each tweet signals major research milestones.
 - seq: 4
   username: demishassabis
   name: Demis Hassabis
@@ -45,6 +50,7 @@
   tags: [deepmind, gemini, alphafold]
   wave_stage: 1
 
+# Jensen Huang's megaphone. GPU roadmap, CUDA ecosystem, GTC announcements.
 - seq: 5
   username: nvidia
   name: Jensen Huang (NVIDIA)
@@ -52,10 +58,10 @@
   tags: [gpu, compute, ecosystem]
   wave_stage: 1
 
-
 # ---- Foundation Builders (5) ----
 # building the base models and platforms
 
+# Mistral CEO. European AI sovereignty advocate. posts around model releases.
 - seq: 6
   username: arthurmensch
   name: Arthur Mensch
@@ -63,6 +69,7 @@
   tags: [mistral, open-source, europe]
   wave_stage: 1
 
+# Hugging Face CEO. open-source evangelist. community-first, anti-moat philosophy.
 - seq: 7
   username: Clem
   name: Clem Delangue
@@ -70,6 +77,7 @@
   tags: [huggingface, open-source, community]
   wave_stage: 1
 
+# Anthropic CEO. safety-first AI development.
 - seq: 8
   username: daboramodei
   name: Dario Amodei
@@ -77,6 +85,7 @@
   tags: [anthropic, claude, safety]
   wave_stage: 0
 
+# LangChain founder. defined the agent dev framework paradigm.
 - seq: 9
   username: hwchase17
   name: Harrison Chase
@@ -84,6 +93,7 @@
   tags: [langchain, agent-framework]
   wave_stage: 0
 
+# Anthropic CEO. safety-first AI development. Claude architect.
 - seq: 141
   username: darioamodei
   name: Dario Amodei
@@ -91,10 +101,10 @@
   tags: [anthropic, claude, safety]
   wave_stage: 0
 
-
 # ---- Top Scientists (25) ----
 # researchers pushing the frontier
 
+# SSI founder, ex-OpenAI chief scientist. extremely rare posts. any activity is a signal.
 - seq: 10
   username: ilyasut
   name: Ilya Sutskever
@@ -102,20 +112,23 @@
   tags: [ssi, agi-safety]
   wave_stage: 0
 
+# AI educator supreme. turns papers into tutorials. bridge between stage 0 and 2.
 - seq: 11
   username: karpathy
   name: Andrej Karpathy
   category: scientist
   tags: [education, tesla-ai, eureka-labs]
-  wave_stage: 0
+  wave_stage: 1
 
+# DeepLearning.AI. agentic workflow advocate. translates research into industry practice.
 - seq: 12
   username: AndrewYNg
   name: Andrew Ng
   category: scientist
   tags: [deeplearning-ai, agentic-workflow]
-  wave_stage: 0
+  wave_stage: 1
 
+# World Labs founder, Stanford prof. spatial intelligence pioneer. posts on vision+robotics.
 - seq: 13
   username: drfeifei
   name: Fei-Fei Li
@@ -123,6 +136,7 @@
   tags: [world-labs, spatial-intelligence]
   wave_stage: 0
 
+# NVIDIA researcher. embodied AI, robotics. charismatic science communicator.
 - seq: 14
   username: DrJimFan
   name: Jim Fan
@@ -130,6 +144,7 @@
   tags: [nvidia, embodied-ai, robotics]
   wave_stage: 0
 
+# Keras author. ARC benchmark creator. measures true intelligence.
 - seq: 15
   username: fchollet
   name: François Chollet
@@ -137,6 +152,7 @@
   tags: [keras, arc-benchmark]
   wave_stage: 0
 
+# Google chief scientist. infrastructure-level AI optimization.
 - seq: 16
   username: JeffDean
   name: Jeff Dean
@@ -144,6 +160,7 @@
   tags: [google, compute-optimization]
   wave_stage: 0
 
+# deep learning godfather. Nobel laureate. AI risk warner.
 - seq: 17
   username: geoffreyhinton
   name: Geoffrey Hinton
@@ -151,6 +168,7 @@
   tags: [deep-learning, risk-warning]
   wave_stage: 0
 
+# deep learning pioneer. AI governance advocate.
 - seq: 18
   username: YoshuaBengio
   name: Yoshua Bengio
@@ -158,6 +176,7 @@
   tags: [deep-learning, governance]
   wave_stage: 0
 
+# Transformer co-author. Character.ai founder.
 - seq: 19
   username: noamshazeer
   name: Noam Shazeer
@@ -165,6 +184,7 @@
   tags: [transformer, character-ai]
   wave_stage: 0
 
+# legendary programmer. AGI pursuit via Keen Technologies.
 - seq: 20
   username: id_aa_carmack
   name: John Carmack
@@ -172,6 +192,7 @@
   tags: [agi, keen-technologies]
   wave_stage: 0
 
+# RWKV author. challenges Transformer orthodoxy. algorithm innovator.
 - seq: 21
   username: BlinkDL_AI
   name: BlinkDL
@@ -179,6 +200,7 @@
   tags: [rwkv, non-transformer]
   wave_stage: 0
 
+# RoPE inventor. deep algorithm posts. niche but influential.
 - seq: 22
   username: SuJianlin
   name: 苏剑林
@@ -186,6 +208,7 @@
   tags: [rope, algorithm]
   wave_stage: 0
 
+# LLVM/Swift creator. Modular founder. rewriting AI compute stack.
 - seq: 23
   username: clattner_llvm
   name: Chris Lattner
@@ -193,6 +216,7 @@
   tags: [llvm, swift, modular]
   wave_stage: 0
 
+# Berkeley RL prof. robotics authority.
 - seq: 24
   username: svlevine
   name: Sergey Levine
@@ -200,6 +224,7 @@
   tags: [reinforcement-learning, robotics]
   wave_stage: 0
 
+# Stanford prof. meta-learning + robotics.
 - seq: 25
   username: chelseabfinn
   name: Chelsea Finn
@@ -207,6 +232,7 @@
   tags: [meta-learning, robotics]
   wave_stage: 0
 
+# Berkeley prof. Covariant co-founder. RL + robotics.
 - seq: 26
   username: pieterabbeel
   name: Pieter Abbeel
@@ -214,6 +240,7 @@
   tags: [robotics, reinforcement-learning]
   wave_stage: 0
 
+# DeepMind research director. Gemini core contributor.
 - seq: 27
   username: oriolvinyals
   name: Oriol Vinyals
@@ -221,6 +248,7 @@
   tags: [deepmind, gemini]
   wave_stage: 0
 
+# tensor algorithms. ex-NVIDIA AI research director.
 - seq: 28
   username: AnimaAnandkumar
   name: Anima Anandkumar
@@ -228,6 +256,7 @@
   tags: [tensor-algorithms, nvidia]
   wave_stage: 0
 
+# ResNet author. rarely active but legendary citations.
 - seq: 29
   username: KaimingHe
   name: 何恺明
@@ -235,6 +264,7 @@
   tags: [resnet, computer-vision]
   wave_stage: 0
 
+# Microsoft exec. enterprise digital transformation + AI strategy.
 - seq: 144
   username: fmoiolio
   name: Fabio Moioli
@@ -242,6 +272,7 @@
   tags: [digital-transform, microsoft]
   wave_stage: 0
 
+# DAIR founder. AI bias and ethics whistleblower.
 - seq: 146
   username: timnitgebru
   name: Timnit Gebru
@@ -249,6 +280,7 @@
   tags: [ai-ethics, bias]
   wave_stage: 0
 
+# HuggingFace ethics scientist. AI fairness researcher.
 - seq: 147
   username: mmitchell_ai
   name: Margaret Mitchell
@@ -256,6 +288,7 @@
   tags: [ai-ethics, huggingface]
   wave_stage: 0
 
+# AlphaGo creator. DeepMind RL pioneer.
 - seq: 152
   username: davidsilver_ai
   name: David Silver
@@ -263,6 +296,7 @@
   tags: [alphago, reinforcement-learning]
   wave_stage: 0
 
+# DeepMind safety research lead.
 - seq: 154
   username: pushmeet
   name: Pushmeet Kohli
@@ -270,10 +304,10 @@
   tags: [deepmind, ai-safety]
   wave_stage: 0
 
-
 # ---- Core Figures (38) ----
 # founders, executives, and key decision makers
 
+# Manus co-founder. agent-first thinking. early signal on agent architectures.
 - seq: 30
   username: peakji
   name: Peak Ji
@@ -281,6 +315,7 @@
   tags: [manus, agent]
   wave_stage: 0
 
+# MiniMax CEO. Chinese LLM ecosystem insider. product-focused.
 - seq: 31
   username: YJJMinimax
   name: 闫俊杰
@@ -288,6 +323,7 @@
   tags: [minimax, model]
   wave_stage: 0
 
+# 01.AI founder. veteran observer. when he posts, it's usually already mainstream in China.
 - seq: 32
   username: kaifulee
   name: 李开复
@@ -295,6 +331,7 @@
   tags: [01-ai, investment]
   wave_stage: 3
 
+# OpenAI co-founder. rare poster. any activity signals internal direction.
 - seq: 33
   username: gdb
   name: Greg Brockman
@@ -302,6 +339,7 @@
   tags: [openai, co-founder]
   wave_stage: 0
 
+# ex-OpenAI CTO. led GPT-4 and Sora releases.
 - seq: 34
   username: miramurati
   name: Mira Murati
@@ -309,6 +347,7 @@
   tags: [openai, gpt4, sora]
   wave_stage: 0
 
+# Microsoft AI CEO, ex-DeepMind co-founder. product strategist.
 - seq: 35
   username: mustafasuleyman
   name: Mustafa Suleyman
@@ -316,6 +355,7 @@
   tags: [microsoft-ai, deepmind]
   wave_stage: 1
 
+# Caffe author, Lepton AI founder. infra optimization, open-source veteran.
 - seq: 36
   username: jiayq
   name: 贾扬清
@@ -323,6 +363,7 @@
   tags: [caffe, lepton-ai]
   wave_stage: 0
 
+# Baichuan founder, ex-Sogou CEO. LLM startup journey.
 - seq: 37
   username: wangxiaochuan
   name: 王小川
@@ -330,6 +371,7 @@
   tags: [baichuan]
   wave_stage: 1
 
+# Moonshot/Kimi founder. top AI scholar turned entrepreneur.
 - seq: 38
   username: ZhilinYang_
   name: 杨植麟
@@ -337,6 +379,7 @@
   tags: [moonshot, kimi]
   wave_stage: 0
 
+# edge AI CEO. on-device model deployment.
 - seq: 39
   username: LiDahai_AI
   name: 李大海
@@ -344,6 +387,7 @@
   tags: [edge-ai, mindslab]
   wave_stage: 0
 
+# Tsinghua prof, Xianyuan founder. academic + industry bridge.
 - seq: 40
   username: ZhouBowen_AI
   name: 周伯文
@@ -351,6 +395,7 @@
   tags: [xianyuan, tsinghua]
   wave_stage: 0
 
+# Microsoft CEO. enterprise AI transformation signal.
 - seq: 41
   username: satyanadella
   name: Satya Nadella
@@ -358,6 +403,7 @@
   tags: [microsoft, ai-strategy]
   wave_stage: 2
 
+# Google CEO. Gemini strategy. search revolution.
 - seq: 42
   username: sundarpichai
   name: Sundar Pichai
@@ -365,6 +411,7 @@
   tags: [google, gemini]
   wave_stage: 2
 
+# Meta CEO. Llama open-source champion. metaverse pivot to AI.
 - seq: 43
   username: zuck
   name: Mark Zuckerberg
@@ -372,6 +419,7 @@
   tags: [meta, llama, open-source]
   wave_stage: 2
 
+# AMD CEO. compute competition with NVIDIA.
 - seq: 44
   username: lisasu
   name: Lisa Su
@@ -379,6 +427,7 @@
   tags: [amd, compute]
   wave_stage: 2
 
+# Apple CEO. Apple Intelligence rollout.
 - seq: 45
   username: tim_cook
   name: Tim Cook
@@ -386,6 +435,7 @@
   tags: [apple, apple-intelligence]
   wave_stage: 2
 
+# Cohere founder. Transformer paper co-author.
 - seq: 46
   username: aidangomez
   name: Aidan Gomez
@@ -393,6 +443,7 @@
   tags: [cohere, transformer-author]
   wave_stage: 0
 
+# Transformer co-author. NEAR Protocol founder.
 - seq: 47
   username: ilblackdragon
   name: Illia Polosukhin
@@ -400,6 +451,7 @@
   tags: [transformer-author, near]
   wave_stage: 0
 
+# DeepMind co-founder. chief AGI scientist.
 - seq: 48
   username: shanelegg
   name: Shane Legg
@@ -407,6 +459,7 @@
   tags: [deepmind, co-founder]
   wave_stage: 1
 
+# OpenAI board chair. Sierra co-founder.
 - seq: 49
   username: btaylor
   name: Bret Taylor
@@ -414,6 +467,7 @@
   tags: [openai-board, sierra]
   wave_stage: 1
 
+# ex-GitHub CEO. prolific AI angel investor.
 - seq: 50
   username: natfriedman
   name: Nat Friedman
@@ -421,6 +475,7 @@
   tags: [github, ai-investment]
   wave_stage: 1
 
+# AI investor. partners with Nat Friedman.
 - seq: 51
   username: danielgross
   name: Daniel Gross
@@ -428,6 +483,7 @@
   tags: [ai-investment]
   wave_stage: 1
 
+# IBM CEO. Watsonx enterprise AI.
 - seq: 52
   username: arvindkrishna
   name: Arvind Krishna
@@ -435,6 +491,7 @@
   tags: [ibm, watsonx]
   wave_stage: 2
 
+# Google Cloud CEO. cloud AI infrastructure.
 - seq: 53
   username: thomas_kurian
   name: Thomas Kurian
@@ -442,6 +499,7 @@
   tags: [google-cloud]
   wave_stage: 2
 
+# Quora CEO. Poe AI aggregator creator.
 - seq: 54
   username: adamdangelo
   name: Adam D'Angelo
@@ -449,6 +507,7 @@
   tags: [quora, poe]
   wave_stage: 1
 
+# Anthropic co-founder. AI policy voice.
 - seq: 55
   username: jackclarkSF
   name: Jack Clark
@@ -456,6 +515,7 @@
   tags: [anthropic, policy]
   wave_stage: 0
 
+# Anthropic president. operations + strategy.
 - seq: 56
   username: danielaamodei
   name: Daniela Amodei
@@ -463,6 +523,7 @@
   tags: [anthropic, operations]
   wave_stage: 0
 
+# Transformer co-author. now focused on AI biology.
 - seq: 148
   username: jakobuszkoreit
   name: Jakob Uszkoreit
@@ -470,6 +531,7 @@
   tags: [transformer-author, inceptive]
   wave_stage: 0
 
+# Transformer co-author. Essential AI founder.
 - seq: 149
   username: ashishvaswani
   name: Ashish Vaswani
@@ -477,6 +539,7 @@
   tags: [transformer-author, essential-ai]
   wave_stage: 0
 
+# Transformer co-author. Sakana AI founder.
 - seq: 150
   username: llionj
   name: Llion Jones
@@ -484,6 +547,7 @@
   tags: [transformer-author, sakana-ai]
   wave_stage: 0
 
+# Transformer co-author. Essential AI co-founder.
 - seq: 151
   username: nikiparmar
   name: Niki Parmar
@@ -491,6 +555,7 @@
   tags: [transformer-author, essential-ai]
   wave_stage: 0
 
+# Lambda Labs founder. GPU cloud provider.
 - seq: 153
   username: kbrodmann
   name: Korbinian Brodmann
@@ -498,6 +563,7 @@
   tags: [lambda-labs, compute]
   wave_stage: 1
 
+# Google co-founder. quiet AI visionary behind the scenes.
 - seq: 155
   username: larrypage
   name: Larry Page
@@ -505,6 +571,7 @@
   tags: [google, ai-vision]
   wave_stage: 3
 
+# Google co-founder. recently hands-on with Gemini.
 - seq: 156
   username: sergeybrin
   name: Sergey Brin
@@ -512,6 +579,7 @@
   tags: [google, gemini]
   wave_stage: 3
 
+# Microsoft founder. AI optimist. mass audience reach.
 - seq: 157
   username: billgates
   name: Bill Gates
@@ -519,6 +587,7 @@
   tags: [microsoft, ai-revolution]
   wave_stage: 3
 
+# DeepSeek founder's account. algorithm-focused, low-key.
 - seq: 163
   username: DeepSeek_AI
   name: DeepSeek (梁文锋)
@@ -526,6 +595,7 @@
   tags: [deepseek, algorithm]
   wave_stage: 0
 
+# Kai-Fu Lee alt account. same content as @kaifulee.
 - seq: 165
   username: kaifu_li
   name: 李开复 (alt)
@@ -533,6 +603,7 @@
   tags: [01-ai, investment]
   wave_stage: 3
 
+# Amazon founder. cloud AI + Blue Origin.
 - seq: 178
   username: jeffbezos
   name: Jeff Bezos
@@ -540,10 +611,10 @@
   tags: [amazon, blue-origin]
   wave_stage: 2
 
-
 # ---- Organizations (29) ----
 # official accounts of companies, teams, and media
 
+# DeepSeek official. model release announcements. stage 0 source.
 - seq: 57
   username: deepseek_ai
   name: DeepSeek
@@ -551,6 +622,7 @@
   tags: [open-source, model]
   wave_stage: 0
 
+# Manus official. agent platform updates. stage 0 source.
 - seq: 58
   username: ManusAI_HQ
   name: Manus
@@ -558,6 +630,7 @@
   tags: [agent, platform]
   wave_stage: 0
 
+# Monica AI official. browser plugin updates, feature releases.
 - seq: 59
   username: hey_im_monica
   name: Monica AI
@@ -565,6 +638,7 @@
   tags: [efficiency, plugin]
   wave_stage: 2
 
+# Zhipu AI / GLM official. Chinese LLM ecosystem.
 - seq: 60
   username: ZhipuAI
   name: Zhipu AI
@@ -572,6 +646,7 @@
   tags: [glm, china]
   wave_stage: 0
 
+# Moonshot AI / Kimi official. long-context model updates.
 - seq: 61
   username: Kimi_Moonshot
   name: Moonshot AI
@@ -579,6 +654,7 @@
   tags: [kimi, china]
   wave_stage: 0
 
+# Flowith official. infinite canvas AI tool.
 - seq: 62
   username: flowith_ai
   name: Flowith
@@ -586,6 +662,7 @@
   tags: [canvas, ui]
   wave_stage: 0
 
+# Genspark official. AI search engine.
 - seq: 63
   username: genspark_ai
   name: Genspark
@@ -593,6 +670,7 @@
   tags: [ai-search]
   wave_stage: 0
 
+# Unitree official. humanoid robotics demos.
 - seq: 64
   username: UnitreeRobotics
   name: 宇树科技
@@ -600,6 +678,7 @@
   tags: [robotics, humanoid]
   wave_stage: 2
 
+# Huawei official. Ascend AI compute ecosystem.
 - seq: 158
   username: Huawei
   name: Huawei
@@ -607,6 +686,7 @@
   tags: [ascend, compute]
   wave_stage: 3
 
+# Pony.ai official. autonomous driving milestones.
 - seq: 159
   username: PonyAI_Tech
   name: Pony AI
@@ -614,6 +694,7 @@
   tags: [autonomous-driving]
   wave_stage: 2
 
+# Y Combinator of China. startup incubator updates.
 - seq: 160
   username: MiraclePlus
   name: 奇绩创坛
@@ -621,6 +702,7 @@
   tags: [incubator, startup]
   wave_stage: 3
 
+# NetEase official. gaming AI + music AI applications.
 - seq: 161
   username: NetEase
   name: NetEase
@@ -628,6 +710,7 @@
   tags: [gaming-ai, industry]
   wave_stage: 3
 
+# MediaTek official. edge AI chip announcements.
 - seq: 162
   username: MediaTek
   name: MediaTek
@@ -635,6 +718,7 @@
   tags: [edge-ai, chip]
   wave_stage: 3
 
+# South China Morning Post. when they cover AI, it's mainstream in Asia.
 - seq: 167
   username: SCMP_News
   name: South China Morning Post
@@ -642,6 +726,7 @@
   tags: [news, china, media]
   wave_stage: 3
 
+# startup + tech media. when they cover it, VCs are watching.
 - seq: 179
   username: TechCrunch
   name: TechCrunch
@@ -649,6 +734,7 @@
   tags: [tech-media, startups]
   wave_stage: 3
 
+# tech + culture intersection. long-form AI features.
 - seq: 180
   username: Wired
   name: WIRED
@@ -656,6 +742,7 @@
   tags: [tech-media, culture]
   wave_stage: 3
 
+# MIT tech review. deep technical analysis for informed audience.
 - seq: 181
   username: MITTechReview
   name: MIT Technology Review
@@ -663,6 +750,7 @@
   tags: [tech-media, deep-analysis]
   wave_stage: 3
 
+# consumer tech + culture. mainstream tech audience.
 - seq: 182
   username: Verge
   name: The Verge
@@ -670,6 +758,7 @@
   tags: [tech-media, products]
   wave_stage: 3
 
+# deep tech reporting. technical audience.
 - seq: 183
   username: ArsTechnica
   name: Ars Technica
@@ -677,6 +766,7 @@
   tags: [tech-media, deep-tech]
   wave_stage: 3
 
+# gadget + consumer tech. mass market signal.
 - seq: 184
   username: engadget
   name: Engadget
@@ -684,6 +774,7 @@
   tags: [tech-media, gadgets]
   wave_stage: 3
 
+# business innovation. AI as business trend.
 - seq: 185
   username: fastcompany
   name: Fast Company
@@ -691,6 +782,7 @@
   tags: [tech-media, innovation]
   wave_stage: 3
 
+# Bloomberg. financial market perspective on AI.
 - seq: 186
   username: business
   name: Bloomberg Business
@@ -698,6 +790,7 @@
   tags: [finance, business-news]
   wave_stage: 3
 
+# Reuters tech wire. institutional news signal.
 - seq: 187
   username: reutersTech
   name: Reuters Tech
@@ -705,6 +798,7 @@
   tags: [tech-media, wire-service]
   wave_stage: 3
 
+# consumer tech reviews. when AI products hit CNET, they're mainstream.
 - seq: 188
   username: CNET
   name: CNET
@@ -712,6 +806,7 @@
   tags: [tech-media, reviews]
   wave_stage: 3
 
+# top CN AI media. bridges Chinese research to industry.
 - seq: 190
   username: Synced_AI
   name: 机器之心
@@ -719,13 +814,15 @@
   tags: [tech-media, ai-news, china]
   wave_stage: 1
 
+# mass CN AI media. wide reach, popularization-focused.
 - seq: 191
   username: AI_Era_
   name: 新智元
   category: org
   tags: [tech-media, ai-news, china]
-  wave_stage: 1
+  wave_stage: 2
 
+# Beijing AI Academy. research progress + community.
 - seq: 192
   username: BAAI_Org
   name: 智源社区
@@ -733,6 +830,7 @@
   tags: [research, ai-news, china]
   wave_stage: 0
 
+# automated AI news aggregator. high frequency, broad coverage.
 - seq: 193
   username: Ai_News_
   name: AI News
@@ -740,6 +838,7 @@
   tags: [news-aggregation, automated]
   wave_stage: 3
 
+# daily AI picks. market + application focused.
 - seq: 194
   username: AIDaily_
   name: AI Daily
@@ -747,10 +846,10 @@
   tags: [news-aggregation, market]
   wave_stage: 3
 
-
 # ---- Influencers (CN) (37) ----
 # Chinese-speaking thought leaders
 
+# ex-ByteDance PM, Harvard. product sense meets AI learning. bridges CN/EN circles.
 - seq: 65
   username: zarazhangrui
   name: 张咋啦 (Zara)
@@ -758,6 +857,7 @@
   tags: [product, ai-learning, bytedance]
   wave_stage: 1
 
+# Chinese AI info hub #1. paper breakdowns, tool reviews. fastest CN signal relay.
 - seq: 66
   username: dotey
   name: 宝玉
@@ -765,6 +865,7 @@
   tags: [news, paper-analysis, chinese-ai]
   wave_stage: 1
 
+# B-site geek. pushes AI to limits with hands-on demos. shows what's actually possible.
 - seq: 67
   username: linyi_lyi
   name: 林亦 LYi
@@ -772,6 +873,7 @@
   tags: [geek, hands-on]
   wave_stage: 1
 
+# HeyBoss AI founder, ex-Meta PM. AI hiring/efficiency tools. practical builder.
 - seq: 68
   username: quxiaoyin
   name: 屈晓音
@@ -779,6 +881,7 @@
   tags: [heyboss, meta, hiring]
   wave_stage: 1
 
+# prompt engineering master. Claude specialist. invented 'Chinese New Interpretation' format.
 - seq: 69
   username: lijigang
   name: 李继刚
@@ -786,6 +889,7 @@
   tags: [prompt-engineering, claude]
   wave_stage: 1
 
+# visual AI frontier. Midjourney/ComfyUI workflows. design-meets-AI.
 - seq: 70
   username: guicang
   name: 归藏
@@ -793,6 +897,7 @@
   tags: [visual, midjourney, comfyui]
   wave_stage: 1
 
+# Tech Buzz China founder. investment lens on Chinese tech. bridge for EN investors.
 - seq: 71
   username: ruima
   name: 马睿
@@ -800,6 +905,7 @@
   tags: [investment, tech-buzz-china]
   wave_stage: 1
 
+# Monica AI co-founder. industry observation and ranking lists.
 - seq: 72
   username: henryyorkbb
   name: Henry York
@@ -807,6 +913,7 @@
   tags: [monica-ai, observation]
   wave_stage: 1
 
+# business deep-diver. long-form analysis of AI business models.
 - seq: 73
   username: panluan
   name: 潘乱
@@ -814,6 +921,7 @@
   tags: [business, deep-talk]
   wave_stage: 1
 
+# AI philosopher. thinks about AI from first principles.
 - seq: 74
   username: jian_shuo
   name: 王建硕
@@ -821,6 +929,7 @@
   tags: [philosophy, logic]
   wave_stage: 1
 
+# flomo founder. knowledge management meets AI thinking.
 - seq: 75
   username: shaonan
   name: 少楠
@@ -828,6 +937,7 @@
   tags: [flomo, knowledge-management]
   wave_stage: 1
 
+# tech media veteran. fast, sharp commentary on AI news.
 - seq: 76
   username: foxshuo
   name: 阑夕
@@ -835,6 +945,7 @@
   tags: [tech-media, commentary]
   wave_stage: 1
 
+# filmmaker meets AI. video generation real-world testing.
 - seq: 77
   username: tim_pan_
   name: 影视飓风 Tim
@@ -842,6 +953,7 @@
   tags: [video-gen, film]
   wave_stage: 2
 
+# tech critic with humanities depth. thoughtful, contrarian.
 - seq: 78
   username: muyao
   name: 木遥
@@ -849,6 +961,7 @@
   tags: [tech-criticism, humanities]
   wave_stage: 1
 
+# AI tool reviewer. RAG specialist. workflow optimization evangelist.
 - seq: 79
   username: AxtonLiu
   name: Axton Liu
@@ -856,6 +969,7 @@
   tags: [tool-review, rag, workflow]
   wave_stage: 1
 
+# indie dev + overseas business. practical AI monetization.
 - seq: 80
   username: gefei55
   name: 哥飞
@@ -863,6 +977,7 @@
   tags: [indie-dev, overseas]
   wave_stage: 1
 
+# full-stack indie dev. Cursor practitioner. coding-with-AI content.
 - seq: 81
   username: bw_developer
   name: 白宦成
@@ -870,6 +985,7 @@
   tags: [coding, cursor, indie-dev]
   wave_stage: 1
 
+# generative visual art + AI video. creative frontier explorer.
 - seq: 82
   username: dousha_ai
   name: 逗砂
@@ -877,6 +993,7 @@
   tags: [visual-art, ai-video]
   wave_stage: 2
 
+# AI business landing. monetization strategies for regular people.
 - seq: 83
   username: kazike_ai
   name: 卡兹克
@@ -884,6 +1001,7 @@
   tags: [business, monetization]
   wave_stage: 2
 
+# AI search trend watcher. GEO (generative engine optimization).
 - seq: 84
   username: vista8
   name: 向阳乔木
@@ -891,6 +1009,7 @@
   tags: [search-trend, geo]
   wave_stage: 2
 
+# model benchmark reviewer. startup ecosystem analyst.
 - seq: 85
   username: hejiayan
   name: 何加盐
@@ -898,6 +1017,7 @@
   tags: [model-review, startup-analysis]
   wave_stage: 1
 
+# AI evangelist. trend analysis, broadly shared.
 - seq: 86
   username: sexinfochina
   name: AI 骆驼
@@ -905,6 +1025,7 @@
   tags: [trend, evangelist]
   wave_stage: 2
 
+# personal growth + AI tools. mainstream audience bridge.
 - seq: 87
   username: kbhero21
   name: Delia Dou
@@ -912,6 +1033,7 @@
   tags: [personal-growth, tool-explore]
   wave_stage: 2
 
+# serial entrepreneur. AI startup experience sharing.
 - seq: 88
   username: vikingmute
   name: Viking
@@ -919,6 +1041,7 @@
   tags: [startup, saas]
   wave_stage: 2
 
+# fintech + AI innovation. cross-domain observer.
 - seq: 89
   username: eryouhao
   name: Zayn Hao
@@ -926,6 +1049,7 @@
   tags: [fintech, innovation]
   wave_stage: 2
 
+# human behavior observer. unique AI content generation.
 - seq: 90
   username: fengbuyou
   name: fengbuyou
@@ -933,6 +1057,7 @@
   tags: [observation, content-gen]
   wave_stage: 2
 
+# infra geek. AI infrastructure from the ops angle.
 - seq: 91
   username: ilovek8s
   name: ilovek8s
@@ -940,6 +1065,7 @@
   tags: [infra, geek]
   wave_stage: 2
 
+# AI marketing practitioner. real campaign case studies.
 - seq: 132
   username: guiyi_ai
   name: 归一
@@ -947,6 +1073,7 @@
   tags: [ai-marketing, practical]
   wave_stage: 2
 
+# AI + ecommerce specialist. practical business cases.
 - seq: 133
   username: wubin_ai
   name: 武彬
@@ -954,6 +1081,7 @@
   tags: [ecommerce-ai, cases]
   wave_stage: 2
 
+# model comparison specialist. hands-on developer content.
 - seq: 134
   username: turing_ai
   name: 图灵 (Turing)
@@ -961,6 +1089,7 @@
   tags: [dev-hands-on, model-comparison]
   wave_stage: 2
 
+# office AI efficiency expert. workplace productivity focus.
 - seq: 135
   username: wasu_ai
   name: 瓦叔 (Wasu)
@@ -968,6 +1097,7 @@
   tags: [office-efficiency, practical]
   wave_stage: 2
 
+# tech commentator. deep trend analysis.
 - seq: 137
   username: huaguoshandasheng
   name: 花果山大圣
@@ -975,6 +1105,7 @@
   tags: [tech-commentary, trend]
   wave_stage: 2
 
+# veteran tech journalist. long-term AI trend watcher.
 - seq: 138
   username: ljg_
   name: 刘江
@@ -982,6 +1113,7 @@
   tags: [tech-media, long-term]
   wave_stage: 2
 
+# dotey alt account. Chinese SaaS + AI startup content.
 - seq: 140
   username: baoyuz
   name: 宝玉 (alt)
@@ -989,6 +1121,7 @@
   tags: [startup, saas]
   wave_stage: 2
 
+# ex-Global Times editor. when he tweets AI, it's fully mainstream in China.
 - seq: 166
   username: HuXijin_GT
   name: 胡锡进
@@ -996,6 +1129,7 @@
   tags: [media, commentary]
   wave_stage: 3
 
+# AI anxiety discourse. signals fading/hustle phase of a topic.
 - seq: 189
   username: AIAxiety
   name: AI 焦虑症
@@ -1003,6 +1137,7 @@
   tags: [ai-anxiety, discussion]
   wave_stage: 4
 
+# physics teacher turned science educator. mass popularization.
 - seq: 196
   username: liyongle_
   name: 李永乐老师
@@ -1010,10 +1145,10 @@
   tags: [education, science-popularization]
   wave_stage: 3
 
-
 # ---- Influencers (EN) (20) ----
 # English-speaking thought leaders and media personalities
 
+# Rundown AI founder. daily AI news digest. mass audience.
 - seq: 92
   username: rowancheung
   name: Rowan Cheung
@@ -1021,6 +1156,7 @@
   tags: [rundown-ai, news-aggregation]
   wave_stage: 3
 
+# Wharton prof. AI workplace adoption authority.
 - seq: 93
   username: emollick
   name: Ethan Mollick
@@ -1028,6 +1164,7 @@
   tags: [wharton, workplace-ai]
   wave_stage: 2
 
+# top podcast host. deep interviews with AI leaders.
 - seq: 94
   username: lexfridman
   name: Lex Fridman
@@ -1035,6 +1172,7 @@
   tags: [podcast, deep-interview]
   wave_stage: 2
 
+# AI Engineer paradigm creator. Latent Space podcast.
 - seq: 95
   username: swyx
   name: Swyx (Shawn Wang)
@@ -1042,6 +1180,7 @@
   tags: [ai-engineer, latent-space]
   wave_stage: 1
 
+# Cognosys founder. AI automation workflow breakdowns.
 - seq: 96
   username: SullyOmarr
   name: Sully Omarr
@@ -1049,6 +1188,7 @@
   tags: [automation, cognosys]
   wave_stage: 2
 
+# Cursor power user. AI-assisted coding evangelist.
 - seq: 97
   username: mckaywrigley
   name: McKay Wrigley
@@ -1056,6 +1196,7 @@
   tags: [cursor, ai-coding]
   wave_stage: 2
 
+# AI Exchange founder. enterprise AI transformation.
 - seq: 98
   username: rachel_woods
   name: Rachel Woods
@@ -1063,6 +1204,7 @@
   tags: [enterprise, ai-exchange]
   wave_stage: 2
 
+# YouTube paper reviewer. technical depth with humor.
 - seq: 99
   username: ykilcher
   name: Yannic Kilcher
@@ -1070,6 +1212,7 @@
   tags: [paper-review, youtube]
   wave_stage: 1
 
+# AI journalist. ethics-focused investigative reporting.
 - seq: 100
   username: _karenhao
   name: Karen Hao
@@ -1077,6 +1220,7 @@
   tags: [journalism, ethics]
   wave_stage: 1
 
+# tech trend observer. broad AI awareness spreading.
 - seq: 142
   username: 2morrowknight
   name: Sean Gardner
@@ -1084,6 +1228,7 @@
   tags: [tech-trend, observation]
   wave_stage: 2
 
+# data science authority. AI insight from analytics angle.
 - seq: 143
   username: KirkDBorne
   name: Kirk Borne
@@ -1091,6 +1236,7 @@
   tags: [data-science, ai-insight]
   wave_stage: 2
 
+# AI commercialization consultant. massive enterprise reach.
 - seq: 145
   username: alliek_miller
   name: Allie K. Miller
@@ -1098,6 +1244,7 @@
   tags: [ai-commercialization, consulting]
   wave_stage: 2
 
+# YouTube deep AI reviewer. balanced, objective analysis.
 - seq: 164
   username: AIExplained
   name: AI Explained
@@ -1105,6 +1252,7 @@
   tags: [video-analysis, deep-review]
   wave_stage: 2
 
+# podcast king. when AI hits his show, it's fully mainstream.
 - seq: 168
   username: joerogan
   name: Joe Rogan
@@ -1112,6 +1260,7 @@
   tags: [podcast, culture]
   wave_stage: 3
 
+# late show host. political satire angle on tech.
 - seq: 169
   username: StephenAtHome
   name: Stephen Colbert
@@ -1119,6 +1268,7 @@
   tags: [late-show, satire]
   wave_stage: 3
 
+# tonight show host. pop culture barometer.
 - seq: 170
   username: jimmyfallon
   name: Jimmy Fallon
@@ -1126,6 +1276,7 @@
   tags: [tonight-show, entertainment]
   wave_stage: 3
 
+# late night host. entertainment + current affairs.
 - seq: 171
   username: JimmyKimmel
   name: Jimmy Kimmel
@@ -1133,6 +1284,7 @@
   tags: [late-night, entertainment]
   wave_stage: 3
 
+# political commentator. contrarian takes on tech.
 - seq: 172
   username: billmaher
   name: Bill Maher
@@ -1140,6 +1292,7 @@
   tags: [political-commentary]
   wave_stage: 3
 
+# political commentator. conservative tech perspective.
 - seq: 173
   username: TuckerCarlson
   name: Tucker Carlson
@@ -1147,6 +1300,7 @@
   tags: [political-commentary]
   wave_stage: 3
 
+# YouTube science animator. simplifies papers for mass audience.
 - seq: 195
   username: TwoMinutePapers
   name: Two Minute Papers
@@ -1154,10 +1308,10 @@
   tags: [education, paper-review, youtube]
   wave_stage: 2
 
-
 # ---- Indie Developers (9) ----
 # solo builders and open-source creators
 
+# indie dev icon. ships AI products solo, proves business models. inspiration source.
 - seq: 101
   username: levelsio
   name: Pieter Levels
@@ -1165,6 +1319,7 @@
   tags: [photo-ai, solo-dev]
   wave_stage: 1
 
+# fine-tuning wizard. drops high-perf open models.
 - seq: 102
   username: mattshumer_
   name: Matt Shumer
@@ -1172,6 +1327,7 @@
   tags: [fine-tune, hyperbolic]
   wave_stage: 1
 
+# Vercel CEO. v0.dev creator. frontend + AI fusion.
 - seq: 103
   username: rauchg
   name: Guillermo Rauch
@@ -1179,6 +1335,7 @@
   tags: [vercel, v0-dev, frontend]
   wave_stage: 1
 
+# Notion AI researcher. human-AI interaction explorer.
 - seq: 104
   username: thesephist
   name: Linus Lee
@@ -1186,6 +1343,7 @@
   tags: [hci, notion-ai]
   wave_stage: 1
 
+# ElevenLabs design lead. pure-AI creative workflows.
 - seq: 105
   username: ammaar
   name: Ammaar Reshi
@@ -1193,6 +1351,7 @@
   tags: [ai-creation, elevenlabs]
   wave_stage: 1
 
+# ThursdAI podcast. unofficial API hacker.
 - seq: 106
   username: altryne
   name: Alex Volkov
@@ -1200,6 +1359,7 @@
   tags: [thursdai, api-hacking]
   wave_stage: 1
 
+# 30k-star maintainer. deep tech blog. open-source builder.
 - seq: 107
   username: lxfater
   name: 铁锤人
@@ -1207,6 +1367,7 @@
   tags: [open-source, blog]
   wave_stage: 1
 
+# Felo/Glarity dev. Japanese market AI builder.
 - seq: 108
   username: JefferyTatsuya
   name: Jeffery Tatsuya
@@ -1214,6 +1375,7 @@
   tags: [felo, glarity, japan]
   wave_stage: 1
 
+# indie dev. AI tool reviews from a builder's perspective.
 - seq: 139
   username: zhangsan_dev
   name: 独立开发者张三
@@ -1221,10 +1383,10 @@
   tags: [dev-experience, tool-review]
   wave_stage: 2
 
-
 # ---- Startup Founders (4) ----
 # next-gen startup founders
 
+# Perplexity CEO. AI search challenger to Google.
 - seq: 109
   username: AravSrinivas
   name: Aravind Srinivas
@@ -1232,6 +1394,7 @@
   tags: [perplexity, ai-search]
   wave_stage: 2
 
+# Scale AI founder. data infrastructure perspective.
 - seq: 110
   username: alexandr_wang
   name: Alexandr Wang
@@ -1239,6 +1402,7 @@
   tags: [scale-ai, data]
   wave_stage: 2
 
+# gen-Z AI founder. young energy, technical depth.
 - seq: 111
   username: chiguangyao
   name: 池光耀
@@ -1246,6 +1410,7 @@
   tags: [gen-z, yuhe-tech]
   wave_stage: 2
 
+# Date Drop founder. Stanford dropout. AI social experiments.
 - seq: 136
   username: henryweng
   name: Henry Weng
@@ -1253,10 +1418,10 @@
   tags: [ai-social, date-drop]
   wave_stage: 2
 
-
 # ---- Investors (12) ----
 # VCs, angels, and finance voices
 
+# a16z founder. tech optimist. e/acc sympathizer.
 - seq: 112
   username: pmarca
   name: Marc Andreessen
@@ -1264,6 +1429,7 @@
   tags: [a16z, eacc, optimism]
   wave_stage: 2
 
+# Conviction founder. sharp VC lens on AI startups.
 - seq: 113
   username: saranormous
   name: Sarah Guo
@@ -1271,6 +1437,7 @@
   tags: [conviction, no-priors]
   wave_stage: 1
 
+# super angel. portfolio: OpenAI, Anthropic, Perplexity.
 - seq: 114
   username: eladgil
   name: Elad Gil
@@ -1278,6 +1445,7 @@
   tags: [angel, unicorns]
   wave_stage: 1
 
+# Khosla Ventures. early OpenAI backer. regulation skeptic.
 - seq: 115
   username: vkhosla
   name: Vinod Khosla
@@ -1285,6 +1453,7 @@
   tags: [khosla-ventures, early-stage]
   wave_stage: 2
 
+# LinkedIn founder. AI ethics + business intersection.
 - seq: 116
   username: reidhoffman
   name: Reid Hoffman
@@ -1292,6 +1461,7 @@
   tags: [linkedin, inflection]
   wave_stage: 2
 
+# Zhenge partner. tech-savvy VC with blunt opinions.
 - seq: 117
   username: yusendai
   name: 戴雨森
@@ -1299,6 +1469,7 @@
   tags: [zhenge, tech-investment]
   wave_stage: 1
 
+# Air Street Capital. State of AI Report author.
 - seq: 118
   username: NathanBenaich
   name: Nathan Benaich
@@ -1306,6 +1477,7 @@
   tags: [air-street, state-of-ai]
   wave_stage: 1
 
+# Index Ventures partner. heavy AI portfolio.
 - seq: 119
   username: mvolpi
   name: Mike Volpi
@@ -1313,6 +1485,7 @@
   tags: [index-ventures]
   wave_stage: 2
 
+# tech investment commentary.
 - seq: 174
   username: mdubel
   name: Michael D. Brown
@@ -1320,6 +1493,7 @@
   tags: [tech-investment, commentary]
   wave_stage: 2
 
+# top VC. business model insight.
 - seq: 175
   username: bgurley
   name: Bill Gurley
@@ -1327,6 +1501,7 @@
   tags: [vc, business-insight]
   wave_stage: 2
 
+# finance analyst. market perspective on AI.
 - seq: 176
   username: michaeljina
   name: Michael Jin
@@ -1334,6 +1509,7 @@
   tags: [finance, analysis]
   wave_stage: 2
 
+# NYU prof. valuation expert. AI company analysis authority.
 - seq: 177
   username: AswathDamodaran
   name: Aswath Damodaran
@@ -1341,10 +1517,10 @@
   tags: [valuation, business-analysis]
   wave_stage: 2
 
-
 # ---- Prompt Engineers (2) ----
 # prompt engineering and red-teaming
 
+# Scale AI prompt engineer. precision prompt craft.
 - seq: 120
   username: goodside
   name: Riley Goodside
@@ -1352,6 +1528,7 @@
   tags: [scale-ai, prompt-engineer]
   wave_stage: 1
 
+# jailbreak legend. red-team testing frontier.
 - seq: 121
   username: elder_pliny
   name: Pliny the Prompter
@@ -1359,10 +1536,10 @@
   tags: [red-team, jailbreak]
   wave_stage: 1
 
-
 # ---- Workflow Architects (2) ----
 # AI workflow and developer tooling experts
 
+# Google devrel. API ecosystem. ex-OpenAI community.
 - seq: 122
   username: OfficialLoganK
   name: Logan Kilpatrick
@@ -1370,6 +1547,7 @@
   tags: [google, devrel, api]
   wave_stage: 1
 
+# Midjourney extreme tester. visual generation limits.
 - seq: 123
   username: LinusEkenstam
   name: Linus Ekenstam
@@ -1377,10 +1555,10 @@
   tags: [visual, midjourney]
   wave_stage: 1
 
-
 # ---- Strategic Thinkers (8) ----
 # philosophers, critics, and long-term visionaries
 
+# chief AI skeptic. hallucination critic. neuro-symbolic advocate.
 - seq: 124
   username: GaryMarcus
   name: Gary Marcus
@@ -1388,6 +1566,7 @@
   tags: [skeptic, hallucination]
   wave_stage: 1
 
+# MIRI founder. doomer-in-chief. alignment urgency voice.
 - seq: 125
   username: ESYudkowsky
   name: Eliezer Yudkowsky
@@ -1395,6 +1574,7 @@
   tags: [miri, doomer, alignment]
   wave_stage: 1
 
+# YC founder. startup philosophy applied to AI era.
 - seq: 126
   username: paulg
   name: Paul Graham
@@ -1402,6 +1582,7 @@
   tags: [yc, startup-philosophy]
   wave_stage: 1
 
+# e/acc anon leader. anti-regulation, pro-acceleration.
 - seq: 127
   username: BasedBeffJezos
   name: Beff Jezos
@@ -1409,6 +1590,7 @@
   tags: [eacc, anti-regulation]
   wave_stage: 1
 
+# ex-Coinbase CTO. crypto-AI convergence theories.
 - seq: 128
   username: balajis
   name: Balaji Srinivasan
@@ -1416,6 +1598,7 @@
   tags: [crypto-ai, restructuring]
   wave_stage: 1
 
+# Superintelligence author. existential risk philosopher.
 - seq: 129
   username: nickbostrom
   name: Nick Bostrom
@@ -1423,6 +1606,7 @@
   tags: [superintelligence, philosophy]
   wave_stage: 1
 
+# FLI founder. Life 3.0 author. AI safety campaigner.
 - seq: 130
   username: tegmark
   name: Max Tegmark
@@ -1430,6 +1614,7 @@
   tags: [fli, life-3-0]
   wave_stage: 1
 
+# Berkeley prof. human-compatible AI advocate.
 - seq: 131
   username: stuartj_russell
   name: Stuart Russell
