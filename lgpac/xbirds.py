@@ -515,8 +515,8 @@ def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output
 # email (grouped by wave_stage)
 # ------------------------------------------------------------------ #
 
-def send_email_alert(new_posts: List[Dict]) -> bool:
-    if not new_posts:
+def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool:
+    if not new_posts and not warnings:
         return False
 
     tracked = load_tracked()
@@ -561,9 +561,66 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
             )
         parts.append('</table>')
 
+    # diagnostic section: warnings summary
+    if warnings:
+        issue_icons = {
+            "rate_limited": "🚦",
+            "account_not_found": "🚫",
+            "fetch_error": "❌",
+            "connectivity_failed": "⚡",
+        }
+        issue_labels = {
+            "rate_limited": "Rate limited (429) — IP throttled by Twitter",
+            "account_not_found": "Account not found (404) — may be deleted or renamed",
+            "fetch_error": "Fetch error — network timeout or server error",
+            "connectivity_failed": "Connectivity failed — could not reach Twitter at all",
+        }
+
+        from collections import Counter
+        issue_counts = Counter(w.get("issue", "unknown") for w in warnings)
+
+        parts.append('<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">')
+        parts.append(f'<h3 style="color:#da3633;">⚠ Diagnostics ({len(warnings)} issues)</h3>')
+
+        # summary counts
+        parts.append('<p style="font-size:13px;color:#666;">')
+        for issue, count in issue_counts.most_common():
+            icon = issue_icons.get(issue, "❓")
+            label = issue_labels.get(issue, issue)
+            parts.append(f'{icon} <b>{count}</b> × {label}<br>')
+        parts.append('</p>')
+
+        # detailed list (collapsed if >10)
+        if len(warnings) > 10:
+            parts.append(f'<details><summary style="cursor:pointer;color:#666;">show all {len(warnings)} affected accounts</summary>')
+
+        parts.append('<table style="border-collapse:collapse;width:100%;font-size:12px;color:#666;">')
+        parts.append('<tr><th style="padding:4px 6px;text-align:left;">Account</th>'
+                     '<th style="padding:4px 6px;text-align:left;">Issue</th></tr>')
+        for w in warnings[:50]:
+            icon = issue_icons.get(w.get("issue", ""), "❓")
+            parts.append(
+                f'<tr><td style="padding:4px 6px;">@{w["username"]}</td>'
+                f'<td style="padding:4px 6px;">{icon} {w.get("issue", "unknown")}</td></tr>'
+            )
+        if len(warnings) > 50:
+            parts.append(f'<tr><td colspan="2" style="padding:4px 6px;">... and {len(warnings) - 50} more</td></tr>')
+        parts.append('</table>')
+
+        if len(warnings) > 10:
+            parts.append('</details>')
+
     parts.append('</body></html>')
     html = "\n".join(parts)
-    return send_email(f"[xbirds] {len(new_posts)} new post(s)", html)
+
+    total = len(new_posts)
+    subject_extra = ""
+    if warnings:
+        from collections import Counter
+        rate_limited = sum(1 for w in warnings if w.get("issue") == "rate_limited")
+        if rate_limited > 0:
+            subject_extra = f", {rate_limited} throttled"
+    return send_email(f"[xbirds] {total} new post(s){subject_extra}", html)
 
 
 # ------------------------------------------------------------------ #
@@ -592,11 +649,11 @@ def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RE
     if page:
         generate_page(all_posts, warnings)
 
-    if new_posts and notify:
-        send_email_alert(new_posts)
-        logger.info(f"  email sent with {len(new_posts)} posts")
+    if notify and (new_posts or warnings):
+        send_email_alert(new_posts, warnings)
+        logger.info(f"  email sent ({len(new_posts)} posts, {len(warnings)} warnings)")
     elif notify:
-        logger.info("  no new posts, email skipped")
+        logger.info("  no new posts and no warnings, email skipped")
 
     logger.info(f"=== xbirds run_monitor complete ===")
     return new_posts, warnings
