@@ -131,7 +131,7 @@
   name: Elon Musk
   category: titan
   tags: [xai, grok, compute]
-  wave_stage: 2
+  wave_stage: 3
 
 # Meta chief scientist. strong opinions on open-source vs closed. defends JEPA, critiques LLMs.
 - seq: 3
@@ -265,7 +265,7 @@
   name: Geoffrey Hinton
   category: scientist
   tags: [deep-learning, risk-warning]
-  wave_stage: 0
+  wave_stage: 1
 
 # deep learning pioneer. AI governance advocate.
 - seq: 18
@@ -273,7 +273,7 @@
   name: Yoshua Bengio
   category: scientist
   tags: [deep-learning, governance]
-  wave_stage: 0
+  wave_stage: 1
 
 # Transformer co-author. Character.ai founder.
 - seq: 19
@@ -508,7 +508,7 @@
   name: Sundar Pichai
   category: core
   tags: [google, gemini]
-  wave_stage: 2
+  wave_stage: 3
 
 # Meta CEO. Llama open-source champion. metaverse pivot to AI.
 - seq: 43
@@ -516,7 +516,7 @@
   name: Mark Zuckerberg
   category: core
   tags: [meta, llama, open-source]
-  wave_stage: 2
+  wave_stage: 3
 
 # AMD CEO. compute competition with NVIDIA.
 - seq: 44
@@ -847,7 +847,7 @@
   name: MIT Technology Review
   category: org
   tags: [tech-media, deep-analysis]
-  wave_stage: 3
+  wave_stage: 2
 
 # consumer tech + culture. mainstream tech audience.
 - seq: 182
@@ -863,7 +863,7 @@
   name: Ars Technica
   category: org
   tags: [tech-media, deep-tech]
-  wave_stage: 3
+  wave_stage: 2
 
 # gadget + consumer tech. mass market signal.
 - seq: 184
