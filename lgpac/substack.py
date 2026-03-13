@@ -24,11 +24,17 @@ TRACKED_FILE = "archs_substack/tracked.yml"
 ARCHIVE_FILE = "archs_substack/archive.json"
 RECENT_HOURS = 24
 
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/120.0.0.0 Safari/537.36"
-)
+_UA_LIST = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0",
+]
+
+
+def _get_ua() -> str:
+    return random.choice(_UA_LIST)
 
 REQUEST_DELAY_MIN = 0.3
 REQUEST_DELAY_MAX = 0.8
@@ -68,7 +74,7 @@ def fetch_feed(slug: str) -> tuple:
 
     url = FEED_URL_TEMPLATE.format(slug=slug)
     headers = {
-        "User-Agent": USER_AGENT,
+        "User-Agent": _get_ua(),
         "Accept": "application/rss+xml, application/xml, text/xml, */*",
         "Accept-Language": "en-US,en;q=0.9",
     }
@@ -134,7 +140,7 @@ def _fetch_via_search(slug: str) -> tuple:
     url = f"https://www.bing.com/search?q={query}&count=10"
 
     try:
-        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
+        resp = requests.get(url, headers={"User-Agent": _get_ua()}, timeout=15)
         if resp.status_code != 200:
             return "error", []
     except Exception:
