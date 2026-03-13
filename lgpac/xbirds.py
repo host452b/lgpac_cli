@@ -176,7 +176,7 @@ def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
 # connectivity preflight check
 # ------------------------------------------------------------------ #
 
-DRYRUN_USERNAME = "elonmusk"
+DRYRUN_USERNAME = "karpathy"
 
 
 def preflight_check() -> bool:
@@ -210,8 +210,8 @@ def preflight_check() -> bool:
         return False
 
     if resp.status_code == 429:
-        logger.error("preflight FAILED: rate limited (429). "
-                      "IP may be throttled by twitter. wait and retry later.")
+        logger.warning("preflight: rate limited (429). shared IP may be throttled. "
+                        "will proceed with individual requests (they may still work).")
         return False
 
     if resp.status_code == 403:
@@ -263,8 +263,8 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
         return {}, []
 
     if not preflight_check():
-        logger.error("aborting fetch: preflight check failed")
-        return {}, [{"username": "_preflight", "name": "preflight", "category": "", "issue": "connectivity_failed"}]
+        logger.warning("preflight failed — continuing anyway (may have partial results)")
+        time.sleep(5)
 
     results = {}
     warnings = []
