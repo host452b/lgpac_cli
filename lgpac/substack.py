@@ -63,16 +63,19 @@ def get_slugs() -> List[str]:
 # fetch RSS feed
 # ------------------------------------------------------------------ #
 
-def fetch_feed(slug: str) -> tuple:
+def fetch_feed(slug: str, feed_url: str = "") -> tuple:
     """
-    fetch and parse a substack RSS feed.
-    falls back to Bing search if RSS feed is unavailable.
+    fetch and parse an RSS feed for a tracked publication.
+    if feed_url is provided, use it directly (for non-substack or custom-domain feeds).
+    otherwise fall back to the default substack template URL.
     returns (status, articles_list).
     status: "ok", "empty", "not_found", "error"
     """
     import requests
 
-    url = FEED_URL_TEMPLATE.format(slug=slug)
+    is_substack_default = not feed_url
+    url = feed_url if feed_url else FEED_URL_TEMPLATE.format(slug=slug)
+
     headers = {
         "User-Agent": _get_ua(),
         "Accept": "application/rss+xml, application/xml, text/xml, */*",
@@ -90,17 +93,27 @@ def fetch_feed(slug: str) -> tuple:
         )
 
         if resp.status_code == 200:
-            has_xml = "<rss" in resp.text[:500] or "<feed" in resp.text[:500] or "<?xml" in resp.text[:200]
+            has_xml = (
+                "<rss" in resp.text[:500]
+                or "<feed" in resp.text[:500]
+                or "<?xml" in resp.text[:200]
+            )
             if has_xml:
                 status, articles = _parse_rss(resp.text, slug)
-                if status == "ok":
+                if status in ("ok", "empty"):
                     return status, articles
-            logger.info(f"[@{slug}] RSS 200 but not valid XML (first 100 chars: {resp.text[:100]!r})")
-            return _fetch_via_api(slug)
+                logger.debug(f"[@{slug}] XML parse failed, trying API fallback")
+            else:
+                logger.info(f"[@{slug}] 200 but not RSS/XML (first 80 chars: {resp.text[:80]!r})")
+            if is_substack_default:
+                return _fetch_via_api(slug)
+            return "error", []
 
         if resp.status_code == 404:
-            logger.info(f"[@{slug}] RSS 404, trying search fallback")
-            return _fetch_via_api(slug)
+            if is_substack_default:
+                return _fetch_via_api(slug)
+            logger.info(f"[@{slug}] custom feed_url 404: {url[:80]}")
+            return "not_found", []
 
         if resp.status_code in (301, 302):
             location = resp.headers.get("location", "?")
@@ -108,8 +121,10 @@ def fetch_feed(slug: str) -> tuple:
             return "error", []
 
         if resp.status_code == 403:
-            logger.info(f"[@{slug}] 403 forbidden — IP may be blocked by Substack")
-            return _fetch_via_api(slug)
+            logger.info(f"[@{slug}] 403 forbidden — IP may be blocked")
+            if is_substack_default:
+                return _fetch_via_api(slug)
+            return "error", []
 
         if resp.status_code >= 500:
             logger.info(f"[@{slug}] server error {resp.status_code}")
@@ -119,13 +134,17 @@ def fetch_feed(slug: str) -> tuple:
         resp.raise_for_status()
     except requests.ConnectionError as e:
         logger.info(f"[@{slug}] connection error: {e}")
-        return _fetch_via_api(slug)
+        if is_substack_default:
+            return _fetch_via_api(slug)
+        return "error", []
     except requests.Timeout:
-        logger.info(f"[@{slug}] timeout")
-        return _fetch_via_api(slug)
+        logger.info(f"[@{slug}] timeout for {url[:60]}")
+        return "error", []
     except Exception as e:
         logger.info(f"[@{slug}] error: {type(e).__name__}: {e}")
-        return _fetch_via_api(slug)
+        if is_substack_default:
+            return _fetch_via_api(slug)
+        return "error", []
 
     return "error", []
 
@@ -278,15 +297,17 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             continue
 
         stage = entry.get("wave_stage", "?")
-        status, articles = fetch_feed(slug)
+        custom_feed = entry.get("feed_url", "")
+        status, articles = fetch_feed(slug, feed_url=custom_feed)
 
+        src_label = "custom" if custom_feed else "substack"
         if status == "ok":
             recent = [a for a in articles if _is_recent(a, cutoff)]
             if recent:
                 results[slug] = recent
                 success_count += 1
                 source = "api" if articles and articles[0].get("_source") == "api_fallback" else "rss"
-                logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent [{source}]")
+                logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent [{source}/{src_label}]")
             else:
                 empty_count += 1
                 logger.info(f"  [{i+1}/{total}] ⏭  {slug} (s{stage}): {len(articles)} articles, 0 in window")
@@ -295,18 +316,25 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             logger.info(f"  [{i+1}/{total}] 📭 {slug} (s{stage}): feed exists but 0 articles")
         elif status == "not_found":
             error_count += 1
-            logger.info(f"  [{i+1}/{total}] 🚫 {slug} (s{stage}): 404 not found")
+            hint = "slug may be wrong or not on substack"
+            if custom_feed:
+                hint = f"custom feed_url 404: {custom_feed[:60]}"
+            logger.info(f"  [{i+1}/{total}] 🚫 {slug} (s{stage}): 404 — {hint}")
+            used_url = custom_feed if custom_feed else FEED_URL_TEMPLATE.format(slug=slug)
             warnings.append({"slug": slug, "name": entry.get("name", slug),
                              "category": entry.get("category", ""),
                              "issue": "feed_not_found", "http_code": 404,
-                             "meaning": "feed URL does not exist, slug may be wrong"})
+                             "meaning": hint,
+                             "feed_url": used_url})
         else:
             error_count += 1
-            logger.info(f"  [{i+1}/{total}] ❌ {slug} (s{stage}): fetch error")
+            logger.info(f"  [{i+1}/{total}] ❌ {slug} (s{stage}): fetch error [{src_label}]")
+            used_url = custom_feed if custom_feed else FEED_URL_TEMPLATE.format(slug=slug)
             warnings.append({"slug": slug, "name": entry.get("name", slug),
                              "category": entry.get("category", ""),
                              "issue": "fetch_error", "http_code": "N/A",
-                             "meaning": "network error, timeout, or server error"})
+                             "meaning": "network error, timeout, or server error",
+                             "feed_url": used_url})
 
         if (i + 1) % 10 == 0:
             elapsed = time.time() - start_time
@@ -542,8 +570,8 @@ def send_email_alert(new_articles: List[Dict], warnings: List[Dict] = None) -> b
             slug_name = w.get("slug", "?")
             http_code = w.get("http_code", "?")
             meaning = w.get("meaning", code_ref.get(http_code, "unknown"))
-            action = "check slug in tracked.yml" if http_code == 404 else "retry later"
-            feed_url = f"https://{slug_name}.substack.com/feed"
+            action = "check slug or add feed_url in tracked.yml" if http_code == 404 else "retry later"
+            feed_url = w.get("feed_url", f"https://{slug_name}.substack.com/feed")
             parts.append(
                 f'<tr>'
                 f'<td style="padding:4px 8px;"><a href="{feed_url}" style="color:#1a73e8;">{slug_name}</a></td>'
