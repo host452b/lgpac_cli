@@ -72,10 +72,17 @@ def fetch_feed(slug: str) -> tuple:
             status, articles = _parse_rss(resp.text, slug)
             if status == "ok":
                 return status, articles
-
-        if resp.status_code == 404 or (resp.status_code == 200 and not articles):
-            logger.debug(f"[@{slug}] RSS unavailable, trying search fallback")
+            logger.debug(f"[@{slug}] RSS 200 but parse failed, trying fallback")
             return _fetch_via_search(slug)
+
+        if resp.status_code == 404:
+            logger.debug(f"[@{slug}] RSS 404, trying search fallback")
+            return _fetch_via_search(slug)
+
+        if resp.status_code in (301, 302):
+            location = resp.headers.get("location", "?")
+            logger.debug(f"[@{slug}] redirect {resp.status_code} -> {location[:80]}")
+            return "error", []
 
         if resp.status_code >= 500:
             return "error", []
@@ -236,7 +243,8 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             if recent:
                 results[slug] = recent
                 success_count += 1
-                logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent articles")
+                source = "bing" if articles and articles[0].get("_source") == "bing_fallback" else "rss"
+                logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent [{source}]")
             else:
                 empty_count += 1
                 logger.info(f"  [{i+1}/{total}] ⏭  {slug} (s{stage}): {len(articles)} articles, 0 in window")
@@ -245,14 +253,18 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             logger.info(f"  [{i+1}/{total}] 📭 {slug} (s{stage}): feed exists but 0 articles")
         elif status == "not_found":
             error_count += 1
-            logger.info(f"  [{i+1}/{total}] 🚫 {slug} (s{stage}): feed not found (404)")
+            logger.info(f"  [{i+1}/{total}] 🚫 {slug} (s{stage}): 404 not found")
             warnings.append({"slug": slug, "name": entry.get("name", slug),
-                             "category": entry.get("category", ""), "issue": "feed_not_found"})
+                             "category": entry.get("category", ""),
+                             "issue": "feed_not_found", "http_code": 404,
+                             "meaning": "feed URL does not exist, slug may be wrong"})
         else:
             error_count += 1
             logger.info(f"  [{i+1}/{total}] ❌ {slug} (s{stage}): fetch error")
             warnings.append({"slug": slug, "name": entry.get("name", slug),
-                             "category": entry.get("category", ""), "issue": "fetch_error"})
+                             "category": entry.get("category", ""),
+                             "issue": "fetch_error", "http_code": "N/A",
+                             "meaning": "network error, timeout, or server error"})
 
         if (i + 1) % 10 == 0:
             elapsed = time.time() - start_time
@@ -441,12 +453,62 @@ def send_email_alert(new_articles: List[Dict], warnings: List[Dict] = None) -> b
         parts.append('</table>')
 
     if warnings:
+        # HTTP status code reference
+        code_ref = {
+            200: "OK (but content not RSS)",
+            301: "moved permanently (slug changed)",
+            302: "temporary redirect",
+            404: "not found (slug may be wrong or deleted)",
+            429: "rate limited (too many requests)",
+            500: "server error",
+            "N/A": "network error / timeout / connection refused",
+        }
+
         parts.append('<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">')
-        parts.append(f'<p style="color:#888;font-size:12px;">⚠ {len(warnings)} feed(s) had issues</p>')
+        parts.append(f'<h3 style="color:#da3633;">⚠ Feed Status Report ({len(warnings)} issues)</h3>')
+
+        # summary by issue type
+        from collections import Counter
+        issue_counts = Counter(w.get("issue", "unknown") for w in warnings)
+        parts.append('<p style="font-size:13px;color:#666;">')
+        issue_icons = {"feed_not_found": "🚫", "fetch_error": "❌", "not_rss": "⚠️"}
+        for issue, count in issue_counts.most_common():
+            icon = issue_icons.get(issue, "❓")
+            parts.append(f'{icon} <b>{count}</b> × {issue}<br>')
+        parts.append('</p>')
+
+        # detailed table
+        parts.append('<table style="border-collapse:collapse;width:100%;font-size:12px;">')
+        parts.append(
+            '<tr style="background:#f6f8fa;">'
+            '<th style="padding:5px 8px;text-align:left;">Feed</th>'
+            '<th style="padding:5px 8px;text-align:left;">HTTP</th>'
+            '<th style="padding:5px 8px;text-align:left;">Meaning</th>'
+            '<th style="padding:5px 8px;text-align:left;">Action</th></tr>'
+        )
+        for w in warnings:
+            slug_name = w.get("slug", "?")
+            http_code = w.get("http_code", "?")
+            meaning = w.get("meaning", code_ref.get(http_code, "unknown"))
+            action = "check slug in tracked.yml" if http_code == 404 else "retry later"
+            feed_url = f"https://{slug_name}.substack.com/feed"
+            parts.append(
+                f'<tr>'
+                f'<td style="padding:4px 8px;"><a href="{feed_url}" style="color:#1a73e8;">{slug_name}</a></td>'
+                f'<td style="padding:4px 8px;color:#da3633;font-weight:600;">{http_code}</td>'
+                f'<td style="padding:4px 8px;color:#666;">{meaning}</td>'
+                f'<td style="padding:4px 8px;color:#888;">{action}</td>'
+                f'</tr>'
+            )
+        parts.append('</table>')
 
     parts.append('</body></html>')
     html = "\n".join(parts)
-    return send_email(f"[substack] {len(new_articles)} new article(s)", html)
+
+    subject_extra = ""
+    if warnings:
+        subject_extra = f", {len(warnings)} issues"
+    return send_email(f"[substack] {len(new_articles)} new article(s){subject_extra}", html)
 
 
 # ------------------------------------------------------------------ #
