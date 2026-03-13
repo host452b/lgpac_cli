@@ -1,19 +1,19 @@
 """
 weixin article monitor with fallback search providers.
 primary: sogou weixin search
-fallback: baidu / google site:mp.weixin.qq.com / bing
+fallback: baidu / bing site:mp.weixin.qq.com
 
-all providers return the same normalized format:
-  [{"title": "...", "url": "...", "source": "..."}]
+all providers return normalized format: [{"title", "url", "source", "pub_date"}]
 """
 import re
-import json
 import logging
-import os
 import html as html_mod
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Optional, Callable
+from typing import List, Dict, Any
+
+from lgpac.archive import JsonArchive
+from lgpac.notify import send_email, build_html_email
 
 logger = logging.getLogger("lgpac.lgycp")
 
@@ -34,16 +34,13 @@ USER_AGENT = (
 
 
 # ------------------------------------------------------------------ #
-# provider: sogou weixin (primary)
+# provider: sogou (primary)
 # ------------------------------------------------------------------ #
 
 def _fetch_sogou(query: str) -> List[Dict[str, str]]:
     import requests
 
-    url = (
-        "https://weixin.sogou.com/weixin?"
-        f"type=2&s_from=input&ie=utf8&query={query}"
-    )
+    url = f"https://weixin.sogou.com/weixin?type=2&s_from=input&ie=utf8&query={query}"
     resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
     resp.raise_for_status()
 
@@ -57,8 +54,6 @@ def _fetch_sogou(query: str) -> List[Dict[str, str]]:
         r'class="s-p"[^>]*>.*?<a[^>]*>(.*?)</a>',
         re.DOTALL,
     )
-
-    # article publish timestamps: timeConvert('1769445871')
     time_pattern = re.compile(r"timeConvert\('(\d+)'\)")
     timestamps = [int(m.group(1)) for m in time_pattern.finditer(resp.text)]
 
@@ -77,11 +72,8 @@ def _fetch_sogou(query: str) -> List[Dict[str, str]]:
             pub_date = datetime.fromtimestamp(timestamps[idx_int], tz=timezone.utc).strftime("%Y-%m-%d")
 
         results.append({
-            "title": title,
-            "url": html_mod.unescape(link),
-            "index": idx,
-            "source": "",
-            "pub_date": pub_date,
+            "title": title, "url": html_mod.unescape(link),
+            "index": idx, "source": "", "pub_date": pub_date,
         })
 
     for m in source_pattern.finditer(resp.text):
@@ -105,26 +97,19 @@ def _fetch_baidu(query: str) -> List[Dict[str, str]]:
     import requests
 
     url = f"https://www.baidu.com/s?wd={query}+site%3Amp.weixin.qq.com&rn=20"
-    resp = requests.get(
-        url,
-        headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9"},
-        timeout=15,
-    )
+    resp = requests.get(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9"}, timeout=15)
     resp.raise_for_status()
 
-    # baidu result titles: <h3 class="c-title ..."><a href="...">TITLE</a></h3>
     pattern = re.compile(
         r'<h3[^>]*class="[^"]*c-title[^"]*"[^>]*>\s*<a[^>]*href="([^"]*)"[^>]*>(.*?)</a>',
         re.DOTALL,
     )
-
     results = []
     for m in pattern.finditer(resp.text):
         link = html_mod.unescape(m.group(1))
         title = _clean_html(m.group(2))
         if title and query.split()[0] in title:
-            results.append({"title": title, "url": link, "source": ""})
-
+            results.append({"title": title, "url": link, "source": "", "pub_date": ""})
     return results
 
 
@@ -136,39 +121,27 @@ def _fetch_bing(query: str) -> List[Dict[str, str]]:
     import requests
 
     url = f"https://www.bing.com/search?q={query}+site%3Amp.weixin.qq.com&count=20"
-    resp = requests.get(
-        url,
-        headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9"},
-        timeout=15,
-    )
+    resp = requests.get(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9"}, timeout=15)
     resp.raise_for_status()
 
-    # bing: <h2><a href="...">TITLE</a></h2>
     pattern = re.compile(r'<h2[^>]*>\s*<a[^>]*href="([^"]*)"[^>]*>(.*?)</a>', re.DOTALL)
-
     results = []
     for m in pattern.finditer(resp.text):
         link = html_mod.unescape(m.group(1))
         title = _clean_html(m.group(2))
         if title and query.split()[0] in title:
-            results.append({"title": title, "url": link, "source": ""})
-
+            results.append({"title": title, "url": link, "source": "", "pub_date": ""})
     return results
 
 
 # ------------------------------------------------------------------ #
-# fetch with fallback chain
+# fetch with fallback
 # ------------------------------------------------------------------ #
 
-PROVIDERS: List[tuple] = [
-    ("sogou", _fetch_sogou),
-    ("baidu", _fetch_baidu),
-    ("bing", _fetch_bing),
-]
+PROVIDERS = [("sogou", _fetch_sogou), ("baidu", _fetch_baidu), ("bing", _fetch_bing)]
 
 
 def fetch_articles(query: str = "临港少年宫") -> List[Dict[str, str]]:
-    """try each provider in order until one returns results."""
     for name, fetcher in PROVIDERS:
         try:
             articles = fetcher(query)
@@ -178,17 +151,15 @@ def fetch_articles(query: str = "临港少年宫") -> List[Dict[str, str]]:
             logger.warning(f"[{name}] returned 0 results, trying fallback")
         except Exception as e:
             logger.warning(f"[{name}] failed: {type(e).__name__} - {e}, trying fallback")
-
-    logger.error("all providers failed, no articles fetched")
+    logger.error("all providers failed")
     return []
 
 
 # ------------------------------------------------------------------ #
-# filter / archive / email / run (unchanged interface)
+# filter / archive (uses shared JsonArchive)
 # ------------------------------------------------------------------ #
 
 def filter_relevant(articles: List[Dict], year_range: tuple = (2026, 2056)) -> List[Dict]:
-    """filter articles matching keywords and year range."""
     matched = []
     for article in articles:
         title = article.get("title", "")
@@ -205,49 +176,72 @@ def filter_relevant(articles: List[Dict], year_range: tuple = (2026, 2056)) -> L
 
 
 def check_and_archive(articles: List[Dict]) -> List[Dict]:
-    """compare against archive, return only NEW articles, update archive."""
-    archive = _load_archive()
-    known_titles = set(archive.get("titles", {}).keys())
+    archive = JsonArchive(ARCHIVE_FILE, key_field="titles")
+    archive.load()
     now = datetime.now(timezone.utc).isoformat()
 
     new_articles = []
     for article in articles:
         title = article["title"]
-        if title not in known_titles:
+        if not archive.has(title):
             new_articles.append(article)
-            archive.setdefault("titles", {})[title] = {
+            archive.add(title, {
                 "url": article.get("url", ""),
                 "source": article.get("source", ""),
                 "pub_date": article.get("pub_date", ""),
                 "found_at": now,
-            }
+            })
 
     if new_articles:
-        archive["last_updated"] = now
-        archive["total_count"] = len(archive.get("titles", {}))
-        _save_archive(archive)
-        logger.info(f"archived {len(new_articles)} new (total: {archive['total_count']})")
+        archive.set("last_updated", now)
+        archive.set("total_count", len(archive.keys()))
+        archive.save()
+        logger.info(f"archived {len(new_articles)} new (total: {len(archive.keys())})")
     else:
         logger.info("no new articles")
 
     return new_articles
 
 
-def send_email(new_articles: List[Dict]) -> bool:
-    """send email notification for new articles."""
-    import smtplib
-    from email.mime.text import MIMEText
+# ------------------------------------------------------------------ #
+# page generation
+# ------------------------------------------------------------------ #
 
-    to_addr = os.environ.get("LGPAC_NOTIFY_EMAIL", "").strip()
-    smtp_user = os.environ.get("LGPAC_SMTP_USER", "").strip()
-    smtp_pass = os.environ.get("LGPAC_SMTP_PASS", "").strip()
-    smtp_server = os.environ.get("LGPAC_SMTP_SERVER", "smtp.qq.com")
-    smtp_port = int(os.environ.get("LGPAC_SMTP_PORT", "465"))
+def generate_page(output_path: str = "docs_lgycp/index.md"):
+    archive = JsonArchive(ARCHIVE_FILE, key_field="titles")
+    archive.load()
+    titles = archive.get("titles", {})
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
-    if not to_addr or not smtp_user or not smtp_pass:
-        logger.debug("lgycp email: credentials not set, skipped")
-        return False
+    lines = ["# 📢 Article Monitor", "", f"> updated: {now} · {len(titles)} articles archived", ""]
 
+    if not titles:
+        lines.append("*waiting for first run...*")
+    else:
+        lines.append("| # | Title | Source | Published | Found |")
+        lines.append("|---|-------|--------|-----------|-------|")
+        sorted_items = sorted(titles.items(), key=lambda x: x[1].get("found_at", ""), reverse=True)
+        for i, (title, info) in enumerate(sorted_items, 1):
+            url = info.get("url", "")
+            source = info.get("source", "")
+            pub_date = info.get("pub_date", "")
+            found = info.get("found_at", "")[:10]
+            title_esc = title.replace("|", "∣")
+            title_cell = f"[{title_esc}]({url})" if url else title_esc
+            lines.append(f"| {i} | {title_cell} | {source} | {pub_date} | {found} |")
+
+    lines.append("")
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
+    logger.info(f"lgycp page generated: {path}")
+
+
+# ------------------------------------------------------------------ #
+# email (uses shared notify)
+# ------------------------------------------------------------------ #
+
+def send_email_alert(new_articles: List[Dict]) -> bool:
     if not new_articles:
         return False
 
@@ -257,81 +251,26 @@ def send_email(new_articles: List[Dict]) -> bool:
         url = a.get("url", "#")
         source = a.get("source", "")
         pub_date = a.get("pub_date", "")
-        rows.append(
-            f'<tr><td style="padding:6px 8px;">'
-            f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{title}</a>'
-            f'</td><td style="padding:6px 8px;color:#666;">{source}</td>'
-            f'<td style="padding:6px 8px;color:#888;">{pub_date}</td></tr>'
-        )
+        rows.append([
+            f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{title}</a>',
+            f'<span style="color:#666;">{source}</span>',
+            f'<span style="color:#888;">{pub_date}</span>',
+        ])
 
-    body = (
-        '<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:700px;margin:0 auto;">'
-        f'<h2 style="color:#2da44e;">📢 {len(new_articles)} new article(s)</h2>'
-        '<table style="border-collapse:collapse;width:100%;font-size:14px;">'
-        '<tr style="background:#f6f8fa;"><th style="padding:6px 8px;text-align:left;">Title</th>'
-        '<th style="padding:6px 8px;text-align:left;">Source</th>'
-        '<th style="padding:6px 8px;text-align:left;">Published</th></tr>'
-        + "".join(rows)
-        + '</table></body></html>'
+    html = build_html_email(
+        title=f"📢 {len(new_articles)} new article(s)",
+        heading_color="#2da44e",
+        table_headers=["Title", "Source", "Published"],
+        table_rows=rows,
     )
-
-    msg = MIMEText(body, "html", "utf-8")
-    msg["Subject"] = f"[lgycp] {len(new_articles)} new article(s)"
-    msg["From"] = smtp_user
-    msg["To"] = to_addr
-
-    try:
-        with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=15) as s:
-            s.login(smtp_user, smtp_pass)
-            s.sendmail(smtp_user, [to_addr], msg.as_string())
-        logger.info("lgycp email: sent successfully")
-        return True
-    except Exception as e:
-        logger.warning(f"lgycp email: send failed - {type(e).__name__}")
-        return False
+    return send_email(f"[lgycp] {len(new_articles)} new article(s)", html)
 
 
-def generate_page(output_path: str = "docs_lgycp/index.md"):
-    """generate a markdown page listing all archived articles."""
-    archive = _load_archive()
-    titles = archive.get("titles", {})
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-
-    lines = []
-    lines.append("# 📢 Article Monitor")
-    lines.append("")
-    lines.append(f"> updated: {now} · {len(titles)} articles archived")
-    lines.append("")
-
-    if not titles:
-        lines.append("*waiting for first run...*")
-    else:
-        lines.append("| # | Title | Source | Published | Found |")
-        lines.append("|---|-------|--------|-----------|-------|")
-
-        sorted_items = sorted(titles.items(), key=lambda x: x[1].get("found_at", ""), reverse=True)
-        for i, (title, info) in enumerate(sorted_items, 1):
-            url = info.get("url", "")
-            source = info.get("source", "")
-            pub_date = info.get("pub_date", "")
-            found = info.get("found_at", "")[:10]
-            title_esc = title.replace("|", "∣")
-            if url:
-                title_cell = f"[{title_esc}]({url})"
-            else:
-                title_cell = title_esc
-            lines.append(f"| {i} | {title_cell} | {source} | {pub_date} | {found} |")
-
-    lines.append("")
-
-    path = Path(output_path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(lines), encoding="utf-8")
-    logger.info(f"lgycp page generated: {path}")
-
+# ------------------------------------------------------------------ #
+# run
+# ------------------------------------------------------------------ #
 
 def run_monitor(query: str = "临港少年宫", notify: bool = False, page: bool = False) -> List[Dict]:
-    """full pipeline: fetch (with fallback) -> filter -> archive -> page -> notify."""
     articles = fetch_articles(query)
     relevant = filter_relevant(articles)
     new_articles = check_and_archive(relevant)
@@ -340,7 +279,7 @@ def run_monitor(query: str = "临港少年宫", notify: bool = False, page: bool
         generate_page()
 
     if new_articles and notify:
-        send_email(new_articles)
+        send_email_alert(new_articles)
 
     return new_articles
 
@@ -353,21 +292,3 @@ def _clean_html(raw: str) -> str:
     text = re.sub(r'<[^>]+>', '', raw)
     text = re.sub(r'<!--.*?-->', '', text)
     return html_mod.unescape(text).strip()
-
-
-def _load_archive() -> Dict[str, Any]:
-    path = Path(ARCHIVE_FILE)
-    if not path.exists():
-        return {"titles": {}, "total_count": 0}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {"titles": {}, "total_count": 0}
-
-
-def _save_archive(archive: Dict[str, Any]):
-    path = Path(ARCHIVE_FILE)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(archive, f, ensure_ascii=False, indent=2)

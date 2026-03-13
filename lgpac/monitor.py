@@ -3,17 +3,15 @@ ticket availability monitor.
 filters shows by price threshold, tracks stock changes,
 and generates alerts for affordable in-stock tickets.
 """
-import json
 import logging
-import os
 from pathlib import Path
 from datetime import datetime, timezone
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Optional
-from urllib.request import urlopen, Request
-from urllib.error import URLError
+from typing import List, Dict, Any
 
-from lgpac.models import Show, SeatPlan
+from lgpac.models import Show
+from lgpac.archive import JsonArchive
+from lgpac.notify import send_email, send_webhook, build_html_email
 
 logger = logging.getLogger("lgpac.monitor")
 
@@ -29,18 +27,20 @@ class TicketAlert:
     venue: str
     plans: List[Dict[str, Any]] = field(default_factory=list)
     first_seen: str = ""
-    status: str = ""  # "new" | "available" | "sold_out" | "back_in_stock"
+    status: str = ""
 
+
+# ------------------------------------------------------------------ #
+# analysis
+# ------------------------------------------------------------------ #
 
 def analyze_shows(
     shows: List[Show],
     max_price: float = 120.0,
 ) -> List[TicketAlert]:
-    """
-    scan all shows for affordable tickets.
-    returns alerts sorted by show date.
-    """
-    history = _load_history()
+    """scan all shows for affordable tickets, compare with history."""
+    archive = JsonArchive(HISTORY_FILE, key_field="_raw")
+    history = archive.load()
     now = datetime.now(timezone.utc).isoformat()
     alerts = []
 
@@ -50,7 +50,6 @@ def analyze_shows(
             continue
 
         in_stock = [p for p in affordable_plans if p["available"]]
-
         prev = history.get(show.show_id)
 
         if not prev:
@@ -81,7 +80,6 @@ def analyze_shows(
         )
         alerts.append(alert)
 
-        # update history
         history[show.show_id] = {
             "name": show.name,
             "first_seen": first_seen,
@@ -90,7 +88,9 @@ def analyze_shows(
             "plan_count": len(affordable_plans),
         }
 
-    _save_history(history)
+    archive.set("_raw", None)
+    archive._data = history
+    archive.save()
 
     alerts.sort(key=lambda a: a.show_date)
     return alerts
@@ -114,8 +114,12 @@ def _find_affordable_plans(show: Show, max_price: float) -> List[Dict[str, Any]]
     return results
 
 
+# ------------------------------------------------------------------ #
+# formatting
+# ------------------------------------------------------------------ #
+
 def format_alerts_text(alerts: List[TicketAlert], max_price: float) -> str:
-    """format alerts as plain text for console or notification."""
+    """format alerts as plain text for console or webhook."""
     if not alerts:
         return f"no tickets found under ¥{max_price:.0f}"
 
@@ -170,74 +174,21 @@ def format_alerts_markdown(alerts: List[TicketAlert], max_price: float) -> str:
         prices = sorted(set(p["price"] for p in a.plans))
         price_str = " / ".join(f"¥{p:.0f}" for p in prices)
         stock_str = f"{len(in_stock_plans)}/{len(a.plans)}"
-
         icon = {"new": "🆕", "available": "✅", "back_in_stock": "🔄", "sold_out": "❌"}.get(a.status, "?")
         name = a.show_name.replace("|", "/")
         since = a.first_seen[:10]
-
         lines.append(f"| {icon} | {a.category} | {name} | {a.show_date} | {price_str} | {stock_str} | {since} |")
 
     lines.append("")
     return "\n".join(lines)
 
 
-def send_webhook(text: str, webhook_url: Optional[str] = None):
-    """
-    send alert via webhook. auto-detects platform by URL:
-      - feishu/lark: open.feishu.cn or open.larksuite.com
-      - dingtalk: oapi.dingtalk.com
-      - slack: hooks.slack.com
-      - generic: plain JSON {"text": "..."}
-    set LGPAC_WEBHOOK_URL env var or pass directly.
-    """
-    url = webhook_url or os.environ.get("LGPAC_WEBHOOK_URL", "")
-    if not url:
-        return
-
-    body = _build_webhook_payload(url, text)
-    payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
-    req = Request(url, data=payload, headers={"Content-Type": "application/json"})
-
-    try:
-        with urlopen(req, timeout=10) as resp:
-            logger.info(f"webhook sent: {resp.status}")
-    except URLError as e:
-        logger.warning(f"webhook failed: {e}")
-
-
-def _build_webhook_payload(url: str, text: str) -> Dict:
-    """format payload for the target platform."""
-    if "feishu.cn" in url or "larksuite.com" in url:
-        return {
-            "msg_type": "text",
-            "content": {"text": text},
-        }
-    if "dingtalk.com" in url:
-        return {
-            "msgtype": "text",
-            "text": {"content": text},
-        }
-    if "hooks.slack.com" in url:
-        return {"text": text}
-    # generic fallback
-    return {"text": text, "content": text}
-
+# ------------------------------------------------------------------ #
+# email (uses shared notify)
+# ------------------------------------------------------------------ #
 
 def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path: str = "docs_lgpac/index.md") -> bool:
-    """
-    send email when:
-      1. a NEW show appears with affordable tickets in stock
-      2. an OLD show's cheapest tier comes BACK IN STOCK
-    attaches the full index.md dashboard as HTML for easy reading.
-    """
-    import smtplib
-    from email.mime.text import MIMEText
-
-    to_addr = os.environ.get("LGPAC_NOTIFY_EMAIL", "").strip()
-    if not to_addr:
-        logger.debug("email: LGPAC_NOTIFY_EMAIL not set, skipped")
-        return False
-
+    """send email for NEW or BACK_IN_STOCK shows, with full dashboard attached."""
     worth_emailing = [a for a in alerts if a.status in ("new", "back_in_stock")]
     if not worth_emailing:
         logger.info("email: no new/restocked shows, skipped")
@@ -246,7 +197,6 @@ def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path:
     new_shows = [a for a in worth_emailing if a.status == "new"]
     restocked = [a for a in worth_emailing if a.status == "back_in_stock"]
 
-    # build subject
     subject_parts = []
     if new_shows:
         subject_parts.append(f"{len(new_shows)} new")
@@ -254,32 +204,8 @@ def send_email_alert(alerts: List[TicketAlert], max_price: float, index_md_path:
         subject_parts.append(f"{len(restocked)} restocked")
     subject = f"[lgpac] {' + '.join(subject_parts)} (under ¥{max_price:.0f})"
 
-    # build HTML body: alert summary + full dashboard
     html = _build_email_html(new_shows, restocked, max_price, index_md_path)
-
-    smtp_server = os.environ.get("LGPAC_SMTP_SERVER", "smtp.qq.com")
-    smtp_port = int(os.environ.get("LGPAC_SMTP_PORT", "465"))
-    smtp_user = os.environ.get("LGPAC_SMTP_USER", "").strip()
-    smtp_pass = os.environ.get("LGPAC_SMTP_PASS", "").strip()
-
-    if not smtp_user or not smtp_pass:
-        logger.warning("email: SMTP credentials not set, skipped")
-        return False
-
-    msg = MIMEText(html, "html", "utf-8")
-    msg["Subject"] = subject
-    msg["From"] = smtp_user
-    msg["To"] = to_addr
-
-    try:
-        with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=15) as s:
-            s.login(smtp_user, smtp_pass)
-            s.sendmail(smtp_user, [to_addr], msg.as_string())
-        logger.info("email: sent successfully")
-        return True
-    except Exception as e:
-        logger.warning(f"email: send failed - {type(e).__name__}")
-        return False
+    return send_email(subject, html)
 
 
 def _build_email_html(
@@ -288,11 +214,9 @@ def _build_email_html(
     max_price: float,
     index_md_path: str,
 ) -> str:
-    """build an HTML email with alert highlights + full dashboard from index.md."""
     parts = []
-    parts.append("""<html><body style="font-family:-apple-system,Arial,sans-serif;color:#222;max-width:700px;margin:0 auto;">""")
+    parts.append('<html><body style="font-family:-apple-system,Arial,sans-serif;color:#222;max-width:700px;margin:0 auto;">')
 
-    # alert section
     if new_shows:
         parts.append(f"<h2 style='color:#2da44e;'>🆕 {len(new_shows)} new show(s)</h2>")
         parts.append(_alert_table_html(new_shows))
@@ -301,10 +225,8 @@ def _build_email_html(
         parts.append(f"<h2 style='color:#d29922;'>🔄 {len(restocked)} restocked</h2>")
         parts.append(_alert_table_html(restocked))
 
-    # divider
     parts.append("<hr style='border:none;border-top:2px solid #ddd;margin:24px 0;'>")
 
-    # full dashboard from index.md
     dashboard_html = _markdown_to_html(index_md_path)
     if dashboard_html:
         parts.append("<h2>📋 Full Dashboard</h2>")
@@ -332,13 +254,12 @@ def _alert_table_html(alerts: List[TicketAlert]) -> str:
         "<th style='padding:6px 8px;text-align:left;'>Date</th>"
         "<th style='padding:6px 8px;text-align:left;'>Price</th>"
         "<th style='padding:6px 8px;text-align:left;'>Stock</th></tr>"
-        + "".join(rows)
-        + "</table>"
+        + "".join(rows) + "</table>"
     )
 
 
 def _markdown_to_html(md_path: str) -> str:
-    """convert index.md tables to simple HTML (no external deps)."""
+    """convert index.md tables to simple HTML."""
     path = Path(md_path)
     if not path.exists():
         return ""
@@ -350,8 +271,6 @@ def _markdown_to_html(md_path: str) -> str:
 
     for line in lines:
         stripped = line.strip()
-
-        # skip markdown headings -> convert to HTML headings
         if stripped.startswith("# "):
             html_parts.append(f"<h2>{stripped[2:]}</h2>")
             continue
@@ -374,28 +293,20 @@ def _markdown_to_html(md_path: str) -> str:
             html_parts.append(f"<h4>{label}</h4>")
             continue
 
-        # table rows
         if stripped.startswith("|") and stripped.endswith("|"):
             cells = [c.strip() for c in stripped.split("|")[1:-1]]
-
-            # skip separator rows like |---|---|
             if all(c.replace("-", "").replace(":", "") == "" for c in cells):
                 is_header_row = False
                 continue
-
             if not in_table:
-                html_parts.append(
-                    "<table style='border-collapse:collapse;width:100%;font-size:13px;margin:8px 0;'>"
-                )
+                html_parts.append("<table style='border-collapse:collapse;width:100%;font-size:13px;margin:8px 0;'>")
                 in_table = True
-
             tag = "th" if is_header_row else "td"
             style = "padding:5px 8px;border-bottom:1px solid #ddd;text-align:left;"
             if is_header_row:
                 style += "background:#f6f8fa;font-weight:600;"
             row = "".join(f"<{tag} style='{style}'>{c}</{tag}>" for c in cells)
             html_parts.append(f"<tr>{row}</tr>")
-
             if is_header_row:
                 is_header_row = False
         else:
@@ -410,25 +321,3 @@ def _markdown_to_html(md_path: str) -> str:
         html_parts.append("</table>")
 
     return "\n".join(html_parts)
-
-
-# ------------------------------------------------------------------ #
-# history persistence
-# ------------------------------------------------------------------ #
-
-def _load_history() -> Dict[str, Any]:
-    path = Path(HISTORY_FILE)
-    if not path.exists():
-        return {}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {}
-
-
-def _save_history(history: Dict[str, Any]):
-    path = Path(HISTORY_FILE)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(history, f, ensure_ascii=False, indent=2)

@@ -101,10 +101,8 @@ def monitor(
     config = _make_config(debug, output)
 
     from lgpac.spider import LgpacSpider
-    from lgpac.monitor import (
-        analyze_shows, format_alerts_text, format_alerts_markdown,
-        send_webhook, send_email_alert,
-    )
+    from lgpac.monitor import analyze_shows, format_alerts_text, format_alerts_markdown, send_email_alert
+    from lgpac.notify import send_webhook
 
     spider = LgpacSpider(config=config)
     shows, diff = spider.crawl_all(fetch_details=True)
@@ -318,7 +316,8 @@ def lgycp(
     """monitor weixin articles for activity/enrollment notices."""
     _setup_logging(debug)
 
-    from lgpac.lgycp import run_monitor, _load_archive
+    from lgpac.lgycp import run_monitor
+    from lgpac.archive import JsonArchive
 
     new_articles = run_monitor(query=query, notify=notify, page=page)
 
@@ -332,8 +331,9 @@ def lgycp(
     else:
         console.print("[dim]no new articles matching keywords[/dim]")
 
-    archive = _load_archive()
-    console.print(f"[green]archive: {archive.get('total_count', 0)} articles[/green]")
+    archive = JsonArchive("archs_lgycp/archive.json", key_field="titles")
+    archive.load()
+    console.print(f"[green]archive: {len(archive.keys())} articles[/green]")
     if page:
         console.print("[green]docs_lgycp/index.md generated[/green]")
 
@@ -350,37 +350,31 @@ def xbirds(
     remove: Optional[str] = typer.Option(None, "--remove", help="remove a tracked username"),
     debug: bool = typer.Option(False, "--debug", "-d"),
 ):
-    """track X/Twitter posts from followed users."""
+    """track X/Twitter posts from followed users (tracked.yml)."""
     _setup_logging(debug)
 
-    from lgpac.xbirds import run_monitor, load_tracked_users, save_tracked_users
+    from lgpac.xbirds import run_monitor, add_user, remove_user, get_usernames, parse_tweet_date
 
     if add:
-        users = load_tracked_users()
         name = add.lstrip("@")
-        if name not in users:
-            users.append(name)
-            save_tracked_users(users)
+        if add_user(name):
             console.print(f"[green]added @{name}[/green]")
         else:
             console.print(f"[dim]@{name} already tracked[/dim]")
         return
 
     if remove:
-        users = load_tracked_users()
         name = remove.lstrip("@")
-        if name in users:
-            users.remove(name)
-            save_tracked_users(users)
+        if remove_user(name):
             console.print(f"[yellow]removed @{name}[/yellow]")
         else:
             console.print(f"[dim]@{name} not in list[/dim]")
         return
 
-    users = load_tracked_users()
-    console.print(f"tracking: {', '.join(f'@{u}' for u in users)}\n")
+    usernames = get_usernames()
+    console.print(f"tracking {len(usernames)} users\n")
 
-    new_posts = run_monitor(notify=notify, page=page)
+    new_posts, warnings = run_monitor(notify=notify, page=page)
 
     if new_posts:
         table = Table(title=f"{len(new_posts)} new post(s)")
@@ -388,24 +382,18 @@ def xbirds(
         table.add_column("post", style="bold")
         table.add_column("date", style="dim")
         for p in new_posts:
-            table.add_row(f"@{p['username']}", p['text'][:60], _parse_tweet_date(p.get('created_at', '')))
+            table.add_row(f"@{p['username']}", p['text'][:60], parse_tweet_date(p.get('created_at', '')))
         console.print(table)
     else:
         console.print("[dim]no new posts[/dim]")
 
+    if warnings:
+        console.print(f"\n[yellow]⚠ {len(warnings)} account(s) with issues:[/yellow]")
+        for w in warnings:
+            console.print(f"  [dim]@{w['username']} ({w['name']}): {w['issue']}[/dim]")
+
     if page:
-        console.print("[green]docs_xbirds/index.md generated[/green]")
-
-
-def _parse_tweet_date(raw: str) -> str:
-    if not raw:
-        return ""
-    try:
-        from datetime import datetime as dt
-        d = dt.strptime(raw, "%a %b %d %H:%M:%S %z %Y")
-        return d.strftime("%Y-%m-%d")
-    except ValueError:
-        return raw[:10]
+        console.print(f"\n[green]docs_xbirds/index.md generated[/green]")
 
 
 # ------------------------------------------------------------------ #

@@ -1,22 +1,27 @@
 """
-twitter/X post tracker.
-fetches recent posts from tracked users via twitter syndication API (no auth needed).
-archives posts and notifies on new ones.
+X/Twitter post tracker.
+fetches recent posts via twitter syndication API (no auth needed).
+reads tracked users from archs_xbirds/tracked.yml.
+invalid accounts are skipped and collected as warnings.
 """
 import re
 import json
 import logging
-import os
+import time
+import yaml
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
+
+from lgpac.archive import JsonArchive
+from lgpac.notify import send_email, build_html_email
 
 logger = logging.getLogger("lgpac.xbirds")
 
 SYNDICATION_URL = "https://syndication.twitter.com/srv/timeline-profile/screen-name/{username}"
 TWEET_URL_TEMPLATE = "https://x.com/{username}/status/{tweet_id}"
+TRACKED_FILE = "archs_xbirds/tracked.yml"
 ARCHIVE_FILE = "archs_xbirds/archive.json"
-TRACKED_USERS_FILE = "archs_xbirds/users.json"
 
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -24,58 +29,90 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
+REQUEST_DELAY = 1.0
 
-def load_tracked_users() -> List[str]:
-    """load the list of tracked usernames from users.json."""
-    path = Path(TRACKED_USERS_FILE)
+
+# ------------------------------------------------------------------ #
+# tracked user management (YAML)
+# ------------------------------------------------------------------ #
+
+def load_tracked() -> List[Dict[str, Any]]:
+    path = Path(TRACKED_FILE)
     if not path.exists():
         return []
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data.get("users", [])
-    except Exception:
+    with open(path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    if not isinstance(data, list):
         return []
+    return data
 
 
-def save_tracked_users(users: List[str]):
-    path = Path(TRACKED_USERS_FILE)
+def get_usernames() -> List[str]:
+    return [u["username"] for u in load_tracked() if u.get("username")]
+
+
+def add_user(username: str, name: str = "", category: str = "custom", tags: Optional[List[str]] = None):
+    tracked = load_tracked()
+    if username in {u["username"] for u in tracked}:
+        return False
+    tracked.append({"username": username, "name": name or username, "category": category, "tags": tags or []})
+    _save_tracked(tracked)
+    return True
+
+
+def remove_user(username: str) -> bool:
+    tracked = load_tracked()
+    before = len(tracked)
+    tracked = [u for u in tracked if u["username"] != username]
+    if len(tracked) == before:
+        return False
+    _save_tracked(tracked)
+    return True
+
+
+def _save_tracked(tracked: List[Dict]):
+    path = Path(TRACKED_FILE)
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump({"users": users}, f, ensure_ascii=False, indent=2)
+        yaml.dump(tracked, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
+
+# ------------------------------------------------------------------ #
+# fetch posts
+# ------------------------------------------------------------------ #
 
 def fetch_user_posts(username: str) -> List[Dict[str, Any]]:
-    """fetch recent posts for a single user via syndication API."""
     import requests
 
     url = SYNDICATION_URL.format(username=username)
     try:
         resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
+        if resp.status_code == 404:
+            return []
         resp.raise_for_status()
     except Exception as e:
-        logger.warning(f"[@{username}] fetch failed: {e}")
+        logger.debug(f"[@{username}] request error: {e}")
         return []
 
     return _parse_syndication(resp.text, username)
 
 
 def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
-    """extract tweet data from syndication page's __NEXT_DATA__ JSON."""
     pattern = re.compile(r'"__NEXT_DATA__"\s*type="application/json">(.*?)</script>', re.DOTALL)
     m = pattern.search(html)
     if not m:
-        logger.warning(f"[@{username}] no __NEXT_DATA__ found in response")
         return []
 
     try:
         data = json.loads(m.group(1))
     except json.JSONDecodeError:
-        logger.warning(f"[@{username}] failed to parse JSON")
         return []
 
-    entries = data.get("props", {}).get("pageProps", {}).get("timeline", {}).get("entries", [])
+    page_props = data.get("props", {}).get("pageProps", {})
+    if not page_props.get("contextProvider", {}).get("hasResults", True):
+        return []
 
+    entries = page_props.get("timeline", {}).get("entries", [])
     posts = []
     for entry in entries:
         if entry.get("type") != "tweet":
@@ -83,11 +120,9 @@ def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
         tweet = entry.get("content", {}).get("tweet", {})
         if not tweet:
             continue
-
         user = tweet.get("user", {})
         tweet_id = tweet.get("id_str", "")
         screen_name = user.get("screen_name", username)
-
         posts.append({
             "id": tweet_id,
             "username": screen_name,
@@ -95,32 +130,50 @@ def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
             "text": tweet.get("text", ""),
             "created_at": tweet.get("created_at", ""),
             "url": TWEET_URL_TEMPLATE.format(username=screen_name, tweet_id=tweet_id),
-            "is_retweet": "retweeted_status" in tweet,
             "favorite_count": tweet.get("favorite_count", 0),
-            "retweet_count": tweet.get("conversation_count", 0),
         })
-
-    logger.info(f"[@{username}] fetched {len(posts)} posts")
     return posts
 
 
-def fetch_all_users() -> Dict[str, List[Dict]]:
-    """fetch posts for all tracked users."""
-    users = load_tracked_users()
-    if not users:
-        logger.info("no tracked users configured")
-        return {}
+def fetch_all_users() -> tuple:
+    """returns (results_dict, warnings_list)."""
+    tracked = load_tracked()
+    if not tracked:
+        return {}, []
 
-    result = {}
-    for username in users:
+    results = {}
+    warnings = []
+    total = len(tracked)
+
+    for i, entry in enumerate(tracked):
+        username = entry.get("username", "")
+        if not username:
+            continue
         posts = fetch_user_posts(username)
-        result[username] = posts
-    return result
+        if posts:
+            results[username] = posts
+            logger.debug(f"[{i+1}/{total}] @{username}: {len(posts)} posts")
+        else:
+            warnings.append({
+                "username": username,
+                "name": entry.get("name", username),
+                "category": entry.get("category", ""),
+                "issue": "no_data_or_not_found",
+            })
+        if i < total - 1:
+            time.sleep(REQUEST_DELAY)
 
+    logger.info(f"fetched {len(results)}/{total} users, {len(warnings)} warnings")
+    return results, warnings
+
+
+# ------------------------------------------------------------------ #
+# archive (uses shared JsonArchive)
+# ------------------------------------------------------------------ #
 
 def check_and_archive(all_posts: Dict[str, List[Dict]]) -> List[Dict]:
-    """compare against archive, return only NEW posts, update archive."""
-    archive = _load_archive()
+    archive = JsonArchive(ARCHIVE_FILE, key_field="tweet_ids")
+    archive.load()
     known_ids = set(archive.get("tweet_ids", []))
     now = datetime.now(timezone.utc).isoformat()
 
@@ -133,10 +186,10 @@ def check_and_archive(all_posts: Dict[str, List[Dict]]) -> List[Dict]:
                 known_ids.add(tid)
 
     if new_posts:
-        archive["tweet_ids"] = list(known_ids)
-        archive["last_updated"] = now
-        archive["total_count"] = len(known_ids)
-        _save_archive(archive)
+        archive.set("tweet_ids", list(known_ids))
+        archive.set("last_updated", now)
+        archive.set("total_count", len(known_ids))
+        archive.save()
         logger.info(f"archived {len(new_posts)} new posts (total: {len(known_ids)})")
     else:
         logger.info("no new posts")
@@ -144,36 +197,53 @@ def check_and_archive(all_posts: Dict[str, List[Dict]]) -> List[Dict]:
     return new_posts
 
 
-def generate_page(all_posts: Dict[str, List[Dict]], output_path: str = "docs_xbirds/index.md"):
-    """generate a markdown page listing recent posts per user."""
+# ------------------------------------------------------------------ #
+# page generation
+# ------------------------------------------------------------------ #
+
+def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output_path: str = "docs_xbirds/index.md"):
+    tracked = load_tracked()
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    users = load_tracked_users()
+    active = len(all_posts)
+    total = len(tracked)
 
-    lines = []
-    lines.append("# 🐦 X/Twitter Tracker")
-    lines.append("")
-    lines.append(f"> updated: {now} · tracking {len(users)} user(s)")
-    lines.append("")
+    lines = ["# 🐦 X/Twitter Tracker", "", f"> updated: {now} · {active}/{total} users active", ""]
 
-    for username in users:
-        posts = all_posts.get(username, [])
-        lines.append(f"## @{username}")
-        lines.append("")
+    categories = {}
+    for entry in tracked:
+        cat = entry.get("category", "other")
+        categories.setdefault(cat, []).append(entry)
 
-        if not posts:
-            lines.append("*no posts fetched*")
-            lines.append("")
+    for cat, entries in categories.items():
+        active_in_cat = [e for e in entries if e["username"] in all_posts]
+        if not active_in_cat:
             continue
-
-        lines.append("| # | Date | Post | Likes |")
-        lines.append("|---|------|------|-------|")
-        for i, p in enumerate(posts[:20], 1):
-            date = _parse_tweet_date(p.get("created_at", ""))
-            text = p.get("text", "")[:100].replace("|", "∣").replace("\n", " ")
+        lines.append(f"### {cat}")
+        lines.append("")
+        lines.append("| User | Latest Post | Date | Likes |")
+        lines.append("|------|------------|------|-------|")
+        for entry in active_in_cat:
+            username = entry["username"]
+            posts = all_posts.get(username, [])
+            if not posts:
+                continue
+            p = posts[0]
+            date = parse_tweet_date(p.get("created_at", ""))
+            text = p.get("text", "")[:80].replace("|", "∣").replace("\n", " ")
             url = p.get("url", "")
             likes = p.get("favorite_count", 0)
-            rt = " 🔁" if p.get("is_retweet") else ""
-            lines.append(f"| {i} | {date} | [{text}]({url}){rt} | {likes} |")
+            lines.append(f"| @{username} | [{text}]({url}) | {date} | {likes} |")
+        lines.append("")
+
+    if warnings:
+        lines.append(f"<details><summary>⚠️ warnings ({len(warnings)} accounts)</summary>")
+        lines.append("")
+        lines.append("| Username | Name | Category | Issue |")
+        lines.append("|----------|------|----------|-------|")
+        for w in warnings:
+            lines.append(f"| @{w['username']} | {w['name']} | {w['category']} | {w['issue']} |")
+        lines.append("")
+        lines.append("</details>")
         lines.append("")
 
     path = Path(output_path)
@@ -182,82 +252,57 @@ def generate_page(all_posts: Dict[str, List[Dict]], output_path: str = "docs_xbi
     logger.info(f"xbirds page generated: {path}")
 
 
-def send_email(new_posts: List[Dict]) -> bool:
-    """send email for new posts."""
-    import smtplib
-    from email.mime.text import MIMEText
+# ------------------------------------------------------------------ #
+# email (uses shared notify)
+# ------------------------------------------------------------------ #
 
-    to_addr = os.environ.get("LGPAC_NOTIFY_EMAIL", "").strip()
-    smtp_user = os.environ.get("LGPAC_SMTP_USER", "").strip()
-    smtp_pass = os.environ.get("LGPAC_SMTP_PASS", "").strip()
-    smtp_server = os.environ.get("LGPAC_SMTP_SERVER", "smtp.qq.com")
-    smtp_port = int(os.environ.get("LGPAC_SMTP_PORT", "465"))
-
-    if not to_addr or not smtp_user or not smtp_pass:
-        return False
+def send_email_alert(new_posts: List[Dict]) -> bool:
     if not new_posts:
         return False
 
     rows = []
     for p in new_posts:
-        date = _parse_tweet_date(p.get("created_at", ""))
+        date = parse_tweet_date(p.get("created_at", ""))
         text = p.get("text", "")[:150]
         url = p.get("url", "#")
         username = p.get("username", "")
-        rows.append(
-            f'<tr><td style="padding:6px 8px;color:#1da1f2;">@{username}</td>'
-            f'<td style="padding:6px 8px;">'
-            f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{text}</a></td>'
-            f'<td style="padding:6px 8px;color:#888;">{date}</td></tr>'
-        )
+        rows.append([
+            f'<span style="color:#1da1f2;">@{username}</span>',
+            f'<a href="{url}" style="color:#1a73e8;text-decoration:none;">{text}</a>',
+            f'<span style="color:#888;">{date}</span>',
+        ])
 
-    body = (
-        '<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:700px;margin:0 auto;">'
-        f'<h2 style="color:#1da1f2;">🐦 {len(new_posts)} new post(s)</h2>'
-        '<table style="border-collapse:collapse;width:100%;font-size:14px;">'
-        '<tr style="background:#f6f8fa;"><th style="padding:6px 8px;text-align:left;">User</th>'
-        '<th style="padding:6px 8px;text-align:left;">Post</th>'
-        '<th style="padding:6px 8px;text-align:left;">Date</th></tr>'
-        + "".join(rows)
-        + '</table></body></html>'
+    html = build_html_email(
+        title=f"🐦 {len(new_posts)} new post(s)",
+        heading_color="#1da1f2",
+        table_headers=["User", "Post", "Date"],
+        table_rows=rows,
     )
-
-    msg = MIMEText(body, "html", "utf-8")
-    msg["Subject"] = f"[xbirds] {len(new_posts)} new post(s)"
-    msg["From"] = smtp_user
-    msg["To"] = to_addr
-
-    try:
-        with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=15) as s:
-            s.login(smtp_user, smtp_pass)
-            s.sendmail(smtp_user, [to_addr], msg.as_string())
-        logger.info("xbirds email: sent successfully")
-        return True
-    except Exception as e:
-        logger.warning(f"xbirds email: send failed - {type(e).__name__}")
-        return False
+    return send_email(f"[xbirds] {len(new_posts)} new post(s)", html)
 
 
-def run_monitor(notify: bool = False, page: bool = False) -> List[Dict]:
-    """full pipeline: fetch all users -> archive -> page -> notify."""
-    all_posts = fetch_all_users()
+# ------------------------------------------------------------------ #
+# run
+# ------------------------------------------------------------------ #
+
+def run_monitor(notify: bool = False, page: bool = False) -> tuple:
+    all_posts, warnings = fetch_all_users()
     new_posts = check_and_archive(all_posts)
 
     if page:
-        generate_page(all_posts)
+        generate_page(all_posts, warnings)
 
     if new_posts and notify:
-        send_email(new_posts)
+        send_email_alert(new_posts)
 
-    return new_posts
+    return new_posts, warnings
 
 
 # ------------------------------------------------------------------ #
 # helpers
 # ------------------------------------------------------------------ #
 
-def _parse_tweet_date(raw: str) -> str:
-    """parse twitter date format to YYYY-MM-DD."""
+def parse_tweet_date(raw: str) -> str:
     if not raw:
         return ""
     try:
@@ -265,21 +310,3 @@ def _parse_tweet_date(raw: str) -> str:
         return dt.strftime("%Y-%m-%d")
     except ValueError:
         return raw[:10]
-
-
-def _load_archive() -> Dict[str, Any]:
-    path = Path(ARCHIVE_FILE)
-    if not path.exists():
-        return {"tweet_ids": [], "total_count": 0}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {"tweet_ids": [], "total_count": 0}
-
-
-def _save_archive(archive: Dict[str, Any]):
-    path = Path(ARCHIVE_FILE)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(archive, f, ensure_ascii=False, indent=2)
