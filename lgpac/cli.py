@@ -346,6 +346,7 @@ def lgycp(
 def xbirds(
     notify: bool = typer.Option(False, "--notify", "-n", help="send email on new posts"),
     page: bool = typer.Option(False, "--page", help="generate docs_xbirds/index.md"),
+    hours: int = typer.Option(24, "--hours", help="lookback window in hours (default 24, use 168 for 1 week)"),
     add: Optional[str] = typer.Option(None, "--add", help="add a username to track"),
     remove: Optional[str] = typer.Option(None, "--remove", help="remove a tracked username"),
     debug: bool = typer.Option(False, "--debug", "-d"),
@@ -374,7 +375,7 @@ def xbirds(
     usernames = get_usernames()
     console.print(f"tracking {len(usernames)} users\n")
 
-    new_posts, warnings = run_monitor(notify=notify, page=page)
+    new_posts, warnings = run_monitor(notify=notify, page=page, recent_hours=hours)
 
     if new_posts:
         table = Table(title=f"{len(new_posts)} new post(s)")

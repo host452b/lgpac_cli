@@ -488,8 +488,8 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
 # run
 # ------------------------------------------------------------------ #
 
-def run_monitor(notify: bool = False, page: bool = False) -> tuple:
-    all_posts, warnings = fetch_all_users()
+def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RECENT_HOURS) -> tuple:
+    all_posts, warnings = fetch_all_users(recent_hours=recent_hours)
     new_posts = check_and_archive(all_posts)
 
     if page:

@@ -5,6 +5,12 @@ on:
     # once daily at UTC 00:00 (Beijing 08:00)
     - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      hours:
+        description: "lookback window in hours (default 24, use 168 for 1 week)"
+        required: false
+        default: "24"
+        type: string
 
 permissions:
   contents: write
@@ -12,7 +18,7 @@ permissions:
 jobs:
   xbirds:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 30
 
     env:
       LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
@@ -32,8 +38,11 @@ jobs:
       - name: install dependencies
         run: pip install requests typer rich pyyaml
 
-      - name: run xbirds daily digest
-        run: python lgpac_cli.py xbirds --page --notify
+      - name: run xbirds digest
+        run: |
+          HOURS="${{ github.event.inputs.hours || '24' }}"
+          echo "lookback: ${HOURS}h"
+          python lgpac_cli.py xbirds --page --notify --hours "$HOURS"
 
       - name: commit results
         run: |
