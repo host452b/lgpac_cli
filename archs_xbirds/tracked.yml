@@ -50,7 +50,7 @@
 # read top-down: if only stage 0 is talking, the topic is
 # embryonic. once stage 3-4 joins, the topic is exhausted.
 #
-#   0 = ignition   ( 48 accounts)
+#   0 = ignition   ( 48 / 210 accounts)
 #       the absolute origin of a signal. information exists
 #       only as raw technical artifacts.
 #       boundary:  content has NOT been interpreted or
@@ -63,7 +63,7 @@
 #                  @deepseek_ai releases -> new weights.
 #       signal:    ONLY stage 0 talking = unvalidated lab work.
 #
-#   1 = momentum   ( 62 accounts)
+#   1 = momentum   ( 62 / 210 accounts)
 #       domain experts interpret and amplify the signal
 #       WITHIN their professional circle.
 #       boundary:  understood by practitioners, but has NOT
@@ -77,7 +77,7 @@
 #       signal:    stage 1 buzzing + stage 2 silent = expert
 #                  traction, not yet mainstream.
 #
-#   2 = explosion  ( 53 accounts)
+#   2 = explosion  ( 53 / 210 accounts)
 #       the signal crosses industry boundaries. non-specialists
 #       are now discussing it.
 #       boundary:  content moves from "what is this technically"
@@ -92,7 +92,7 @@
 #       signal:    stage 2 active = peak decision-making value.
 #                  act now or miss the window.
 #
-#   3 = decay      ( 32 accounts)
+#   3 = decay      ( 32 / 210 accounts)
 #       the signal has reached the general public. content is
 #       simplified, repeated, and diluted.
 #       boundary:  mass media outlets, late-night hosts, or
@@ -108,7 +108,7 @@
 #                  original signal value near zero.
 #                  look for the NEXT stage 0 signal instead.
 #
-#   4 = fading     ( 15 accounts)
+#   4 = fading     ( 15 / 210 accounts)
 #       the signal lifecycle is complete. content is recycled,
 #       monetized, or discredited.
 #       boundary:  when these accounts discuss a topic, the
