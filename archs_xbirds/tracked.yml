@@ -1,17 +1,11 @@
 # ============================================================
-# X/Twitter Tracked Accounts
+# X/Twitter Tracked Accounts (164 total)
 # ============================================================
 #
-# 131 accounts across 13 categories
 # edit this file to add/remove users
 # the bot skips invalid accounts and reports warnings
 #
-# format per entry:
-#   - seq: <number>
-#     username: <twitter handle without @>
-#     name: <display name>
-#     category: <category key>
-#     tags: [tag1, tag2, ...]
+# format: seq, username, name, category, tags
 #
 
 
@@ -49,7 +43,7 @@
   tags: [gpu, compute, ecosystem]
 
 
-# ---- Foundation Builders (4) ----
+# ---- Foundation Builders (5) ----
 # building the base models and platforms
 
 - seq: 6
@@ -76,8 +70,14 @@
   category: foundation
   tags: [langchain, agent-framework]
 
+- seq: 141
+  username: darioamodei
+  name: Dario Amodei
+  category: foundation
+  tags: [anthropic, claude, safety]
 
-# ---- Top Scientists (20) ----
+
+# ---- Top Scientists (25) ----
 # researchers pushing the frontier
 
 - seq: 10
@@ -200,8 +200,38 @@
   category: scientist
   tags: [resnet, computer-vision]
 
+- seq: 144
+  username: fmoiolio
+  name: Fabio Moioli
+  category: scientist
+  tags: [digital-transform, microsoft]
 
-# ---- Core Figures (27) ----
+- seq: 146
+  username: timnitgebru
+  name: Timnit Gebru
+  category: scientist
+  tags: [ai-ethics, bias]
+
+- seq: 147
+  username: mmitchell_ai
+  name: Margaret Mitchell
+  category: scientist
+  tags: [ai-ethics, huggingface]
+
+- seq: 152
+  username: davidsilver_ai
+  name: David Silver
+  category: scientist
+  tags: [alphago, reinforcement-learning]
+
+- seq: 154
+  username: pushmeet
+  name: Pushmeet Kohli
+  category: scientist
+  tags: [deepmind, ai-safety]
+
+
+# ---- Core Figures (36) ----
 # founders, executives, and key decision makers
 
 - seq: 30
@@ -366,8 +396,62 @@
   category: core
   tags: [anthropic, operations]
 
+- seq: 148
+  username: jakobuszkoreit
+  name: Jakob Uszkoreit
+  category: core
+  tags: [transformer-author, inceptive]
 
-# ---- Organizations (8) ----
+- seq: 149
+  username: ashishvaswani
+  name: Ashish Vaswani
+  category: core
+  tags: [transformer-author, essential-ai]
+
+- seq: 150
+  username: llionj
+  name: Llion Jones
+  category: core
+  tags: [transformer-author, sakana-ai]
+
+- seq: 151
+  username: nikiparmar
+  name: Niki Parmar
+  category: core
+  tags: [transformer-author, essential-ai]
+
+- seq: 153
+  username: kbrodmann
+  name: Korbinian Brodmann
+  category: core
+  tags: [lambda-labs, compute]
+
+- seq: 155
+  username: larrypage
+  name: Larry Page
+  category: core
+  tags: [google, ai-vision]
+
+- seq: 156
+  username: sergeybrin
+  name: Sergey Brin
+  category: core
+  tags: [google, gemini]
+
+- seq: 157
+  username: billgates
+  name: Bill Gates
+  category: core
+  tags: [microsoft, ai-revolution]
+
+- seq: 163
+  username: DeepSeek_AI
+  name: DeepSeek (梁文锋)
+  category: core
+  tags: [deepseek, algorithm]
+
+
+# ---- Organizations (13) ----
 # official accounts of AI companies and teams
 
 - seq: 57
@@ -418,8 +502,38 @@
   category: org
   tags: [robotics, humanoid]
 
+- seq: 158
+  username: Huawei
+  name: Huawei
+  category: org
+  tags: [ascend, compute]
 
-# ---- Influencers (CN) (27) ----
+- seq: 159
+  username: PonyAI_Tech
+  name: Pony AI
+  category: org
+  tags: [autonomous-driving]
+
+- seq: 160
+  username: MiraclePlus
+  name: 奇绩创坛
+  category: org
+  tags: [incubator, startup]
+
+- seq: 161
+  username: NetEase
+  name: NetEase
+  category: org
+  tags: [gaming-ai, industry]
+
+- seq: 162
+  username: MediaTek
+  name: MediaTek
+  category: org
+  tags: [edge-ai, chip]
+
+
+# ---- Influencers (CN) (34) ----
 # Chinese-speaking AI thought leaders
 
 - seq: 65
@@ -584,8 +698,50 @@
   category: influencer-cn
   tags: [infra, geek]
 
+- seq: 132
+  username: guiyi_ai
+  name: 归一
+  category: influencer-cn
+  tags: [ai-marketing, practical]
 
-# ---- Influencers (EN) (9) ----
+- seq: 133
+  username: wubin_ai
+  name: 武彬
+  category: influencer-cn
+  tags: [ecommerce-ai, cases]
+
+- seq: 134
+  username: turing_ai
+  name: 图灵 (Turing)
+  category: influencer-cn
+  tags: [dev-hands-on, model-comparison]
+
+- seq: 135
+  username: wasu_ai
+  name: 瓦叔 (Wasu)
+  category: influencer-cn
+  tags: [office-efficiency, practical]
+
+- seq: 137
+  username: huaguoshandasheng
+  name: 花果山大圣
+  category: influencer-cn
+  tags: [tech-commentary, trend]
+
+- seq: 138
+  username: ljg_
+  name: 刘江
+  category: influencer-cn
+  tags: [tech-media, long-term]
+
+- seq: 140
+  username: baoyuz
+  name: 宝玉 (alt)
+  category: influencer-cn
+  tags: [startup, saas]
+
+
+# ---- Influencers (EN) (13) ----
 # English-speaking AI thought leaders
 
 - seq: 92
@@ -642,8 +798,32 @@
   category: influencer-en
   tags: [journalism, ethics]
 
+- seq: 142
+  username: 2morrowknight
+  name: Sean Gardner
+  category: influencer-en
+  tags: [tech-trend, observation]
 
-# ---- Indie Developers (8) ----
+- seq: 143
+  username: KirkDBorne
+  name: Kirk Borne
+  category: influencer-en
+  tags: [data-science, ai-insight]
+
+- seq: 145
+  username: alliek_miller
+  name: Allie K. Miller
+  category: influencer-en
+  tags: [ai-commercialization, consulting]
+
+- seq: 164
+  username: AIExplained
+  name: AI Explained
+  category: influencer-en
+  tags: [video-analysis, deep-review]
+
+
+# ---- Indie Developers (9) ----
 # solo builders and open-source creators
 
 - seq: 101
@@ -694,8 +874,14 @@
   category: indie-dev
   tags: [felo, glarity, japan]
 
+- seq: 139
+  username: zhangsan_dev
+  name: 独立开发者张三
+  category: indie-dev
+  tags: [dev-experience, tool-review]
 
-# ---- Startup Founders (3) ----
+
+# ---- Startup Founders (4) ----
 # next-gen AI startup founders
 
 - seq: 109
@@ -715,6 +901,12 @@
   name: 池光耀
   category: startup
   tags: [gen-z, yuhe-tech]
+
+- seq: 136
+  username: henryweng
+  name: Henry Weng
+  category: startup
+  tags: [ai-social, date-drop]
 
 
 # ---- Investors (8) ----
