@@ -76,8 +76,8 @@ python lgpac_cli.py lgycp
 # with email notification
 python lgpac_cli.py lgycp --notify
 
-# custom search query
-python lgpac_cli.py lgycp -q "临港少年宫" --notify
+# custom search query (or set LGYCP_QUERY env var)
+python lgpac_cli.py lgycp -q "your search term" --notify
 ```
 
 ### Output
@@ -140,7 +140,8 @@ Both support manual trigger via **Actions → Run workflow**.
 | `LGPAC_SMTP_SERVER` | SMTP server (default: `smtp.qq.com`) |
 | `LGPAC_SMTP_PORT` | SMTP port (default: `465`) |
 | `LGPAC_WEBHOOK_URL` | webhook URL for dingtalk/slack (optional) |
-| `LGPAC_TARGET_URL` | override target site URL (optional, set as `vars`) |
+| `LGPAC_TARGET_URL` | target site URL (set as `vars`) |
+| `LGYCP_QUERY` | article monitor search query (set as `vars`) |
 
 ### Project Structure
 

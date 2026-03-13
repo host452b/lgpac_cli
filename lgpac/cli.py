@@ -308,7 +308,7 @@ def schedule(
 
 @app.command()
 def lgycp(
-    query: str = typer.Option("临港少年宫", "--query", "-q", help="search query"),
+    query: str = typer.Option("", "--query", "-q", help="search query (or set LGYCP_QUERY env var)"),
     notify: bool = typer.Option(False, "--notify", "-n", help="send email on new articles"),
     page: bool = typer.Option(False, "--page", help="generate docs_lgycp/index.md"),
     debug: bool = typer.Option(False, "--debug", "-d"),

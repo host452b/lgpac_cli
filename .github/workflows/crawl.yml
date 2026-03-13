@@ -16,6 +16,7 @@ jobs:
 
     env:
       LGPAC_TARGET_URL: ${{ vars.LGPAC_TARGET_URL }}
+      LGYCP_QUERY: ${{ vars.LGYCP_QUERY }}
       LGPAC_WEBHOOK_URL: ${{ secrets.LGPAC_WEBHOOK_URL }}
       LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
       LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
