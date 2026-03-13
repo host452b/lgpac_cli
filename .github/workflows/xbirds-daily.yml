@@ -44,5 +44,9 @@ jobs:
             echo "no changes to commit"
           else
             git commit -m "xbirds: $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push
+            for i in 1 2 3; do
+              git push && break
+              echo "push failed, pulling and retrying ($i/3)"
+              git pull --rebase origin main
+            done
           fi
