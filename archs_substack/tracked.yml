@@ -17,7 +17,12 @@
 #   category:   content type (see below)
 #   tags:       topic labels
 #   wave_stage: 0-4 propagation phase
+#   feed_url:   (optional) custom RSS feed URL for non-substack or custom-domain feeds
 #   # comment:  one-line bio above each entry
+#
+# NOTE: if feed_url is set, the monitor uses it directly instead of
+# the default https://{slug}.substack.com/feed template.
+# this allows tracking newsletters on Beehiiv, Ghost, custom domains, etc.
 #
 # ============================================================
 # CATEGORY (10 types)
@@ -59,50 +64,50 @@
 # ---- News-Digest (12) ----
 # daily/weekly quick hits, tools, roundups
 
-# massive daily AI news/tools; huge reach. X: @rowancheung
-- seq: 1
-  slug: therundown
-  name: The Rundown AI
-  author: Rowan Cheung
-  category: news-digest
-  tags: [news, tools, roundup]
-  wave_stage: 3
+# NOT-SUBSTACK: Beehiiv platform (therundown.ai). add feed_url when found.
+# - seq: 1
+#   slug: therundown
+#   name: The Rundown AI
+#   author: Rowan Cheung
+#   category: news-digest
+#   tags: [news, tools, roundup]
+#   wave_stage: 3
 
-# 3-min daily AI updates; very mainstream practitioner. X: @heykahn
-- seq: 2
-  slug: superhuman
-  name: Superhuman AI
-  author: Zain Kahn
-  category: news-digest
-  tags: [tools, productivity, roundup]
-  wave_stage: 3
+# NOT-SUBSTACK: Beehiiv platform. add feed_url when found.
+# - seq: 2
+#   slug: superhuman
+#   name: Superhuman AI
+#   author: Zain Kahn
+#   category: news-digest
+#   tags: [tools, productivity, roundup]
+#   wave_stage: 3
 
-# curated tools + news; builder/practitioner favorite.
-- seq: 3
-  slug: bensbites
-  name: Ben's Bites
-  author: Ben Tossell
-  category: news-digest
-  tags: [tools, news, curation]
-  wave_stage: 2
+# NOT-SUBSTACK: Beehiiv platform. add feed_url when found.
+# - seq: 3
+#   slug: bensbites
+#   name: Ben's Bites
+#   author: Ben Tossell
+#   category: news-digest
+#   tags: [tools, news, curation]
+#   wave_stage: 2
 
-# concise daily ML/AI summaries; founder-friendly.
-- seq: 4
-  slug: tldr
-  name: TLDR AI
-  author: TLDR team
-  category: news-digest
-  tags: [ml, data-science, summary]
-  wave_stage: 3
+# NOT-SUBSTACK: own platform (tldrnewsletter.com). add feed_url when found.
+# - seq: 4
+#   slug: tldr
+#   name: TLDR AI
+#   author: TLDR team
+#   category: news-digest
+#   tags: [ml, data-science, summary]
+#   wave_stage: 3
 
-# daily AI newsletter; beginner-to-expert.
-- seq: 5
-  slug: neuron
-  name: The Neuron
-  author: The Neuron team
-  category: news-digest
-  tags: [daily, trends, accessible]
-  wave_stage: 3
+# NOT-SUBSTACK: Beehiiv platform. add feed_url when found.
+# - seq: 5
+#   slug: neuron
+#   name: The Neuron
+#   author: The Neuron team
+#   category: news-digest
+#   tags: [daily, trends, accessible]
+#   wave_stage: 3
 
 # comprehensive weekly roundup + safety/ethics lens.
 - seq: 6
@@ -112,6 +117,7 @@
   category: news-digest
   tags: [weekly, ethics, research]
   wave_stage: 2
+  feed_url: https://lastweekin.ai/feed
 
 # weekly AI summaries + unique perspectives.
 - seq: 7
@@ -122,32 +128,32 @@
   tags: [summaries, deep-dives, weekly]
   wave_stage: 2
 
-# AI news with product focus.
-- seq: 8
-  slug: theresanaiforthat
-  name: There's An AI For That
-  author: TAAFT team
-  category: news-digest
-  tags: [tool-directory, product, discovery]
-  wave_stage: 3
+# NOT-SUBSTACK: own website. add feed_url when found.
+# - seq: 8
+#   slug: theresanaiforthat
+#   name: There's An AI For That
+#   author: TAAFT team
+#   category: news-digest
+#   tags: [tool-directory, product, discovery]
+#   wave_stage: 3
 
-# daily AI tool roundup and news.
-- seq: 9
-  slug: futuretools
-  name: Future Tools Weekly
-  author: Matt Wolfe
-  category: news-digest
-  tags: [tools, demos, youtube]
-  wave_stage: 3
+# NOT-SUBSTACK: own website (futuretools.io). add feed_url when found.
+# - seq: 9
+#   slug: futuretools
+#   name: Future Tools Weekly
+#   author: Matt Wolfe
+#   category: news-digest
+#   tags: [tools, demos, youtube]
+#   wave_stage: 3
 
-# bite-sized AI business news.
-- seq: 10
-  slug: mindstream
-  name: Mindstream AI
-  author: Mindstream team
-  category: news-digest
-  tags: [business, daily, accessible]
-  wave_stage: 3
+# NOT-SUBSTACK: Beehiiv platform. add feed_url when found.
+# - seq: 10
+#   slug: mindstream
+#   name: Mindstream AI
+#   author: Mindstream team
+#   category: news-digest
+#   tags: [business, daily, accessible]
+#   wave_stage: 3
 
 # DISABLED: 404 - slug may be wrong
 # AI news for non-technical audience.
@@ -220,14 +226,14 @@
   tags: [deep-learning, paper-review, llms]
   wave_stage: 0
 
-# math + algorithms + paper analysis.
-- seq: 25
-  slug: thesequence
-  name: TheSequence
-  author: Jesus Rodriguez
-  category: research-deep
-  tags: [math, algorithms, paper-analysis]
-  wave_stage: 1
+# NOT-SUBSTACK: own platform (thesequence.substack may not exist). verify slug.
+# - seq: 25
+#   slug: thesequence
+#   name: TheSequence
+#   author: Jesus Rodriguez
+#   category: research-deep
+#   tags: [math, algorithms, paper-analysis]
+#   wave_stage: 1
 
 # DISABLED: 404 - slug may be wrong (try elvissaravia or dair-ai)
 # NLP + paper summaries + education. matches @omarsar0 on X.
@@ -239,14 +245,14 @@
 #   tags: [nlp, paper-summaries, education]
 #   wave_stage: 1
 
-# weekly authoritative AI from Andrew Ng; accessible. X: @AndrewYNg
-- seq: 27
-  slug: thebatch
-  name: The Batch (DeepLearning.AI)
-  author: Andrew Ng / team
-  category: research-deep
-  tags: [education, news, deeplearning]
-  wave_stage: 2
+# NOT-SUBSTACK: DeepLearning.AI own platform. add feed_url when found.
+# - seq: 27
+#   slug: thebatch
+#   name: The Batch (DeepLearning.AI)
+#   author: Andrew Ng / team
+#   category: research-deep
+#   tags: [education, news, deeplearning]
+#   wave_stage: 2
 
 
 # ---- Practical-Tools (8) ----
@@ -597,14 +603,14 @@
   tags: [agents, automation, workflow]
   wave_stage: 2
 
-# LangChain ecosystem updates + tutorials.
-- seq: 72
-  slug: langchain
-  name: LangChain Newsletter
-  author: Harrison Chase / team
-  category: agent-focused
-  tags: [langchain, agents, rag]
-  wave_stage: 1
+# NOT-SUBSTACK: uses blog.langchain.dev. add feed_url when found.
+# - seq: 72
+#   slug: langchain
+#   name: LangChain Newsletter
+#   author: Harrison Chase / team
+#   category: agent-focused
+#   tags: [langchain, agents, rag]
+#   wave_stage: 1
 
 # DISABLED: 200 but not RSS - may not be a real substack
 # multi-agent systems + research.
