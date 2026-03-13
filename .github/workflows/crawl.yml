@@ -41,14 +41,13 @@ jobs:
       - name: run weixin article monitor
         run: python lgpac_cli.py lgycp --notify --page
 
-      - name: run X/Twitter tracker (page only, email in daily job)
-        run: python lgpac_cli.py xbirds --page
+      # xbirds removed from here — runs only in xbirds-daily.yml to stay under rate limits
 
       - name: commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add RSS.md docs_lgpac/ docs_lgycp/ docs_xbirds/ monitor_history.json archs_lgycp/ archs_xbirds/
+          git add RSS.md docs_lgpac/ docs_lgycp/ monitor_history.json archs_lgycp/
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
