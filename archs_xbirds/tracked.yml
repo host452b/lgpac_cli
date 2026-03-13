@@ -1,5 +1,5 @@
 # ============================================================
-# X/Twitter Tracked Accounts (196 total)
+# X/Twitter Tracked Accounts (210 total)
 # ============================================================
 #
 # this file is the single source of truth for all tracked accounts.
@@ -28,16 +28,16 @@
 #   titan          (  5)  CEOs of top AI companies. strategic signals.
 #   foundation     (  5)  base model / platform builders.
 #   scientist      ( 25)  researchers, professors, paper authors.
-#   core           ( 38)  founders, executives, decision makers.
-#   org            ( 29)  official company / team / media accounts.
-#   influencer-cn  ( 37)  Chinese-speaking thought leaders.
-#   influencer-en  ( 20)  English-speaking thought leaders & media.
+#   core           ( 39)  founders, executives, decision makers.
+#   org            ( 33)  official company / team / media accounts.
+#   influencer-cn  ( 38)  Chinese-speaking thought leaders.
+#   influencer-en  ( 27)  English-speaking thought leaders & media.
 #   indie-dev      (  9)  solo builders, open-source creators.
 #   startup        (  4)  next-gen startup founders.
 #   investor       ( 12)  VCs, angels, finance analysts.
 #   prompt         (  2)  prompt engineering, red-teaming.
 #   workflow       (  2)  AI workflow / devtool experts.
-#   thinker        (  8)  philosophers, critics, visionaries.
+#   thinker        (  9)  philosophers, critics, visionaries.
 #
 # ============================================================
 # WAVE_STAGE (propagation phase, 0-4)
@@ -46,23 +46,25 @@
 # gauge WHERE a topic is in its lifecycle by checking which
 # stage accounts are discussing it.
 #
-#   0 = ignition  ( 50)  raw signal: papers, prototypes
+#   0 = ignition  ( 15)  raw signal: papers, prototypes
 #       who: scientists, core devs, model teams
 #       content: arxiv, code repos, benchmarks
 #
-#   1 = momentum  ( 60)  domain amplification
+#   1 = momentum  ( 15)  domain amplification
 #       who: domain experts, observers, vertical media, thinkers
 #       content: thread breakdowns, opinions, early reviews
 #
-#   2 = explosion ( 54)  cross-industry spread
+#   2 = explosion ( 15)  cross-industry spread
 #       who: mainstream influencers, CEOs, product reviewers
 #       content: business analysis, tutorials, tool comparisons
 #
-#   3 = decay     ( 31)  mass awareness / popularization
+#   3 = decay     ( 15)  mass awareness / popularization
 #       who: mass media, late-night hosts, government, news wires
 #       content: explainers, "AI changes everything" takes
 #
-#   4 = fading    (  1)  outdated / hustle phase
+#   4 = fading    ( 15)  outdated / hustle phase
+#       These accounts show when a topic is totally mainstream and finished spreading.
+#       If a new idea appears in @bengoertzel or @hongqizhouqy content, it means the cycle is complete.
 #       who: grifters, AI anxiety accounts
 #       content: "make money with AI", fear-mongering
 #
@@ -403,7 +405,7 @@
   tags: [deepmind, ai-safety]
   wave_stage: 0
 
-# ---- Core Figures (38) ----
+# ---- Core Figures (39) ----
 # founders, executives, and key decision makers
 
 # Manus co-founder. agent-first thinking. early signal on agent architectures.
@@ -710,7 +712,15 @@
   tags: [amazon, blue-origin]
   wave_stage: 2
 
-# ---- Organizations (29) ----
+# ex-Stability AI CEO. resigned 2024 amid chaos. content shifted to self-defense and fringe projects.
+- seq: 197
+  username: emostaque
+  name: Emad Mostaque
+  category: core
+  tags: [stability-ai, resigned, controversy]
+  wave_stage: 4
+
+# ---- Organizations (33) ----
 # official accounts of companies, teams, and media
 
 # DeepSeek official. model release announcements. stage 0 source.
@@ -945,7 +955,39 @@
   tags: [news-aggregation, market]
   wave_stage: 3
 
-# ---- Influencers (CN) (37) ----
+# multiple CEO changes, financial crisis, core team exodus. eclipsed by Flux/SDXL ecosystem.
+- seq: 198
+  username: StabilityAI
+  name: Stability AI
+  category: org
+  tags: [stable-diffusion, org-chaos]
+  wave_stage: 4
+
+# decentralized AI platform. activity correlates with crypto cycles, not AI breakthroughs.
+- seq: 200
+  username: SingularityNET
+  name: SingularityNET
+  category: org
+  tags: [agi-crypto, decentralized-ai, token]
+  wave_stage: 4
+
+# Watson -> WatsonX rebrand cycle. whitepapers and compliance narratives. low technical signal.
+- seq: 203
+  username: IBMResearch
+  name: IBM Research
+  category: org
+  tags: [watsonx, enterprise-ai, pr]
+  wave_stage: 4
+
+# legacy DB vendor AI narrative. customer case studies and compliance. no real tech signal.
+- seq: 204
+  username: OracleAI
+  name: Oracle AI
+  category: org
+  tags: [enterprise, database-ai, pr]
+  wave_stage: 4
+
+# ---- Influencers (CN) (38) ----
 # Chinese-speaking thought leaders
 
 # ex-ByteDance PM, Harvard. product sense meets AI learning. bridges CN/EN circles.
@@ -1244,7 +1286,15 @@
   tags: [education, science-popularization]
   wave_stage: 3
 
-# ---- Influencers (EN) (20) ----
+# 360 CEO. street-interview AI evangelist. no technical depth. entertainment > insight.
+- seq: 201
+  username: hongqizhouqy
+  name: 周鸿祎
+  category: influencer-cn
+  tags: ['360', ai-celebrity, hype]
+  wave_stage: 4
+
+# ---- Influencers (EN) (27) ----
 # English-speaking thought leaders and media personalities
 
 # Rundown AI founder. daily AI news digest. mass audience.
@@ -1406,6 +1456,62 @@
   category: influencer-en
   tags: [education, paper-review, youtube]
   wave_stage: 2
+
+# archetype: '100 AI tools for $10k/month'. AI-generated content about AI. zero signal density.
+- seq: 202
+  username: aiforsuccess_
+  name: AI For Success
+  category: influencer-en
+  tags: [course-selling, ai-hustle, automation]
+  wave_stage: 4
+
+# Superhuman newsletter. repackages others' content as 'X things you need to know'. funnel to email list.
+- seq: 205
+  username: heykahn
+  name: Zain Kahn
+  category: influencer-en
+  tags: [newsletter, superhuman, engagement-bait]
+  wave_stage: 4
+
+# 'solo AI entrepreneur' content. pushes automation tutorials as conversion funnels.
+- seq: 206
+  username: AlexFinnX
+  name: Alex Finn
+  category: influencer-en
+  tags: [course-selling, ai-hustle, automation]
+  wave_stage: 4
+
+# prolific list-maker: '10 tools for 10x productivity'. pure engagement bait, zero depth.
+- seq: 207
+  username: hasantoxr
+  name: Hasan Toor
+  category: influencer-en
+  tags: [list-bait, ai-hustle, engagement-bait]
+  wave_stage: 4
+
+# promotes AI wrapper sites. extreme clickbait. if he posts about a tech, it's already being hustle-ified.
+- seq: 208
+  username: heyBarsee
+  name: Barsee
+  category: influencer-en
+  tags: [saas-hustle, ai-wrapper, engagement-bait]
+  wave_stage: 4
+
+# 20s growth hacker. long threads repackaging others' work into 'make money with AI' playbooks.
+- seq: 209
+  username: aaditsh
+  name: Aadit Sheth
+  category: influencer-en
+  tags: [growth-hacking, ai-hustle, threads]
+  wave_stage: 4
+
+# ChatGPT/Midjourney prompt tutorials. end goal: sell prompt courses.
+- seq: 210
+  username: chaseleantx
+  name: Chase Lean
+  category: influencer-en
+  tags: [prompt-courses, midjourney, course-selling]
+  wave_stage: 4
 
 # ---- Indie Developers (9) ----
 # solo builders and open-source creators
@@ -1654,7 +1760,7 @@
   tags: [visual, midjourney]
   wave_stage: 1
 
-# ---- Strategic Thinkers (8) ----
+# ---- Strategic Thinkers (9) ----
 # philosophers, critics, and long-term visionaries
 
 # chief AI skeptic. hallucination critic. neuro-symbolic advocate.
@@ -1720,3 +1826,11 @@
   category: thinker
   tags: [compatible-ai, berkeley]
   wave_stage: 1
+
+# coined 'AGI' but tied roadmap to $FET/$AGI tokens. revives each bull run, silent in bear markets.
+- seq: 199
+  username: bengoertzel
+  name: Ben Goertzel
+  category: thinker
+  tags: [singularitynet, agi-crypto, blockchain]
+  wave_stage: 4
