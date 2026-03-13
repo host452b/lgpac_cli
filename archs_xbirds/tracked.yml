@@ -43,37 +43,95 @@
 # WAVE_STAGE (propagation phase, 0-4)
 # ============================================================
 #
-# gauge WHERE a topic is in its lifecycle by checking which
-# stage accounts are discussing it.
+# each account is assigned a stage based on WHERE it sits in
+# the information lifecycle — not who they are, but WHEN their
+# audience typically encounters a topic.
 #
-#   0 = ignition  ( 15)  raw signal: papers, prototypes
-#       who: scientists, core devs, model teams
-#       content: arxiv, code repos, benchmarks
+# read top-down: if only stage 0 is talking, the topic is
+# embryonic. once stage 3-4 joins, the topic is exhausted.
 #
-#   1 = momentum  ( 15)  domain amplification
-#       who: domain experts, observers, vertical media, thinkers
-#       content: thread breakdowns, opinions, early reviews
+#   0 = ignition   ( 48 accounts)
+#       the absolute origin of a signal. information exists
+#       only as raw technical artifacts.
+#       boundary:  content has NOT been interpreted or
+#                  simplified by anyone outside the lab.
+#       who:       paper authors, model release accounts,
+#                  core devs pushing code, research labs.
+#       content:   arxiv links, github repos, benchmarks,
+#                  release notes, technical blog posts.
+#       example:   @ilyasut posts -> new SSI direction.
+#                  @deepseek_ai releases -> new weights.
+#       signal:    ONLY stage 0 talking = unvalidated lab work.
 #
-#   2 = explosion ( 15)  cross-industry spread
-#       who: mainstream influencers, CEOs, product reviewers
-#       content: business analysis, tutorials, tool comparisons
+#   1 = momentum   ( 62 accounts)
+#       domain experts interpret and amplify the signal
+#       WITHIN their professional circle.
+#       boundary:  understood by practitioners, but has NOT
+#                  crossed into business media or mainstream.
+#       who:       educators (@karpathy, @AndrewYNg), deep
+#                  observers (@dotey, @swyx), vertical media
+#                  (@Synced_AI), thinkers (@GaryMarcus).
+#       content:   "here's why this matters" threads, early
+#                  tool reviews, tutorials for practitioners.
+#       example:   @karpathy tutorial about new arch = 0->1.
+#       signal:    stage 1 buzzing + stage 2 silent = expert
+#                  traction, not yet mainstream.
 #
-#   3 = decay     ( 15)  mass awareness / popularization
-#       who: mass media, late-night hosts, government, news wires
-#       content: explainers, "AI changes everything" takes
+#   2 = explosion  ( 53 accounts)
+#       the signal crosses industry boundaries. non-specialists
+#       are now discussing it.
+#       boundary:  content moves from "what is this technically"
+#                  to "what does this mean for business/market".
+#       who:       tech CEOs (@sama), mainstream influencers
+#                  (@emollick, @lexfridman), finance voices
+#                  (@AswathDamodaran), product reviewers.
+#       content:   business analysis, "how to use X for Y",
+#                  investment takes, product launch commentary.
+#       example:   @sama tweets about product -> instant
+#                  cross-industry discussion.
+#       signal:    stage 2 active = peak decision-making value.
+#                  act now or miss the window.
 #
-#   4 = fading    ( 15)  outdated / hustle phase
-#       These accounts show when a topic is totally mainstream and finished spreading.
-#       If a new idea appears in @bengoertzel or @hongqizhouqy content, it means the cycle is complete.
-#       who: grifters, AI anxiety accounts
-#       content: "make money with AI", fear-mongering
+#   3 = decay      ( 32 accounts)
+#       the signal has reached the general public. content is
+#       simplified, repeated, and diluted.
+#       boundary:  mass media outlets, late-night hosts, or
+#                  government voices start covering the topic.
+#       who:       news wires (@reutersTech, @CNET), late-night
+#                  (@joerogan), generalists (@billgates),
+#                  mass media (@HuXijin_GT, @SCMP_News).
+#       content:   "AI will change everything" takes, policy
+#                  debates, "should we be worried" articles.
+#       example:   @joerogan interviews about AI = fully
+#                  mainstream in popular culture.
+#       signal:    stage 3 covering it = common knowledge.
+#                  original signal value near zero.
+#                  look for the NEXT stage 0 signal instead.
 #
-# decision rule:
-#   only stage 0 talking -> still in the lab
-#   stage 1 amplifying  -> gaining traction in expert circle
-#   stage 2 discussing  -> going mainstream
-#   stage 3 posting     -> already common knowledge
-#   stage 4 recycling   -> topic is dead or monetized
+#   4 = fading     ( 15 accounts)
+#       the signal lifecycle is complete. content is recycled,
+#       monetized, or discredited.
+#       boundary:  when these accounts discuss a topic, the
+#                  information is fully commoditized.
+#       subtypes:
+#         verified-failure:  product collapsed (@emostaque)
+#         crypto-hype:       token-driven (@bengoertzel)
+#         influencer-hustle: "make $10k with AI" (@hasantoxr)
+#         corporate-theater: PR over substance (@IBMResearch)
+#         engagement-bait:   list threads for likes (@heykahn)
+#       who:       failed founders, token promoters, course
+#                  sellers, newsletter funnels, engagement farms.
+#       content:   "100 AI tools", "prompt that changed my life",
+#                  token shilling, AI anxiety narratives.
+#       signal:    stage 4 covers it = dead, debunked, or
+#                  fully commoditized. contrarian indicator.
+#
+# quick decision matrix:
+#   only 0 talking        -> still in the lab, watch closely
+#   0 + 1 discussing      -> gaining expert traction, high alpha
+#   1 + 2 spreading       -> going mainstream, time to act
+#   2 + 3 everywhere      -> peak awareness, diminishing returns
+#   3 + 4 recycling       -> topic exhausted, move on
 #
 # ============================================================
 # TAGS (299 unique, multi-label)
