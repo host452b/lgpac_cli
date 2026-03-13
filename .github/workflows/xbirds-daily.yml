@@ -1,22 +1,20 @@
-name: scheduled monitor
+name: xbirds daily digest
 
 on:
   schedule:
-    # every 12 hours (UTC 00:00 and 12:00 -> Beijing 08:00 and 20:00)
-    - cron: "0 0,12 * * *"
+    # once daily at UTC 00:00 (Beijing 08:00)
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  monitor:
+  xbirds:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     env:
-      LGPAC_TARGET_URL: ${{ vars.LGPAC_TARGET_URL }}
-      LGPAC_WEBHOOK_URL: ${{ secrets.LGPAC_WEBHOOK_URL }}
       LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
       LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
       LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
@@ -34,23 +32,17 @@ jobs:
       - name: install dependencies
         run: pip install requests typer rich pyyaml
 
-      - name: run ticket monitor
-        run: python lgpac_cli.py monitor --price 120 --rss --page --notify --email
-
-      - name: run weixin article monitor
-        run: python lgpac_cli.py lgycp --notify --page
-
-      - name: run X/Twitter tracker (page only, email in daily job)
-        run: python lgpac_cli.py xbirds --page
+      - name: run xbirds daily digest
+        run: python lgpac_cli.py xbirds --page --notify
 
       - name: commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add RSS.md docs_lgpac/ docs_lgycp/ docs_xbirds/ monitor_history.json archs_lgycp/ archs_xbirds/
+          git add docs_xbirds/ archs_xbirds/
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "monitor: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git commit -m "xbirds: $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi

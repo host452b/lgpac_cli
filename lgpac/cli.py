@@ -339,6 +339,76 @@ def lgycp(
 
 
 # ------------------------------------------------------------------ #
+# xbirds - X/Twitter post tracker
+# ------------------------------------------------------------------ #
+
+@app.command()
+def xbirds(
+    notify: bool = typer.Option(False, "--notify", "-n", help="send email on new posts"),
+    page: bool = typer.Option(False, "--page", help="generate docs_xbirds/index.md"),
+    add: Optional[str] = typer.Option(None, "--add", help="add a username to track"),
+    remove: Optional[str] = typer.Option(None, "--remove", help="remove a tracked username"),
+    debug: bool = typer.Option(False, "--debug", "-d"),
+):
+    """track X/Twitter posts from followed users."""
+    _setup_logging(debug)
+
+    from lgpac.xbirds import run_monitor, load_tracked_users, save_tracked_users
+
+    if add:
+        users = load_tracked_users()
+        name = add.lstrip("@")
+        if name not in users:
+            users.append(name)
+            save_tracked_users(users)
+            console.print(f"[green]added @{name}[/green]")
+        else:
+            console.print(f"[dim]@{name} already tracked[/dim]")
+        return
+
+    if remove:
+        users = load_tracked_users()
+        name = remove.lstrip("@")
+        if name in users:
+            users.remove(name)
+            save_tracked_users(users)
+            console.print(f"[yellow]removed @{name}[/yellow]")
+        else:
+            console.print(f"[dim]@{name} not in list[/dim]")
+        return
+
+    users = load_tracked_users()
+    console.print(f"tracking: {', '.join(f'@{u}' for u in users)}\n")
+
+    new_posts = run_monitor(notify=notify, page=page)
+
+    if new_posts:
+        table = Table(title=f"{len(new_posts)} new post(s)")
+        table.add_column("user", style="cyan")
+        table.add_column("post", style="bold")
+        table.add_column("date", style="dim")
+        for p in new_posts:
+            table.add_row(f"@{p['username']}", p['text'][:60], _parse_tweet_date(p.get('created_at', '')))
+        console.print(table)
+    else:
+        console.print("[dim]no new posts[/dim]")
+
+    if page:
+        console.print("[green]docs_xbirds/index.md generated[/green]")
+
+
+def _parse_tweet_date(raw: str) -> str:
+    if not raw:
+        return ""
+    try:
+        from datetime import datetime as dt
+        d = dt.strptime(raw, "%a %b %d %H:%M:%S %z %Y")
+        return d.strftime("%Y-%m-%d")
+    except ValueError:
+        return raw[:10]
+
+
+# ------------------------------------------------------------------ #
 # version
 # ------------------------------------------------------------------ #
 
