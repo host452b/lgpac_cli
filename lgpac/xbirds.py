@@ -191,7 +191,7 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
 
 
 def _filter_recent(posts: List[Dict], cutoff: datetime) -> List[Dict]:
-    """keep only posts newer than cutoff."""
+    """keep only posts newer than cutoff. drops posts with unparseable dates."""
     recent = []
     for p in posts:
         raw = p.get("created_at", "")
@@ -202,7 +202,7 @@ def _filter_recent(posts: List[Dict], cutoff: datetime) -> List[Dict]:
             if dt >= cutoff:
                 recent.append(p)
         except ValueError:
-            recent.append(p)
+            pass
     return recent
 
 
