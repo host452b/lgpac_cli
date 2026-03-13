@@ -1,5 +1,5 @@
 # ============================================================
-# X/Twitter Tracked Accounts (164 total)
+# X/Twitter Tracked Accounts (165 total)
 # ============================================================
 #
 # edit this file to add/remove users
@@ -231,7 +231,7 @@
   tags: [deepmind, ai-safety]
 
 
-# ---- Core Figures (36) ----
+# ---- Core Figures (37) ----
 # founders, executives, and key decision makers
 
 - seq: 30
@@ -449,6 +449,12 @@
   name: DeepSeek (梁文锋)
   category: core
   tags: [deepseek, algorithm]
+
+- seq: 165
+  username: kaifu_li
+  name: 李开复 (alt)
+  category: core
+  tags: [01-ai, investment]
 
 
 # ---- Organizations (13) ----
