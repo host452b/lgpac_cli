@@ -347,6 +347,7 @@ def xbirds(
     notify: bool = typer.Option(False, "--notify", "-n", help="send email on new posts"),
     page: bool = typer.Option(False, "--page", help="generate docs_xbirds/index.md"),
     hours: int = typer.Option(24, "--hours", help="lookback window in hours (default 24, use 168 for 1 week)"),
+    stage: Optional[str] = typer.Option(None, "--stage", "-s", help="only fetch specific stages, e.g. '0,1' or '0-2'"),
     add: Optional[str] = typer.Option(None, "--add", help="add a username to track"),
     remove: Optional[str] = typer.Option(None, "--remove", help="remove a tracked username"),
     debug: bool = typer.Option(False, "--debug", "-d"),
@@ -375,7 +376,20 @@ def xbirds(
     usernames = get_usernames()
     console.print(f"tracking {len(usernames)} users\n")
 
-    new_posts, warnings = run_monitor(notify=notify, page=page, recent_hours=hours)
+    # parse --stage filter
+    stage_filter = None
+    if stage:
+        stages = set()
+        for part in stage.split(","):
+            part = part.strip()
+            if "-" in part:
+                lo, hi = part.split("-", 1)
+                stages.update(range(int(lo), int(hi) + 1))
+            else:
+                stages.add(int(part))
+        stage_filter = stages
+
+    new_posts, warnings = run_monitor(notify=notify, page=page, recent_hours=hours, stage_filter=stage_filter)
 
     if new_posts:
         table = Table(title=f"{len(new_posts)} new post(s)")

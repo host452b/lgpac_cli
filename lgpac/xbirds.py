@@ -270,15 +270,21 @@ def preflight_check() -> bool:
 # fetch all users (sequential, polite)
 # ------------------------------------------------------------------ #
 
-def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
+def fetch_all_users(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tuple:
     """
     fetch posts for all tracked users sequentially with random jitter.
     filters to posts within recent_hours (default 24h).
+    if stage_filter is set, only fetch users in those wave_stages.
     returns (results_dict, warnings_list).
     """
     tracked = load_tracked()
     if not tracked:
         return {}, []
+
+    if stage_filter is not None:
+        before = len(tracked)
+        tracked = [e for e in tracked if e.get("wave_stage", -1) in stage_filter]
+        logger.info(f"stage filter {stage_filter}: {len(tracked)}/{before} users selected")
 
     if not preflight_check():
         logger.warning("preflight failed — continuing anyway (may have partial results)")
@@ -564,10 +570,10 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
 # run
 # ------------------------------------------------------------------ #
 
-def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RECENT_HOURS) -> tuple:
-    logger.info(f"=== xbirds run_monitor start (hours={recent_hours}, notify={notify}, page={page}) ===")
+def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tuple:
+    logger.info(f"=== xbirds run_monitor start (hours={recent_hours}, notify={notify}, page={page}, stages={stage_filter or 'all'}) ===")
 
-    all_posts, warnings = fetch_all_users(recent_hours=recent_hours)
+    all_posts, warnings = fetch_all_users(recent_hours=recent_hours, stage_filter=stage_filter)
 
     # summarize what we got per stage
     tracked = load_tracked()
