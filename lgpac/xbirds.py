@@ -1,23 +1,27 @@
 """
 X/Twitter post tracker.
-fetches recent posts via twitter syndication API (no auth needed).
+uses twitter's public syndication embed API (same endpoint browsers use
+to render embedded timelines — no auth, no API key, no scraping).
 reads tracked users from archs_xbirds/tracked.yml.
-invalid accounts are skipped and collected as warnings.
 """
 import re
 import json
 import logging
+import time
+import random
 import yaml
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from lgpac.archive import JsonArchive
 from lgpac.notify import send_email, build_html_email
 
 logger = logging.getLogger("lgpac.xbirds")
 
+# twitter's public embed endpoint — the same URL browsers hit when
+# rendering an embedded timeline widget. no authentication required.
+# this is NOT a private/undocumented API; it serves the public embed JS.
 SYNDICATION_URL = "https://syndication.twitter.com/srv/timeline-profile/screen-name/{username}"
 TWEET_URL_TEMPLATE = "https://x.com/{username}/status/{tweet_id}"
 TRACKED_FILE = "archs_xbirds/tracked.yml"
@@ -29,8 +33,10 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-MAX_WORKERS = 10
+REQUEST_DELAY_MIN = 0.8
+REQUEST_DELAY_MAX = 1.5
 RECENT_HOURS = 24
+MAX_RETRIES = 2
 
 
 # ------------------------------------------------------------------ #
@@ -79,23 +85,53 @@ def _save_tracked(tracked: List[Dict]):
 
 
 # ------------------------------------------------------------------ #
-# fetch posts
+# fetch posts (polite, with retry and jitter)
 # ------------------------------------------------------------------ #
 
 def fetch_user_posts(username: str) -> List[Dict[str, Any]]:
+    """
+    fetch recent posts via the public syndication embed endpoint.
+    retries once on transient errors with backoff.
+    """
     import requests
 
     url = SYNDICATION_URL.format(username=username)
-    try:
-        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
-        if resp.status_code == 404:
-            return []
-        resp.raise_for_status()
-    except Exception as e:
-        logger.debug(f"[@{username}] request error: {e}")
-        return []
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
 
-    return _parse_syndication(resp.text, username)
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            resp = requests.get(url, headers=headers, timeout=15)
+
+            if resp.status_code == 404:
+                return []
+            if resp.status_code == 429:
+                wait = 5 * attempt
+                logger.warning(f"[@{username}] rate limited, waiting {wait}s")
+                time.sleep(wait)
+                continue
+            if resp.status_code >= 500:
+                logger.debug(f"[@{username}] server error {resp.status_code}, retrying")
+                time.sleep(2 * attempt)
+                continue
+
+            resp.raise_for_status()
+            return _parse_syndication(resp.text, username)
+
+        except requests.Timeout:
+            logger.debug(f"[@{username}] timeout (attempt {attempt})")
+            time.sleep(2)
+        except requests.ConnectionError:
+            logger.debug(f"[@{username}] connection error (attempt {attempt})")
+            time.sleep(3)
+        except Exception as e:
+            logger.debug(f"[@{username}] error: {e}")
+            break
+
+    return []
 
 
 def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
@@ -136,18 +172,89 @@ def _parse_syndication(html: str, username: str) -> List[Dict[str, Any]]:
     return posts
 
 
-def _fetch_one(entry: Dict) -> tuple:
-    """fetch posts for a single entry. returns (username, entry, posts_or_none)."""
-    username = entry.get("username", "")
-    if not username:
-        return username, entry, None
-    posts = fetch_user_posts(username)
-    return username, entry, posts
+# ------------------------------------------------------------------ #
+# connectivity preflight check
+# ------------------------------------------------------------------ #
 
+DRYRUN_USERNAME = "elonmusk"
+
+
+def preflight_check() -> bool:
+    """
+    verify connectivity to twitter syndication before full crawl.
+    tests with a known-active account. logs detailed diagnostics on failure.
+    """
+    import requests
+
+    url = SYNDICATION_URL.format(username=DRYRUN_USERNAME)
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+
+    logger.info(f"preflight: testing connectivity via @{DRYRUN_USERNAME}")
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=15)
+    except requests.Timeout:
+        logger.error("preflight FAILED: connection timed out after 15s. "
+                      "possible network issue or DNS block.")
+        return False
+    except requests.ConnectionError as e:
+        logger.error(f"preflight FAILED: connection error. "
+                      f"syndication.twitter.com may be unreachable. detail: {e}")
+        return False
+    except Exception as e:
+        logger.error(f"preflight FAILED: unexpected error: {type(e).__name__}: {e}")
+        return False
+
+    if resp.status_code == 429:
+        logger.error("preflight FAILED: rate limited (429). "
+                      "IP may be throttled by twitter. wait and retry later.")
+        return False
+
+    if resp.status_code == 403:
+        logger.error("preflight FAILED: forbidden (403). "
+                      "syndication API may have added auth requirements or geo-block.")
+        return False
+
+    if resp.status_code >= 500:
+        logger.error(f"preflight FAILED: server error ({resp.status_code}). "
+                      "twitter syndication service may be down.")
+        return False
+
+    if resp.status_code != 200:
+        logger.error(f"preflight FAILED: unexpected status {resp.status_code}. "
+                      f"headers: {dict(resp.headers)}")
+        return False
+
+    # verify response contains expected data structure
+    if "__NEXT_DATA__" not in resp.text:
+        logger.error("preflight FAILED: response is 200 but missing __NEXT_DATA__. "
+                      "twitter may have changed the embed page structure. "
+                      f"content-type: {resp.headers.get('content-type', 'unknown')}, "
+                      f"body length: {len(resp.text)}")
+        return False
+
+    posts = _parse_syndication(resp.text, DRYRUN_USERNAME)
+    if not posts:
+        logger.warning("preflight WARNING: page parsed but 0 posts extracted. "
+                        "JSON structure may have changed.")
+        return True
+
+    logger.info(f"preflight OK: {len(posts)} posts from @{DRYRUN_USERNAME}, "
+                 f"latest: {posts[0].get('created_at', 'unknown')[:16]}")
+    return True
+
+
+# ------------------------------------------------------------------ #
+# fetch all users (sequential, polite)
+# ------------------------------------------------------------------ #
 
 def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
     """
-    fetch posts for all tracked users using thread pool.
+    fetch posts for all tracked users sequentially with random jitter.
     filters to posts within recent_hours (default 24h).
     returns (results_dict, warnings_list).
     """
@@ -155,36 +262,41 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
     if not tracked:
         return {}, []
 
+    if not preflight_check():
+        logger.error("aborting fetch: preflight check failed")
+        return {}, [{"username": "_preflight", "name": "preflight", "category": "", "issue": "connectivity_failed"}]
+
     results = {}
     warnings = []
     total = len(tracked)
     cutoff = datetime.now(timezone.utc) - timedelta(hours=recent_hours)
 
-    logger.info(f"fetching {total} users with {MAX_WORKERS} workers, cutoff={recent_hours}h")
+    logger.info(f"fetching {total} users, cutoff={recent_hours}h")
 
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        futures = {pool.submit(_fetch_one, entry): entry for entry in tracked}
-        done = 0
-        for future in as_completed(futures):
-            done += 1
-            username, entry, posts = future.result()
-            if not username:
-                continue
+    for i, entry in enumerate(tracked):
+        username = entry.get("username", "")
+        if not username:
+            continue
 
-            if posts:
-                recent = _filter_recent(posts, cutoff)
-                if recent:
-                    results[username] = recent
-                    logger.debug(f"[{done}/{total}] @{username}: {len(recent)} recent posts")
-                else:
-                    logger.debug(f"[{done}/{total}] @{username}: {len(posts)} posts, 0 recent")
-            else:
-                warnings.append({
-                    "username": username,
-                    "name": entry.get("name", username),
-                    "category": entry.get("category", ""),
-                    "issue": "no_data_or_not_found",
-                })
+        posts = fetch_user_posts(username)
+
+        if posts:
+            recent = _filter_recent(posts, cutoff)
+            if recent:
+                results[username] = recent
+                logger.debug(f"[{i+1}/{total}] @{username}: {len(recent)} recent")
+        else:
+            warnings.append({
+                "username": username,
+                "name": entry.get("name", username),
+                "category": entry.get("category", ""),
+                "issue": "no_data_or_not_found",
+            })
+
+        # polite delay with random jitter to avoid pattern detection
+        if i < total - 1:
+            delay = random.uniform(REQUEST_DELAY_MIN, REQUEST_DELAY_MAX)
+            time.sleep(delay)
 
     logger.info(f"fetched {len(results)}/{total} users with recent posts, {len(warnings)} warnings")
     return results, warnings
@@ -237,7 +349,7 @@ def check_and_archive(all_posts: Dict[str, List[Dict]]) -> List[Dict]:
 
 
 # ------------------------------------------------------------------ #
-# page generation
+# page generation (grouped by wave_stage)
 # ------------------------------------------------------------------ #
 
 STAGE_META = {
@@ -255,7 +367,6 @@ def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output
     active = len(all_posts)
     total = len(tracked)
 
-    # build username -> entry lookup
     entry_map = {e["username"]: e for e in tracked}
 
     lines = [
@@ -266,7 +377,6 @@ def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output
         "",
     ]
 
-    # group active posts by wave_stage
     stage_groups = {s: [] for s in range(5)}
     for username, posts in all_posts.items():
         if not posts:
@@ -302,7 +412,6 @@ def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output
 
         lines.append("")
 
-    # warnings
     if warnings:
         lines.append(f"<details><summary>⚠️ warnings ({len(warnings)} accounts)</summary>")
         lines.append("")
@@ -321,7 +430,7 @@ def generate_page(all_posts: Dict[str, List[Dict]], warnings: List[Dict], output
 
 
 # ------------------------------------------------------------------ #
-# email (uses shared notify)
+# email (grouped by wave_stage)
 # ------------------------------------------------------------------ #
 
 def send_email_alert(new_posts: List[Dict]) -> bool:
@@ -331,7 +440,6 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
     tracked = load_tracked()
     entry_map = {e["username"]: e for e in tracked}
 
-    # group by wave_stage
     stage_posts = {s: [] for s in range(5)}
     for p in new_posts:
         username = p.get("username", "")
