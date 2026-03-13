@@ -96,11 +96,11 @@ def fetch_feed(slug: str) -> tuple:
                 if status == "ok":
                     return status, articles
             logger.info(f"[@{slug}] RSS 200 but not valid XML (first 100 chars: {resp.text[:100]!r})")
-            return _fetch_via_search(slug)
+            return _fetch_via_api(slug)
 
         if resp.status_code == 404:
             logger.info(f"[@{slug}] RSS 404, trying search fallback")
-            return _fetch_via_search(slug)
+            return _fetch_via_api(slug)
 
         if resp.status_code in (301, 302):
             location = resp.headers.get("location", "?")
@@ -109,7 +109,7 @@ def fetch_feed(slug: str) -> tuple:
 
         if resp.status_code == 403:
             logger.info(f"[@{slug}] 403 forbidden — IP may be blocked by Substack")
-            return _fetch_via_search(slug)
+            return _fetch_via_api(slug)
 
         if resp.status_code >= 500:
             logger.info(f"[@{slug}] server error {resp.status_code}")
@@ -119,62 +119,69 @@ def fetch_feed(slug: str) -> tuple:
         resp.raise_for_status()
     except requests.ConnectionError as e:
         logger.info(f"[@{slug}] connection error: {e}")
-        return _fetch_via_search(slug)
+        return _fetch_via_api(slug)
     except requests.Timeout:
         logger.info(f"[@{slug}] timeout")
-        return _fetch_via_search(slug)
+        return _fetch_via_api(slug)
     except Exception as e:
         logger.info(f"[@{slug}] error: {type(e).__name__}: {e}")
-        return _fetch_via_search(slug)
+        return _fetch_via_api(slug)
 
     return "error", []
 
 
-def _fetch_via_search(slug: str) -> tuple:
-    """fallback: search Bing for recent articles from this substack."""
+def _fetch_via_api(slug: str) -> tuple:
+    """fallback: use Substack's public JSON API when RSS is blocked (403)."""
     import requests
-    import re
-    import html as html_mod
 
-    query = f"site:{slug}.substack.com"
-    url = f"https://www.bing.com/search?q={query}&count=10"
-
+    api_url = f"https://{slug}.substack.com/api/v1/posts?limit=10"
     try:
-        resp = requests.get(url, headers={"User-Agent": _get_ua()}, timeout=15)
+        resp = requests.get(api_url, headers={
+            "User-Agent": _get_ua(),
+            "Accept": "application/json",
+        }, timeout=15)
+
+        logger.debug(f"[@{slug}] API fallback: HTTP {resp.status_code}")
+
         if resp.status_code != 200:
-            return "error", []
-    except Exception:
+            return "not_found", []
+
+        data = resp.json()
+        if not isinstance(data, list):
+            return "empty", []
+    except Exception as e:
+        logger.debug(f"[@{slug}] API fallback error: {e}")
         return "error", []
 
-    pattern = re.compile(
-        r'<a[^>]*href="(https?://[^"]*' + re.escape(slug) + r'\.substack\.com/p/[^"]*)"[^>]*>(.*?)</a>',
-        re.DOTALL,
-    )
-
     articles = []
-    seen = set()
-    for m in pattern.finditer(resp.text):
-        link = html_mod.unescape(m.group(1))
-        raw_title = re.sub(r'<[^>]+>', '', m.group(2)).strip()
-        if not raw_title or link in seen:
+    for post in data:
+        title = post.get("title", "")
+        url = post.get("canonical_url", "")
+        pub_date_raw = post.get("post_date", "")
+        description = post.get("subtitle", "") or post.get("description", "")
+
+        article_id = url or title
+        if not article_id:
             continue
-        seen.add(link)
+
+        pub_date = pub_date_raw[:16] if pub_date_raw else ""
+
         articles.append({
-            "id": link,
-            "title": raw_title,
-            "url": link,
-            "pub_date": "",
-            "pub_date_raw": "",
-            "description": "",
+            "id": article_id,
+            "title": title,
+            "url": url,
+            "pub_date": pub_date,
+            "pub_date_raw": pub_date_raw,
+            "description": (description or "")[:300],
             "slug": slug,
-            "_source": "bing_fallback",
+            "_source": "api_fallback",
         })
 
     if articles:
-        logger.debug(f"[@{slug}] bing fallback: {len(articles)} articles found")
+        logger.info(f"[@{slug}] API fallback OK: {len(articles)} articles")
         return "ok", articles
 
-    return "not_found", []
+    return "empty", []
 
 
 def _parse_rss(xml_text: str, slug: str) -> tuple:
@@ -278,7 +285,7 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             if recent:
                 results[slug] = recent
                 success_count += 1
-                source = "bing" if articles and articles[0].get("_source") == "bing_fallback" else "rss"
+                source = "api" if articles and articles[0].get("_source") == "api_fallback" else "rss"
                 logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent [{source}]")
             else:
                 empty_count += 1
@@ -322,7 +329,17 @@ def _is_recent(article: Dict, cutoff: datetime) -> bool:
     if not raw:
         return False
     try:
+        # try RFC 2822 first (RSS format)
         dt = parsedate_to_datetime(raw)
+        return dt >= cutoff
+    except Exception:
+        pass
+    try:
+        # try ISO 8601 (API format: 2026-03-08T12:00:00.000Z)
+        clean = raw.replace("Z", "+00:00")
+        dt = datetime.fromisoformat(clean)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
         return dt >= cutoff
     except Exception:
         return False
