@@ -66,8 +66,8 @@ def get_slugs() -> List[str]:
 def fetch_feed(slug: str, feed_url: str = "") -> tuple:
     """
     fetch and parse an RSS feed for a tracked publication.
+    fallback chain: direct fetch -> substack JSON API -> rss2json proxy.
     if feed_url is provided, use it directly (for non-substack or custom-domain feeds).
-    otherwise fall back to the default substack template URL.
     returns (status, articles_list).
     status: "ok", "empty", "not_found", "error"
     """
@@ -81,6 +81,8 @@ def fetch_feed(slug: str, feed_url: str = "") -> tuple:
         "Accept": "application/rss+xml, application/xml, text/xml, */*",
         "Accept-Language": "en-US,en;q=0.9",
     }
+
+    blocked_by_cloudflare = False
 
     try:
         resp = requests.get(url, headers=headers, timeout=15, allow_redirects=True)
@@ -102,7 +104,7 @@ def fetch_feed(slug: str, feed_url: str = "") -> tuple:
                 status, articles = _parse_rss(resp.text, slug)
                 if status in ("ok", "empty"):
                     return status, articles
-                logger.debug(f"[@{slug}] XML parse failed, trying API fallback")
+                logger.debug(f"[@{slug}] XML parse failed, trying fallbacks")
             else:
                 logger.info(f"[@{slug}] 200 but not RSS/XML (first 80 chars: {resp.text[:80]!r})")
             if is_substack_default:
@@ -121,36 +123,38 @@ def fetch_feed(slug: str, feed_url: str = "") -> tuple:
             return "error", []
 
         if resp.status_code == 403:
-            logger.info(f"[@{slug}] 403 forbidden — IP may be blocked")
-            if is_substack_default:
-                return _fetch_via_api(slug)
-            return "error", []
+            logger.debug(f"[@{slug}] 403 — Cloudflare/IP block detected")
+            blocked_by_cloudflare = True
 
-        if resp.status_code >= 500:
+        elif resp.status_code >= 500:
             logger.info(f"[@{slug}] server error {resp.status_code}")
             return "error", []
+        else:
+            logger.info(f"[@{slug}] unexpected status {resp.status_code}")
+            return "error", []
 
-        logger.info(f"[@{slug}] unexpected status {resp.status_code}")
-        resp.raise_for_status()
     except requests.ConnectionError as e:
         logger.info(f"[@{slug}] connection error: {e}")
-        if is_substack_default:
-            return _fetch_via_api(slug)
-        return "error", []
+        blocked_by_cloudflare = True
     except requests.Timeout:
         logger.info(f"[@{slug}] timeout for {url[:60]}")
         return "error", []
     except Exception as e:
         logger.info(f"[@{slug}] error: {type(e).__name__}: {e}")
+        blocked_by_cloudflare = True
+
+    if blocked_by_cloudflare:
         if is_substack_default:
-            return _fetch_via_api(slug)
-        return "error", []
+            api_status, api_articles = _fetch_via_api(slug)
+            if api_status == "ok":
+                return api_status, api_articles
+        return _fetch_via_rss_proxy(url, slug)
 
     return "error", []
 
 
 def _fetch_via_api(slug: str) -> tuple:
-    """fallback: use Substack's public JSON API when RSS is blocked (403)."""
+    """fallback #1: use Substack's public JSON API (same domain, also may be blocked)."""
     import requests
 
     api_url = f"https://{slug}.substack.com/api/v1/posts?limit=10"
@@ -162,6 +166,9 @@ def _fetch_via_api(slug: str) -> tuple:
 
         logger.debug(f"[@{slug}] API fallback: HTTP {resp.status_code}")
 
+        if resp.status_code == 403:
+            logger.debug(f"[@{slug}] API also blocked (403)")
+            return "blocked", []
         if resp.status_code != 200:
             return "not_found", []
 
@@ -193,7 +200,7 @@ def _fetch_via_api(slug: str) -> tuple:
             "pub_date_raw": pub_date_raw,
             "description": (description or "")[:300],
             "slug": slug,
-            "_source": "api_fallback",
+            "_source": "api",
         })
 
     if articles:
@@ -201,6 +208,79 @@ def _fetch_via_api(slug: str) -> tuple:
         return "ok", articles
 
     return "empty", []
+
+
+def _fetch_via_rss_proxy(feed_url: str, slug: str) -> tuple:
+    """
+    fallback #2: use rss2json.com to proxy-fetch the RSS feed.
+    this bypasses Cloudflare IP blocks because rss2json fetches from its own servers.
+    free tier: 10,000 requests/day (more than enough for ~40 feeds).
+    """
+    import requests
+    from urllib.parse import quote
+
+    proxy_api = f"https://api.rss2json.com/v1/api.json?rss_url={quote(feed_url, safe='')}"
+    try:
+        resp = requests.get(proxy_api, timeout=30)
+        logger.debug(f"[@{slug}] rss_proxy: HTTP {resp.status_code}")
+
+        if resp.status_code != 200:
+            logger.info(f"[@{slug}] rss_proxy failed: HTTP {resp.status_code}")
+            return "not_found", []
+
+        data = resp.json()
+        if data.get("status") != "ok":
+            logger.info(f"[@{slug}] rss_proxy status: {data.get('status', '?')} — {data.get('message', '')[:60]}")
+            return "not_found", []
+    except Exception as e:
+        logger.info(f"[@{slug}] rss_proxy error: {type(e).__name__}: {e}")
+        return "error", []
+
+    articles = []
+    for item in data.get("items", []):
+        title = item.get("title", "")
+        link = item.get("link", "")
+        pub_date_raw = item.get("pubDate", "")
+        description = item.get("description", "")
+
+        article_id = link or title
+        if not article_id:
+            continue
+
+        pub_date = _parse_proxy_date(pub_date_raw)
+
+        articles.append({
+            "id": article_id,
+            "title": title,
+            "url": link,
+            "pub_date": pub_date,
+            "pub_date_raw": pub_date_raw,
+            "description": (description or "")[:300],
+            "slug": slug,
+            "_source": "rss_proxy",
+        })
+
+    if articles:
+        logger.info(f"[@{slug}] rss_proxy OK: {len(articles)} articles")
+        return "ok", articles
+
+    return "empty", []
+
+
+def _parse_proxy_date(raw: str) -> str:
+    """parse date from rss2json (format: '2026-03-12 21:16:29')."""
+    if not raw:
+        return ""
+    try:
+        dt = datetime.strptime(raw, "%Y-%m-%d %H:%M:%S")
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except Exception:
+        pass
+    try:
+        dt = parsedate_to_datetime(raw)
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except Exception:
+        return raw[:16]
 
 
 def _parse_rss(xml_text: str, slug: str) -> tuple:
@@ -306,7 +386,7 @@ def fetch_all(recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tup
             if recent:
                 results[slug] = recent
                 success_count += 1
-                source = "api" if articles and articles[0].get("_source") == "api_fallback" else "rss"
+                source = articles[0].get("_source", "rss") if articles else "rss"
                 logger.info(f"  [{i+1}/{total}] ✅ {slug} (s{stage}): {len(recent)} recent [{source}/{src_label}]")
             else:
                 empty_count += 1
@@ -359,6 +439,12 @@ def _is_recent(article: Dict, cutoff: datetime) -> bool:
     try:
         # try RFC 2822 first (RSS format)
         dt = parsedate_to_datetime(raw)
+        return dt >= cutoff
+    except Exception:
+        pass
+    try:
+        # rss2json format: "2026-03-12 21:16:29"
+        dt = datetime.strptime(raw, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
         return dt >= cutoff
     except Exception:
         pass
