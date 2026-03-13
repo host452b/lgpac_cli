@@ -209,13 +209,6 @@
   tags: [deepmind, gemini, alphafold]
   wave_stage: 1
 
-# Jensen Huang's megaphone. GPU roadmap, CUDA ecosystem, GTC announcements.
-- seq: 5
-  username: nvidia
-  name: Jensen Huang (NVIDIA)
-  category: titan
-  tags: [gpu, compute, ecosystem]
-  wave_stage: 1
 
 # ---- Foundation Builders (5) ----
 # building the base models and platforms
