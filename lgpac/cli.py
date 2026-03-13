@@ -412,6 +412,60 @@ def xbirds(
 
 
 # ------------------------------------------------------------------ #
+# substack - newsletter monitor
+# ------------------------------------------------------------------ #
+
+@app.command()
+def substack(
+    notify: bool = typer.Option(False, "--notify", "-n", help="send email on new articles"),
+    page: bool = typer.Option(False, "--page", help="generate docs_substack/index.md"),
+    hours: int = typer.Option(24, "--hours", help="lookback window in hours"),
+    stage: Optional[str] = typer.Option(None, "--stage", "-s", help="only fetch specific stages, e.g. '0,1'"),
+    debug: bool = typer.Option(False, "--debug", "-d"),
+):
+    """monitor Substack newsletters via RSS feeds."""
+    _setup_logging(debug)
+
+    from lgpac.substack import run_monitor, load_tracked
+
+    stage_filter = None
+    if stage:
+        stages = set()
+        for part in stage.split(","):
+            part = part.strip()
+            if "-" in part:
+                lo, hi = part.split("-", 1)
+                stages.update(range(int(lo), int(hi) + 1))
+            else:
+                stages.add(int(part))
+        stage_filter = stages
+
+    tracked = load_tracked()
+    console.print(f"tracking {len(tracked)} substacks\n")
+
+    new_articles, warnings = run_monitor(notify=notify, page=page, recent_hours=hours, stage_filter=stage_filter)
+
+    if new_articles:
+        table = Table(title=f"{len(new_articles)} new article(s)")
+        table.add_column("publication", style="cyan")
+        table.add_column("title", style="bold")
+        table.add_column("date", style="dim")
+        for a in new_articles:
+            table.add_row(a.get("slug", ""), (a.get("title", "") or "")[:50], a.get("pub_date", "")[:10])
+        console.print(table)
+    else:
+        console.print("[dim]no new articles[/dim]")
+
+    if warnings:
+        console.print(f"\n[yellow]⚠ {len(warnings)} feed(s) with issues:[/yellow]")
+        for w in warnings:
+            console.print(f"  [dim]{w['slug']} ({w['name']}): {w['issue']}[/dim]")
+
+    if page:
+        console.print(f"\n[green]docs_substack/index.md generated[/green]")
+
+
+# ------------------------------------------------------------------ #
 # version
 # ------------------------------------------------------------------ #
 
