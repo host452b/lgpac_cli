@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-13 07:59 UTC · 0/47 feeds active
+> updated: 2026-03-13 08:00 UTC · 0/47 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
