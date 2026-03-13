@@ -1,6 +1,6 @@
 """
 shared notification layer.
-single implementation for email (SMTP) and webhook (feishu/dingtalk/slack/generic).
+single implementation for email (SMTP) and webhook (dingtalk/slack/generic).
 all env vars are read once at call time, never hardcoded.
 """
 import json
@@ -59,7 +59,7 @@ def send_email(subject: str, html_body: str) -> bool:
 def send_webhook(text: str, webhook_url: Optional[str] = None):
     """
     send alert via webhook. auto-detects platform by URL:
-      feishu/lark, dingtalk, slack, generic.
+      dingtalk, slack, generic.
     """
     url = webhook_url or os.environ.get("LGPAC_WEBHOOK_URL", "")
     if not url:
@@ -77,8 +77,6 @@ def send_webhook(text: str, webhook_url: Optional[str] = None):
 
 
 def _build_webhook_payload(url: str, text: str) -> Dict:
-    if "feishu.cn" in url or "larksuite.com" in url:
-        return {"msg_type": "text", "content": {"text": text}}
     if "dingtalk.com" in url:
         return {"msgtype": "text", "text": {"content": text}}
     if "hooks.slack.com" in url:
