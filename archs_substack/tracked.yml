@@ -149,23 +149,25 @@
   tags: [business, daily, accessible]
   wave_stage: 3
 
+# DISABLED: 404 - slug may be wrong
 # AI news for non-technical audience.
-- seq: 11
-  slug: aifire
-  name: AI Fire
-  author: AI Fire team
-  category: news-digest
-  tags: [news, accessible, mainstream]
-  wave_stage: 3
+# - seq: 11
+#   slug: aifire
+#   name: AI Fire
+#   author: AI Fire team
+#   category: news-digest
+#   tags: [news, accessible, mainstream]
+#   wave_stage: 3
 
+# DISABLED: 404 - slug may be wrong
 # weekly AI essay + news combo.
-- seq: 12
-  slug: neatprompts
-  name: Neat Prompts
-  author: Neat AI team
-  category: news-digest
-  tags: [prompts, news, tools]
-  wave_stage: 3
+# - seq: 12
+#   slug: neatprompts
+#   name: Neat Prompts
+#   author: Neat AI team
+#   category: news-digest
+#   tags: [prompts, news, tools]
+#   wave_stage: 3
 
 
 # ---- Research-Deep (8) ----
@@ -180,23 +182,25 @@
   tags: [research, policy, frontier]
   wave_stage: 0
 
+# DISABLED: 404 - slug may be wrong (try nathanlambert)
 # HuggingFace RLHF researcher. absolute top-tier stage 0/1 signal.
-- seq: 21
-  slug: interconnects
-  name: Interconnects
-  author: Nathan Lambert
-  category: research-deep
-  tags: [huggingface, rlhf, open-source-models]
-  wave_stage: 0
+# - seq: 21
+#   slug: interconnects
+#   name: Interconnects
+#   author: Nathan Lambert
+#   category: research-deep
+#   tags: [huggingface, rlhf, open-source-models]
+#   wave_stage: 0
 
+# DISABLED: 404 - slug may be wrong (try sebastianraschka)
 # high-quality paper/context breakdowns; researcher trusted.
-- seq: 22
-  slug: aheadofai
-  name: Ahead of AI
-  author: Sebastian Raschka
-  category: research-deep
-  tags: [deep-learning, papers, technical]
-  wave_stage: 1
+# - seq: 22
+#   slug: aheadofai
+#   name: Ahead of AI
+#   author: Sebastian Raschka
+#   category: research-deep
+#   tags: [deep-learning, papers, technical]
+#   wave_stage: 1
 
 # in-depth articles/interviews with builders/researchers; Stanford affiliated.
 - seq: 23
@@ -225,14 +229,15 @@
   tags: [math, algorithms, paper-analysis]
   wave_stage: 1
 
+# DISABLED: 404 - slug may be wrong (try elvissaravia or dair-ai)
 # NLP + paper summaries + education. matches @omarsar0 on X.
-- seq: 26
-  slug: nlpower
-  name: DAIR.AI
-  author: Elvis Saravia
-  category: research-deep
-  tags: [nlp, paper-summaries, education]
-  wave_stage: 1
+# - seq: 26
+#   slug: nlpower
+#   name: DAIR.AI
+#   author: Elvis Saravia
+#   category: research-deep
+#   tags: [nlp, paper-summaries, education]
+#   wave_stage: 1
 
 # weekly authoritative AI from Andrew Ng; accessible. X: @AndrewYNg
 - seq: 27
@@ -256,14 +261,15 @@
   tags: [ai-engineer, podcast, infra]
   wave_stage: 1
 
+# DISABLED: 404 - slug may be wrong (try oneusefulthing)
 # real-world professional/educator AI usage; very influential. X: @emollick
-- seq: 31
-  slug: onesusefulthing
-  name: One Useful Thing
-  author: Ethan Mollick
-  category: practical-tools
-  tags: [workflow, education, practical-ai]
-  wave_stage: 2
+# - seq: 31
+#   slug: onesusefulthing
+#   name: One Useful Thing
+#   author: Ethan Mollick
+#   category: practical-tools
+#   tags: [workflow, education, practical-ai]
+#   wave_stage: 2
 
 # thoughtful takes on AI's human/business implications.
 - seq: 32
@@ -292,14 +298,15 @@
   tags: [tool-review, workflow, applied-ai]
   wave_stage: 2
 
+# DISABLED: 404 - slug may be wrong (try vicki-boykis)
 # ML engineering reality checks. X: @vboykis
-- seq: 35
-  slug: normcoretech
-  name: Normcore Tech
-  author: Vicki Boykis
-  category: practical-tools
-  tags: [ml-infra, pragmatism, engineering]
-  wave_stage: 1
+# - seq: 35
+#   slug: normcoretech
+#   name: Normcore Tech
+#   author: Vicki Boykis
+#   category: practical-tools
+#   tags: [ml-infra, pragmatism, engineering]
+#   wave_stage: 1
 
 # system design + AI infra scaling.
 - seq: 36
@@ -368,14 +375,15 @@
   tags: [philosophy, agi-safety, rationalist]
   wave_stage: 1
 
+# DISABLED: 404 - slug may be wrong
 # neuroscience + consciousness + tech criticism.
-- seq: 45
-  slug: theintrinsicperspective
-  name: The Intrinsic Perspective
-  author: Erik Hoel
-  category: thinker-critic
-  tags: [neuroscience, consciousness, criticism]
-  wave_stage: 2
+# - seq: 45
+#   slug: theintrinsicperspective
+#   name: The Intrinsic Perspective
+#   author: Erik Hoel
+#   category: thinker-critic
+#   tags: [neuroscience, consciousness, criticism]
+#   wave_stage: 2
 
 # humanities + AI social impact.
 - seq: 46
@@ -395,23 +403,25 @@
   tags: [fun, experiments, humor]
   wave_stage: 2
 
+# DISABLED: 404 - slug may be wrong
 # voice AI + first principles thinking.
-- seq: 48
-  slug: roemmele
-  name: Multiplex
-  author: Brian Roemmele
-  category: thinker-critic
-  tags: [voice-ai, first-principles, history]
-  wave_stage: 2
+# - seq: 48
+#   slug: roemmele
+#   name: Multiplex
+#   author: Brian Roemmele
+#   category: thinker-critic
+#   tags: [voice-ai, first-principles, history]
+#   wave_stage: 2
 
+# DISABLED: HTTP 400 - slug may be wrong
 # news aggregation + commentary.
-- seq: 49
-  slug: charlieguo
-  name: Artificial Ignorance
-  author: Charlie Guo
-  category: thinker-critic
-  tags: [commentary, curation, analysis]
-  wave_stage: 2
+# - seq: 49
+#   slug: charlieguo
+#   name: Artificial Ignorance
+#   author: Charlie Guo
+#   category: thinker-critic
+#   tags: [commentary, curation, analysis]
+#   wave_stage: 2
 
 
 # ---- Business-Strategy (10) ----
@@ -471,23 +481,25 @@
   tags: [finance, tech-strategy, valuation]
   wave_stage: 2
 
+# DISABLED: 200 but not RSS - may use custom domain
 # product management + AI integration.
-- seq: 56
-  slug: lennysnewsletter
-  name: Lenny's Newsletter
-  author: Lenny Rachitsky
-  category: business-strategy
-  tags: [product-management, startups, integration]
-  wave_stage: 2
+# - seq: 56
+#   slug: lennysnewsletter
+#   name: Lenny's Newsletter
+#   author: Lenny Rachitsky
+#   category: business-strategy
+#   tags: [product-management, startups, integration]
+#   wave_stage: 2
 
+# DISABLED: 404 - slug may be wrong
 # healthcare AI + life sciences.
-- seq: 57
-  slug: thebenshi
-  name: The Benshi
-  author: The Benshi team
-  category: business-strategy
-  tags: [healthcare-ai, life-sciences]
-  wave_stage: 2
+# - seq: 57
+#   slug: thebenshi
+#   name: The Benshi
+#   author: The Benshi team
+#   category: business-strategy
+#   tags: [healthcare-ai, life-sciences]
+#   wave_stage: 2
 
 # AI market intelligence + competitive analysis.
 - seq: 58
@@ -498,14 +510,15 @@
   tags: [market, competitive, weekly]
   wave_stage: 2
 
+# DISABLED: 404 - slug may be wrong
 # startup ecosystem + founder perspective.
-- seq: 59
-  slug: theaientrepreneurs
-  name: The AI Entrepreneurs
-  author: Various
-  category: business-strategy
-  tags: [startup, founders, playbook]
-  wave_stage: 3
+# - seq: 59
+#   slug: theaientrepreneurs
+#   name: The AI Entrepreneurs
+#   author: Various
+#   category: business-strategy
+#   tags: [startup, founders, playbook]
+#   wave_stage: 3
 
 
 # ---- China-AI (3) ----
@@ -543,14 +556,15 @@
   tags: [safety, alignment, governance]
   wave_stage: 1
 
+# DISABLED: 404 - slug may be wrong
 # OECD / government AI policy analysis.
-- seq: 66
-  slug: aipolicybrief
-  name: AI Policy Brief
-  author: Various
-  category: ethics-policy
-  tags: [policy, regulation, international]
-  wave_stage: 2
+# - seq: 66
+#   slug: aipolicybrief
+#   name: AI Policy Brief
+#   author: Various
+#   category: ethics-policy
+#   tags: [policy, regulation, international]
+#   wave_stage: 2
 
 # responsible AI + fairness + accountability.
 - seq: 67
@@ -592,45 +606,49 @@
   tags: [langchain, agents, rag]
   wave_stage: 1
 
+# DISABLED: 200 but not RSS - may not be a real substack
 # multi-agent systems + research.
-- seq: 73
-  slug: multiagent
-  name: Multi-Agent Digest
-  author: Various
-  category: agent-focused
-  tags: [multi-agent, research, coordination]
-  wave_stage: 1
+# - seq: 73
+#   slug: multiagent
+#   name: Multi-Agent Digest
+#   author: Various
+#   category: agent-focused
+#   tags: [multi-agent, research, coordination]
+#   wave_stage: 1
 
+# DISABLED: 404 - slug may be wrong
 # agent tooling + developer experience.
-- seq: 74
-  slug: agentdev
-  name: Agent Dev Weekly
-  author: Various
-  category: agent-focused
-  tags: [agents, devtools, sdk]
-  wave_stage: 2
+# - seq: 74
+#   slug: agentdev
+#   name: Agent Dev Weekly
+#   author: Various
+#   category: agent-focused
+#   tags: [agents, devtools, sdk]
+#   wave_stage: 2
 
 
 # ---- Education-Tutorial (5) ----
 # teaching, tutorials, explanations
 
+# DISABLED: 404 - slug may be wrong (try deeplearning-ai or batch)
 # weekly authoritative AI education. X: @AndrewYNg (also listed in research)
-- seq: 75
-  slug: deeplearningai
-  name: DeepLearning.AI Newsletter
-  author: Andrew Ng / team
-  category: education-tutorial
-  tags: [education, courses, accessible]
-  wave_stage: 2
+# - seq: 75
+#   slug: deeplearningai
+#   name: DeepLearning.AI Newsletter
+#   author: Andrew Ng / team
+#   category: education-tutorial
+#   tags: [education, courses, accessible]
+#   wave_stage: 2
 
+# DISABLED: 404 - slug may be wrong (try jalammar-blog)
 # visual explanations of AI concepts.
-- seq: 76
-  slug: jalammar
-  name: Jay Alammar's Newsletter
-  author: Jay Alammar
-  category: education-tutorial
-  tags: [visualization, transformers, education]
-  wave_stage: 1
+# - seq: 76
+#   slug: jalammar
+#   name: Jay Alammar's Newsletter
+#   author: Jay Alammar
+#   category: education-tutorial
+#   tags: [visualization, transformers, education]
+#   wave_stage: 1
 
 # ML engineering tutorials + best practices.
 - seq: 77
@@ -663,41 +681,45 @@
 # ---- Hustle-Monetize (5) ----
 # warning signals: tool lists, courses, "make money with AI"
 
+# DISABLED: 404 - example/placeholder, not a real feed
 # "10x your productivity" style; high reach, low signal.
-- seq: 80
-  slug: aihustleexample1
-  name: AI Hustle Daily
-  author: Various
-  category: hustle-monetize
-  tags: [course-selling, listicles, engagement-bait]
-  wave_stage: 4
+# - seq: 80
+#   slug: aihustleexample1
+#   name: AI Hustle Daily
+#   author: Various
+#   category: hustle-monetize
+#   tags: [course-selling, listicles, engagement-bait]
+#   wave_stage: 4
 
+# DISABLED: 404 - example/placeholder
 # ChatGPT prompt templates for likes.
-- seq: 81
-  slug: chatgptpromptsdaily
-  name: ChatGPT Prompts Daily
-  author: Various
-  category: hustle-monetize
-  tags: [prompt-templates, engagement-bait]
-  wave_stage: 4
+# - seq: 81
+#   slug: chatgptpromptsdaily
+#   name: ChatGPT Prompts Daily
+#   author: Various
+#   category: hustle-monetize
+#   tags: [prompt-templates, engagement-bait]
+#   wave_stage: 4
 
+# DISABLED: 404 - example/placeholder
 # "make money with AI" wrapper content.
-- seq: 82
-  slug: aimoneymachine
-  name: AI Money Machine
-  author: Various
-  category: hustle-monetize
-  tags: [monetization, hustle, automation]
-  wave_stage: 4
+# - seq: 82
+#   slug: aimoneymachine
+#   name: AI Money Machine
+#   author: Various
+#   category: hustle-monetize
+#   tags: [monetization, hustle, automation]
+#   wave_stage: 4
 
+# DISABLED: 200 but not RSS - example/placeholder
 # copy-paste AI tool lists.
-- seq: 83
-  slug: aitooldaily
-  name: AI Tool Daily
-  author: Various
-  category: hustle-monetize
-  tags: [tool-lists, repackaging]
-  wave_stage: 4
+# - seq: 83
+#   slug: aitooldaily
+#   name: AI Tool Daily
+#   author: Various
+#   category: hustle-monetize
+#   tags: [tool-lists, repackaging]
+#   wave_stage: 4
 
 # "replace yourself with AI" content.
 - seq: 84
@@ -707,3 +729,15 @@
   category: hustle-monetize
   tags: [automation-hype, course-selling]
   wave_stage: 4
+
+
+# ---- Additional (manually added) ----
+
+# high-frequency current affairs newsletter; broad public audience.
+- seq: 85
+  slug: aaronparnas
+  name: The Parnas Perspective
+  author: Aaron Parnas
+  category: news-digest
+  tags: [news, politics, current-affairs]
+  wave_stage: 3

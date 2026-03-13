@@ -58,6 +58,7 @@ def get_slugs() -> List[str]:
 def fetch_feed(slug: str) -> tuple:
     """
     fetch and parse a substack RSS feed.
+    falls back to Bing search if RSS feed is unavailable.
     returns (status, articles_list).
     status: "ok", "empty", "not_found", "error"
     """
@@ -67,17 +68,71 @@ def fetch_feed(slug: str) -> tuple:
     try:
         resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
 
-        if resp.status_code == 404:
-            return "not_found", []
+        if resp.status_code == 200:
+            status, articles = _parse_rss(resp.text, slug)
+            if status == "ok":
+                return status, articles
+
+        if resp.status_code == 404 or (resp.status_code == 200 and not articles):
+            logger.debug(f"[@{slug}] RSS unavailable, trying search fallback")
+            return _fetch_via_search(slug)
+
         if resp.status_code >= 500:
             return "error", []
 
         resp.raise_for_status()
     except Exception as e:
-        logger.debug(f"[@{slug}] fetch error: {e}")
+        logger.debug(f"[@{slug}] RSS error: {e}, trying search fallback")
+        return _fetch_via_search(slug)
+
+    return "error", []
+
+
+def _fetch_via_search(slug: str) -> tuple:
+    """fallback: search Bing for recent articles from this substack."""
+    import requests
+    import re
+    import html as html_mod
+
+    query = f"site:{slug}.substack.com"
+    url = f"https://www.bing.com/search?q={query}&count=10"
+
+    try:
+        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
+        if resp.status_code != 200:
+            return "error", []
+    except Exception:
         return "error", []
 
-    return _parse_rss(resp.text, slug)
+    pattern = re.compile(
+        r'<a[^>]*href="(https?://[^"]*' + re.escape(slug) + r'\.substack\.com/p/[^"]*)"[^>]*>(.*?)</a>',
+        re.DOTALL,
+    )
+
+    articles = []
+    seen = set()
+    for m in pattern.finditer(resp.text):
+        link = html_mod.unescape(m.group(1))
+        raw_title = re.sub(r'<[^>]+>', '', m.group(2)).strip()
+        if not raw_title or link in seen:
+            continue
+        seen.add(link)
+        articles.append({
+            "id": link,
+            "title": raw_title,
+            "url": link,
+            "pub_date": "",
+            "pub_date_raw": "",
+            "description": "",
+            "slug": slug,
+            "_source": "bing_fallback",
+        })
+
+    if articles:
+        logger.debug(f"[@{slug}] bing fallback: {len(articles)} articles found")
+        return "ok", articles
+
+    return "not_found", []
 
 
 def _parse_rss(xml_text: str, slug: str) -> tuple:
