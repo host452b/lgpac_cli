@@ -2,18 +2,117 @@
 # X/Twitter Tracked Accounts (196 total)
 # ============================================================
 #
-# wave_stage: information propagation phase indicator
-#   0 = ignition  : raw technical info, papers, prototypes (scientists, core devs)
-#   1 = momentum  : domain experts, deep observers, vertical media amplify
-#   2 = explosion : cross-industry spread, business analysis, tool reviews
-#   3 = decay     : mass media, generalists, popularization, common knowledge
-#   4 = fading    : outdated, monetization hustle, or verified failure
+# this file is the single source of truth for all tracked accounts.
+# read by xbirds monitor -> fetch posts -> archive -> docs_xbirds/index.md -> email.
 #
-# edit this file to add/remove users
-# format: seq, username, name, category, tags, wave_stage
+# ---- HOW TO EDIT ----
 #
-
-
+# add:    append entry at end of category section, next seq number.
+# remove: delete comment + yaml block.
+# update: edit in place. keep seq stable.
+#
+# ---- ENTRY SCHEMA ----
+#
+#   seq:        sequential ID (stable reference)
+#   username:   X handle without @
+#   name:       display name
+#   category:   role classification (see below)
+#   tags:       topic labels (see below)
+#   wave_stage: propagation phase 0-4 (see below)
+#   # comment:  one-line bio above each entry
+#
+# ============================================================
+# CATEGORY (role-based, 13 types)
+# ============================================================
+#
+#   titan          (  5)  CEOs of top AI companies. strategic signals.
+#   foundation     (  5)  base model / platform builders.
+#   scientist      ( 25)  researchers, professors, paper authors.
+#   core           ( 38)  founders, executives, decision makers.
+#   org            ( 29)  official company / team / media accounts.
+#   influencer-cn  ( 37)  Chinese-speaking thought leaders.
+#   influencer-en  ( 20)  English-speaking thought leaders & media.
+#   indie-dev      (  9)  solo builders, open-source creators.
+#   startup        (  4)  next-gen startup founders.
+#   investor       ( 12)  VCs, angels, finance analysts.
+#   prompt         (  2)  prompt engineering, red-teaming.
+#   workflow       (  2)  AI workflow / devtool experts.
+#   thinker        (  8)  philosophers, critics, visionaries.
+#
+# ============================================================
+# WAVE_STAGE (propagation phase, 0-4)
+# ============================================================
+#
+# gauge WHERE a topic is in its lifecycle by checking which
+# stage accounts are discussing it.
+#
+#   0 = ignition  ( 50)  raw signal: papers, prototypes
+#       who: scientists, core devs, model teams
+#       content: arxiv, code repos, benchmarks
+#
+#   1 = momentum  ( 60)  domain amplification
+#       who: domain experts, observers, vertical media, thinkers
+#       content: thread breakdowns, opinions, early reviews
+#
+#   2 = explosion ( 54)  cross-industry spread
+#       who: mainstream influencers, CEOs, product reviewers
+#       content: business analysis, tutorials, tool comparisons
+#
+#   3 = decay     ( 31)  mass awareness / popularization
+#       who: mass media, late-night hosts, government, news wires
+#       content: explainers, "AI changes everything" takes
+#
+#   4 = fading    (  1)  outdated / hustle phase
+#       who: grifters, AI anxiety accounts
+#       content: "make money with AI", fear-mongering
+#
+# decision rule:
+#   only stage 0 talking -> still in the lab
+#   stage 1 amplifying  -> gaining traction in expert circle
+#   stage 2 discussing  -> going mainstream
+#   stage 3 posting     -> already common knowledge
+#   stage 4 recycling   -> topic is dead or monetized
+#
+# ============================================================
+# TAGS (299 unique, multi-label)
+# ============================================================
+#
+# tags = WHAT the account covers (not WHO they are).
+#
+# companies:   openai, anthropic, deepmind, meta, google, microsoft,
+#              nvidia, apple, amazon, scale-ai, perplexity, cohere,
+#              minimax, deepseek, manus, huggingface, langchain,
+#              vercel, ibm, amd, monica-ai
+#
+# tech areas:  agi, reinforcement-learning, transformer-author,
+#              deep-learning, computer-vision, rwkv, non-transformer,
+#              rope, embodied-ai, spatial-intelligence, meta-learning,
+#              tensor-algorithms, arc-benchmark, llvm, modular
+#
+# models:      llama, claude, gemini, grok, kimi, glm
+#
+# content:     paper-analysis, paper-review, tool-review, hands-on,
+#              practical, education, science-popularization, commentary,
+#              observation, philosophy, business, monetization,
+#              startup-analysis, tech-criticism, model-comparison
+#
+# verticals:   robotics, autonomous-driving, ai-search, visual,
+#              ai-video, video-gen, film, ecommerce-ai, fintech,
+#              ai-marketing, office-efficiency, prompt-engineering,
+#              knowledge-management, ai-coding, ai-ethics, ai-safety,
+#              governance, edge-ai
+#
+# media:       tech-media, news-aggregation, podcast, youtube, ai-news,
+#              wire-service, entertainment, political-commentary
+#
+# identity:    co-founder, investment, consulting, evangelist, geek,
+#              indie-dev, solo-dev, startup, saas, infra
+#
+# geo:         china, europe, japan
+#
+# ============================================================
+# END SCHEMA — entries below
+# ============================================================
 
 # ---- Titans (5) ----
 # industry leaders shaping the AI landscape
