@@ -270,8 +270,21 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
     warnings = []
     total = len(tracked)
     cutoff = datetime.now(timezone.utc) - timedelta(hours=recent_hours)
+    cutoff_str = cutoff.strftime("%Y-%m-%d %H:%M UTC")
 
-    logger.info(f"fetching {total} users, cutoff={recent_hours}h")
+    # stage distribution for logging
+    from collections import Counter
+    stage_dist = Counter(e.get("wave_stage", -1) for e in tracked)
+    stage_summary = " ".join(f"s{s}={c}" for s, c in sorted(stage_dist.items()))
+
+    logger.info(f"fetching {total} users, cutoff={recent_hours}h ({cutoff_str})")
+    logger.info(f"stage distribution: {stage_summary}")
+
+    success_count = 0
+    empty_count = 0
+    error_count = 0
+    rate_limited = 0
+    start_time = time.time()
 
     for i, entry in enumerate(tracked):
         username = entry.get("username", "")
@@ -284,8 +297,13 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
             recent = _filter_recent(posts, cutoff)
             if recent:
                 results[username] = recent
-                logger.debug(f"[{i+1}/{total}] @{username}: {len(recent)} recent")
+                success_count += 1
+                logger.debug(f"[{i+1}/{total}] @{username}: {len(recent)} recent / {len(posts)} total")
+            else:
+                empty_count += 1
+                logger.debug(f"[{i+1}/{total}] @{username}: 0 recent (oldest in window: {len(posts)} total)")
         else:
+            error_count += 1
             warnings.append({
                 "username": username,
                 "name": entry.get("name", username),
@@ -293,12 +311,26 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS) -> tuple:
                 "issue": "no_data_or_not_found",
             })
 
-        # polite delay with random jitter to avoid pattern detection
+        # progress log every 25 users
+        if (i + 1) % 25 == 0:
+            elapsed = time.time() - start_time
+            rate = (i + 1) / elapsed if elapsed > 0 else 0
+            eta = (total - i - 1) / rate if rate > 0 else 0
+            logger.info(
+                f"progress: {i+1}/{total} ({success_count} active, {error_count} errors) "
+                f"elapsed={elapsed:.0f}s, eta={eta:.0f}s"
+            )
+
+        # polite delay with random jitter
         if i < total - 1:
             delay = random.uniform(REQUEST_DELAY_MIN, REQUEST_DELAY_MAX)
             time.sleep(delay)
 
-    logger.info(f"fetched {len(results)}/{total} users with recent posts, {len(warnings)} warnings")
+    elapsed_total = time.time() - start_time
+    logger.info(
+        f"fetch complete: {total} users in {elapsed_total:.0f}s "
+        f"({success_count} active, {empty_count} no-recent, {error_count} errors, {len(warnings)} warnings)"
+    )
     return results, warnings
 
 
@@ -489,15 +521,34 @@ def send_email_alert(new_posts: List[Dict]) -> bool:
 # ------------------------------------------------------------------ #
 
 def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RECENT_HOURS) -> tuple:
+    logger.info(f"=== xbirds run_monitor start (hours={recent_hours}, notify={notify}, page={page}) ===")
+
     all_posts, warnings = fetch_all_users(recent_hours=recent_hours)
+
+    # summarize what we got per stage
+    tracked = load_tracked()
+    entry_map = {e["username"]: e for e in tracked}
+    stage_active = {}
+    for username in all_posts:
+        s = entry_map.get(username, {}).get("wave_stage", -1)
+        stage_active.setdefault(s, []).append(username)
+    for s in sorted(stage_active):
+        users = stage_active[s]
+        logger.info(f"  stage {s}: {len(users)} active users")
+
     new_posts = check_and_archive(all_posts)
+    logger.info(f"  new posts to archive: {len(new_posts)}")
 
     if page:
         generate_page(all_posts, warnings)
 
     if new_posts and notify:
         send_email_alert(new_posts)
+        logger.info(f"  email sent with {len(new_posts)} posts")
+    elif notify:
+        logger.info("  no new posts, email skipped")
 
+    logger.info(f"=== xbirds run_monitor complete ===")
     return new_posts, warnings
 
 
