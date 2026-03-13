@@ -65,15 +65,27 @@ def get_slugs() -> List[str]:
 
 def fetch_feed(slug: str, feed_url: str = "") -> tuple:
     """
-    fetch and parse an RSS feed for a tracked publication.
-    fallback chain: direct fetch -> substack JSON API -> rss2json proxy.
-    if feed_url is provided, use it directly (for non-substack or custom-domain feeds).
+    fetch articles for a tracked publication.
+    fallback chain:
+      1. substack-api library (uses /api/v1/archive, richest data)
+      2. direct RSS fetch (works locally, blocked on Actions by Cloudflare)
+      3. substack JSON API /api/v1/posts (same domain, also likely blocked)
+      4. rss2json.com proxy (bypasses Cloudflare via third-party server)
+    if feed_url is set, skip step 1 and go straight to RSS (non-substack feed).
     returns (status, articles_list).
     status: "ok", "empty", "not_found", "error"
     """
     import requests
 
     is_substack_default = not feed_url
+
+    if is_substack_default:
+        status, articles = _fetch_via_substack_api(slug)
+        if status == "ok":
+            return status, articles
+        if status == "empty":
+            return status, articles
+
     url = feed_url if feed_url else FEED_URL_TEMPLATE.format(slug=slug)
 
     headers = {
@@ -153,8 +165,61 @@ def fetch_feed(slug: str, feed_url: str = "") -> tuple:
     return "error", []
 
 
+def _fetch_via_substack_api(slug: str) -> tuple:
+    """
+    primary method: use substack-api library (pip install substack-api).
+    calls /api/v1/archive endpoint which returns rich post metadata.
+    """
+    try:
+        from substack_api import newsletter
+    except ImportError:
+        logger.debug("substack-api not installed, skipping")
+        return "error", []
+
+    try:
+        posts = newsletter.get_newsletter_post_metadata(
+            slug, start_offset=0, end_offset=12,
+        )
+    except Exception as e:
+        logger.debug(f"[@{slug}] substack-api error: {type(e).__name__}: {e}")
+        return "error", []
+
+    if not isinstance(posts, list):
+        return "error", []
+
+    articles = []
+    for post in posts:
+        title = post.get("title", "")
+        url = post.get("canonical_url", "")
+        pub_date_raw = post.get("post_date", "")
+        description = post.get("description", "") or post.get("subtitle", "")
+
+        article_id = url or title
+        if not article_id:
+            continue
+
+        pub_date = pub_date_raw[:16].replace("T", " ") if pub_date_raw else ""
+
+        articles.append({
+            "id": article_id,
+            "title": title,
+            "url": url,
+            "pub_date": pub_date,
+            "pub_date_raw": pub_date_raw,
+            "description": (description or "")[:300],
+            "slug": slug,
+            "_source": "substack_api",
+        })
+
+    if articles:
+        logger.info(f"[@{slug}] substack-api OK: {len(articles)} posts")
+        return "ok", articles
+
+    return "empty", []
+
+
 def _fetch_via_api(slug: str) -> tuple:
-    """fallback #1: use Substack's public JSON API (same domain, also may be blocked)."""
+    """fallback #2: use Substack's public JSON API (same domain, also may be blocked)."""
     import requests
 
     api_url = f"https://{slug}.substack.com/api/v1/posts?limit=10"
