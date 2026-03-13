@@ -38,11 +38,31 @@ jobs:
       - name: install dependencies
         run: pip install requests typer rich pyyaml
 
+      - name: connectivity check
+        run: |
+          echo "=== curl diagnostics ==="
+          echo "--- therundown.substack.com/feed ---"
+          curl -sI -o /dev/null -w "status: %{http_code}\nredirect: %{redirect_url}\nip: %{remote_ip}\n" \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+            "https://therundown.substack.com/feed" || true
+          echo "--- aaronparnas.substack.com/feed ---"
+          curl -sI -o /dev/null -w "status: %{http_code}\nredirect: %{redirect_url}\nip: %{remote_ip}\n" \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+            "https://aaronparnas.substack.com/feed" || true
+          echo "--- python UA check ---"
+          python3 -c "
+          import requests
+          for slug in ['therundown', 'aaronparnas']:
+              url = f'https://{slug}.substack.com/feed'
+              r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, timeout=10)
+              print(f'{slug}: status={r.status_code}, ct={r.headers.get(\"content-type\",\"?\")[:40]}, len={len(r.text)}, has_rss={\"<rss\" in r.text[:200]}')
+          "
+
       - name: run substack digest
         run: |
           HOURS="${{ github.event.inputs.hours || '24' }}"
           echo "lookback: ${HOURS}h"
-          python lgpac_cli.py substack --page --notify --hours "$HOURS"
+          python lgpac_cli.py substack --page --notify --hours "$HOURS" -d
 
       - name: commit results
         run: |

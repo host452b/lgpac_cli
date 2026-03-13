@@ -67,31 +67,58 @@ def fetch_feed(slug: str) -> tuple:
     import requests
 
     url = FEED_URL_TEMPLATE.format(slug=slug)
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+
     try:
-        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
+        resp = requests.get(url, headers=headers, timeout=15, allow_redirects=True)
+
+        logger.debug(
+            f"[@{slug}] HTTP {resp.status_code} | "
+            f"content-type: {resp.headers.get('content-type', '?')[:50]} | "
+            f"body: {len(resp.text)} bytes | "
+            f"final-url: {resp.url[:80]}"
+        )
 
         if resp.status_code == 200:
-            status, articles = _parse_rss(resp.text, slug)
-            if status == "ok":
-                return status, articles
-            logger.debug(f"[@{slug}] RSS 200 but parse failed, trying fallback")
+            has_xml = "<rss" in resp.text[:500] or "<feed" in resp.text[:500] or "<?xml" in resp.text[:200]
+            if has_xml:
+                status, articles = _parse_rss(resp.text, slug)
+                if status == "ok":
+                    return status, articles
+            logger.info(f"[@{slug}] RSS 200 but not valid XML (first 100 chars: {resp.text[:100]!r})")
             return _fetch_via_search(slug)
 
         if resp.status_code == 404:
-            logger.debug(f"[@{slug}] RSS 404, trying search fallback")
+            logger.info(f"[@{slug}] RSS 404, trying search fallback")
             return _fetch_via_search(slug)
 
         if resp.status_code in (301, 302):
             location = resp.headers.get("location", "?")
-            logger.debug(f"[@{slug}] redirect {resp.status_code} -> {location[:80]}")
+            logger.info(f"[@{slug}] redirect {resp.status_code} -> {location[:80]}")
             return "error", []
+
+        if resp.status_code == 403:
+            logger.info(f"[@{slug}] 403 forbidden — IP may be blocked by Substack")
+            return _fetch_via_search(slug)
 
         if resp.status_code >= 500:
+            logger.info(f"[@{slug}] server error {resp.status_code}")
             return "error", []
 
+        logger.info(f"[@{slug}] unexpected status {resp.status_code}")
         resp.raise_for_status()
+    except requests.ConnectionError as e:
+        logger.info(f"[@{slug}] connection error: {e}")
+        return _fetch_via_search(slug)
+    except requests.Timeout:
+        logger.info(f"[@{slug}] timeout")
+        return _fetch_via_search(slug)
     except Exception as e:
-        logger.debug(f"[@{slug}] RSS error: {e}, trying search fallback")
+        logger.info(f"[@{slug}] error: {type(e).__name__}: {e}")
         return _fetch_via_search(slug)
 
     return "error", []
