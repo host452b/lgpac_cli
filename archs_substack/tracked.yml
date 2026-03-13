@@ -1,0 +1,709 @@
+# ============================================================
+# Substack Tracked AI Newsletters (80 publications)
+# ============================================================
+#
+# single source of truth for tracked AI-focused Substack publications.
+# read by substack monitor -> fetch https://{slug}.substack.com/feed
+# -> archive -> docs_substack/index.md -> email.
+#
+# ---- HOW TO EDIT ----
+# same rules as xbirds: append at end, keep seq stable.
+#
+# ---- ENTRY SCHEMA ----
+#   seq:        sequential ID
+#   slug:       substack handle (for https://{slug}.substack.com/feed)
+#   name:       publication name
+#   author:     main writer(s)
+#   category:   content type (see below)
+#   tags:       topic labels
+#   wave_stage: 0-4 propagation phase
+#   # comment:  one-line bio above each entry
+#
+# ============================================================
+# CATEGORY (10 types)
+# ============================================================
+#
+#   news-digest        ( 12)  daily/weekly quick hits, tools, roundups
+#   research-deep      (  8)  paper breakdowns, technical deep dives
+#   practical-tools    (  8)  workflows, prompts, product reviews
+#   thinker-critic     ( 10)  philosophy, risks, hype-busting, society
+#   education-tutorial (  5)  teaching, tutorials, explanations
+#   business-strategy  ( 10)  industry analysis, startups, investment, infra
+#   china-ai           (  3)  Chinese ecosystem, translations, analysis
+#   ethics-policy      (  3)  safety, bias, governance, regulation
+#   agent-focused      (  5)  agents, automation, dev frameworks
+#   hustle-monetize    (  5)  tool lists, courses, "make money with AI"
+#
+# ============================================================
+# WAVE_STAGE (same 0-4 as xbirds)
+# ============================================================
+#
+#   0 = ignition   (  5)  primary research, arXiv-level, frontier
+#   1 = momentum   ( 22)  expert breakdowns, practitioner interpretation
+#   2 = explosion  ( 28)  business impact, wide adoption discussion
+#   3 = decay      ( 15)  mainstream summaries, mass popularization
+#   4 = fading     (  5)  commoditized lists, hustle, repackaging
+#
+# decision matrix:
+#   only stage 0 writing -> frontier research, unvalidated
+#   stage 1 picks it up  -> expert traction, high alpha
+#   stage 2 covers it    -> industry mainstream, time to act
+#   stage 3 digests it   -> common knowledge, move on
+#   stage 4 repackages   -> topic exhausted
+#
+# ============================================================
+# ENTRIES
+# ============================================================
+
+
+# ---- News-Digest (12) ----
+# daily/weekly quick hits, tools, roundups
+
+# massive daily AI news/tools; huge reach. X: @rowancheung
+- seq: 1
+  slug: therundown
+  name: The Rundown AI
+  author: Rowan Cheung
+  category: news-digest
+  tags: [news, tools, roundup]
+  wave_stage: 3
+
+# 3-min daily AI updates; very mainstream practitioner. X: @heykahn
+- seq: 2
+  slug: superhuman
+  name: Superhuman AI
+  author: Zain Kahn
+  category: news-digest
+  tags: [tools, productivity, roundup]
+  wave_stage: 3
+
+# curated tools + news; builder/practitioner favorite.
+- seq: 3
+  slug: bensbites
+  name: Ben's Bites
+  author: Ben Tossell
+  category: news-digest
+  tags: [tools, news, curation]
+  wave_stage: 2
+
+# concise daily ML/AI summaries; founder-friendly.
+- seq: 4
+  slug: tldr
+  name: TLDR AI
+  author: TLDR team
+  category: news-digest
+  tags: [ml, data-science, summary]
+  wave_stage: 3
+
+# daily AI newsletter; beginner-to-expert.
+- seq: 5
+  slug: neuron
+  name: The Neuron
+  author: The Neuron team
+  category: news-digest
+  tags: [daily, trends, accessible]
+  wave_stage: 3
+
+# comprehensive weekly roundup + safety/ethics lens.
+- seq: 6
+  slug: lastweekinai
+  name: Last Week in AI
+  author: Andrey Kurenkov et al.
+  category: news-digest
+  tags: [weekly, ethics, research]
+  wave_stage: 2
+
+# weekly AI summaries + unique perspectives.
+- seq: 7
+  slug: aitidbits
+  name: AI Tidbits
+  author: Sahar Mor
+  category: news-digest
+  tags: [summaries, deep-dives, weekly]
+  wave_stage: 2
+
+# AI news with product focus.
+- seq: 8
+  slug: theresanaiforthat
+  name: There's An AI For That
+  author: TAAFT team
+  category: news-digest
+  tags: [tool-directory, product, discovery]
+  wave_stage: 3
+
+# daily AI tool roundup and news.
+- seq: 9
+  slug: futuretools
+  name: Future Tools Weekly
+  author: Matt Wolfe
+  category: news-digest
+  tags: [tools, demos, youtube]
+  wave_stage: 3
+
+# bite-sized AI business news.
+- seq: 10
+  slug: mindstream
+  name: Mindstream AI
+  author: Mindstream team
+  category: news-digest
+  tags: [business, daily, accessible]
+  wave_stage: 3
+
+# AI news for non-technical audience.
+- seq: 11
+  slug: aifire
+  name: AI Fire
+  author: AI Fire team
+  category: news-digest
+  tags: [news, accessible, mainstream]
+  wave_stage: 3
+
+# weekly AI essay + news combo.
+- seq: 12
+  slug: neatprompts
+  name: Neat Prompts
+  author: Neat AI team
+  category: news-digest
+  tags: [prompts, news, tools]
+  wave_stage: 3
+
+
+# ---- Research-Deep (8) ----
+# paper breakdowns, technical deep dives
+
+# weekly frontier research/policy dives; very early signal. Anthropic co-founder.
+- seq: 20
+  slug: importai
+  name: Import AI
+  author: Jack Clark
+  category: research-deep
+  tags: [research, policy, frontier]
+  wave_stage: 0
+
+# HuggingFace RLHF researcher. absolute top-tier stage 0/1 signal.
+- seq: 21
+  slug: interconnects
+  name: Interconnects
+  author: Nathan Lambert
+  category: research-deep
+  tags: [huggingface, rlhf, open-source-models]
+  wave_stage: 0
+
+# high-quality paper/context breakdowns; researcher trusted.
+- seq: 22
+  slug: aheadofai
+  name: Ahead of AI
+  author: Sebastian Raschka
+  category: research-deep
+  tags: [deep-learning, papers, technical]
+  wave_stage: 1
+
+# in-depth articles/interviews with builders/researchers; Stanford affiliated.
+- seq: 23
+  slug: thegradientpub
+  name: The Gradient
+  author: The Gradient team
+  category: research-deep
+  tags: [stanford, academic-research, interviews]
+  wave_stage: 1
+
+# contextual research topic explanations.
+- seq: 24
+  slug: cameronrwolfe
+  name: Deep (Learning) Focus
+  author: Cameron R. Wolfe
+  category: research-deep
+  tags: [deep-learning, paper-review, llms]
+  wave_stage: 0
+
+# math + algorithms + paper analysis.
+- seq: 25
+  slug: thesequence
+  name: TheSequence
+  author: Jesus Rodriguez
+  category: research-deep
+  tags: [math, algorithms, paper-analysis]
+  wave_stage: 1
+
+# NLP + paper summaries + education. matches @omarsar0 on X.
+- seq: 26
+  slug: nlpower
+  name: DAIR.AI
+  author: Elvis Saravia
+  category: research-deep
+  tags: [nlp, paper-summaries, education]
+  wave_stage: 1
+
+# weekly authoritative AI from Andrew Ng; accessible. X: @AndrewYNg
+- seq: 27
+  slug: thebatch
+  name: The Batch (DeepLearning.AI)
+  author: Andrew Ng / team
+  category: research-deep
+  tags: [education, news, deeplearning]
+  wave_stage: 2
+
+
+# ---- Practical-Tools (8) ----
+# workflows, prompts, product reviews
+
+# AI Engineer newsletter + top podcast. X: @swyx
+- seq: 30
+  slug: latentspace
+  name: Latent Space
+  author: swyx & Alessio
+  category: practical-tools
+  tags: [ai-engineer, podcast, infra]
+  wave_stage: 1
+
+# real-world professional/educator AI usage; very influential. X: @emollick
+- seq: 31
+  slug: onesusefulthing
+  name: One Useful Thing
+  author: Ethan Mollick
+  category: practical-tools
+  tags: [workflow, education, practical-ai]
+  wave_stage: 2
+
+# thoughtful takes on AI's human/business implications.
+- seq: 32
+  slug: thealgorithmicbridge
+  name: The Algorithmic Bridge
+  author: Alberto Romero
+  category: practical-tools
+  tags: [business, society, analysis]
+  wave_stage: 2
+
+# weekly AI guide; trusted by SV labs/academia.
+- seq: 33
+  slug: gradientascent
+  name: Gradient Ascent
+  author: Sairam
+  category: practical-tools
+  tags: [guide, technical, weekly]
+  wave_stage: 1
+
+# tool review + workflow + applied AI. X: @danshipper
+- seq: 34
+  slug: every
+  name: Every
+  author: Dan Shipper
+  category: practical-tools
+  tags: [tool-review, workflow, applied-ai]
+  wave_stage: 2
+
+# ML engineering reality checks. X: @vboykis
+- seq: 35
+  slug: normcoretech
+  name: Normcore Tech
+  author: Vicki Boykis
+  category: practical-tools
+  tags: [ml-infra, pragmatism, engineering]
+  wave_stage: 1
+
+# system design + AI infra scaling.
+- seq: 36
+  slug: bytebytego
+  name: ByteByteGo
+  author: Alex Xu
+  category: practical-tools
+  tags: [system-design, infra, scaling]
+  wave_stage: 2
+
+# top tech newsletter globally; AI infra scaling perspective.
+- seq: 37
+  slug: pragmaticengineer
+  name: The Pragmatic Engineer
+  author: Gergely Orosz
+  category: practical-tools
+  tags: [big-tech, software-architecture, scaling]
+  wave_stage: 2
+
+
+# ---- Thinker-Critic (10) ----
+# philosophy, risks, hype-busting, society
+
+# debunks AI hype; contrarian high-value signal.
+- seq: 40
+  slug: aisnakeoil
+  name: AI Snake Oil
+  author: Arvind Narayanan et al.
+  category: thinker-critic
+  tags: [criticism, hype, ethics]
+  wave_stage: 1
+
+# clear AI breakdowns + competitive analysis.
+- seq: 41
+  slug: understandingai
+  name: Understanding AI
+  author: Timothy B. Lee
+  category: thinker-critic
+  tags: [explanation, policy, society]
+  wave_stage: 2
+
+# long-time AI critic; limits & risks. X: @GaryMarcus
+- seq: 42
+  slug: garymarcus
+  name: Marcus on AI
+  author: Gary Marcus
+  category: thinker-critic
+  tags: [skeptic, hallucination, neurosymbolic]
+  wave_stage: 1
+
+# insanely detailed safety weekly roundups. X: @thezvi
+- seq: 43
+  slug: thezvi
+  name: Don't Worry About the Vase
+  author: Zvi Mowshowitz
+  category: thinker-critic
+  tags: [ai-safety, alignment, rationalist]
+  wave_stage: 1
+
+# philosophy + AGI safety + rationalist community.
+- seq: 44
+  slug: astralcodexten
+  name: Astral Codex Ten
+  author: Scott Alexander
+  category: thinker-critic
+  tags: [philosophy, agi-safety, rationalist]
+  wave_stage: 1
+
+# neuroscience + consciousness + tech criticism.
+- seq: 45
+  slug: theintrinsicperspective
+  name: The Intrinsic Perspective
+  author: Erik Hoel
+  category: thinker-critic
+  tags: [neuroscience, consciousness, criticism]
+  wave_stage: 2
+
+# humanities + AI social impact.
+- seq: 46
+  slug: sashachapin
+  name: Sasha Chapin
+  author: Sasha Chapin
+  category: thinker-critic
+  tags: [humanities, ai-social-impact]
+  wave_stage: 2
+
+# fun AI experiments; popular science.
+- seq: 47
+  slug: aiweirdness
+  name: AI Weirdness
+  author: Janelle Shane
+  category: thinker-critic
+  tags: [fun, experiments, humor]
+  wave_stage: 2
+
+# voice AI + first principles thinking.
+- seq: 48
+  slug: roemmele
+  name: Multiplex
+  author: Brian Roemmele
+  category: thinker-critic
+  tags: [voice-ai, first-principles, history]
+  wave_stage: 2
+
+# news aggregation + commentary.
+- seq: 49
+  slug: charlieguo
+  name: Artificial Ignorance
+  author: Charlie Guo
+  category: thinker-critic
+  tags: [commentary, curation, analysis]
+  wave_stage: 2
+
+
+# ---- Business-Strategy (10) ----
+# industry analysis, startups, investment
+
+# deep compute/infra/hardware analysis; very high alpha.
+- seq: 50
+  slug: semianalysis
+  name: Semianalysis
+  author: Dylan Patel et al.
+  category: business-strategy
+  tags: [compute, infra, hardware]
+  wave_stage: 1
+
+# annual State of AI report; VC lens. X: @NathanBenaich
+- seq: 51
+  slug: airstreet
+  name: Air Street Press
+  author: Nathan Benaich
+  category: business-strategy
+  tags: [investment, state-of-ai, market-analysis]
+  wave_stage: 1
+
+# AI + business/tech news/op-eds.
+- seq: 52
+  slug: aisupremacy
+  name: AI Supremacy
+  author: Michael Spencer
+  category: business-strategy
+  tags: [business, startups, intersection]
+  wave_stage: 2
+
+# geopolitics + China tech + AI policy. best proxy for CN influencer list.
+- seq: 53
+  slug: chinatalk
+  name: ChinaTalk
+  author: Jordan Schneider
+  category: business-strategy
+  tags: [geopolitics, china-tech, ai-policy]
+  wave_stage: 2
+
+# tech optimism + investment. proxy for @pmarca / e/acc vibe.
+- seq: 54
+  slug: notboring
+  name: Not Boring
+  author: Packy McCormick
+  category: business-strategy
+  tags: [investment, tech-optimism, eacc]
+  wave_stage: 2
+
+# Wall Street / financial perspective on AI.
+- seq: 55
+  slug: thediff
+  name: The Diff
+  author: Byrne Hobart
+  category: business-strategy
+  tags: [finance, tech-strategy, valuation]
+  wave_stage: 2
+
+# product management + AI integration.
+- seq: 56
+  slug: lennysnewsletter
+  name: Lenny's Newsletter
+  author: Lenny Rachitsky
+  category: business-strategy
+  tags: [product-management, startups, integration]
+  wave_stage: 2
+
+# healthcare AI + life sciences.
+- seq: 57
+  slug: thebenshi
+  name: The Benshi
+  author: The Benshi team
+  category: business-strategy
+  tags: [healthcare-ai, life-sciences]
+  wave_stage: 2
+
+# AI market intelligence + competitive analysis.
+- seq: 58
+  slug: aibrews
+  name: AI Brews
+  author: AI Brews team
+  category: business-strategy
+  tags: [market, competitive, weekly]
+  wave_stage: 2
+
+# startup ecosystem + founder perspective.
+- seq: 59
+  slug: theaientrepreneurs
+  name: The AI Entrepreneurs
+  author: Various
+  category: business-strategy
+  tags: [startup, founders, playbook]
+  wave_stage: 3
+
+
+# ---- China-AI (3) ----
+# Chinese ecosystem, translations
+
+# translations + analysis of Chinese AI writings.
+- seq: 60
+  slug: chinai
+  name: ChinAI Newsletter
+  author: Jeffrey Ding
+  category: china-ai
+  tags: [china, translations, policy]
+  wave_stage: 1
+
+
+# Chinese AI industry updates in English.
+- seq: 62
+  slug: pandaily
+  name: PanDaily AI
+  author: PanDaily team
+  category: china-ai
+  tags: [china, industry, startups]
+  wave_stage: 3
+
+
+# ---- Ethics-Policy (3) ----
+# safety, bias, governance
+
+# AI policy + international governance.
+- seq: 65
+  slug: aisafety
+  name: AI Safety Newsletter
+  author: Various
+  category: ethics-policy
+  tags: [safety, alignment, governance]
+  wave_stage: 1
+
+# OECD / government AI policy analysis.
+- seq: 66
+  slug: aipolicybrief
+  name: AI Policy Brief
+  author: Various
+  category: ethics-policy
+  tags: [policy, regulation, international]
+  wave_stage: 2
+
+# responsible AI + fairness + accountability.
+- seq: 67
+  slug: responsibleai
+  name: Responsible AI Digest
+  author: Various
+  category: ethics-policy
+  tags: [fairness, accountability, bias]
+  wave_stage: 2
+
+
+# ---- Agent-Focused (5) ----
+# agents, automation, dev frameworks
+
+# agent architecture + research.
+- seq: 70
+  slug: agentops
+  name: AgentOps Newsletter
+  author: AgentOps team
+  category: agent-focused
+  tags: [agents, monitoring, frameworks]
+  wave_stage: 1
+
+# AI agent workflows + automation playbooks.
+- seq: 71
+  slug: agentstack
+  name: Agent Stack
+  author: Various
+  category: agent-focused
+  tags: [agents, automation, workflow]
+  wave_stage: 2
+
+# LangChain ecosystem updates + tutorials.
+- seq: 72
+  slug: langchain
+  name: LangChain Newsletter
+  author: Harrison Chase / team
+  category: agent-focused
+  tags: [langchain, agents, rag]
+  wave_stage: 1
+
+# multi-agent systems + research.
+- seq: 73
+  slug: multiagent
+  name: Multi-Agent Digest
+  author: Various
+  category: agent-focused
+  tags: [multi-agent, research, coordination]
+  wave_stage: 1
+
+# agent tooling + developer experience.
+- seq: 74
+  slug: agentdev
+  name: Agent Dev Weekly
+  author: Various
+  category: agent-focused
+  tags: [agents, devtools, sdk]
+  wave_stage: 2
+
+
+# ---- Education-Tutorial (5) ----
+# teaching, tutorials, explanations
+
+# weekly authoritative AI education. X: @AndrewYNg (also listed in research)
+- seq: 75
+  slug: deeplearningai
+  name: DeepLearning.AI Newsletter
+  author: Andrew Ng / team
+  category: education-tutorial
+  tags: [education, courses, accessible]
+  wave_stage: 2
+
+# visual explanations of AI concepts.
+- seq: 76
+  slug: jalammar
+  name: Jay Alammar's Newsletter
+  author: Jay Alammar
+  category: education-tutorial
+  tags: [visualization, transformers, education]
+  wave_stage: 1
+
+# ML engineering tutorials + best practices.
+- seq: 77
+  slug: mlops
+  name: MLOps Community Newsletter
+  author: MLOps Community
+  category: education-tutorial
+  tags: [mlops, deployment, engineering]
+  wave_stage: 2
+
+# AI for beginners + non-technical explanations.
+- seq: 78
+  slug: aiforeveryone
+  name: AI For Everyone
+  author: Various
+  category: education-tutorial
+  tags: [beginner, accessible, mainstream]
+  wave_stage: 3
+
+# data science + ML career advice.
+- seq: 79
+  slug: datascienceweekly
+  name: Data Science Weekly
+  author: Various
+  category: education-tutorial
+  tags: [data-science, career, tutorials]
+  wave_stage: 3
+
+
+# ---- Hustle-Monetize (5) ----
+# warning signals: tool lists, courses, "make money with AI"
+
+# "10x your productivity" style; high reach, low signal.
+- seq: 80
+  slug: aihustleexample1
+  name: AI Hustle Daily
+  author: Various
+  category: hustle-monetize
+  tags: [course-selling, listicles, engagement-bait]
+  wave_stage: 4
+
+# ChatGPT prompt templates for likes.
+- seq: 81
+  slug: chatgptpromptsdaily
+  name: ChatGPT Prompts Daily
+  author: Various
+  category: hustle-monetize
+  tags: [prompt-templates, engagement-bait]
+  wave_stage: 4
+
+# "make money with AI" wrapper content.
+- seq: 82
+  slug: aimoneymachine
+  name: AI Money Machine
+  author: Various
+  category: hustle-monetize
+  tags: [monetization, hustle, automation]
+  wave_stage: 4
+
+# copy-paste AI tool lists.
+- seq: 83
+  slug: aitooldaily
+  name: AI Tool Daily
+  author: Various
+  category: hustle-monetize
+  tags: [tool-lists, repackaging]
+  wave_stage: 4
+
+# "replace yourself with AI" content.
+- seq: 84
+  slug: autopilotai
+  name: Autopilot AI
+  author: Various
+  category: hustle-monetize
+  tags: [automation-hype, course-selling]
+  wave_stage: 4
