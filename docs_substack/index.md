@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-13 08:51 UTC · 4/36 feeds active
+> updated: 2026-03-14 03:19 UTC · 3/36 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
@@ -19,15 +19,14 @@
 | Publication | Latest Article | Date |
 |------------|---------------|------|
 | Last Week in AI | [LWiAI Podcast #236 - GPT 5.4, Gemini 3.1 Flash Lite, Supply Chain Risk](https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31) | 2026-03-13 |
-| The Algorithmic Bridge | [How AI Will Erase Entire Industries Without Automating Them](https://www.thealgorithmicbridge.com/p/how-ai-will-erase-entire-industries) | 2026-03-12 |
-| ByteByteGo | [Stateless Architecture: Benefits and Tradeoffs](https://blog.bytebytego.com/p/stateless-architecture-benefits-and) | 2026-03-12 |
+| The Algorithmic Bridge | [Weekly Top Picks #116](https://www.thealgorithmicbridge.com/p/weekly-top-picks-116) | 2026-03-13 |
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
 
 | Publication | Latest Article | Date |
 |------------|---------------|------|
-| The Parnas Perspective | [Important: Horror Strikes From Virginia to Michigan as Attacks Grip America Whil](https://aaronparnas.substack.com/p/important-horror-strikes-from-virginia) | 2026-03-12 |
+| The Parnas Perspective | [Important Update: Knives are Out as Vance Distances Himself from Trump on Iran, ](https://aaronparnas.substack.com/p/important-update-knives-are-out-as-a39) | 2026-03-13 |
 
 ## 💀 Stage 4: Hustle/Fading
 > repackaged content, low signal
