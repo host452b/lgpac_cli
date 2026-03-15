@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-14 03:19 UTC · 3/36 feeds active
+> updated: 2026-03-15 03:45 UTC · 2/36 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
@@ -18,15 +18,14 @@
 
 | Publication | Latest Article | Date |
 |------------|---------------|------|
-| Last Week in AI | [LWiAI Podcast #236 - GPT 5.4, Gemini 3.1 Flash Lite, Supply Chain Risk](https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31) | 2026-03-13 |
-| The Algorithmic Bridge | [Weekly Top Picks #116](https://www.thealgorithmicbridge.com/p/weekly-top-picks-116) | 2026-03-13 |
+| ByteByteGo | [EP206: Git Workflow: Essential Commands](https://blog.bytebytego.com/p/ep206-git-workflow-essential-commands) | 2026-03-14 |
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
 
 | Publication | Latest Article | Date |
 |------------|---------------|------|
-| The Parnas Perspective | [Important Update: Knives are Out as Vance Distances Himself from Trump on Iran, ](https://aaronparnas.substack.com/p/important-update-knives-are-out-as-a39) | 2026-03-13 |
+| The Parnas Perspective | [NEWS: Trump Administration Threatens Media Licenses Over "Negative" Iran War Cov](https://aaronparnas.substack.com/p/news-trump-administration-threatens-62e) | 2026-03-14 |
 
 ## 💀 Stage 4: Hustle/Fading
 > repackaged content, low signal
