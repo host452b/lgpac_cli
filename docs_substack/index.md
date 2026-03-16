@@ -1,6 +1,6 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-15 03:45 UTC · 2/36 feeds active
+> updated: 2026-03-16 03:49 UTC · 1/36 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
@@ -16,16 +16,14 @@
 ## 🚀 Stage 2: Industry Impact
 > business analysis, wide adoption discussion
 
-| Publication | Latest Article | Date |
-|------------|---------------|------|
-| ByteByteGo | [EP206: Git Workflow: Essential Commands](https://blog.bytebytego.com/p/ep206-git-workflow-essential-commands) | 2026-03-14 |
+*no recent articles*
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
 
 | Publication | Latest Article | Date |
 |------------|---------------|------|
-| The Parnas Perspective | [NEWS: Trump Administration Threatens Media Licenses Over "Negative" Iran War Cov](https://aaronparnas.substack.com/p/news-trump-administration-threatens-62e) | 2026-03-14 |
+| The Parnas Perspective | [Major Update: Family of Fallen Service Member Slams Iran War, Oil Prices Surge, ](https://aaronparnas.substack.com/p/major-update-family-of-fallen-service) | 2026-03-15 |
 
 ## 💀 Stage 4: Hustle/Fading
 > repackaged content, low signal
