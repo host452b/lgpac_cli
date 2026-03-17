@@ -1,12 +1,14 @@
 # 📰 Substack Newsletter Monitor
 
-> updated: 2026-03-16 03:49 UTC · 1/36 feeds active
+> updated: 2026-03-17 03:28 UTC · 4/36 feeds active
 > grouped by **wave_stage**
 
 ## 🔬 Stage 0: Frontier Research
 > primary sources, arXiv-level analysis
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| Import AI | [ImportAI 449: LLMs training other LLMs; 72B distributed training run; computer v](https://importai.substack.com/p/importai-449-llms-training-other) | 2026-03-16 |
 
 ## 📡 Stage 1: Expert Interpretation
 > practitioner breakdowns, early implications
@@ -16,14 +18,17 @@
 ## 🚀 Stage 2: Industry Impact
 > business analysis, wide adoption discussion
 
-*no recent articles*
+| Publication | Latest Article | Date |
+|------------|---------------|------|
+| Last Week in AI | [LWiAI Podcast #237 - Nemotron 3 Super, xAI reborn, Anthropic Lawsuit, Research!](https://lastweekin.ai/p/lwiai-podcast-237-nemotron-3-super) | 2026-03-16 |
+| ByteByteGo | [How Stripe’s Minions Ship 1,300 PRs a Week](https://blog.bytebytego.com/p/how-stripes-minions-ship-1300-prs) | 2026-03-16 |
 
 ## 📺 Stage 3: Mainstream Digest
 > popularized summaries, mass reach
 
 | Publication | Latest Article | Date |
 |------------|---------------|------|
-| The Parnas Perspective | [Major Update: Family of Fallen Service Member Slams Iran War, Oil Prices Surge, ](https://aaronparnas.substack.com/p/major-update-family-of-fallen-service) | 2026-03-15 |
+| The Parnas Perspective | [NEWS: Trump Admits U.S. Was Surprised by Iran’s Response, Says He May “Take Cuba](https://aaronparnas.substack.com/p/news-trump-admits-us-was-surprised) | 2026-03-16 |
 
 ## 💀 Stage 4: Hustle/Fading
 > repackaged content, low signal
