@@ -75,6 +75,22 @@
       <outline type="rss" text="宝玉 Baoyu (dotey)" title="宝玉 Baoyu (dotey)"
                xmlUrl="https://baoyu.substack.com/feed" htmlUrl="https://baoyu.substack.com"
                category="influencer-cn" description="Chinese AI info hub. paper breakdowns + tool reviews."/>
+      <outline type="rss" text="Balaji Srinivasan" title="Balaji Srinivasan"
+               xmlUrl="https://balajis.substack.com/feed" htmlUrl="https://balajis.substack.com"
+               category="thinker" description="crypto-AI convergence theorist. extremely long deep essays."/>
+      <outline type="rss" text="Paul Graham" title="Paul Graham"
+               xmlUrl="http://www.aaronsw.com/2002/feeds/pgessays.rss" htmlUrl="http://paulgraham.com"
+               category="thinker" description="YC founder. startup philosophy. rare but legendary essays."/>
+      <outline type="rss" text="王建硕 (jian_shuo)" title="王建硕 (jian_shuo)"
+               xmlUrl="https://jianshuo.substack.com/feed" htmlUrl="https://jianshuo.substack.com"
+               category="influencer-cn" description="AI philosopher. rigorous first-principles thinking on LLMs."/>
+      <outline type="rss" text="Tech Buzz China (马睿)" title="Tech Buzz China (马睿)"
+               xmlUrl="https://techbuzzchina.substack.com/feed" htmlUrl="https://techbuzzchina.substack.com"
+               category="influencer-cn" description="overseas VC lens on Chinese AI startup ecosystem."/>
+      <outline type="rss" text="Linus Lee (thesephist)" title="Linus Lee (thesephist)"
+               xmlUrl="https://thesephist.com/index.xml" htmlUrl="https://thesephist.com"
+               category="indie-dev" description="Notion AI engineer. human-computer interaction explorer."/>
+      <!-- BROKEN XML: 木遥 muyao.substack.com, 归藏 guicang.substack.com — Substack XML encoding issues with CJK content. retry later. -->
     </outline>
 
     <!-- ============================================================ -->
@@ -104,6 +120,9 @@
       <outline type="rss" text="Last Week in AI" title="Last Week in AI"
                xmlUrl="https://lastweekin.ai/feed" htmlUrl="https://lastweekin.ai"
                category="org" description="comprehensive weekly AI roundup + safety/ethics lens."/>
+      <outline type="rss" text="Sam Altman (blog)" title="Sam Altman (blog)"
+               xmlUrl="https://blog.samaltman.com/posts.atom" htmlUrl="https://blog.samaltman.com"
+               category="titan" description="OpenAI CEO. extremely rare long-form posts. when he writes, industry listens."/>
     </outline>
 
     <!-- ============================================================ -->
