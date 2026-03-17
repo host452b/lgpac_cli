@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>RSS Email Digest Feeds</title>
+  </head>
+  <body>
+    <outline text="AI Research" title="AI Research">
+      <outline type="rss" text="Import AI (Jack Clark)" title="Import AI (Jack Clark)"
+               xmlUrl="https://importai.substack.com/feed" htmlUrl="https://importai.substack.com"/>
+      <outline type="rss" text="Latent Space" title="Latent Space"
+               xmlUrl="https://latentspace.substack.com/feed" htmlUrl="https://latentspace.substack.com"/>
+      <outline type="rss" text="AI Snake Oil" title="AI Snake Oil"
+               xmlUrl="https://aisnakeoil.substack.com/feed" htmlUrl="https://aisnakeoil.substack.com"/>
+      <outline type="rss" text="Simon Willison" title="Simon Willison"
+               xmlUrl="https://simonwillison.net/atom/everything/" htmlUrl="https://simonwillison.net"/>
+    </outline>
+    <outline text="Tech News" title="Tech News">
+      <outline type="rss" text="Hacker News (best)" title="Hacker News (best)"
+               xmlUrl="https://hnrss.org/best" htmlUrl="https://news.ycombinator.com"/>
+      <outline type="rss" text="MIT Technology Review" title="MIT Technology Review"
+               xmlUrl="https://www.technologyreview.com/feed/" htmlUrl="https://www.technologyreview.com"/>
+      <outline type="rss" text="Ars Technica" title="Ars Technica"
+               xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com"/>
+    </outline>
+    <outline text="China AI" title="China AI">
+      <outline type="rss" text="Last Week in AI" title="Last Week in AI"
+               xmlUrl="https://lastweekin.ai/feed" htmlUrl="https://lastweekin.ai"/>
+      <outline type="rss" text="ChinAI Newsletter" title="ChinAI Newsletter"
+               xmlUrl="https://chinai.substack.com/feed" htmlUrl="https://chinai.substack.com"/>
+    </outline>
+  </body>
+</opml>
