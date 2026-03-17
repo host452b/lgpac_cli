@@ -1,6 +1,6 @@
 # 🐦 X/Twitter Tracker
 
-> updated: 2026-03-13 06:07 UTC · 0/209 users active
+> updated: 2026-03-17 06:20 UTC · 0/30 users active
 > grouped by **wave_stage** — read top-down to see how information propagates
 
 ## 🔬 Stage 0: Ignition
@@ -28,10 +28,15 @@
 
 *no active posts in this stage*
 
-<details><summary>⚠️ warnings (1 accounts)</summary>
+<details><summary>⚠️ warnings (6 accounts)</summary>
 
 | Username | Name | Category | Issue |
 |----------|------|----------|-------|
-| @_preflight | preflight |  | connectivity_failed |
+| @sama | Sam Altman | titan | rate_limited |
+| @elonmusk | Elon Musk | titan | rate_limited |
+| @ylecun | Yann LeCun | titan | rate_limited |
+| @demishassabis | Demis Hassabis | titan | rate_limited |
+| @hwchase17 | Harrison Chase | foundation | rate_limited |
+| @__system__ | fetch aborted |  | aborted: 5 consecutive failures, 25 users skipped |
 
 </details>
