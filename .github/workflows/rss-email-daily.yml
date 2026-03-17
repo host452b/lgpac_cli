@@ -38,8 +38,32 @@ jobs:
       - name: install dependencies
         run: pip install -r rss_email/requirements.txt
 
+      - name: preflight — validate OPML and env
+        run: |
+          python -c "
+          import sys, os
+          sys.path.insert(0, 'rss_email')
+          from feed_parser import parse_opml
+          feeds = parse_opml('rss_email/feeds.opml')
+          print(f'feeds: {len(feeds)}')
+          stages = {}
+          for f in feeds:
+              s = f.get('wave_stage', -1)
+              stages[s] = stages.get(s, 0) + 1
+          for s in sorted(stages):
+              if s >= 0:
+                  print(f'  stage {s}: {stages[s]} feeds')
+          missing = [v for v in ['LGPAC_NOTIFY_EMAIL','LGPAC_SMTP_USER','LGPAC_SMTP_PASS'] if not os.environ.get(v)]
+          if missing:
+              print(f'WARNING: missing env vars: {missing}')
+          else:
+              print('SMTP: configured')
+          "
+
       - name: run rss digest
         run: |
           HOURS="${{ github.event.inputs.hours || '24' }}"
           echo "lookback: ${HOURS}h"
+          echo "start: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
           python rss_email/main.py --hours "$HOURS"
+          echo "end: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"

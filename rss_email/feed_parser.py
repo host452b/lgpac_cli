@@ -16,8 +16,19 @@ import feedparser
 logger = logging.getLogger(__name__)
 
 
+def _parse_stage(folder_text):
+    """extract wave_stage number from folder title like 'Stage 0 — Ignition ...'."""
+    m = re.match(r"Stage\s+(\d+)", folder_text or "")
+    if m:
+        return int(m.group(1))
+    return -1
+
+
 def parse_opml(opml_path):
-    """parse OPML file, return list of {title, url, html_url, category}."""
+    """
+    parse OPML file, return list of feed dicts.
+    extracts wave_stage from folder structure, plus per-feed category and description.
+    """
     path = Path(opml_path)
     if not path.exists():
         raise FileNotFoundError(f"OPML not found: {opml_path}")
@@ -27,23 +38,29 @@ def parse_opml(opml_path):
     feeds = []
 
     for folder in root.findall(".//body/outline"):
-        # top-level folder (category grouping)
+        folder_text = folder.get("text") or folder.get("title") or ""
+        stage = _parse_stage(folder_text)
+
         if folder.findall("outline[@xmlUrl]"):
-            category = folder.get("text") or folder.get("title") or ""
             for outline in folder.findall("outline[@xmlUrl]"):
                 feeds.append({
                     "title": outline.get("text") or outline.get("title") or "",
                     "url": outline.get("xmlUrl"),
                     "html_url": outline.get("htmlUrl", ""),
-                    "category": category,
+                    "wave_stage": stage,
+                    "stage_label": folder_text,
+                    "feed_category": outline.get("category", ""),
+                    "description": outline.get("description", ""),
                 })
-        # flat outline (no folder nesting)
         elif folder.get("xmlUrl"):
             feeds.append({
                 "title": folder.get("text") or folder.get("title") or "",
                 "url": folder.get("xmlUrl"),
                 "html_url": folder.get("htmlUrl", ""),
-                "category": "",
+                "wave_stage": stage,
+                "stage_label": folder_text,
+                "feed_category": folder.get("category", ""),
+                "description": folder.get("description", ""),
             })
 
     return feeds
@@ -149,10 +166,10 @@ async def fetch_feed(name, url, cutoff, timeout=20, html_url=""):
     }
 
 
-async def fetch_all_feeds(feeds, hours=24, batch_size=10, timeout=15):
+async def fetch_all_feeds(feeds, hours=24, batch_size=10, timeout=20):
     """
     fetch all feeds in parallel batches.
-    returns list of result dicts with keys: name, status, posts, error, site_url.
+    returns list of result dicts. preserves wave_stage/feed_category metadata from OPML.
     """
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
     results = []
@@ -168,14 +185,23 @@ async def fetch_all_feeds(feeds, hours=24, batch_size=10, timeout=15):
         batch_results = await asyncio.gather(*tasks, return_exceptions=True)
 
         for j, result in enumerate(batch_results):
+            feed = batch[j]
+            meta = {
+                "wave_stage": feed.get("wave_stage", -1),
+                "stage_label": feed.get("stage_label", ""),
+                "feed_category": feed.get("feed_category", ""),
+                "description": feed.get("description", ""),
+            }
             if isinstance(result, Exception):
-                feed = batch[j]
                 logger.error(f"{feed['title']}: unexpected: {result}")
-                results.append({
+                entry = {
                     "name": feed["title"], "status": "error", "posts": [],
                     "error": str(result), "site_url": feed.get("html_url", ""),
-                })
+                }
+                entry.update(meta)
+                results.append(entry)
             else:
+                result.update(meta)
                 results.append(result)
 
     ok = sum(1 for r in results if r["status"] == "ok")
