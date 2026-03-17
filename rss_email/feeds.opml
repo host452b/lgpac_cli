@@ -1,32 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  feeds organized by wave_stage (mirrors archs_xbirds/tracked.yml).
+  read top-down: stage 0 = frontier, stage 4 = exhausted.
+
+  HOW TO ADD A FEED:
+    1. pick the correct stage folder (0-4) based on WHERE the author
+       sits in the information lifecycle (not who they are).
+    2. set category= to one of the 13 tracked.yml role types:
+         titan, foundation, scientist, core, org,
+         influencer-cn, influencer-en, indie-dev, startup,
+         investor, prompt, workflow, thinker
+    3. add a short description= explaining the feed's signal value.
+    4. example:
+         <outline type="rss" text="Name (Author)" title="Name (Author)"
+                  xmlUrl="https://example.com/feed" htmlUrl="https://example.com"
+                  category="scientist" description="what this feed covers."/>
+-->
 <opml version="2.0">
   <head>
     <title>RSS Email Digest Feeds</title>
   </head>
   <body>
-    <outline text="AI Research" title="AI Research">
+
+    <!-- ============================================================ -->
+    <!-- Stage 0 — Ignition (frontier research)                       -->
+    <!-- raw signal: papers, prototypes, model releases.              -->
+    <!-- if ONLY stage 0 talks about it, it's unvalidated lab work.   -->
+    <!-- ============================================================ -->
+    <outline text="Stage 0 — Ignition (frontier research)" title="Stage 0 — Ignition (frontier research)">
       <outline type="rss" text="Import AI (Jack Clark)" title="Import AI (Jack Clark)"
-               xmlUrl="https://importai.substack.com/feed" htmlUrl="https://importai.substack.com"/>
-      <outline type="rss" text="Latent Space" title="Latent Space"
-               xmlUrl="https://latentspace.substack.com/feed" htmlUrl="https://latentspace.substack.com"/>
+               xmlUrl="https://importai.substack.com/feed" htmlUrl="https://importai.substack.com"
+               category="core" description="Anthropic co-founder. weekly frontier research + policy dives."/>
+      <outline type="rss" text="François Chollet" title="François Chollet"
+               xmlUrl="https://fchollet.substack.com/feed" htmlUrl="https://fchollet.substack.com"
+               category="scientist" description="Keras author. ARC benchmark creator. intelligence measurement."/>
+    </outline>
+
+    <!-- ============================================================ -->
+    <!-- Stage 1 — Momentum (expert interpretation)                   -->
+    <!-- domain experts amplify within their circle.                  -->
+    <!-- stage 1 buzzing + stage 2 silent = high alpha.               -->
+    <!-- ============================================================ -->
+    <outline text="Stage 1 — Momentum (expert interpretation)" title="Stage 1 — Momentum (expert interpretation)">
+      <outline type="rss" text="Karpathy (Andrej Karpathy)" title="Karpathy (Andrej Karpathy)"
+               xmlUrl="https://karpathy.substack.com/feed" htmlUrl="https://karpathy.substack.com"
+               category="scientist" description="AI educator supreme. turns papers into tutorials."/>
+      <outline type="rss" text="Latent Space (Swyx)" title="Latent Space (Swyx)"
+               xmlUrl="https://latentspace.substack.com/feed" htmlUrl="https://www.latentspace.co"
+               category="influencer-en" description="AI Engineer paradigm. podcast + deep technical essays."/>
+      <outline type="rss" text="Marcus on AI (Gary Marcus)" title="Marcus on AI (Gary Marcus)"
+               xmlUrl="https://garymarcus.substack.com/feed" htmlUrl="https://garymarcus.substack.com"
+               category="thinker" description="chief AI skeptic. hallucination critic. neuro-symbolic advocate."/>
       <outline type="rss" text="AI Snake Oil" title="AI Snake Oil"
-               xmlUrl="https://aisnakeoil.substack.com/feed" htmlUrl="https://aisnakeoil.substack.com"/>
+               xmlUrl="https://aisnakeoil.substack.com/feed" htmlUrl="https://aisnakeoil.substack.com"
+               category="thinker" description="debunks AI hype. Princeton researchers. contrarian signal."/>
       <outline type="rss" text="Simon Willison" title="Simon Willison"
-               xmlUrl="https://simonwillison.net/atom/everything/" htmlUrl="https://simonwillison.net"/>
+               xmlUrl="https://simonwillison.net/atom/everything/" htmlUrl="https://simonwillison.net"
+               category="indie-dev" description="Django co-creator. prolific AI tool tester. practical builder."/>
+      <outline type="rss" text="State of AI (Nathan Benaich)" title="State of AI (Nathan Benaich)"
+               xmlUrl="https://nathanbenaich.substack.com/feed" htmlUrl="https://www.stateof.ai"
+               category="investor" description="Air Street Capital. annual State of AI Report. data-driven VC lens."/>
+      <outline type="rss" text="Elad Blog (Elad Gil)" title="Elad Blog (Elad Gil)"
+               xmlUrl="https://blog.eladgil.com/feed" htmlUrl="https://blog.eladgil.com"
+               category="investor" description="super angel. portfolio: OpenAI, Anthropic, Perplexity."/>
+      <outline type="rss" text="ThursdAI (Alex Volkov)" title="ThursdAI (Alex Volkov)"
+               xmlUrl="https://sub.thursdai.news/feed" htmlUrl="https://sub.thursdai.news"
+               category="indie-dev" description="weekly hardcore AI news + open-source recap. podcast."/>
+      <outline type="rss" text="Inside My Head (Linus Ekenstam)" title="Inside My Head (Linus Ekenstam)"
+               xmlUrl="https://insidemyhead.substack.com/feed" htmlUrl="https://insidemyhead.substack.com"
+               category="workflow" description="visual generation AI. Midjourney extreme tester."/>
+      <outline type="rss" text="ChinAI Newsletter (Jeffrey Ding)" title="ChinAI Newsletter (Jeffrey Ding)"
+               xmlUrl="https://chinai.substack.com/feed" htmlUrl="https://chinai.substack.com"
+               category="china-ai" description="translations + analysis of Chinese AI policy and research."/>
+      <outline type="rss" text="宝玉 Baoyu (dotey)" title="宝玉 Baoyu (dotey)"
+               xmlUrl="https://baoyu.substack.com/feed" htmlUrl="https://baoyu.substack.com"
+               category="influencer-cn" description="Chinese AI info hub. paper breakdowns + tool reviews."/>
     </outline>
-    <outline text="Tech News" title="Tech News">
-      <outline type="rss" text="Hacker News (best)" title="Hacker News (best)"
-               xmlUrl="https://hnrss.org/best" htmlUrl="https://news.ycombinator.com"/>
+
+    <!-- ============================================================ -->
+    <!-- Stage 2 — Explosion (industry impact)                        -->
+    <!-- signal crosses industry boundaries. business analysis.       -->
+    <!-- stage 2 active = peak decision-making value. act now.        -->
+    <!-- ============================================================ -->
+    <outline text="Stage 2 — Explosion (industry impact)" title="Stage 2 — Explosion (industry impact)">
+      <outline type="rss" text="One Useful Thing (Ethan Mollick)" title="One Useful Thing (Ethan Mollick)"
+               xmlUrl="https://www.oneusefulthing.org/feed" htmlUrl="https://www.oneusefulthing.org"
+               category="influencer-en" description="Wharton prof. AI workplace adoption authority."/>
+      <outline type="rss" text="Lex Fridman" title="Lex Fridman"
+               xmlUrl="https://lexfridman.substack.com/feed" htmlUrl="https://lexfridman.substack.com"
+               category="influencer-en" description="deep interviews with AI leaders. podcast transcripts."/>
+      <outline type="rss" text="The AI Exchange (Rachel Woods)" title="The AI Exchange (Rachel Woods)"
+               xmlUrl="https://theaiexchange.substack.com/feed" htmlUrl="https://theaiexchange.substack.com"
+               category="influencer-en" description="enterprise AI transformation. workflow automation."/>
       <outline type="rss" text="MIT Technology Review" title="MIT Technology Review"
-               xmlUrl="https://www.technologyreview.com/feed/" htmlUrl="https://www.technologyreview.com"/>
+               xmlUrl="https://www.technologyreview.com/feed/" htmlUrl="https://www.technologyreview.com"
+               category="org" description="deep technical analysis for informed audience."/>
       <outline type="rss" text="Ars Technica" title="Ars Technica"
-               xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com"/>
-    </outline>
-    <outline text="China AI" title="China AI">
+               xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com"
+               category="org" description="deep tech reporting. technical audience."/>
+      <outline type="rss" text="Hacker News (best)" title="Hacker News (best)"
+               xmlUrl="https://hnrss.org/best" htmlUrl="https://news.ycombinator.com"
+               category="org" description="top-voted stories. developer + startup community signal."/>
       <outline type="rss" text="Last Week in AI" title="Last Week in AI"
-               xmlUrl="https://lastweekin.ai/feed" htmlUrl="https://lastweekin.ai"/>
-      <outline type="rss" text="ChinAI Newsletter" title="ChinAI Newsletter"
-               xmlUrl="https://chinai.substack.com/feed" htmlUrl="https://chinai.substack.com"/>
+               xmlUrl="https://lastweekin.ai/feed" htmlUrl="https://lastweekin.ai"
+               category="org" description="comprehensive weekly AI roundup + safety/ethics lens."/>
     </outline>
+
+    <!-- ============================================================ -->
+    <!-- Stage 3 — Decay (mainstream signal)                          -->
+    <!-- mass media, generalists, popularization.                     -->
+    <!-- when stage 3 covers it = common knowledge, move on.          -->
+    <!-- ============================================================ -->
+    <!-- category: org (wire-service, news-aggregation),              -->
+    <!--           influencer-en/cn (entertainment, political).       -->
+    <outline text="Stage 3 — Decay (mainstream signal)" title="Stage 3 — Decay (mainstream signal)">
+    </outline>
+
+    <!-- ============================================================ -->
+    <!-- Stage 4 — Fading (hustle / outdated)                         -->
+    <!-- recycled, monetized, or discredited content.                 -->
+    <!-- when stage 4 covers it = fully commoditized. reverse signal. -->
+    <!-- ============================================================ -->
+    <!-- category: influencer-en (engagement-bait, course-selling),   -->
+    <!--           org (pr, corporate-theater).                       -->
+    <outline text="Stage 4 — Fading (hustle / outdated)" title="Stage 4 — Fading (hustle / outdated)">
+    </outline>
+
   </body>
 </opml>

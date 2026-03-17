@@ -68,68 +68,85 @@ def _strip_html(text):
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
-async def fetch_feed(name, url, cutoff, timeout=15, html_url=""):
-    """fetch a single RSS feed, filter posts by cutoff datetime."""
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=timeout)) as resp:
-                content = await resp.text()
+MAX_RETRIES = 2
 
-        feed = feedparser.parse(content)
 
-        if feed.bozo and not feed.entries:
+async def _fetch_once(session, url, timeout):
+    """single fetch attempt, returns response text."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; rss-digest/1.0)",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    }
+    async with session.get(
+        url, timeout=aiohttp.ClientTimeout(total=timeout), headers=headers,
+        allow_redirects=True, ssl=False,
+    ) as resp:
+        return await resp.text()
+
+
+async def fetch_feed(name, url, cutoff, timeout=20, html_url=""):
+    """fetch a single RSS feed with retry, filter posts by cutoff datetime."""
+    last_error = ""
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            async with aiohttp.ClientSession() as session:
+                content = await _fetch_once(session, url, timeout)
+
+            feed = feedparser.parse(content)
+
+            if feed.bozo and not feed.entries:
+                last_error = f"invalid feed: {feed.bozo_exception}"
+                break
+
+            site_url = ""
+            if hasattr(feed, "feed"):
+                site_url = feed.feed.get("link", "")
+
+            posts = []
+            for entry in feed.entries:
+                pub_date = (
+                    getattr(entry, "published_parsed", None)
+                    or getattr(entry, "updated_parsed", None)
+                )
+                if not _is_within_window(pub_date, cutoff):
+                    continue
+
+                excerpt = ""
+                if hasattr(entry, "summary"):
+                    excerpt = entry.summary
+                elif hasattr(entry, "content"):
+                    excerpt = entry.content[0].value
+                excerpt = _strip_html(excerpt)
+                if len(excerpt) > 300:
+                    excerpt = excerpt[:300] + "..."
+
+                posts.append({
+                    "title": getattr(entry, "title", "(no title)"),
+                    "link": getattr(entry, "link", ""),
+                    "excerpt": excerpt,
+                })
+
+            status = "ok" if posts else "no_updates"
             return {
-                "name": name, "status": "error", "posts": [],
-                "error": f"invalid feed: {feed.bozo_exception}",
-                "site_url": html_url,
+                "name": name, "status": status, "posts": posts,
+                "site_url": site_url or html_url,
             }
 
-        site_url = ""
-        if hasattr(feed, "feed"):
-            site_url = feed.feed.get("link", "")
+        except asyncio.TimeoutError:
+            last_error = f"timeout after {timeout}s"
+            logger.warning(f"{name}: {last_error} (attempt {attempt}/{MAX_RETRIES})")
+        except Exception as e:
+            last_error = f"{type(e).__name__}: {e}"
+            logger.warning(f"{name}: {last_error} (attempt {attempt}/{MAX_RETRIES})")
 
-        posts = []
-        for entry in feed.entries:
-            pub_date = (
-                getattr(entry, "published_parsed", None)
-                or getattr(entry, "updated_parsed", None)
-            )
-            if not _is_within_window(pub_date, cutoff):
-                continue
+        if attempt < MAX_RETRIES:
+            await asyncio.sleep(2 * attempt)
 
-            excerpt = ""
-            if hasattr(entry, "summary"):
-                excerpt = entry.summary
-            elif hasattr(entry, "content"):
-                excerpt = entry.content[0].value
-            excerpt = _strip_html(excerpt)
-            if len(excerpt) > 300:
-                excerpt = excerpt[:300] + "..."
-
-            posts.append({
-                "title": getattr(entry, "title", "(no title)"),
-                "link": getattr(entry, "link", ""),
-                "excerpt": excerpt,
-            })
-
-        status = "ok" if posts else "no_updates"
-        return {
-            "name": name, "status": status, "posts": posts,
-            "site_url": site_url or html_url,
-        }
-
-    except asyncio.TimeoutError:
-        logger.warning(f"{name}: timeout after {timeout}s")
-        return {
-            "name": name, "status": "error", "posts": [],
-            "error": f"timeout after {timeout}s", "site_url": html_url,
-        }
-    except Exception as e:
-        logger.warning(f"{name}: {type(e).__name__}: {e}")
-        return {
-            "name": name, "status": "error", "posts": [],
-            "error": str(e), "site_url": html_url,
-        }
+    return {
+        "name": name, "status": "error", "posts": [],
+        "error": last_error, "site_url": html_url,
+    }
 
 
 async def fetch_all_feeds(feeds, hours=24, batch_size=10, timeout=15):
