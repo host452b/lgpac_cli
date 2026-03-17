@@ -1,6 +1,6 @@
-# lgpac & lgycp & xbirds & substack
+# lgpac & lgycp & xbirds
 
-Four independent monitors running on a shared infrastructure. Built for learning and research purposes.
+Three independent monitors running on a shared infrastructure. Built for learning and research purposes.
 
 > **DISCLAIMER / 免责声明**
 >
@@ -120,18 +120,12 @@ Two workflows run on schedule:
 
 1. `monitor --price 120 --rss --page --notify --email` (ticket monitor)
 2. `lgycp --notify --page` (WeChat article monitor)
-3. `xbirds --page` (X/Twitter tracker, page only)
-4. Commits `RSS.md`, `docs_lgpac/`, `docs_lgycp/`, `docs_xbirds/`, `monitor_history.json`, `archs_lgycp/`, `archs_xbirds/`
+3. Commits `RSS.md`, `docs_lgpac/`, `docs_lgycp/`, `monitor_history.json`, `archs_lgycp/`
 
 **`xbirds-daily.yml`** — once daily (Beijing 08:00):
 
 1. `xbirds --page --notify` (daily digest email if new posts found)
 2. Commits `docs_xbirds/`, `archs_xbirds/`
-
-**`substack-daily.yml`** — once daily (Beijing 09:00):
-
-1. `substack --page --notify` (daily newsletter digest via RSS)
-2. Commits `docs_substack/`, `archs_substack/`
 
 All support manual trigger via **Actions → Run workflow**.
 
@@ -164,7 +158,6 @@ All support manual trigger via **Actions → Run workflow**.
 │   ├── monitor.py              # ticket monitor (lgpac)
 │   ├── lgycp.py                # article monitor (lgycp)
 │   ├── xbirds.py               # X/Twitter tracker (xbirds)
-│   ├── substack.py             # Substack RSS monitor (substack)
 │   ├── page.py                 # docs_lgpac/index.md generator
 │   ├── rss.py                  # RSS.md incremental feed
 │   ├── spider.py               # crawl orchestration
@@ -182,17 +175,13 @@ All support manual trigger via **Actions → Run workflow**.
 ├── RSS.md                       # show feed (auto-updated)
 ├── monitor_history.json         # show state (auto-updated)
 ├── archs_lgycp/archive.json     # article archive (auto-updated)
-├── archs_xbirds/tracked.yml     # tracked X accounts (210 users, with wave_stage)
+├── archs_xbirds/tracked.yml     # tracked X accounts (30 active / 209 total)
 ├── archs_xbirds/archive.json    # tweet archive (auto-updated)
-├── docs_substack/index.md        # newsletter monitor page (auto-updated)
-├── archs_substack/tracked.yml    # tracked Substack newsletters (68 feeds)
-├── archs_substack/archive.json   # article archive (auto-updated)
 ├── SITE_STRUCTURE.md            # API reference
 ├── .github/workflows/crawl.yml           # 12h monitor
-├── .github/workflows/xbirds-daily.yml    # daily xbirds digest
-└── .github/workflows/substack-daily.yml  # daily substack digest
+└── .github/workflows/xbirds-daily.yml    # daily xbirds digest
 ```
 
 ## License
 
-MIT — see [DISCLAIMER](#lgpac--lgycp--xbirds--substack) above.
+MIT — see [DISCLAIMER](#lgpac--lgycp--xbirds) above.

@@ -37,6 +37,7 @@ REQUEST_DELAY_MIN = 0.8
 REQUEST_DELAY_MAX = 1.5
 RECENT_HOURS = 24
 MAX_RETRIES = 2
+MAX_CONSECUTIVE_FAILURES = 5
 
 
 # ------------------------------------------------------------------ #
@@ -315,12 +316,25 @@ def fetch_all_users(recent_hours: int = RECENT_HOURS, stage_filter: set = None) 
         if not username:
             continue
 
-        # if we hit consecutive 429s, do a long cooldown before continuing
-        if consecutive_429 >= 3:
-            cooldown = 30 + consecutive_429 * 10
-            logger.warning(f"  ⏸  {consecutive_429} consecutive 429s — cooling down {cooldown}s")
-            time.sleep(cooldown)
-            consecutive_429 = 0
+        # bail out if too many consecutive failures — return partial results
+        if consecutive_429 >= MAX_CONSECUTIVE_FAILURES:
+            remaining = total - i
+            logger.error(
+                f"aborting: {consecutive_429} consecutive failures — "
+                f"returning partial results ({i}/{total} attempted, {remaining} skipped)"
+            )
+            warnings.append({
+                "username": "__system__",
+                "name": "fetch aborted",
+                "category": "",
+                "issue": f"aborted: {consecutive_429} consecutive failures, {remaining} users skipped",
+            })
+            break
+
+        # one cooldown attempt at 3 consecutive failures before escalating
+        if consecutive_429 == 3:
+            logger.warning("  ⏸  3 consecutive failures — extra cooldown 30s")
+            time.sleep(30)
 
         status, posts = fetch_user_posts(username)
         stage = entry.get("wave_stage", "?")
@@ -522,6 +536,10 @@ def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool
     tracked = load_tracked()
     entry_map = {e["username"]: e for e in tracked}
 
+    system_warnings = [w for w in (warnings or []) if w.get("username") == "__system__"]
+    account_warnings = [w for w in (warnings or []) if w.get("username") != "__system__"]
+    is_partial = len(system_warnings) > 0
+
     stage_posts = {s: [] for s in range(5)}
     for p in new_posts:
         username = p.get("username", "")
@@ -532,6 +550,16 @@ def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool
     stage_colors = {0: "#6e40c9", 1: "#1f6feb", 2: "#d29922", 3: "#da3633", 4: "#8b949e"}
 
     parts = ['<html><body style="font-family:-apple-system,Arial,sans-serif;max-width:700px;margin:0 auto;">']
+
+    if is_partial:
+        reason = system_warnings[0].get("issue", "unknown error")
+        parts.append(
+            '<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;'
+            'padding:12px 16px;margin-bottom:16px;font-size:14px;">'
+            f'<b>⚠️ PARTIAL RESULTS</b> — {reason}'
+            '</div>'
+        )
+
     parts.append(f'<h2 style="color:#1da1f2;">🐦 {len(new_posts)} new post(s)</h2>')
 
     for stage in range(5):
@@ -561,8 +589,9 @@ def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool
             )
         parts.append('</table>')
 
-    # diagnostic section: warnings summary
-    if warnings:
+    # diagnostic section: account warnings only (exclude __system__)
+    if account_warnings:
+        warnings = account_warnings
         issue_icons = {
             "rate_limited": "🚦",
             "account_not_found": "🚫",
@@ -614,12 +643,16 @@ def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool
     html = "\n".join(parts)
 
     total = len(new_posts)
-    subject_extra = ""
-    if warnings:
-        from collections import Counter
-        rate_limited = sum(1 for w in warnings if w.get("issue") == "rate_limited")
+    subject_parts = []
+    if is_partial:
+        subject_parts.append("PARTIAL")
+    if account_warnings:
+        rate_limited = sum(1 for w in account_warnings if w.get("issue") == "rate_limited")
         if rate_limited > 0:
-            subject_extra = f", {rate_limited} throttled"
+            subject_parts.append(f"{rate_limited} throttled")
+    subject_extra = ""
+    if subject_parts:
+        subject_extra = f" ({', '.join(subject_parts)})"
     return send_email(f"[xbirds] {total} new post(s){subject_extra}", html)
 
 
@@ -630,9 +663,21 @@ def send_email_alert(new_posts: List[Dict], warnings: List[Dict] = None) -> bool
 def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RECENT_HOURS, stage_filter: set = None) -> tuple:
     logger.info(f"=== xbirds run_monitor start (hours={recent_hours}, notify={notify}, page={page}, stages={stage_filter or 'all'}) ===")
 
-    all_posts, warnings = fetch_all_users(recent_hours=recent_hours, stage_filter=stage_filter)
+    all_posts = {}
+    warnings = []
 
-    # summarize what we got per stage
+    try:
+        all_posts, warnings = fetch_all_users(recent_hours=recent_hours, stage_filter=stage_filter)
+    except Exception as e:
+        logger.error(f"fetch_all_users crashed: {type(e).__name__}: {e}")
+        warnings.append({
+            "username": "__system__",
+            "name": "fetch crash",
+            "category": "",
+            "issue": f"fetch crashed: {type(e).__name__}: {e}",
+        })
+
+    # log stage summary even with partial results
     tracked = load_tracked()
     entry_map = {e["username"]: e for e in tracked}
     stage_active = {}
@@ -643,15 +688,32 @@ def run_monitor(notify: bool = False, page: bool = False, recent_hours: int = RE
         users = stage_active[s]
         logger.info(f"  stage {s}: {len(users)} active users")
 
-    new_posts = check_and_archive(all_posts)
-    logger.info(f"  new posts to archive: {len(new_posts)}")
+    # always archive whatever data we collected
+    new_posts = []
+    try:
+        if all_posts:
+            new_posts = check_and_archive(all_posts)
+            logger.info(f"  new posts to archive: {len(new_posts)}")
+        else:
+            logger.info("  no posts collected, skipping archive")
+    except Exception as e:
+        logger.error(f"archive failed: {type(e).__name__}: {e}")
+        new_posts = [p for posts in all_posts.values() for p in posts]
 
+    # always generate page with whatever data we have
     if page:
-        generate_page(all_posts, warnings)
+        try:
+            generate_page(all_posts, warnings)
+        except Exception as e:
+            logger.error(f"page generation failed: {type(e).__name__}: {e}")
 
+    # always send email — partial data is better than no data
     if notify and (new_posts or warnings):
-        send_email_alert(new_posts, warnings)
-        logger.info(f"  email sent ({len(new_posts)} posts, {len(warnings)} warnings)")
+        try:
+            send_email_alert(new_posts, warnings)
+            logger.info(f"  email sent ({len(new_posts)} posts, {len(warnings)} warnings)")
+        except Exception as e:
+            logger.error(f"email send failed: {type(e).__name__}: {e}")
     elif notify:
         logger.info("  no new posts and no warnings, email skipped")
 
