@@ -91,6 +91,15 @@ def _log_stage_summary(feeds, results):
                      f"{ok}/{total} feeds, {posts} posts"
                      f"{f', {err} errors' if err else ''}")
 
+    failed = [r for r in results if r["status"] == "error"]
+    if failed:
+        logger.info(f"--- {len(failed)} error(s) detail ---")
+        for r in failed:
+            s = r.get("wave_stage", "?")
+            cat = r.get("feed_category", "")
+            tag = f"[{cat}] " if cat else ""
+            logger.error(f"  s{s} {tag}{r['name']}: {r.get('error', 'unknown')}")
+
 
 def _write_github_summary(feeds, results, hours, elapsed):
     """write markdown to $GITHUB_STEP_SUMMARY if running in Actions."""
