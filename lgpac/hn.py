@@ -30,12 +30,12 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
-from lgpac.archive import JsonArchive
-from lgpac.notify import send_email, build_html_email
+from lgpac.notify import send_email
 
 logger = logging.getLogger("lgpac.hn")
 
-ARCHIVE_FILE = "archs_hn/archive.json"
+ARCHS_HN_DIR = "archs_hn"
+ARCHS_ZELI_DIR = "archs_zeli"
 DOCS_FILE = "docs_hn/index.md"
 TOP_N = 10
 
@@ -169,24 +169,34 @@ def _fetch_hn_rss(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
 # HN source D: last archive (offline fallback)
 # ------------------------------------------------------------------ #
 
-def _fetch_hn_archive(archive: JsonArchive) -> Tuple[List[Dict], str]:
-    """return the most recent run from archive as fallback."""
+def _fetch_hn_archive() -> Tuple[List[Dict], str]:
+    """return the most recent daily archive file as fallback."""
     logger.info("HN source D: archive fallback")
-    runs = archive.get("runs", [])
-    if not runs:
+    archs = Path(ARCHS_HN_DIR)
+    if not archs.exists():
         return [], "archive_empty"
 
-    last = runs[-1]
-    stories = last.get("hn_stories", [])
-    logger.info(f"  loaded {len(stories)} stories from archive ({last.get('date', '?')})")
-    return stories, "archive"
+    # find the latest file by walking year/month dirs in reverse
+    files = sorted(archs.rglob("hn-*.json"), reverse=True)
+    if not files:
+        return [], "archive_empty"
+
+    latest = files[0]
+    try:
+        data = json.loads(latest.read_text(encoding="utf-8"))
+        stories = data.get("stories", [])
+        logger.info(f"  loaded {len(stories)} stories from {latest}")
+        return stories, "archive"
+    except Exception as e:
+        logger.warning(f"  archive read failed: {e}")
+        return [], "archive_error"
 
 
 # ------------------------------------------------------------------ #
 # HN fetch with fallback chain
 # ------------------------------------------------------------------ #
 
-def fetch_hn_top(top_n: int = TOP_N, archive: Optional[JsonArchive] = None) -> Tuple[List[Dict], str]:
+def fetch_hn_top(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
     """try sources A→B→C→D, return first success."""
     sources = [
         ("Firebase API", _fetch_hn_firebase),
@@ -205,10 +215,9 @@ def fetch_hn_top(top_n: int = TOP_N, archive: Optional[JsonArchive] = None) -> T
             time.sleep(1)
 
     # source D: archive fallback
-    if archive:
-        stories, source = _fetch_hn_archive(archive)
-        if stories:
-            return stories, source
+    stories, source = _fetch_hn_archive()
+    if stories:
+        return stories, source
 
     logger.error("all HN sources failed")
     return [], "all_failed"
@@ -299,33 +308,48 @@ def fetch_zeli_top(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
 # archive + page generation
 # ------------------------------------------------------------------ #
 
-def save_run(archive: JsonArchive, hn_stories: List[Dict], zeli_stories: List[Dict],
-             hn_source: str, zeli_source: str):
-    """append a run entry to the archive."""
+def _save_daily_archive(base_dir: str, prefix: str, stories: List[Dict],
+                        source: str):
+    """save stories to archs_{portal}/YYYY/MM/{prefix}-YYYY-MM-DD.json"""
     now = datetime.now(timezone.utc)
-    run = {
-        "date": now.strftime("%Y-%m-%d"),
-        "time": now.isoformat(),
-        "hn_source": hn_source,
-        "zeli_source": zeli_source,
-        "hn_stories": hn_stories,
-        "zeli_stories": zeli_stories,
+    year = now.strftime("%Y")
+    month = now.strftime("%m")
+    date_str = now.strftime("%Y-%m-%d")
+
+    dir_path = Path(base_dir) / year / month
+    dir_path.mkdir(parents=True, exist_ok=True)
+
+    file_path = dir_path / f"{prefix}-{date_str}.json"
+    data = {
+        "date": date_str,
+        "fetched_at": now.isoformat(),
+        "source": source,
+        "count": len(stories),
+        "stories": stories,
     }
 
-    runs = archive.get("runs", [])
-    if not isinstance(runs, list):
-        runs = []
+    file_path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    logger.info(f"  saved {file_path} ({len(stories)} stories)")
+    return file_path
 
-    # keep last 30 days of runs
-    cutoff = (now - timedelta(days=30)).isoformat()
-    runs = [r for r in runs if r.get("time", "") >= cutoff]
-    runs.append(run)
 
-    archive.set("runs", runs)
-    archive.set("last_updated", now.isoformat())
-    archive.save()
+def save_run(hn_stories: List[Dict], zeli_stories: List[Dict],
+             hn_source: str, zeli_source: str):
+    """save HN and zeli as separate daily archive files."""
+    paths = []
 
-    logger.info(f"archive saved: {len(runs)} run(s)")
+    if hn_stories:
+        p = _save_daily_archive(ARCHS_HN_DIR, "hn", hn_stories, hn_source)
+        paths.append(p)
+
+    if zeli_stories:
+        p = _save_daily_archive(ARCHS_ZELI_DIR, "zeli", zeli_stories, zeli_source)
+        paths.append(p)
+
+    logger.info(f"archive saved: {len(paths)} file(s)")
 
 
 def generate_page(hn_stories: List[Dict], zeli_stories: List[Dict],
@@ -446,14 +470,11 @@ def run_monitor(
     fetch HN top-N + zeli top-N with fallback chain.
     returns (hn_stories, zeli_stories, hn_source, zeli_source).
     """
-    archive = JsonArchive(ARCHIVE_FILE)
-    archive.load()
-
-    hn_stories, hn_source = fetch_hn_top(top_n, archive)
+    hn_stories, hn_source = fetch_hn_top(top_n)
     zeli_stories, zeli_source = fetch_zeli_top(top_n)
 
-    # save to archive
-    save_run(archive, hn_stories, zeli_stories, hn_source, zeli_source)
+    # save to separate daily archive files
+    save_run(hn_stories, zeli_stories, hn_source, zeli_source)
 
     # generate GitHub Pages
     if page:

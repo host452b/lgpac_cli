@@ -1,0 +1,108 @@
+{
+  "date": "2026-04-17",
+  "fetched_at": "2026-04-17T05:09:28.075864+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "47793411",
+      "title": "Claude Opus 4.7",
+      "url": "https://www.anthropic.com/news/claude-opus-4-7",
+      "score": 1597,
+      "by": "meetpateltech",
+      "time": 1776349430,
+      "comments": 1119,
+      "source": "firebase"
+    },
+    {
+      "id": "47796469",
+      "title": "Codex for almost everything",
+      "url": "https://openai.com/index/codex-for-almost-everything/",
+      "score": 769,
+      "by": "mikeevans",
+      "time": 1776359539,
+      "comments": 387,
+      "source": "firebase"
+    },
+    {
+      "id": "47772725",
+      "title": "CadQuery is an open-source Python library for building 3D CAD models",
+      "url": "https://cadquery.github.io/",
+      "score": 76,
+      "by": "gregsadetsky",
+      "time": 1776208839,
+      "comments": 9,
+      "source": "firebase"
+    },
+    {
+      "id": "47800033",
+      "title": "Guy builds AI driven hardware hacker arm from duct tape, old cam and CNC machine",
+      "url": "https://github.com/gainsec/autoprober",
+      "score": 128,
+      "by": "scaredpelican",
+      "time": 1776376597,
+      "comments": 26,
+      "source": "firebase"
+    },
+    {
+      "id": "47801255",
+      "title": "Show HN: Spice simulation → oscilloscope → verification with Claude Code",
+      "url": "https://lucasgerads.com/blog/lecroy-mcp-spice-demo/",
+      "score": 44,
+      "by": "_fizz_buzz_",
+      "time": 1776386267,
+      "comments": 10,
+      "source": "firebase"
+    },
+    {
+      "id": "47799573",
+      "title": "A Better R Programming Experience Thanks to Tree-sitter",
+      "url": "https://ropensci.org/blog/2026/04/02/tree-sitter-overview/",
+      "score": 108,
+      "by": "sebg",
+      "time": 1776374042,
+      "comments": 10,
+      "source": "firebase"
+    },
+    {
+      "id": "47802233",
+      "title": "Discourse Is Not Going Closed Source",
+      "url": "https://blog.discourse.org/2026/04/discourse-is-not-going-closed-source/",
+      "score": 43,
+      "by": "sams99",
+      "time": 1776396986,
+      "comments": 17,
+      "source": "firebase"
+    },
+    {
+      "id": "47798345",
+      "title": "Official Clojure Documentary page with Video, Shownotes, and Links",
+      "url": "https://clojure.org/about/documentary",
+      "score": 134,
+      "by": "adityaathalye",
+      "time": 1776367938,
+      "comments": 37,
+      "source": "firebase"
+    },
+    {
+      "id": "47797665",
+      "title": "Android CLI: Build Android apps 3x faster using any agent",
+      "url": "https://android-developers.googleblog.com/2026/04/build-android-apps-3x-faster-using-any-agent.html",
+      "score": 168,
+      "by": "ingve",
+      "time": 1776364799,
+      "comments": 54,
+      "source": "firebase"
+    },
+    {
+      "id": "47750600",
+      "title": "ReBot-DevArm: open-source Robotic Arm",
+      "url": "https://github.com/Seeed-Projects/reBot-DevArm",
+      "score": 24,
+      "by": "rickcarlino",
+      "time": 1776080352,
+      "comments": 2,
+      "source": "firebase"
+    }
+  ]
+}

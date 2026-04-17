@@ -457,12 +457,6 @@ def hn(
     else:
         console.print("[dim]zeli: unavailable or skipped[/dim]")
 
-    from lgpac.archive import JsonArchive
-    archive = JsonArchive("archs_hn/archive.json")
-    archive.load()
-    runs = archive.get("runs", [])
-    console.print(f"\n[green]archive: {len(runs)} run(s)[/green]")
-
     if page:
         console.print("[green]docs_hn/index.md generated[/green]")
 
