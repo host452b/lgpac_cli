@@ -34,7 +34,8 @@ jobs:
       - name: install dependencies
         run: pip install requests typer rich pyyaml
 
-      - name: random delay (0-4h jitter for UTC 18:00-23:59 window)
+      - name: random delay (0-4h jitter, skipped on manual dispatch)
+        if: github.event_name == 'schedule'
         run: |
           DELAY=$((RANDOM % 14400))
           echo "sleeping ${DELAY}s ($(( DELAY / 60 ))m) for timing jitter"
