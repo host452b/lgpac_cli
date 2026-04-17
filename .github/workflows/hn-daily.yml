@@ -1,0 +1,60 @@
+name: hn daily top-10
+
+on:
+  schedule:
+    # random window: cron fires at UTC 20:00 daily, then the job
+    # sleeps a random 0-14400s (0-4h) before running, giving an
+    # effective window of UTC 18:00-23:59 (with cron jitter).
+    - cron: "0 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  hn-digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
+      LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
+      LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
+      LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
+      LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: install dependencies
+        run: pip install requests typer rich pyyaml
+
+      - name: random delay (0-4h jitter for UTC 18:00-23:59 window)
+        run: |
+          DELAY=$((RANDOM % 14400))
+          echo "sleeping ${DELAY}s ($(( DELAY / 60 ))m) for timing jitter"
+          sleep "$DELAY"
+
+      - name: fetch HN + zeli top-10
+        run: python lgpac_cli.py hn --notify --page
+
+      - name: commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add archs_hn/ docs_hn/
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "hn: top-10 $(date -u '+%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3; do
+              git push && break
+              echo "push failed, pulling and retrying ($i/3)"
+              git pull --rebase origin main
+            done
+          fi

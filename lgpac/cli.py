@@ -412,6 +412,62 @@ def xbirds(
 
 
 # ------------------------------------------------------------------ #
+# hn - Hacker News + zeli daily top-10
+# ------------------------------------------------------------------ #
+
+@app.command()
+def hn(
+    top: int = typer.Option(10, "--top", "-t", help="number of stories to fetch"),
+    notify: bool = typer.Option(False, "--notify", "-n", help="send email digest"),
+    page: bool = typer.Option(False, "--page", help="generate docs_hn/index.md"),
+    debug: bool = typer.Option(False, "--debug", "-d"),
+):
+    """daily HN + zeli.app top-10 with fallback chain (Firebase → Algolia → RSS → archive)."""
+    _setup_logging(debug)
+
+    from lgpac.hn import run_monitor
+
+    hn_stories, zeli_stories, hn_source, zeli_source = run_monitor(
+        top_n=top, notify=notify, page=page,
+    )
+
+    console.print(f"\n[bold]HN source:[/bold] {hn_source}")
+    console.print(f"[bold]zeli source:[/bold] {zeli_source}\n")
+
+    if hn_stories:
+        table = Table(title=f"HN Top {len(hn_stories)}")
+        table.add_column("#", justify="right", width=3)
+        table.add_column("Score", justify="right", style="yellow", width=6)
+        table.add_column("Title", style="bold")
+        table.add_column("Comments", justify="right", style="dim", width=8)
+        for i, s in enumerate(hn_stories, 1):
+            table.add_row(str(i), str(s.get("score", "?")), s["title"], str(s.get("comments", "?")))
+        console.print(table)
+    else:
+        console.print("[red]no HN stories fetched (all sources failed)[/red]")
+
+    if zeli_stories:
+        console.print()
+        zt = Table(title=f"zeli.app 中文摘要 ({len(zeli_stories)})")
+        zt.add_column("#", justify="right", width=3)
+        zt.add_column("标题", style="bold")
+        for i, s in enumerate(zeli_stories, 1):
+            zt.add_row(str(i), s.get("title_zh", ""))
+        console.print(zt)
+    else:
+        console.print("[dim]zeli: unavailable or skipped[/dim]")
+
+    from lgpac.archive import JsonArchive
+    archive = JsonArchive("archs_hn/archive.json")
+    archive.load()
+    runs = archive.get("runs", [])
+    console.print(f"\n[green]archive: {len(runs)} run(s)[/green]")
+
+    if page:
+        console.print("[green]docs_hn/index.md generated[/green]")
+
+
+# ------------------------------------------------------------------ #
 # version
 # ------------------------------------------------------------------ #
 

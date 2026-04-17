@@ -1,0 +1,103 @@
+{
+  "runs": [
+    {
+      "date": "2026-04-17",
+      "time": "2026-04-17T04:38:55.242023+00:00",
+      "hn_source": "firebase",
+      "zeli_source": "zeli_skipped",
+      "hn_stories": [
+        {
+          "id": "47793411",
+          "title": "Claude Opus 4.7",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7",
+          "score": 1572,
+          "by": "meetpateltech",
+          "time": 1776349430,
+          "comments": 1119,
+          "source": "firebase"
+        },
+        {
+          "id": "47796469",
+          "title": "Codex for almost everything",
+          "url": "https://openai.com/index/codex-for-almost-everything/",
+          "score": 758,
+          "by": "mikeevans",
+          "time": 1776359539,
+          "comments": 385,
+          "source": "firebase"
+        },
+        {
+          "id": "47772725",
+          "title": "CadQuery is an open-source Python library for building 3D CAD models",
+          "url": "https://cadquery.github.io/",
+          "score": 70,
+          "by": "gregsadetsky",
+          "time": 1776208839,
+          "comments": 9,
+          "source": "firebase"
+        },
+        {
+          "id": "47800033",
+          "title": "Guy builds AI driven hardware hacker arm from duct tape, old cam and CNC machine",
+          "url": "https://github.com/gainsec/autoprober",
+          "score": 121,
+          "by": "scaredpelican",
+          "time": 1776376597,
+          "comments": 26,
+          "source": "firebase"
+        },
+        {
+          "id": "47801255",
+          "title": "Show HN: Spice simulation → oscilloscope → verification with Claude Code",
+          "url": "https://lucasgerads.com/blog/lecroy-mcp-spice-demo/",
+          "score": 40,
+          "by": "_fizz_buzz_",
+          "time": 1776386267,
+          "comments": 8,
+          "source": "firebase"
+        }
+      ],
+      "zeli_stories": []
+    },
+    {
+      "date": "2026-04-17",
+      "time": "2026-04-17T04:40:05.026456+00:00",
+      "hn_source": "firebase",
+      "zeli_source": "zeli_skipped",
+      "hn_stories": [
+        {
+          "id": "47793411",
+          "title": "Claude Opus 4.7",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7",
+          "score": 1572,
+          "by": "meetpateltech",
+          "time": 1776349430,
+          "comments": 1120,
+          "source": "firebase"
+        },
+        {
+          "id": "47796469",
+          "title": "Codex for almost everything",
+          "url": "https://openai.com/index/codex-for-almost-everything/",
+          "score": 758,
+          "by": "mikeevans",
+          "time": 1776359539,
+          "comments": 385,
+          "source": "firebase"
+        },
+        {
+          "id": "47772725",
+          "title": "CadQuery is an open-source Python library for building 3D CAD models",
+          "url": "https://cadquery.github.io/",
+          "score": 70,
+          "by": "gregsadetsky",
+          "time": 1776208839,
+          "comments": 9,
+          "source": "firebase"
+        }
+      ],
+      "zeli_stories": []
+    }
+  ],
+  "last_updated": "2026-04-17T04:40:05.026456+00:00"
+}

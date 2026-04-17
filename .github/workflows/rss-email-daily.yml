@@ -1,9 +1,9 @@
 name: rss email digest
 
 on:
-  schedule:
-    # once daily at UTC 02:00 (Beijing 10:00, after xbirds at 08:00)
-    - cron: "0 2 * * *"
+  # schedule disabled — replaced by hn-daily.yml
+  # schedule:
+  #   - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       hours:
