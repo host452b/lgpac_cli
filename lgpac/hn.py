@@ -218,11 +218,17 @@ def fetch_hn_top(top_n: int = TOP_N, archive: Optional[JsonArchive] = None) -> T
 # zeli.app source A: HTML fetch (robots.txt allows /*/hacker-news)
 # ------------------------------------------------------------------ #
 
-def _fetch_zeli_html(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
-    """fetch zeli.app Chinese HN digest via polite HTML request."""
+def _fetch_zeli_rsc(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
+    """fetch zeli.app Chinese HN digest by parsing Next.js RSC flight data.
+
+    zeli.app is a Next.js App Router site. The initial HTML contains RSC
+    (React Server Components) flight data in self.__next_f.push() calls.
+    Story objects are embedded as JSON with Chinese titles and abstracts.
+    This avoids needing a headless browser — the data is in the HTML.
+    """
     import requests
 
-    logger.info("zeli source A: HTML fetch")
+    logger.info("zeli source A: RSC flight data")
     url = "https://zeli.app/zh"
     headers = {"User-Agent": USER_AGENT}
 
@@ -231,49 +237,55 @@ def _fetch_zeli_html(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
     resp.raise_for_status()
     html = resp.text
 
-    # extract article cards: title is in <a> tags inside bg-card containers
-    # pattern: find title links and their associated scores
-    title_pattern = re.compile(
-        r'<a[^>]*href="(https://news\.ycombinator\.com/item\?id=\d+)"[^>]*>'
-        r'\s*<h2[^>]*>(.*?)</h2>',
-        re.DOTALL,
+    # extract RSC type-1 chunks and concatenate
+    chunks = re.findall(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)', html, re.DOTALL)
+    full = ''
+    for c in chunks:
+        full += c.replace('\\n', '\n').replace('\\"', '"')
+
+    # find JSON story objects with Chinese titles
+    story_pattern = re.compile(
+        r'\{"id":(\d+),"title":"((?:[^"\\]|\\.)*)","url":"((?:[^"\\]|\\.)*)",'
+        r'"time":(\d+),"by":"((?:[^"\\]|\\.)*)","score":(\d+),'
+        r'"descendants":(\d+),"type":"story"(?:,"abstract":"((?:[^"\\]|\\.)*)")?',
     )
 
     stories = []
-    for match in title_pattern.finditer(html):
-        href, title = match.groups()
-        title = re.sub(r'<[^>]+>', '', title).strip()
-        if title:
-            hn_id = href.split("id=")[-1] if "id=" in href else ""
-            stories.append({
-                "id": hn_id,
-                "title_zh": title,
-                "hn_url": href,
-                "source": "zeli_html",
-            })
+    seen_ids = set()
 
-    # fallback: try simpler pattern for title extraction
-    if not stories:
-        # look for h2 tags with Chinese text near ycombinator links
-        h2_pattern = re.compile(r'<h2[^>]*class="[^"]*font-semibold[^"]*"[^>]*>(.*?)</h2>', re.DOTALL)
-        for match in h2_pattern.finditer(html):
-            title = re.sub(r'<[^>]+>', '', match.group(1)).strip()
-            if title and len(title) > 5:
-                stories.append({
-                    "id": "",
-                    "title_zh": title,
-                    "hn_url": "",
-                    "source": "zeli_html",
-                })
+    for m in story_pattern.finditer(full):
+        sid = m.group(1)
+        if sid in seen_ids:
+            continue
+        seen_ids.add(sid)
 
-    logger.info(f"  fetched {len(stories)} zeli articles")
-    return stories[:top_n], "zeli_html"
+        title_zh = m.group(2).replace('\\\\', '\\')
+        abstract = m.group(8).replace('\\\\', '\\') if m.group(8) else ''
+
+        stories.append({
+            "id": sid,
+            "title_zh": title_zh,
+            "abstract": abstract[:200],
+            "url": m.group(3).replace('\\\\', '\\'),
+            "score": int(m.group(6)),
+            "by": m.group(5),
+            "time": int(m.group(4)),
+            "comments": int(m.group(7)),
+            "hn_url": f"https://news.ycombinator.com/item?id={sid}",
+            "source": "zeli_rsc",
+        })
+
+    # sort by score descending (zeli page is already sorted but just in case)
+    stories.sort(key=lambda s: s["score"], reverse=True)
+
+    logger.info(f"  fetched {len(stories)} zeli articles via RSC")
+    return stories[:top_n], "zeli_rsc"
 
 
 def fetch_zeli_top(top_n: int = TOP_N) -> Tuple[List[Dict], str]:
-    """try zeli HTML, skip on failure."""
+    """try zeli RSC extraction, skip on failure."""
     try:
-        stories, source = _fetch_zeli_html(top_n)
+        stories, source = _fetch_zeli_rsc(top_n)
         if stories:
             return stories, source
     except Exception as e:
