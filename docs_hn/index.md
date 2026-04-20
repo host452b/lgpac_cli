@@ -1,36 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-04-17 05:04 UTC
+> Updated: 2026-04-20 20:41 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 1590 | [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7) | [1122](https://news.ycombinator.com/item?id=47793411) |
-| 2 | 767 | [Codex for almost everything](https://openai.com/index/codex-for-almost-everything/) | [389](https://news.ycombinator.com/item?id=47796469) |
-| 3 | 74 | [CadQuery is an open-source Python library for building 3D CAD models](https://cadquery.github.io/) | [9](https://news.ycombinator.com/item?id=47772725) |
-| 4 | 127 | [Guy builds AI driven hardware hacker arm from duct tape, old cam and CNC machine](https://github.com/gainsec/autoprober) | [26](https://news.ycombinator.com/item?id=47800033) |
-| 5 | 44 | [Show HN: Spice simulation → oscilloscope → verification with Claude Code](https://lucasgerads.com/blog/lecroy-mcp-spice-demo/) | [9](https://news.ycombinator.com/item?id=47801255) |
-| 6 | 108 | [A Better R Programming Experience Thanks to Tree-sitter](https://ropensci.org/blog/2026/04/02/tree-sitter-overview/) | [10](https://news.ycombinator.com/item?id=47799573) |
-| 7 | 39 | [Discourse Is Not Going Closed Source](https://blog.discourse.org/2026/04/discourse-is-not-going-closed-source/) | [16](https://news.ycombinator.com/item?id=47802233) |
-| 8 | 133 | [Official Clojure Documentary page with Video, Shownotes, and Links](https://clojure.org/about/documentary) | [37](https://news.ycombinator.com/item?id=47798345) |
-| 9 | 167 | [Android CLI: Build Android apps 3x faster using any agent](https://android-developers.googleblog.com/2026/04/build-android-apps-3x-faster-using-any-agent.html) | [52](https://news.ycombinator.com/item?id=47797665) |
+| 1 | 51 | [F-35 is a masterpiece built for the wrong war](https://warontherocks.com/cogs-of-war/the-f-35-is-a-masterpiece-built-for-the-wrong-war/) | [20](https://news.ycombinator.com/item?id=47839835) |
+| 2 | 21 | [AI Resistance Is Growing](https://stephvee.ca/blog/artificial%20intelligence/ai-resistance-is-growing/) | [0](https://news.ycombinator.com/item?id=47839951) |
+| 3 | 436 | [Qwen3.6-Max-Preview: Smarter, Sharper, Still Evolving](https://qwen.ai/blog?id=qwen3.6-max-preview) | [229](https://news.ycombinator.com/item?id=47834565) |
+| 4 | 35 | [NASA had to train Apollo 11's astronauts to not use profanity](https://www.columbian.com/news/2019/may/31/bad-words-led-some-to-swear-off-apollo-program/) | [29](https://news.ycombinator.com/item?id=47839606) |
+| 5 | 55 | [Kimi vendor verifier – verify accuracy of inference providers](https://www.kimi.com/blog/kimi-vendor-verifier) | [5](https://news.ycombinator.com/item?id=47838703) |
+| 6 | 53 | [We got 207 tok/s with Qwen3.5-27B on an RTX 3090](https://github.com/Luce-Org/lucebox-hub) | [12](https://news.ycombinator.com/item?id=47838788) |
+| 7 | 647 | [GitHub's fake star economy](https://awesomeagents.ai/news/github-fake-stars-investigation/) | [330](https://news.ycombinator.com/item?id=47831621) |
+| 8 | 293 | [ggsql: A Grammar of Graphics for SQL](https://opensource.posit.co/blog/2026-04-20_ggsql_alpha_release/) | [67](https://news.ycombinator.com/item?id=47833558) |
+| 9 | 73 | [Kefir C17/C23 Compiler](https://sr.ht/~jprotopopov/kefir/) | [4](https://news.ycombinator.com/item?id=47811154) |
+| 10 | 206 | [Deezer says 44% of songs uploaded to its platform daily are AI-generated](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | [211](https://news.ycombinator.com/item?id=47835928) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Claude Opus 4.7 发布：代码能力大跃升](https://news.ycombinator.com/item?id=47793411) | [HN](https://news.ycombinator.com/item?id=47793411) |
-| 2 | [Qwen3.6-35B-A3B：30亿激活参数竟能吊打大模型](https://news.ycombinator.com/item?id=47792764) | [HN](https://news.ycombinator.com/item?id=47792764) |
-| 3 | [Codex 大升级：接管你的电脑](https://news.ycombinator.com/item?id=47796469) | [HN](https://news.ycombinator.com/item?id=47796469) |
-| 4 | [万物未来皆是谎言：我们该何去何从？](https://news.ycombinator.com/item?id=47792718) | [HN](https://news.ycombinator.com/item?id=47792718) |
-| 5 | [Cloudflare Email Service：Agent 的终极接口](https://news.ycombinator.com/item?id=47792593) | [HN](https://news.ycombinator.com/item?id=47792593) |
-| 6 | [13小时狂刷5.4万欧元：Firebase密钥失控](https://news.ycombinator.com/item?id=47791871) | [HN](https://news.ycombinator.com/item?id=47791871) |
-| 7 | [Qwen3.6 在本地击败 Claude Opus 4.7](https://news.ycombinator.com/item?id=47796830) | [HN](https://news.ycombinator.com/item?id=47796830) |
-| 8 | [Thunderbolt：让企业完全掌控 AI 数据](https://news.ycombinator.com/item?id=47792368) | [HN](https://news.ycombinator.com/item?id=47792368) |
-| 9 | [Cloudflare AI Gateway：专为Agent打造的推理层](https://news.ycombinator.com/item?id=47792538) | [HN](https://news.ycombinator.com/item?id=47792538) |
-| 10 | [“被动收入”陷阱吞噬了一代创业者](https://news.ycombinator.com/item?id=47799120) | [HN](https://news.ycombinator.com/item?id=47799120) |
+| 1 | [2027年起，欧盟强制手机电池可更换](https://news.ycombinator.com/item?id=47834195) | [HN](https://news.ycombinator.com/item?id=47834195) |
+| 2 | [GitHub 的假星经济：600 万颗虚假星标](https://news.ycombinator.com/item?id=47831621) | [HN](https://news.ycombinator.com/item?id=47831621) |
+| 3 | [Global Tetrahedron 终于拿下 InfoWars](https://news.ycombinator.com/item?id=47837611) | [HN](https://news.ycombinator.com/item?id=47837611) |
+| 4 | [Kimi K2.6：开源编码新标杆](https://news.ycombinator.com/item?id=47835735) | [HN](https://news.ycombinator.com/item?id=47835735) |
+| 5 | [Qwen3.6-Max-Preview：更聪明、更锋利](https://news.ycombinator.com/item?id=47834565) | [HN](https://news.ycombinator.com/item?id=47834565) |
+| 6 | [NSA 无视禁令，秘密使用 Anthropic 的 Mythos](https://news.ycombinator.com/item?id=47832222) | [HN](https://news.ycombinator.com/item?id=47832222) |
+| 7 | [Atlassian 默认收集数据训练 AI](https://news.ycombinator.com/item?id=47833247) | [HN](https://news.ycombinator.com/item?id=47833247) |
+| 8 | [Sauna Research: 桑拿比运动更降夜间心率](https://news.ycombinator.com/item?id=47834184) | [HN](https://news.ycombinator.com/item?id=47834184) |
+| 9 | [Tesla隐瞒致命事故继续测试Autopilot](https://news.ycombinator.com/item?id=47833156) | [HN](https://news.ycombinator.com/item?id=47833156) |
+| 10 | [特朗普宣布前，交易员已提前下注](https://news.ycombinator.com/item?id=47829486) | [HN](https://news.ycombinator.com/item?id=47829486) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-04-17T05:04:17.460417+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-04-20T20:41:56.225692+00:00*

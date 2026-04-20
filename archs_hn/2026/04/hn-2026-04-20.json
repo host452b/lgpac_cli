@@ -1,0 +1,108 @@
+{
+  "date": "2026-04-20",
+  "fetched_at": "2026-04-20T20:41:56.222520+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "47839835",
+      "title": "F-35 is a masterpiece built for the wrong war",
+      "url": "https://warontherocks.com/cogs-of-war/the-f-35-is-a-masterpiece-built-for-the-wrong-war/",
+      "score": 51,
+      "by": "anjel",
+      "time": 1776715655,
+      "comments": 20,
+      "source": "firebase"
+    },
+    {
+      "id": "47839951",
+      "title": "AI Resistance Is Growing",
+      "url": "https://stephvee.ca/blog/artificial%20intelligence/ai-resistance-is-growing/",
+      "score": 21,
+      "by": "speckx",
+      "time": 1776716353,
+      "comments": 0,
+      "source": "firebase"
+    },
+    {
+      "id": "47834565",
+      "title": "Qwen3.6-Max-Preview: Smarter, Sharper, Still Evolving",
+      "url": "https://qwen.ai/blog?id=qwen3.6-max-preview",
+      "score": 436,
+      "by": "mfiguiere",
+      "time": 1776693934,
+      "comments": 229,
+      "source": "firebase"
+    },
+    {
+      "id": "47839606",
+      "title": "NASA had to train Apollo 11's astronauts to not use profanity",
+      "url": "https://www.columbian.com/news/2019/may/31/bad-words-led-some-to-swear-off-apollo-program/",
+      "score": 35,
+      "by": "cybermango",
+      "time": 1776714430,
+      "comments": 29,
+      "source": "firebase"
+    },
+    {
+      "id": "47838703",
+      "title": "Kimi vendor verifier – verify accuracy of inference providers",
+      "url": "https://www.kimi.com/blog/kimi-vendor-verifier",
+      "score": 55,
+      "by": "Alifatisk",
+      "time": 1776710393,
+      "comments": 5,
+      "source": "firebase"
+    },
+    {
+      "id": "47838788",
+      "title": "We got 207 tok/s with Qwen3.5-27B on an RTX 3090",
+      "url": "https://github.com/Luce-Org/lucebox-hub",
+      "score": 53,
+      "by": "GreenGames",
+      "time": 1776710782,
+      "comments": 12,
+      "source": "firebase"
+    },
+    {
+      "id": "47831621",
+      "title": "GitHub's fake star economy",
+      "url": "https://awesomeagents.ai/news/github-fake-stars-investigation/",
+      "score": 647,
+      "by": "Liriel",
+      "time": 1776673612,
+      "comments": 330,
+      "source": "firebase"
+    },
+    {
+      "id": "47833558",
+      "title": "ggsql: A Grammar of Graphics for SQL",
+      "url": "https://opensource.posit.co/blog/2026-04-20_ggsql_alpha_release/",
+      "score": 293,
+      "by": "thomasp85",
+      "time": 1776689480,
+      "comments": 67,
+      "source": "firebase"
+    },
+    {
+      "id": "47811154",
+      "title": "Kefir C17/C23 Compiler",
+      "url": "https://sr.ht/~jprotopopov/kefir/",
+      "score": 73,
+      "by": "conductor",
+      "time": 1776463979,
+      "comments": 4,
+      "source": "firebase"
+    },
+    {
+      "id": "47835928",
+      "title": "Deezer says 44% of songs uploaded to its platform daily are AI-generated",
+      "url": "https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/",
+      "score": 206,
+      "by": "FiddlerClamp",
+      "time": 1776699662,
+      "comments": 211,
+      "source": "firebase"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "date": "2026-04-20",
+  "fetched_at": "2026-04-20T20:41:56.223757+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "47834195",
+      "title_zh": "2027年起，欧盟强制手机电池可更换",
+      "abstract": "欧盟新规即将落地，从2027年2月18日起，所有在欧盟销售的智能手机和平板电脑必须配备可更换电池。这意味着用户将不再需要依赖专业维修人员，只需使用市面常见的工具就能自行更换电池，甚至厂商必须免费提供专用工具。这一举措旨在大幅减少电子垃圾，预计到2030年能为消费者节省高达200亿欧元。此外，新规还要求设备电池更耐用，系统更新支持至少五年，并强制使用USB-C接口。告别“换机如换电池”的时代，你的旧",
+      "url": "https://www.theolivepress.es/spain-news/2026/04/20/eu-to-force-replaceable-batteries-in-phones-and-tablets-from-2027/",
+      "score": 758,
+      "by": "ramonga",
+      "time": 1776692485,
+      "comments": 657,
+      "hn_url": "https://news.ycombinator.com/item?id=47834195",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47831621",
+      "title_zh": "GitHub 的假星经济：600 万颗虚假星标",
+      "abstract": "GitHub 的星标正在沦为资本游戏。CMU 最新研究揭露，平台上存在约 600 万颗虚假星标，涉及近 30 万个账号，其中 AI 和 LLM 项目是重灾区。这些星标在黑市上明码标价，每颗仅需 0.03 至 0.85 美元。更令人震惊的是，红点资本等顶级风投机构将星标数作为核心融资信号，导致大量项目通过刷量骗取千万美元融资。我们分析了 20 个仓库，发现部分项目高达 76% 的点赞者账号毫无活跃度",
+      "url": "https://awesomeagents.ai/news/github-fake-stars-investigation/",
+      "score": 643,
+      "by": "Liriel",
+      "time": 1776673612,
+      "comments": 330,
+      "hn_url": "https://news.ycombinator.com/item?id=47831621",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47837611",
+      "title_zh": "Global Tetrahedron 终于拿下 InfoWars",
+      "abstract": "我是 Bryce P. Tetraeder，Global Tetrahedron 的 CEO。小时候我总做噩梦，梦见家人被一股无法控制的黑暗力量吞噬。如今，这个梦成真了。我们终于完成了对 InfoWars 的收购计划。我想象中的 InfoWars 是一个充斥着病态谎言、超级网红和诈骗广告的无限虚拟竞技场。这里将把心理折磨民主化，让每个人都能贡献最残酷、最愚蠢的想法。这就像曼哈顿计划，只不过我们造的",
+      "url": "https://theonion.com/at-long-last-infowars-is-ours/",
+      "score": 476,
+      "by": "HotGarbage",
+      "time": 1776705838,
+      "comments": 205,
+      "hn_url": "https://news.ycombinator.com/item?id=47837611",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47835735",
+      "title_zh": "Kimi K2.6：开源编码新标杆",
+      "abstract": "Kimi 正式开源了最新的 Kimi K2.6 模型，它在长周期编码、Agent Swarm 协作以及工具调用能力上实现了质的飞跃。在内部基准测试 Kimi Code Bench 中，K2.6 表现卓越，甚至能自主用 Zig 语言优化 Qwen3.5-0.8B 模型推理，将吞吐量提升近 13 倍。更惊人的是，它能在 13 小时内重构 8 年历史的 exchange-core 引擎，带来 185% ",
+      "url": "https://www.kimi.com/blog/kimi-k2-6",
+      "score": 441,
+      "by": "meetpateltech",
+      "time": 1776698893,
+      "comments": 221,
+      "hn_url": "https://news.ycombinator.com/item?id=47835735",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47834565",
+      "title_zh": "Qwen3.6-Max-Preview：更聪明、更锋利",
+      "abstract": "继Qwen3.6-Plus发布后，我们带来了下一代专有模型Qwen3.6-Max-Preview的早期预览。相比前代，它在世界知识、指令遵循以及Agent编码能力上实现了显著跃升。在SWE-bench Pro、Terminal-Bench 2.0等六大主流编码基准测试中，该模型均取得了最高分。作为预览版，Qwen3.6-Max-Preview仍在积极迭代中，我们期待通过Alibaba Cloud ",
+      "url": "https://qwen.ai/blog?id=qwen3.6-max-preview",
+      "score": 434,
+      "by": "mfiguiere",
+      "time": 1776693934,
+      "comments": 226,
+      "hn_url": "https://news.ycombinator.com/item?id=47834565",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47832222",
+      "title_zh": "NSA 无视禁令，秘密使用 Anthropic 的 Mythos",
+      "abstract": "Axios 爆出猛料，美国国家安全局 NSA 正在内部广泛使用 Anthropic 的 Mythos Preview AI 工具，尽管五角大楼此前已正式将该公司列入供应链风险黑名单。这一举动发生在白宫与 Anthropic 高层刚刚结束关于合作会谈之后，当时双方正试图化解因模型滥用风险引发的争端。Mythos 被 Anthropic 称为目前最强大的编码和代理任务模型，其自主行动能力令专家担忧它可",
+      "url": "https://www.axios.com/2026/04/19/nsa-anthropic-mythos-pentagon",
+      "score": 411,
+      "by": "Palmik",
+      "time": 1776679235,
+      "comments": 296,
+      "hn_url": "https://news.ycombinator.com/item?id=47832222",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47833247",
+      "title_zh": "Atlassian 默认收集数据训练 AI",
+      "abstract": "Atlassian 即将在 2026 年 8 月 17 日开启一项重大政策变更，默认从 Jira 和 Confluence 等云端产品中收集用户元数据及内容，用于训练其 Rovo 和 Rovo Dev 等 AI 模型。这一变动影响约 30 万客户，其中 Free、Standard 和 Premium 层级用户无法关闭元数据收集，仅 Enterprise 层级可默认退出。收集的数据将被保留长达七年，",
+      "url": "https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8",
+      "score": 408,
+      "by": "kevcampb",
+      "time": 1776687819,
+      "comments": 93,
+      "hn_url": "https://news.ycombinator.com/item?id=47833247",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47834184",
+      "title_zh": "Sauna Research: 桑拿比运动更降夜间心率",
+      "abstract": "我们分析了来自 256 名用户的约 59,000 条日常记录，探究桑拿对生理指标的即时影响。研究发现，桑拿日的活动量和最大心率虽更高，但夜间最低心率却显著低于非桑拿日，且这种效果在排除运动因素后依然存在，平均降幅达 5%。特别有趣的是，女性在使用桑拿时，其恢复效果在黄体期表现最为明显。这项研究揭示了桑拿作为独立恢复手段的独特价值，超越了传统运动后的辅助角色。",
+      "url": "https://tryterra.co/research/sauna-effect-on-heart-rate",
+      "score": 306,
+      "by": "kyriakosel",
+      "time": 1776692428,
+      "comments": 170,
+      "hn_url": "https://news.ycombinator.com/item?id=47834184",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47833156",
+      "title_zh": "Tesla隐瞒致命事故继续测试Autopilot",
+      "abstract": "内部数据泄露揭露了Tesla的惊人秘密：为了加速Autopilot系统的市场推广，公司竟隐瞒了数千起严重事故，包括2400多起无故加速和1000多起碰撞事件。这些被标记为“未解决”的致命缺陷，让无数不知情的司机成了事实上的“小白鼠”。更令人震惊的是，在Naibel Benavides因Autopilot失误遇难的案件中，Tesla曾声称车辆黑匣子数据“损坏”，但专家成功恢复数据后证实，系统当时已检",
+      "url": "https://www.rts.ch/info/monde/2026/article/tesla-dissimule-des-milliers-d-incidents-de-conduite-autonome-mortels-29214161.html",
+      "score": 304,
+      "by": "doener",
+      "time": 1776687139,
+      "comments": 187,
+      "hn_url": "https://news.ycombinator.com/item?id=47833156",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47829486",
+      "title_zh": "特朗普宣布前，交易员已提前下注",
+      "abstract": "BBC调查揭露，在特朗普第二任期内，每当他发布重大外交政策或关税决定前，金融市场总会出现异常的交易激增。从伊朗战争到“解放日”关税暂停，交易员似乎在消息公开前数小时甚至数分钟就精准下注，获利数百万美元。这些模式被部分分析师视为内幕交易的铁证，尽管白宫和SEC对此保持沉默。更令人咋舌的是，在Polymarket等预测平台上，有账户在Maduro被捕和伊朗遭袭前精准押注，一夜之间狂揽数百万。特朗普之子",
+      "url": "https://www.bbc.com/news/articles/cge0grppe3po",
+      "score": 290,
+      "by": "blondie9x",
+      "time": 1776649835,
+      "comments": 147,
+      "hn_url": "https://news.ycombinator.com/item?id=47829486",
+      "source": "zeli_rsc"
+    }
+  ]
+}
