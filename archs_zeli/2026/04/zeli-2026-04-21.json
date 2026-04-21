@@ -1,0 +1,128 @@
+{
+  "date": "2026-04-21",
+  "fetched_at": "2026-04-21T20:47:54.332188+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "47847179",
+      "title_zh": "56条软件工程定律，看透代码与人性",
+      "abstract": "这不仅仅是一份技术清单，更是一部关于软件、团队与决策的生存指南。从Conway's Law揭示的组织结构镜像，到Hofstadter's Law对时间估算的无情嘲讽，再到Brooks's Law对人力堆砌的警告，这56条定律精准击中了软件开发的痛点。无论是面对Technical Debt的无奈，还是遭遇Bus Factor的危机，这些原则都能帮你拨开迷雾。它提醒我们，软件系统的复杂性往往源于人性与",
+      "url": "https://lawsofsoftwareengineering.com",
+      "score": 721,
+      "by": "milanm081",
+      "time": 1776769496,
+      "comments": 363,
+      "hn_url": "https://news.ycombinator.com/item?id=47847179",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47852177",
+      "title_zh": "Framework Laptop 13 Pro",
+      "abstract": "",
+      "url": "https://frame.work/laptop13pro",
+      "score": 513,
+      "by": "Trollmann",
+      "time": 1776794434,
+      "comments": 299,
+      "hn_url": "https://news.ycombinator.com/item?id=47852177",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47844269",
+      "title_zh": "Anthropic 松口：Claude CLI 用法解禁",
+      "abstract": "Anthropic 官方终于松口，确认 OpenClaw 风格的 Claude CLI 用法再次被允许。这意味着开发者可以重新通过 OpenClaw 复用 Claude CLI 登录状态，甚至使用 `claude -p` 命令进行集成，而无需担心违反政策。不过，对于需要长期稳定运行的网关服务，官方仍建议使用 Anthropic API key 以获得更清晰的计费路径和更可控的生产环境。OpenCl",
+      "url": "https://docs.openclaw.ai/providers/anthropic",
+      "score": 458,
+      "by": "jmsflknr",
+      "time": 1776742983,
+      "comments": 254,
+      "hn_url": "https://news.ycombinator.com/item?id=47844269",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47840980",
+      "title_zh": "泄露PPT曝光StackAdapt的ChatGPT广告计划",
+      "abstract": "一份泄露的演示文稿揭示了StackAdapt与OpenAI合作在ChatGPT内部投放广告的详细计划。这家独立的需求方平台正秘密接触广告主，提供基于“提示词相关性”的精准广告位，单次展示成本（CPM）低至15美元，试点项目最低消费门槛为5万美元。StackAdapt将这一举措包装为抢占新兴“发现层”的早期机会，旨在捕捉用户在ChatGPT中进行产品研究和比较时的注意力。随着AI搜索的崛起，广告生态",
+      "url": "https://www.adweek.com/media/exclusive-leaked-deck-reveals-stackadapts-playbook-for-chatgpt-ads/",
+      "score": 297,
+      "by": "jlark77777",
+      "time": 1776720052,
+      "comments": 158,
+      "hn_url": "https://news.ycombinator.com/item?id=47840980",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47844431",
+      "title_zh": "Roblox外挂与AI工具联手搞垮Vercel",
+      "abstract": "Vercel 平台竟然因为一个 Roblox 作弊工具和一款 AI 工具的意外组合而全线瘫痪，这听起来简直像电影情节。这次事故揭示了自动化脚本与 AI 生成内容结合后可能产生的巨大破坏力，连 Vercel 这样的大型云服务商都未能幸免。当恶意工具利用 AI 快速生成海量请求时，传统的防御机制瞬间失效，导致服务中断。这不仅是一次技术故障，更是对当前 AI 安全边界的严峻拷问，提醒开发者在享受 AI ",
+      "url": "https://webmatrices.com/post/how-a-roblox-cheat-and-one-ai-tool-brought-down-vercel-s-entire-platform",
+      "score": 277,
+      "by": "bishwasbh",
+      "time": 1776744732,
+      "comments": 149,
+      "hn_url": "https://news.ycombinator.com/item?id=47844431",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47841129",
+      "title_zh": "Jujutsu 的巨合并工作流：让开发更丝滑",
+      "abstract": "作为一名重度 Jujutsu 用户，我发现了一种被低估的“巨合并”工作流，它能彻底改变你的日常开发体验。在这个工作流中，你不再直接基于分支尖端工作，而是创建一个包含所有关注分支的“章鱼合并”作为你的开发基线。这意味着你始终在整合所有工作的总和上进行开发，从而彻底消除合并冲突的惊喜，并在不同任务间无缝切换。通过 Jujutsu 强大的 squash、split 和 absorb 命令，你可以轻松管理",
+      "url": "https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit",
+      "score": 256,
+      "by": "icorbrey",
+      "time": 1776720730,
+      "comments": 155,
+      "hn_url": "https://news.ycombinator.com/item?id=47841129",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47848276",
+      "title_zh": "Amazon再投Anthropic 50亿，换回1000亿云支出",
+      "abstract": "Amazon再次出手，向Anthropic追加50亿美元投资，使其总投入达到130亿美元。作为回报，Anthropic承诺未来10年在AWS上的云支出将超过1000亿美元，并获得高达5 GW的算力资源来训练和运行Claude。这笔交易的核心是Amazon自研的Trainium系列AI芯片，涵盖从Trainium2到尚未发布的Trainium4。这不仅是资金注入，更是算力与生态的深度绑定，显示出Am",
+      "url": "https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/",
+      "score": 239,
+      "by": "Brajeshwar",
+      "time": 1776776905,
+      "comments": 245,
+      "hn_url": "https://news.ycombinator.com/item?id=47848276",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47843194",
+      "title_zh": "从零打造快如 Lua 的动态语言解释器",
+      "abstract": "我亲手创建了一个名为 Zef 的动态语言，起初它的解释器慢得离谱，比 CPython 慢 35 倍，比 Lua 慢 80 倍。但这篇文章不讲复杂的 JIT 编译器或垃圾回收器优化，而是展示如何通过 21 个简单却巧妙的优化步骤，让一个极其简单的 AST-walking 解释器实现 16 倍的性能飞跃。从值表示优化、内联缓存到对象模型重构，我一步步将 Zef 的性能拉到了与 QuickJS、CPyt",
+      "url": "https://zef-lang.dev/implementation",
+      "score": 237,
+      "by": "pizlonator",
+      "time": 1776732487,
+      "comments": 50,
+      "hn_url": "https://news.ycombinator.com/item?id=47843194",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47849854",
+      "title_zh": "GrapheneOS 反击 WIRED：揭穿 James Donaldson 谎言",
+      "abstract": "WIRED 发布了一篇关于 GrapheneOS 的报道，其项目历史几乎完全基于 James Donaldson 的编造。我们不得不指出，Donaldson 在过去 8 年里一直试图摧毁 GrapheneOS 及其创始人 Daniel Micay 的生活。他不断编造故事，甚至在前 Copperhead 公司的诉讼中被迫撤回了几乎所有指控。Copperhead 现已停止运营，其剩余指控也已被彻底驳斥",
+      "url": "https://discuss.grapheneos.org/d/34369-original-grapheneos-responses-to-wired-fact-checker",
+      "score": 236,
+      "by": "ChrisArchitect",
+      "time": 1776783864,
+      "comments": 179,
+      "hn_url": "https://news.ycombinator.com/item?id=47849854",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "47847124",
+      "title_zh": "Apple无视DMA：56次互操作性请求全被拒",
+      "abstract": "FSFE最新报告揭露，Apple在DMA法规下玩起了文字游戏。尽管欧洲委员会要求开放平台，但Apple却搞出了一套繁琐的“申请制”。截至2026年3月，56份正式互操作性请求无一成功，开发者连Just-In-Time编译、NFC和Bluetooth Low Energy Audio都被拒之门外。更讽刺的是，Apple拒绝的理由往往与其自家技术文档自相矛盾。开发者不仅要面对高昂的账户费用，还要在漫长",
+      "url": "https://fsfe.org/news/2026/news-20260420-01.html",
+      "score": 201,
+      "by": "kirschner",
+      "time": 1776769073,
+      "comments": 43,
+      "hn_url": "https://news.ycombinator.com/item?id=47847124",
+      "source": "zeli_rsc"
+    }
+  ]
+}

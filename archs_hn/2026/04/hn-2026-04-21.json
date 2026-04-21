@@ -1,0 +1,108 @@
+{
+  "date": "2026-04-21",
+  "fetched_at": "2026-04-21T20:47:54.331007+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "47851634",
+      "title": "The Vercel breach: OAuth attack exposes risk in platform environment variables",
+      "url": "https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html",
+      "score": 176,
+      "by": "queenelvis",
+      "time": 1776791675,
+      "comments": 75,
+      "source": "firebase"
+    },
+    {
+      "id": "47851885",
+      "title": "Britannica11.org – a structured edition of the 1911 Encyclopædia Britannica",
+      "url": "https://britannica11.org/",
+      "score": 130,
+      "by": "ahaspel",
+      "time": 1776792830,
+      "comments": 68,
+      "source": "firebase"
+    },
+    {
+      "id": "47852155",
+      "title": "Cal.diy: open-source community edition of cal.com",
+      "url": "https://github.com/calcom/cal.diy",
+      "score": 84,
+      "by": "petecooper",
+      "time": 1776794301,
+      "comments": 17,
+      "source": "firebase"
+    },
+    {
+      "id": "47852177",
+      "title": "Framework Laptop 13 Pro",
+      "url": "https://frame.work/laptop13pro",
+      "score": 520,
+      "by": "Trollmann",
+      "time": 1776794434,
+      "comments": 299,
+      "source": "firebase"
+    },
+    {
+      "id": "47847179",
+      "title": "Laws of Software Engineering",
+      "url": "https://lawsofsoftwareengineering.com",
+      "score": 724,
+      "by": "milanm081",
+      "time": 1776769496,
+      "comments": 364,
+      "source": "firebase"
+    },
+    {
+      "id": "47814874",
+      "title": "10 years: Stephen's Sausage Roll still one of the most influential puzzle games",
+      "url": "https://thinkygames.com/features/10-years-of-grilling-stephens-sausage-roll-remains-one-of-the-most-influential-puzzle-games-ever-created/",
+      "score": 33,
+      "by": "tobr",
+      "time": 1776509622,
+      "comments": 8,
+      "source": "firebase"
+    },
+    {
+      "id": "47851077",
+      "title": "A Periodic Map of Cheese",
+      "url": "https://cheesemap.netlify.app/",
+      "score": 119,
+      "by": "sfrechtling",
+      "time": 1776789081,
+      "comments": 57,
+      "source": "firebase"
+    },
+    {
+      "id": "47822978",
+      "title": "Edit store price tags using Flipper Zero",
+      "url": "https://github.com/i12bp8/TagTinker",
+      "score": 213,
+      "by": "trueduke",
+      "time": 1776590764,
+      "comments": 219,
+      "source": "firebase"
+    },
+    {
+      "id": "47849315",
+      "title": "Fusion Power Plant Simulator",
+      "url": "https://www.fusionenergybase.com/fusion-power-plant-simulator",
+      "score": 121,
+      "by": "sam",
+      "time": 1776781612,
+      "comments": 61,
+      "source": "firebase"
+    },
+    {
+      "id": "47849097",
+      "title": "Show HN: GoModel – an open-source AI gateway in Go",
+      "url": "https://github.com/ENTERPILOT/GOModel/",
+      "score": 136,
+      "by": "santiago-pl",
+      "time": 1776780713,
+      "comments": 51,
+      "source": "firebase"
+    }
+  ]
+}

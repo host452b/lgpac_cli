@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-04-20 20:41 UTC
+> Updated: 2026-04-21 20:47 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 51 | [F-35 is a masterpiece built for the wrong war](https://warontherocks.com/cogs-of-war/the-f-35-is-a-masterpiece-built-for-the-wrong-war/) | [20](https://news.ycombinator.com/item?id=47839835) |
-| 2 | 21 | [AI Resistance Is Growing](https://stephvee.ca/blog/artificial%20intelligence/ai-resistance-is-growing/) | [0](https://news.ycombinator.com/item?id=47839951) |
-| 3 | 436 | [Qwen3.6-Max-Preview: Smarter, Sharper, Still Evolving](https://qwen.ai/blog?id=qwen3.6-max-preview) | [229](https://news.ycombinator.com/item?id=47834565) |
-| 4 | 35 | [NASA had to train Apollo 11's astronauts to not use profanity](https://www.columbian.com/news/2019/may/31/bad-words-led-some-to-swear-off-apollo-program/) | [29](https://news.ycombinator.com/item?id=47839606) |
-| 5 | 55 | [Kimi vendor verifier – verify accuracy of inference providers](https://www.kimi.com/blog/kimi-vendor-verifier) | [5](https://news.ycombinator.com/item?id=47838703) |
-| 6 | 53 | [We got 207 tok/s with Qwen3.5-27B on an RTX 3090](https://github.com/Luce-Org/lucebox-hub) | [12](https://news.ycombinator.com/item?id=47838788) |
-| 7 | 647 | [GitHub's fake star economy](https://awesomeagents.ai/news/github-fake-stars-investigation/) | [330](https://news.ycombinator.com/item?id=47831621) |
-| 8 | 293 | [ggsql: A Grammar of Graphics for SQL](https://opensource.posit.co/blog/2026-04-20_ggsql_alpha_release/) | [67](https://news.ycombinator.com/item?id=47833558) |
-| 9 | 73 | [Kefir C17/C23 Compiler](https://sr.ht/~jprotopopov/kefir/) | [4](https://news.ycombinator.com/item?id=47811154) |
-| 10 | 206 | [Deezer says 44% of songs uploaded to its platform daily are AI-generated](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | [211](https://news.ycombinator.com/item?id=47835928) |
+| 1 | 176 | [The Vercel breach: OAuth attack exposes risk in platform environment variables](https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html) | [75](https://news.ycombinator.com/item?id=47851634) |
+| 2 | 130 | [Britannica11.org – a structured edition of the 1911 Encyclopædia Britannica](https://britannica11.org/) | [68](https://news.ycombinator.com/item?id=47851885) |
+| 3 | 84 | [Cal.diy: open-source community edition of cal.com](https://github.com/calcom/cal.diy) | [17](https://news.ycombinator.com/item?id=47852155) |
+| 4 | 520 | [Framework Laptop 13 Pro](https://frame.work/laptop13pro) | [299](https://news.ycombinator.com/item?id=47852177) |
+| 5 | 724 | [Laws of Software Engineering](https://lawsofsoftwareengineering.com) | [364](https://news.ycombinator.com/item?id=47847179) |
+| 6 | 33 | [10 years: Stephen's Sausage Roll still one of the most influential puzzle games](https://thinkygames.com/features/10-years-of-grilling-stephens-sausage-roll-remains-one-of-the-most-influential-puzzle-games-ever-created/) | [8](https://news.ycombinator.com/item?id=47814874) |
+| 7 | 119 | [A Periodic Map of Cheese](https://cheesemap.netlify.app/) | [57](https://news.ycombinator.com/item?id=47851077) |
+| 8 | 213 | [Edit store price tags using Flipper Zero](https://github.com/i12bp8/TagTinker) | [219](https://news.ycombinator.com/item?id=47822978) |
+| 9 | 121 | [Fusion Power Plant Simulator](https://www.fusionenergybase.com/fusion-power-plant-simulator) | [61](https://news.ycombinator.com/item?id=47849315) |
+| 10 | 136 | [Show HN: GoModel – an open-source AI gateway in Go](https://github.com/ENTERPILOT/GOModel/) | [51](https://news.ycombinator.com/item?id=47849097) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [2027年起，欧盟强制手机电池可更换](https://news.ycombinator.com/item?id=47834195) | [HN](https://news.ycombinator.com/item?id=47834195) |
-| 2 | [GitHub 的假星经济：600 万颗虚假星标](https://news.ycombinator.com/item?id=47831621) | [HN](https://news.ycombinator.com/item?id=47831621) |
-| 3 | [Global Tetrahedron 终于拿下 InfoWars](https://news.ycombinator.com/item?id=47837611) | [HN](https://news.ycombinator.com/item?id=47837611) |
-| 4 | [Kimi K2.6：开源编码新标杆](https://news.ycombinator.com/item?id=47835735) | [HN](https://news.ycombinator.com/item?id=47835735) |
-| 5 | [Qwen3.6-Max-Preview：更聪明、更锋利](https://news.ycombinator.com/item?id=47834565) | [HN](https://news.ycombinator.com/item?id=47834565) |
-| 6 | [NSA 无视禁令，秘密使用 Anthropic 的 Mythos](https://news.ycombinator.com/item?id=47832222) | [HN](https://news.ycombinator.com/item?id=47832222) |
-| 7 | [Atlassian 默认收集数据训练 AI](https://news.ycombinator.com/item?id=47833247) | [HN](https://news.ycombinator.com/item?id=47833247) |
-| 8 | [Sauna Research: 桑拿比运动更降夜间心率](https://news.ycombinator.com/item?id=47834184) | [HN](https://news.ycombinator.com/item?id=47834184) |
-| 9 | [Tesla隐瞒致命事故继续测试Autopilot](https://news.ycombinator.com/item?id=47833156) | [HN](https://news.ycombinator.com/item?id=47833156) |
-| 10 | [特朗普宣布前，交易员已提前下注](https://news.ycombinator.com/item?id=47829486) | [HN](https://news.ycombinator.com/item?id=47829486) |
+| 1 | [56条软件工程定律，看透代码与人性](https://news.ycombinator.com/item?id=47847179) | [HN](https://news.ycombinator.com/item?id=47847179) |
+| 2 | [Framework Laptop 13 Pro](https://news.ycombinator.com/item?id=47852177) | [HN](https://news.ycombinator.com/item?id=47852177) |
+| 3 | [Anthropic 松口：Claude CLI 用法解禁](https://news.ycombinator.com/item?id=47844269) | [HN](https://news.ycombinator.com/item?id=47844269) |
+| 4 | [泄露PPT曝光StackAdapt的ChatGPT广告计划](https://news.ycombinator.com/item?id=47840980) | [HN](https://news.ycombinator.com/item?id=47840980) |
+| 5 | [Roblox外挂与AI工具联手搞垮Vercel](https://news.ycombinator.com/item?id=47844431) | [HN](https://news.ycombinator.com/item?id=47844431) |
+| 6 | [Jujutsu 的巨合并工作流：让开发更丝滑](https://news.ycombinator.com/item?id=47841129) | [HN](https://news.ycombinator.com/item?id=47841129) |
+| 7 | [Amazon再投Anthropic 50亿，换回1000亿云支出](https://news.ycombinator.com/item?id=47848276) | [HN](https://news.ycombinator.com/item?id=47848276) |
+| 8 | [从零打造快如 Lua 的动态语言解释器](https://news.ycombinator.com/item?id=47843194) | [HN](https://news.ycombinator.com/item?id=47843194) |
+| 9 | [GrapheneOS 反击 WIRED：揭穿 James Donaldson 谎言](https://news.ycombinator.com/item?id=47849854) | [HN](https://news.ycombinator.com/item?id=47849854) |
+| 10 | [Apple无视DMA：56次互操作性请求全被拒](https://news.ycombinator.com/item?id=47847124) | [HN](https://news.ycombinator.com/item?id=47847124) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-04-20T20:41:56.225692+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-04-21T20:47:54.334073+00:00*
