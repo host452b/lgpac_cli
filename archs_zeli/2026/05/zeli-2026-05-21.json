@@ -1,0 +1,128 @@
+{
+  "date": "2026-05-21",
+  "fetched_at": "2026-05-21T21:33:02.253282+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48220647",
+      "title_zh": "Flipper One：我们要造最开放的ARM电脑",
+      "abstract": "我们终于准备好公开Flipper One项目了。这并非Flipper Zero的升级版，而是一个全新的开源Linux平台。我们的野心很大：打造全球文档最完善的ARM电脑，推动厂商放弃闭源代码，并构建独特的协处理器架构。项目面临巨大挑战，我们甚至感到恐惧，因此决定完全开放开发流程，邀请社区共同解决Rockchip RK3576主内核支持等难题。从硬件设计到Linux内核，再到MCU固件，所有细节都将",
+      "url": "https://blog.flipper.net/flipper-one-we-need-your-help/",
+      "score": 944,
+      "by": "sandebert",
+      "time": 1779361418,
+      "comments": 392,
+      "hn_url": "https://news.ycombinator.com/item?id=48220647",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48222383",
+      "title_zh": "AI 只是更大规模的未经授权抄袭",
+      "abstract": "我亲手撰写电商教程，却发现一些懒散的网站作者直接用 ChatGPT 抓取网上热门教程，稍作修改就发布成自己的内容。更离谱的是，他们甚至没删掉指向我原站点的链接，导致 Google 把这种抄袭内容排在我前面。AI 公司未经作者同意就抓取数据训练模型，再卖给人类，而用户又利用这些工具生成的内容牟利。这难道就是人类智慧的巅峰？还是懒惰与贪婪的极致体现？",
+      "url": "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/",
+      "score": 724,
+      "by": "speckx",
+      "time": 1779370692,
+      "comments": 610,
+      "hn_url": "https://news.ycombinator.com/item?id=48222383",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48214449",
+      "title_zh": "Google 向 Web 宣战：你的网站不再重要",
+      "abstract": "在昨天的 Google IO 大会上，Google 正式向传统 Web 宣战。他们不再满足于提供链接，而是全力推动 AI Overviews，试图用 LLM 生成的答案直接替代信息源。这意味着你的网站、文章和创作，将沦为 Google 合成文本的免费原材料，而不再被视为值得分享的文化瑰宝。Google 正试图在 Web 之上建立一层完全由其控制的抽象层，就像扎克伯格的 Metaverse 失败后发",
+      "url": "https://tante.cc/2026/05/20/on-google-declaring-war-on-the-web/",
+      "score": 598,
+      "by": "cdrnsf",
+      "time": 1779312798,
+      "comments": 418,
+      "hn_url": "https://news.ycombinator.com/item?id=48214449",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48220105",
+      "title_zh": "Google 官宣：AI 搜索模式将植入广告",
+      "abstract": "Google 正式宣布，在 AI Mode 搜索中引入新一代广告体验。借助 Gemini 模型，广告不再是生硬的展示，而是能提供个性化建议和透明解释的对话式内容。新功能包括 Conversational Discovery ads 和 Highlighted Answers，能直接回答用户的具体问题。此外，AI-powered Shopping ads 和 Business Agent for L",
+      "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+      "score": 525,
+      "by": "sofumel",
+      "time": 1779356986,
+      "comments": 442,
+      "hn_url": "https://news.ycombinator.com/item?id=48220105",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48222529",
+      "title_zh": "Google Antigravity 更新竟删光 IDE？",
+      "abstract": "本想用 Antigravity 开始一天的工作，结果 Google 在 I/O 2026 后悄悄推送了 2.0 版本更新。这次更新不仅强制把我的 IDE 替换成了单纯的聊天界面，还彻底搞乱了我的工作流。更离谱的是，官方虽然提供了旧版下载，但新版本的更新机制会强制覆盖应用路径，导致两个版本无法共存。我不得不彻底卸载所有相关组件，进行“大扫除”后重装旧版才恢复使用，但代价是所有的聊天历史和设置全部丢失",
+      "url": "https://www.0xsid.com/blog/antigravity-bait-n-switch",
+      "score": 447,
+      "by": "ssiddharth",
+      "time": 1779371459,
+      "comments": 229,
+      "hn_url": "https://news.ycombinator.com/item?id=48222529",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48219992",
+      "title_zh": "拒绝AI废话：别再往聊天里扔长文",
+      "abstract": "别再往Slack或邮件里粘贴AI生成的长篇大论了！这种行为被称为“slop grenade”，它把简单的问答变成了没人想读的论文。当你问“用Redis还是Memcached”，对方却回你一篇包含架构分析、性能对比和运维建议的万字长文，这简直是在浪费彼此的时间。人们找你聊天是想要你的专业判断，而不是让ChatGPT代劳的机器生成内容。这种“文字轰炸”不仅破坏了沟通的流畅性，还直接扼杀了对话的可能。记",
+      "url": "https://noslopgrenade.com/",
+      "score": 425,
+      "by": "napolux",
+      "time": 1779355875,
+      "comments": 257,
+      "hn_url": "https://news.ycombinator.com/item?id=48219992",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48226588",
+      "title_zh": "Amazon、Facebook 竟接入西雅警情报网",
+      "abstract": "西雅图警方运营着一个名为 Seattle Shield 的秘密情报共享网络，成员竟包括 Amazon、Facebook、ICE 和 FBI 等巨头。这个自 2009 年启动的项目打着反恐旗号，实则将抗议活动视为潜在威胁。2025 年的报告显示，情报内容几乎全聚焦于抗议引发的交通延误。隐私活动人士 Phil Mocek 警告，在特朗普政府的备忘录下，普通抗议者可能因此被贴上“国内恐怖分子”标签。尽管",
+      "url": "https://prismreports.org/2026/05/20/seattle-shield-private-companies-surveillance/",
+      "score": 361,
+      "by": "root-parent",
+      "time": 1779386158,
+      "comments": 146,
+      "hn_url": "https://news.ycombinator.com/item?id=48226588",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48222366",
+      "title_zh": "抵制AI才是人类的正确选择",
+      "abstract": "Jonah Peretti 虽然卸任 Buzzfeed CEO 转投 AI，但这恰恰暴露了科技巨头对 AI 的盲目狂热。我最近也彻底转变为反 AI 传教士，因为现实不断证明：AI 不仅无法解决问题，反而让使用者显得愚蠢。从 Eric Schmidt 在毕业典礼上被嘘，到 Steven Rosenbaum 的书因 AI 幻觉而充满虚假引用，再到 Olga Tokarczuk 承认用 AI 写作，这些",
+      "url": "https://www.thehandbasket.co/p/hating-ai-is-good-actually",
+      "score": 340,
+      "by": "cdrnsf",
+      "time": 1779370566,
+      "comments": 482,
+      "hn_url": "https://news.ycombinator.com/item?id=48222366",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48215418",
+      "title_zh": "DOS Zone：浏览器畅玩经典 DOS 游戏",
+      "abstract": "想重温《DOOM》、《Grand Theft Auto》或《Heroes of Might and Magic III》的辉煌岁月吗？DOS Zone 让你无需安装任何模拟器，直接在浏览器中畅玩海量经典 DOS 游戏。平台支持 Mobile 端，涵盖从 3D Action 到 Strategy 的众多类型，甚至包括《Counter Strike 1.6》和《Quake III Arena》等热门大",
+      "url": "https://dos.zone/",
+      "score": 340,
+      "by": "rglover",
+      "time": 1779317607,
+      "comments": 75,
+      "hn_url": "https://news.ycombinator.com/item?id=48215418",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48225297",
+      "title_zh": "Hail Mary：一张震撼的星际导航图",
+      "abstract": "想象一下，你正站在SOL的中心，凝视着通往Tau Ceti的星际航线。这张基于GAIA DR3数据构建的Stellar Navigation Chart，以SOL-CENTRED视角，将ALPHA CENTAURI、SIRIUS、PROCYON等著名恒星尽收眼底。从SOL到EARTH，再到ALTAIR、POLLUX，甚至遥远的WISE 0855-0714，这张图不仅展示了17.72 pc范围内的5",
+      "url": "https://valhovey.github.io/gaia-mary/",
+      "score": 321,
+      "by": "speleo",
+      "time": 1779380591,
+      "comments": 88,
+      "hn_url": "https://news.ycombinator.com/item?id=48225297",
+      "source": "zeli_rsc"
+    }
+  ]
+}

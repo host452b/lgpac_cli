@@ -1,0 +1,108 @@
+{
+  "date": "2026-05-21",
+  "fetched_at": "2026-05-21T21:33:02.252042+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48226944",
+      "title": "BBEdit 16",
+      "url": "https://www.barebones.com/products/bbedit/bbedit16.html",
+      "score": 215,
+      "by": "qaz_plm",
+      "time": 1779387697,
+      "comments": 61,
+      "source": "firebase"
+    },
+    {
+      "id": "48225297",
+      "title": "Project Hail Mary – Stellar Navigation Chart",
+      "url": "https://valhovey.github.io/gaia-mary/",
+      "score": 326,
+      "by": "speleo",
+      "time": 1779380591,
+      "comments": 89,
+      "source": "firebase"
+    },
+    {
+      "id": "48227397",
+      "title": "Blog ran on Ubuntu 16.04 for 10 years. I migrated it to FreeBSD",
+      "url": "https://crocidb.com/post/this-blog-ran-on-ubuntu-16-04-for-10-years-i-migrated-it-to-freebsd/",
+      "score": 62,
+      "by": "speckx",
+      "time": 1779389695,
+      "comments": 16,
+      "source": "firebase"
+    },
+    {
+      "id": "48220647",
+      "title": "Flipper One – we need your help",
+      "url": "https://blog.flipper.net/flipper-one-we-need-your-help/",
+      "score": 947,
+      "by": "sandebert",
+      "time": 1779361418,
+      "comments": 393,
+      "source": "firebase"
+    },
+    {
+      "id": "48223362",
+      "title": "Show HN: Freenet, a peer-to-peer platform for decentralized apps",
+      "url": "https://freenet.org/",
+      "score": 107,
+      "by": "sanity",
+      "time": 1779374097,
+      "comments": 38,
+      "source": "firebase"
+    },
+    {
+      "id": "48227860",
+      "title": "Using Kagi Search with Low Vision",
+      "url": "https://veroniiiica.com/using-kagi-search-with-low-vision/",
+      "score": 32,
+      "by": "speckx",
+      "time": 1779391936,
+      "comments": 1,
+      "source": "firebase"
+    },
+    {
+      "id": "48220105",
+      "title": "We're testing new ad formats in Search and expanding our Direct Offers pilot",
+      "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+      "score": 526,
+      "by": "sofumel",
+      "time": 1779356986,
+      "comments": 443,
+      "source": "firebase"
+    },
+    {
+      "id": "48184402",
+      "title": "Was my $48K GPU server worth it?",
+      "url": "https://rosmine.ai/2026/05/13/was-my-48k-gpu-worth-it/",
+      "score": 162,
+      "by": "apwheele",
+      "time": 1779132783,
+      "comments": 121,
+      "source": "firebase"
+    },
+    {
+      "id": "48226588",
+      "title": "Seattle Shield, an intelligence-sharing network operated by the Seattle police",
+      "url": "https://prismreports.org/2026/05/20/seattle-shield-private-companies-surveillance/",
+      "score": 361,
+      "by": "root-parent",
+      "time": 1779386158,
+      "comments": 146,
+      "source": "firebase"
+    },
+    {
+      "id": "48222733",
+      "title": "Indexing a year of video locally on a 2021 MacBook with Gemma4-31B (50GB swap)",
+      "url": "https://blog.simbastack.com/indexed-a-year-of-video-locally/",
+      "score": 228,
+      "by": "asenna",
+      "time": 1779372097,
+      "comments": 81,
+      "source": "firebase"
+    }
+  ]
+}

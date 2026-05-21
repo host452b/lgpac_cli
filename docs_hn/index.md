@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-04-21 20:47 UTC
+> Updated: 2026-05-21 21:33 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 176 | [The Vercel breach: OAuth attack exposes risk in platform environment variables](https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html) | [75](https://news.ycombinator.com/item?id=47851634) |
-| 2 | 130 | [Britannica11.org – a structured edition of the 1911 Encyclopædia Britannica](https://britannica11.org/) | [68](https://news.ycombinator.com/item?id=47851885) |
-| 3 | 84 | [Cal.diy: open-source community edition of cal.com](https://github.com/calcom/cal.diy) | [17](https://news.ycombinator.com/item?id=47852155) |
-| 4 | 520 | [Framework Laptop 13 Pro](https://frame.work/laptop13pro) | [299](https://news.ycombinator.com/item?id=47852177) |
-| 5 | 724 | [Laws of Software Engineering](https://lawsofsoftwareengineering.com) | [364](https://news.ycombinator.com/item?id=47847179) |
-| 6 | 33 | [10 years: Stephen's Sausage Roll still one of the most influential puzzle games](https://thinkygames.com/features/10-years-of-grilling-stephens-sausage-roll-remains-one-of-the-most-influential-puzzle-games-ever-created/) | [8](https://news.ycombinator.com/item?id=47814874) |
-| 7 | 119 | [A Periodic Map of Cheese](https://cheesemap.netlify.app/) | [57](https://news.ycombinator.com/item?id=47851077) |
-| 8 | 213 | [Edit store price tags using Flipper Zero](https://github.com/i12bp8/TagTinker) | [219](https://news.ycombinator.com/item?id=47822978) |
-| 9 | 121 | [Fusion Power Plant Simulator](https://www.fusionenergybase.com/fusion-power-plant-simulator) | [61](https://news.ycombinator.com/item?id=47849315) |
-| 10 | 136 | [Show HN: GoModel – an open-source AI gateway in Go](https://github.com/ENTERPILOT/GOModel/) | [51](https://news.ycombinator.com/item?id=47849097) |
+| 1 | 215 | [BBEdit 16](https://www.barebones.com/products/bbedit/bbedit16.html) | [61](https://news.ycombinator.com/item?id=48226944) |
+| 2 | 326 | [Project Hail Mary – Stellar Navigation Chart](https://valhovey.github.io/gaia-mary/) | [89](https://news.ycombinator.com/item?id=48225297) |
+| 3 | 62 | [Blog ran on Ubuntu 16.04 for 10 years. I migrated it to FreeBSD](https://crocidb.com/post/this-blog-ran-on-ubuntu-16-04-for-10-years-i-migrated-it-to-freebsd/) | [16](https://news.ycombinator.com/item?id=48227397) |
+| 4 | 947 | [Flipper One – we need your help](https://blog.flipper.net/flipper-one-we-need-your-help/) | [393](https://news.ycombinator.com/item?id=48220647) |
+| 5 | 107 | [Show HN: Freenet, a peer-to-peer platform for decentralized apps](https://freenet.org/) | [38](https://news.ycombinator.com/item?id=48223362) |
+| 6 | 32 | [Using Kagi Search with Low Vision](https://veroniiiica.com/using-kagi-search-with-low-vision/) | [1](https://news.ycombinator.com/item?id=48227860) |
+| 7 | 526 | [We're testing new ad formats in Search and expanding our Direct Offers pilot](https://blog.google/products/ads-commerce/google-marketing-live-search-ads/) | [443](https://news.ycombinator.com/item?id=48220105) |
+| 8 | 162 | [Was my $48K GPU server worth it?](https://rosmine.ai/2026/05/13/was-my-48k-gpu-worth-it/) | [121](https://news.ycombinator.com/item?id=48184402) |
+| 9 | 361 | [Seattle Shield, an intelligence-sharing network operated by the Seattle police](https://prismreports.org/2026/05/20/seattle-shield-private-companies-surveillance/) | [146](https://news.ycombinator.com/item?id=48226588) |
+| 10 | 228 | [Indexing a year of video locally on a 2021 MacBook with Gemma4-31B (50GB swap)](https://blog.simbastack.com/indexed-a-year-of-video-locally/) | [81](https://news.ycombinator.com/item?id=48222733) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [56条软件工程定律，看透代码与人性](https://news.ycombinator.com/item?id=47847179) | [HN](https://news.ycombinator.com/item?id=47847179) |
-| 2 | [Framework Laptop 13 Pro](https://news.ycombinator.com/item?id=47852177) | [HN](https://news.ycombinator.com/item?id=47852177) |
-| 3 | [Anthropic 松口：Claude CLI 用法解禁](https://news.ycombinator.com/item?id=47844269) | [HN](https://news.ycombinator.com/item?id=47844269) |
-| 4 | [泄露PPT曝光StackAdapt的ChatGPT广告计划](https://news.ycombinator.com/item?id=47840980) | [HN](https://news.ycombinator.com/item?id=47840980) |
-| 5 | [Roblox外挂与AI工具联手搞垮Vercel](https://news.ycombinator.com/item?id=47844431) | [HN](https://news.ycombinator.com/item?id=47844431) |
-| 6 | [Jujutsu 的巨合并工作流：让开发更丝滑](https://news.ycombinator.com/item?id=47841129) | [HN](https://news.ycombinator.com/item?id=47841129) |
-| 7 | [Amazon再投Anthropic 50亿，换回1000亿云支出](https://news.ycombinator.com/item?id=47848276) | [HN](https://news.ycombinator.com/item?id=47848276) |
-| 8 | [从零打造快如 Lua 的动态语言解释器](https://news.ycombinator.com/item?id=47843194) | [HN](https://news.ycombinator.com/item?id=47843194) |
-| 9 | [GrapheneOS 反击 WIRED：揭穿 James Donaldson 谎言](https://news.ycombinator.com/item?id=47849854) | [HN](https://news.ycombinator.com/item?id=47849854) |
-| 10 | [Apple无视DMA：56次互操作性请求全被拒](https://news.ycombinator.com/item?id=47847124) | [HN](https://news.ycombinator.com/item?id=47847124) |
+| 1 | [Flipper One：我们要造最开放的ARM电脑](https://news.ycombinator.com/item?id=48220647) | [HN](https://news.ycombinator.com/item?id=48220647) |
+| 2 | [AI 只是更大规模的未经授权抄袭](https://news.ycombinator.com/item?id=48222383) | [HN](https://news.ycombinator.com/item?id=48222383) |
+| 3 | [Google 向 Web 宣战：你的网站不再重要](https://news.ycombinator.com/item?id=48214449) | [HN](https://news.ycombinator.com/item?id=48214449) |
+| 4 | [Google 官宣：AI 搜索模式将植入广告](https://news.ycombinator.com/item?id=48220105) | [HN](https://news.ycombinator.com/item?id=48220105) |
+| 5 | [Google Antigravity 更新竟删光 IDE？](https://news.ycombinator.com/item?id=48222529) | [HN](https://news.ycombinator.com/item?id=48222529) |
+| 6 | [拒绝AI废话：别再往聊天里扔长文](https://news.ycombinator.com/item?id=48219992) | [HN](https://news.ycombinator.com/item?id=48219992) |
+| 7 | [Amazon、Facebook 竟接入西雅警情报网](https://news.ycombinator.com/item?id=48226588) | [HN](https://news.ycombinator.com/item?id=48226588) |
+| 8 | [抵制AI才是人类的正确选择](https://news.ycombinator.com/item?id=48222366) | [HN](https://news.ycombinator.com/item?id=48222366) |
+| 9 | [DOS Zone：浏览器畅玩经典 DOS 游戏](https://news.ycombinator.com/item?id=48215418) | [HN](https://news.ycombinator.com/item?id=48215418) |
+| 10 | [Hail Mary：一张震撼的星际导航图](https://news.ycombinator.com/item?id=48225297) | [HN](https://news.ycombinator.com/item?id=48225297) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-04-21T20:47:54.334073+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-21T21:33:02.255801+00:00*
