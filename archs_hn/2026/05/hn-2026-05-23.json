@@ -1,0 +1,108 @@
+{
+  "date": "2026-05-23",
+  "fetched_at": "2026-05-23T20:41:24.690676+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48250144",
+      "title": "It's time to talk about my writerdeck",
+      "url": "https://veronicaexplains.net/my-first-writerdeck/",
+      "score": 92,
+      "by": "hggh",
+      "time": 1779561937,
+      "comments": 60,
+      "source": "firebase"
+    },
+    {
+      "id": "48247325",
+      "title": "On The <dl> (2021)",
+      "url": "https://benmyers.dev/blog/on-the-dl/",
+      "score": 300,
+      "by": "ravenical",
+      "time": 1779541423,
+      "comments": 96,
+      "source": "firebase"
+    },
+    {
+      "id": "48249747",
+      "title": "Texas woman arrested for Facebook post about town water quality",
+      "url": "https://reclaimthenet.org/texas-woman-arrested-for-facebook-post-about-town-water-quality",
+      "score": 350,
+      "by": "abawany",
+      "time": 1779559362,
+      "comments": 148,
+      "source": "firebase"
+    },
+    {
+      "id": "48248954",
+      "title": "Reverse engineering circuitry in a Spacelab computer from 1980",
+      "url": "https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html",
+      "score": 62,
+      "by": "elpocko",
+      "time": 1779553490,
+      "comments": 5,
+      "source": "firebase"
+    },
+    {
+      "id": "48241335",
+      "title": "Hengefinder: Finding When the Sun Aligns with Your Street",
+      "url": "https://victoriaritvo.com/blog/hengefinder/",
+      "score": 59,
+      "by": "evakhoury",
+      "time": 1779482382,
+      "comments": 14,
+      "source": "firebase"
+    },
+    {
+      "id": "48196831",
+      "title": "We made our filesystem 47× faster by deleting it",
+      "url": "https://microsandbox.dev/blog/oci-filesystem-47x-faster",
+      "score": 36,
+      "by": "appcypher",
+      "time": 1779213683,
+      "comments": 22,
+      "source": "firebase"
+    },
+    {
+      "id": "48214311",
+      "title": "My two-part desk setup",
+      "url": "https://arslan.io/2025/11/18/my-two-part-desk-setup/",
+      "score": 129,
+      "by": "James72689",
+      "time": 1779312074,
+      "comments": 77,
+      "source": "firebase"
+    },
+    {
+      "id": "48241890",
+      "title": "Green card seekers must leave U.S. to apply, Trump administration says",
+      "url": "https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html",
+      "score": 209,
+      "by": "tlhunter",
+      "time": 1779485232,
+      "comments": 520,
+      "source": "firebase"
+    },
+    {
+      "id": "48248014",
+      "title": "z386: An Open-Source 80386 Built Around Original Microcode",
+      "url": "https://nand2mario.github.io/posts/2026/z386/",
+      "score": 91,
+      "by": "wicket",
+      "time": 1779546330,
+      "comments": 19,
+      "source": "firebase"
+    },
+    {
+      "id": "48247004",
+      "title": "80386 Microcode Disassembled",
+      "url": "https://www.reenigne.org/blog/80386-microcode-disassembled/",
+      "score": 187,
+      "by": "nand2mario",
+      "time": 1779538303,
+      "comments": 32,
+      "source": "firebase"
+    }
+  ]
+}

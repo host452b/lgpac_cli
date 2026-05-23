@@ -1,0 +1,128 @@
+{
+  "date": "2026-05-23",
+  "fetched_at": "2026-05-23T20:41:24.691893+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48241997",
+      "title_zh": "给乌干达难民营寄一台MacBook",
+      "abstract": "我在伦敦大学远程学习时结识了刚果难民Django，他在乌干达难民营靠太阳能和Airtel流量攻读计算机科学学位。当他的MacBook主板烧毁后，我本想通过Australia Post寄去备用机，却因锂电池运输规定被退回。转投Pack \\u0026 Send后，包裹历经九国抵达荷兰，但Django在乌干达清关时遭遇重重阻碍：作为难民无法在线获取Tax Identification Number（TI",
+      "url": "https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda",
+      "score": 640,
+      "by": "lexandstuff",
+      "time": 1779485815,
+      "comments": 228,
+      "hn_url": "https://news.ycombinator.com/item?id=48241997",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48245862",
+      "title_zh": "BambuStudio 长期违反 PrusaSlicer AGPL 协议",
+      "abstract": "我是 Josef Prusa，作为 PrusaSlicer 的创始人，我必须揭露 BambuStudio 自 fork 项目之初就在违反 AGPL 开源协议。他们将核心的 networking 插件做成闭源黑盒，试图绕过开源义务，这完全破坏了开源社区的社交契约。更令人担忧的是，结合中国近年出台的《国家情报法》、《数据安全法》等五部法律，这种架构意味着工业数据可能面临被强制调取的风险。3D 打印作为",
+      "url": "https://xcancel.com/josefprusa/status/2054602354851254330",
+      "score": 368,
+      "by": "Tomte",
+      "time": 1779524697,
+      "comments": 145,
+      "hn_url": "https://news.ycombinator.com/item?id=48245862",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48249747",
+      "title_zh": "Texas女子因Facebook水质帖被捕",
+      "abstract": "在Texas，一位普通女性仅仅因为在Facebook上发帖讨论当地水质问题，竟然遭到了逮捕。这一事件迅速引发了公众对言论自由和社交媒体监管边界的激烈讨论。文章揭示了当公民试图揭露社区环境隐患时，可能面临的法律风险与权力压制。这不仅是个人的遭遇，更折射出在数字时代，普通人在Facebook等平台上发声所承受的巨大压力。事件提醒我们，即便是在看似自由的网络空间，表达真实关切也可能付出沉重代价。",
+      "url": "https://reclaimthenet.org/texas-woman-arrested-for-facebook-post-about-town-water-quality",
+      "score": 329,
+      "by": "abawany",
+      "time": 1779559362,
+      "comments": 135,
+      "hn_url": "https://news.ycombinator.com/item?id=48249747",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48247325",
+      "title_zh": "被低估的HTML标签：\\u003cdl\\u003e的妙用",
+      "abstract": "你是否还在用一堆嵌套的\\u003cdiv\\u003e来展示书名、作者或游戏属性？其实HTML早就提供了更语义化的方案：\\u003cdl\\u003e描述列表。这篇文章带你重新认识这个被严重低估的标签组合：\\u003cdl\\u003e、\\u003cdt\\u003e和\\u003cdd\\u003e。它们不仅能清晰表达“名称-值”对，还能让屏幕阅读器更智能地处理内容，比如告诉用户列表长度或允许快速跳过。从书",
+      "url": "https://benmyers.dev/blog/on-the-dl/",
+      "score": 298,
+      "by": "ravenical",
+      "time": 1779541423,
+      "comments": 94,
+      "hn_url": "https://news.ycombinator.com/item?id=48247325",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48243863",
+      "title_zh": "AI 行业巨亏：谁在烧钱谁在赚？",
+      "abstract": "2026 年的 AI 行业真相令人咋舌：全行业累计支出高达 1.4 万亿美元，收入却仅有 7180 亿美元，整体处于巨额亏损状态。从 Amazon、Google、Meta 到 Microsoft，这些科技巨头在 AI 基础设施上的投入远超回报，甚至 OpenAI、Anthropic 等纯 AI 实验室也深陷赤字泥潭。唯一例外是 Nvidia，作为“卖铲人”狂揽 2530 亿美元利润。本文通过实时追",
+      "url": "https://isaiprofitable.com/",
+      "score": 242,
+      "by": "poyu",
+      "time": 1779502238,
+      "comments": 188,
+      "hn_url": "https://news.ycombinator.com/item?id=48243863",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48247127",
+      "title_zh": "Terry Pratchett：那个永远挥之不去的咒语",
+      "abstract": "十六岁那年，我在法语课后排偷偷读Terry Pratchett，一句关于记忆像家具般在脑海中踢翻桌椅的句子，从此再未离开。他的书小巧、廉价、封面俗艳，专为躲藏而生，却装下了整个宇宙。Rincewind的懦弱、Vimes的挣扎、Granny Weatherwax的等待，都成了我们青春期的镜像。Terry Pratchett用幽默对抗荒诞，用脚注与读者对话，更在阿尔茨海默症面前亲自导演了自己的谢幕。如",
+      "url": "https://www.mahl.me/blog/the-spell-that-wouldnt-leave/",
+      "score": 227,
+      "by": "gorgmah",
+      "time": 1779539728,
+      "comments": 230,
+      "hn_url": "https://news.ycombinator.com/item?id=48247127",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48245571",
+      "title_zh": "地铁捡到的婴儿，如今成了我们的26岁儿子",
+      "abstract": "2000年夏天的一个夜晚，我在纽约Union Square地铁站的角落里发现了一个被遗弃的新生儿Kevin。当时我和伴侣Pete从未想过要孩子，甚至还在为债务发愁。但法官询问我们是否愿意收养时，我毫不犹豫地答应了。尽管Pete起初非常反对，但在见到Kevin的那一刻，所有的顾虑都烟消云散。26年过去了，Kevin已经成长为一名优秀的软件开发者，虽然身在异地，但我们依然保持着紧密的联系。这段奇妙的缘",
+      "url": "https://www.theguardian.com/lifeandstyle/2026/may/22/experience-found-baby-subway-now-26-year-old-son",
+      "score": 225,
+      "by": "Michelangelo11",
+      "time": 1779521673,
+      "comments": 59,
+      "hn_url": "https://news.ycombinator.com/item?id=48245571",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48242278",
+      "title_zh": "数十年研究终获突破，新睡眠呼吸暂停药物问世",
+      "abstract": "多伦多大学 Temerty Faculty of Medicine 的研究团队经过数十年的不懈努力，终于将基础睡眠研究转化为了实际的临床成果。这项长期投入不仅揭示了睡眠呼吸暂停的深层机制，更直接催生了一款全新的治疗药物。对于长期受睡眠呼吸暂停困扰的患者而言，这意味着除了传统的呼吸机治疗外，未来可能迎来更便捷的药物疗法。这一突破证明了基础科学研究在解决复杂医疗难题中的核心价值，也展示了从实验室到病床",
+      "url": "https://temertymedicine.utoronto.ca/news/how-decades-sleep-research-led-new-sleep-apnea-drug",
+      "score": 218,
+      "by": "colinprince",
+      "time": 1779487539,
+      "comments": 143,
+      "hn_url": "https://news.ycombinator.com/item?id=48242278",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48244434",
+      "title_zh": "微软报告：用AI比雇人更贵",
+      "abstract": "微软内部报告揭露了一个尴尬的现实：在某些场景下，使用AI的成本竟然超过了雇佣人类员工。为了追求所谓的“生产力提升”，微软、Uber和Meta等科技巨头曾大力鼓励员工使用AI工具，甚至设立排行榜比拼token消耗量。然而，这种策略导致了预算的迅速枯竭，微软甚至被迫取消Claude Code的授权。Nvidia高管也坦言，计算成本已远超人力成本。尽管单个token的价格在下降，但AI Agent的高频",
+      "url": "https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/",
+      "score": 218,
+      "by": "nreece",
+      "time": 1779507856,
+      "comments": 62,
+      "hn_url": "https://news.ycombinator.com/item?id=48244434",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48247876",
+      "title_zh": "Oura 承认收到政府数据调取请求",
+      "abstract": "去年 Oura 因与国防部及 Palantir 合作引发轩然大波，用户担心健康数据被政府获取。作为安全记者，我深入调查了 Oura Ring 的数据传输与存储机制，发现其并未采用端到端加密，这意味着数据在传输和存储过程中可能被解密。Oura 方面承认会收到政府的数据请求，并声称会审查其合法性，但拒绝透露具体请求数量或是否曾交出数据。尽管公司估值已超 110 亿美元并计划上市，却仍未像其他科技巨头那",
+      "url": "https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/",
+      "score": 214,
+      "by": "donohoe",
+      "time": 1779545397,
+      "comments": 131,
+      "hn_url": "https://news.ycombinator.com/item?id=48247876",
+      "source": "zeli_rsc"
+    }
+  ]
+}

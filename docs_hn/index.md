@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-05-21 21:33 UTC
+> Updated: 2026-05-23 20:41 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 215 | [BBEdit 16](https://www.barebones.com/products/bbedit/bbedit16.html) | [61](https://news.ycombinator.com/item?id=48226944) |
-| 2 | 326 | [Project Hail Mary – Stellar Navigation Chart](https://valhovey.github.io/gaia-mary/) | [89](https://news.ycombinator.com/item?id=48225297) |
-| 3 | 62 | [Blog ran on Ubuntu 16.04 for 10 years. I migrated it to FreeBSD](https://crocidb.com/post/this-blog-ran-on-ubuntu-16-04-for-10-years-i-migrated-it-to-freebsd/) | [16](https://news.ycombinator.com/item?id=48227397) |
-| 4 | 947 | [Flipper One – we need your help](https://blog.flipper.net/flipper-one-we-need-your-help/) | [393](https://news.ycombinator.com/item?id=48220647) |
-| 5 | 107 | [Show HN: Freenet, a peer-to-peer platform for decentralized apps](https://freenet.org/) | [38](https://news.ycombinator.com/item?id=48223362) |
-| 6 | 32 | [Using Kagi Search with Low Vision](https://veroniiiica.com/using-kagi-search-with-low-vision/) | [1](https://news.ycombinator.com/item?id=48227860) |
-| 7 | 526 | [We're testing new ad formats in Search and expanding our Direct Offers pilot](https://blog.google/products/ads-commerce/google-marketing-live-search-ads/) | [443](https://news.ycombinator.com/item?id=48220105) |
-| 8 | 162 | [Was my $48K GPU server worth it?](https://rosmine.ai/2026/05/13/was-my-48k-gpu-worth-it/) | [121](https://news.ycombinator.com/item?id=48184402) |
-| 9 | 361 | [Seattle Shield, an intelligence-sharing network operated by the Seattle police](https://prismreports.org/2026/05/20/seattle-shield-private-companies-surveillance/) | [146](https://news.ycombinator.com/item?id=48226588) |
-| 10 | 228 | [Indexing a year of video locally on a 2021 MacBook with Gemma4-31B (50GB swap)](https://blog.simbastack.com/indexed-a-year-of-video-locally/) | [81](https://news.ycombinator.com/item?id=48222733) |
+| 1 | 92 | [It's time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) | [60](https://news.ycombinator.com/item?id=48250144) |
+| 2 | 300 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) | [96](https://news.ycombinator.com/item?id=48247325) |
+| 3 | 350 | [Texas woman arrested for Facebook post about town water quality](https://reclaimthenet.org/texas-woman-arrested-for-facebook-post-about-town-water-quality) | [148](https://news.ycombinator.com/item?id=48249747) |
+| 4 | 62 | [Reverse engineering circuitry in a Spacelab computer from 1980](https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html) | [5](https://news.ycombinator.com/item?id=48248954) |
+| 5 | 59 | [Hengefinder: Finding When the Sun Aligns with Your Street](https://victoriaritvo.com/blog/hengefinder/) | [14](https://news.ycombinator.com/item?id=48241335) |
+| 6 | 36 | [We made our filesystem 47× faster by deleting it](https://microsandbox.dev/blog/oci-filesystem-47x-faster) | [22](https://news.ycombinator.com/item?id=48196831) |
+| 7 | 129 | [My two-part desk setup](https://arslan.io/2025/11/18/my-two-part-desk-setup/) | [77](https://news.ycombinator.com/item?id=48214311) |
+| 8 | 209 | [Green card seekers must leave U.S. to apply, Trump administration says](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) | [520](https://news.ycombinator.com/item?id=48241890) |
+| 9 | 91 | [z386: An Open-Source 80386 Built Around Original Microcode](https://nand2mario.github.io/posts/2026/z386/) | [19](https://news.ycombinator.com/item?id=48248014) |
+| 10 | 187 | [80386 Microcode Disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) | [32](https://news.ycombinator.com/item?id=48247004) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Flipper One：我们要造最开放的ARM电脑](https://news.ycombinator.com/item?id=48220647) | [HN](https://news.ycombinator.com/item?id=48220647) |
-| 2 | [AI 只是更大规模的未经授权抄袭](https://news.ycombinator.com/item?id=48222383) | [HN](https://news.ycombinator.com/item?id=48222383) |
-| 3 | [Google 向 Web 宣战：你的网站不再重要](https://news.ycombinator.com/item?id=48214449) | [HN](https://news.ycombinator.com/item?id=48214449) |
-| 4 | [Google 官宣：AI 搜索模式将植入广告](https://news.ycombinator.com/item?id=48220105) | [HN](https://news.ycombinator.com/item?id=48220105) |
-| 5 | [Google Antigravity 更新竟删光 IDE？](https://news.ycombinator.com/item?id=48222529) | [HN](https://news.ycombinator.com/item?id=48222529) |
-| 6 | [拒绝AI废话：别再往聊天里扔长文](https://news.ycombinator.com/item?id=48219992) | [HN](https://news.ycombinator.com/item?id=48219992) |
-| 7 | [Amazon、Facebook 竟接入西雅警情报网](https://news.ycombinator.com/item?id=48226588) | [HN](https://news.ycombinator.com/item?id=48226588) |
-| 8 | [抵制AI才是人类的正确选择](https://news.ycombinator.com/item?id=48222366) | [HN](https://news.ycombinator.com/item?id=48222366) |
-| 9 | [DOS Zone：浏览器畅玩经典 DOS 游戏](https://news.ycombinator.com/item?id=48215418) | [HN](https://news.ycombinator.com/item?id=48215418) |
-| 10 | [Hail Mary：一张震撼的星际导航图](https://news.ycombinator.com/item?id=48225297) | [HN](https://news.ycombinator.com/item?id=48225297) |
+| 1 | [给乌干达难民营寄一台MacBook](https://news.ycombinator.com/item?id=48241997) | [HN](https://news.ycombinator.com/item?id=48241997) |
+| 2 | [BambuStudio 长期违反 PrusaSlicer AGPL 协议](https://news.ycombinator.com/item?id=48245862) | [HN](https://news.ycombinator.com/item?id=48245862) |
+| 3 | [Texas女子因Facebook水质帖被捕](https://news.ycombinator.com/item?id=48249747) | [HN](https://news.ycombinator.com/item?id=48249747) |
+| 4 | [被低估的HTML标签：\u003cdl\u003e的妙用](https://news.ycombinator.com/item?id=48247325) | [HN](https://news.ycombinator.com/item?id=48247325) |
+| 5 | [AI 行业巨亏：谁在烧钱谁在赚？](https://news.ycombinator.com/item?id=48243863) | [HN](https://news.ycombinator.com/item?id=48243863) |
+| 6 | [Terry Pratchett：那个永远挥之不去的咒语](https://news.ycombinator.com/item?id=48247127) | [HN](https://news.ycombinator.com/item?id=48247127) |
+| 7 | [地铁捡到的婴儿，如今成了我们的26岁儿子](https://news.ycombinator.com/item?id=48245571) | [HN](https://news.ycombinator.com/item?id=48245571) |
+| 8 | [数十年研究终获突破，新睡眠呼吸暂停药物问世](https://news.ycombinator.com/item?id=48242278) | [HN](https://news.ycombinator.com/item?id=48242278) |
+| 9 | [微软报告：用AI比雇人更贵](https://news.ycombinator.com/item?id=48244434) | [HN](https://news.ycombinator.com/item?id=48244434) |
+| 10 | [Oura 承认收到政府数据调取请求](https://news.ycombinator.com/item?id=48247876) | [HN](https://news.ycombinator.com/item?id=48247876) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-21T21:33:02.255801+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-23T20:41:24.693675+00:00*
