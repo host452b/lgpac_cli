@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-05-23 20:41 UTC
+> Updated: 2026-05-28 21:56 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 92 | [It's time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) | [60](https://news.ycombinator.com/item?id=48250144) |
-| 2 | 300 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) | [96](https://news.ycombinator.com/item?id=48247325) |
-| 3 | 350 | [Texas woman arrested for Facebook post about town water quality](https://reclaimthenet.org/texas-woman-arrested-for-facebook-post-about-town-water-quality) | [148](https://news.ycombinator.com/item?id=48249747) |
-| 4 | 62 | [Reverse engineering circuitry in a Spacelab computer from 1980](https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html) | [5](https://news.ycombinator.com/item?id=48248954) |
-| 5 | 59 | [Hengefinder: Finding When the Sun Aligns with Your Street](https://victoriaritvo.com/blog/hengefinder/) | [14](https://news.ycombinator.com/item?id=48241335) |
-| 6 | 36 | [We made our filesystem 47× faster by deleting it](https://microsandbox.dev/blog/oci-filesystem-47x-faster) | [22](https://news.ycombinator.com/item?id=48196831) |
-| 7 | 129 | [My two-part desk setup](https://arslan.io/2025/11/18/my-two-part-desk-setup/) | [77](https://news.ycombinator.com/item?id=48214311) |
-| 8 | 209 | [Green card seekers must leave U.S. to apply, Trump administration says](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) | [520](https://news.ycombinator.com/item?id=48241890) |
-| 9 | 91 | [z386: An Open-Source 80386 Built Around Original Microcode](https://nand2mario.github.io/posts/2026/z386/) | [19](https://news.ycombinator.com/item?id=48248014) |
-| 10 | 187 | [80386 Microcode Disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) | [32](https://news.ycombinator.com/item?id=48247004) |
+| 1 | 1024 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) | [813](https://news.ycombinator.com/item?id=48311647) |
+| 2 | 327 | [Bricks and Minifigs Stole a Man's $200k Lego Collection](https://mybricklog.com/blog/bricks-minifigs-corporate-stole-old-mans-200000-lego-collection) | [155](https://news.ycombinator.com/item?id=48314136) |
+| 3 | 192 | [Just Use Postgres for Durable Workflows](https://www.dbos.dev/blog/postgres-is-all-you-need-for-durable-execution) | [73](https://news.ycombinator.com/item?id=48313530) |
+| 4 | 82 | [Various LLM Smells](https://shvbsle.in/various-llm-smells/) | [47](https://news.ycombinator.com/item?id=48313810) |
+| 5 | 76 | [Nitpicking the shell history scene in 'Tron: Legacy'](https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/tron-legacy/) | [22](https://news.ycombinator.com/item?id=48314002) |
+| 6 | 20 | [I Made a Million Dollar Product from My Dorm Room (2025)](https://nick.winans.io/blog/nice-nano/) | [0](https://news.ycombinator.com/item?id=48314951) |
+| 7 | 60 | [Bitburner, programming-based incremental game](https://bitburner-official.github.io/) | [8](https://news.ycombinator.com/item?id=48312616) |
+| 8 | 82 | [I hated writing–until I learned there's a science to it(2024)](https://www.science.org/content/article/i-hated-writing-until-i-learned-there-s-science-it) | [35](https://news.ycombinator.com/item?id=48312528) |
+| 9 | 105 | [News about Raspberry Pi 6 and Microcontroller Development](https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/) | [78](https://news.ycombinator.com/item?id=48276598) |
+| 10 | 192 | [Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue](https://llmgame.scalex.dev) | [93](https://news.ycombinator.com/item?id=48308376) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [给乌干达难民营寄一台MacBook](https://news.ycombinator.com/item?id=48241997) | [HN](https://news.ycombinator.com/item?id=48241997) |
-| 2 | [BambuStudio 长期违反 PrusaSlicer AGPL 协议](https://news.ycombinator.com/item?id=48245862) | [HN](https://news.ycombinator.com/item?id=48245862) |
-| 3 | [Texas女子因Facebook水质帖被捕](https://news.ycombinator.com/item?id=48249747) | [HN](https://news.ycombinator.com/item?id=48249747) |
-| 4 | [被低估的HTML标签：\u003cdl\u003e的妙用](https://news.ycombinator.com/item?id=48247325) | [HN](https://news.ycombinator.com/item?id=48247325) |
-| 5 | [AI 行业巨亏：谁在烧钱谁在赚？](https://news.ycombinator.com/item?id=48243863) | [HN](https://news.ycombinator.com/item?id=48243863) |
-| 6 | [Terry Pratchett：那个永远挥之不去的咒语](https://news.ycombinator.com/item?id=48247127) | [HN](https://news.ycombinator.com/item?id=48247127) |
-| 7 | [地铁捡到的婴儿，如今成了我们的26岁儿子](https://news.ycombinator.com/item?id=48245571) | [HN](https://news.ycombinator.com/item?id=48245571) |
-| 8 | [数十年研究终获突破，新睡眠呼吸暂停药物问世](https://news.ycombinator.com/item?id=48242278) | [HN](https://news.ycombinator.com/item?id=48242278) |
-| 9 | [微软报告：用AI比雇人更贵](https://news.ycombinator.com/item?id=48244434) | [HN](https://news.ycombinator.com/item?id=48244434) |
-| 10 | [Oura 承认收到政府数据调取请求](https://news.ycombinator.com/item?id=48247876) | [HN](https://news.ycombinator.com/item?id=48247876) |
+| 1 | [AI 让效率翻倍，我能周五放假吗？](https://news.ycombinator.com/item?id=48302745) | [HN](https://news.ycombinator.com/item?id=48302745) |
+| 2 | [五大前沿 LLM 在事实核查中分歧严重](https://news.ycombinator.com/item?id=48307887) | [HN](https://news.ycombinator.com/item?id=48307887) |
+| 3 | [FBI逮捕CIA高官，家中藏4000万美元金条](https://news.ycombinator.com/item?id=48302151) | [HN](https://news.ycombinator.com/item?id=48302151) |
+| 4 | [UC教授呼吁STEM专业重考SAT](https://news.ycombinator.com/item?id=48309233) | [HN](https://news.ycombinator.com/item?id=48309233) |
+| 5 | [AMD对Linux用户玩起了Vivado的诱饵策略](https://news.ycombinator.com/item?id=48307231) | [HN](https://news.ycombinator.com/item?id=48307231) |
+| 6 | [Google员工因Polymarket内幕交易被捕](https://news.ycombinator.com/item?id=48302822) | [HN](https://news.ycombinator.com/item?id=48302822) |
+| 7 | [欧盟重罚Temu两亿欧元](https://news.ycombinator.com/item?id=48309302) | [HN](https://news.ycombinator.com/item?id=48309302) |
+| 8 | [我分析了20年的聊天记录](https://news.ycombinator.com/item?id=48302220) | [HN](https://news.ycombinator.com/item?id=48302220) |
+| 9 | [AI 账单吓坏美国企业](https://news.ycombinator.com/item?id=48307098) | [HN](https://news.ycombinator.com/item?id=48307098) |
+| 10 | [AI 搞不定的难题，这台机器能行](https://news.ycombinator.com/item?id=48305446) | [HN](https://news.ycombinator.com/item?id=48305446) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-23T20:41:24.693675+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-28T21:56:21.714305+00:00*

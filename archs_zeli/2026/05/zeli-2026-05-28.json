@@ -1,0 +1,128 @@
+{
+  "date": "2026-05-28",
+  "fetched_at": "2026-05-28T21:56:21.712263+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48302745",
+      "title_zh": "AI 让效率翻倍，我能周五放假吗？",
+      "abstract": "2026 年 5 月，我们正站在全球白领生产力革命的边缘。AI 将彻底改变我们的工作、互动、学习乃至社交方式，让一切变得更快更简单。既然 AI 能让我的产出效率提升十倍，那我周一中午就能完成过去一周的工作量，为什么不能把周五设为休息日？我甚至提议将周五定为“AI 工作者日”，周四我拼命写好 prompt，让 AI 代理在周五自动运行。董事会和高管们也可以这天去打高尔夫，毕竟办公室里有 AI 代理在",
+      "url": "https://mlsu.io/posts/day-off/",
+      "score": 1285,
+      "by": "mlsu",
+      "time": 1779928826,
+      "comments": 727,
+      "hn_url": "https://news.ycombinator.com/item?id=48302745",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48307887",
+      "title_zh": "五大前沿 LLM 在事实核查中分歧严重",
+      "abstract": "我们向五款顶尖前沿 LLM 抛出了 1000 条真实用户提交的事实核查声明，结果令人震惊：在 67% 的案例中，这些模型无法达成一致。这并非简单的校准差异，而是实质性的判断分歧，甚至出现了 34% 的声明中模型间存在两极对立的结论。研究发现，模型在“真”与“假”的极端选项上容易达成共识，但在中间地带的判断上却频频分裂。即便假设多数派就是正确答案，也意味着大量模型在输出错误信息。这项研究揭示了当前 ",
+      "url": "https://lenz.io/research/llm-disagreement",
+      "score": 472,
+      "by": "kostaj",
+      "time": 1779970819,
+      "comments": 328,
+      "hn_url": "https://news.ycombinator.com/item?id=48307887",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48302151",
+      "title_zh": "FBI逮捕CIA高官，家中藏4000万美元金条",
+      "abstract": "FBI近日突袭逮捕了前CIA高官David Rush，在其弗吉尼亚州住所内搜出约303根金条，总价值超4000万美元，还有大量美元现金和Rolex名表。法院文件显示，David Rush被指控伪造学历和海军预备役身份，骗取数万美元军饷。更令人咋舌的是，他曾在去年11月至今年3月期间，以公务支出名义申请并获取了巨额外币和金条，但CIA内部审查时却找不到这些资产的踪迹。目前David Rush已被羁押",
+      "url": "https://www.nytimes.com/2026/05/27/us/politics/fbi-arrest-cia-official-gold-bars.html",
+      "score": 448,
+      "by": "cwwc",
+      "time": 1779924209,
+      "comments": 363,
+      "hn_url": "https://news.ycombinator.com/item?id=48302151",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48309233",
+      "title_zh": "UC教授呼吁STEM专业重考SAT",
+      "abstract": "加州大学（UC）系统内超过600名教授联名发声，强烈要求从2027年秋季起恢复SAT或ACT考试作为STEM专业录取的硬性指标。他们指出，长达六年的“无标化考试”政策导致了严重的数学能力断层，许多新生入学后甚至需要重修中学数学课程，这直接威胁到UC在科学、技术、工程和数学领域的学位含金量。尽管2020年UC曾以公平性为由取消考试，但如今包括哈佛大学、斯坦福大学在内的顶尖名校已纷纷恢复测试。面对UC",
+      "url": "https://www.latimes.com/california/story/2026-05-27/uc-math-professors-demand-return-of-sat-for-stem-admissions",
+      "score": 379,
+      "by": "brandonb",
+      "time": 1779977580,
+      "comments": 555,
+      "hn_url": "https://news.ycombinator.com/item?id=48309233",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48307231",
+      "title_zh": "AMD对Linux用户玩起了Vivado的诱饵策略",
+      "abstract": "科技巨头总爱先免费吸引用户，等大家离不开时再悄悄收费。这次轮到AMD了，其FPGA设计工具Vivado在2026.1版本中突然改变授权模式：原本在Windows和Linux上都能免费使用的Standard Edition，现在免费Basic版仅限Windows，Linux支持被锁在了每年1200到1800美元的Core版里。AMD官方声称这是为了更灵活的授权，但论坛管理员Anatoli Curra",
+      "url": "https://itsfoss.com/news/amd-vivado-bait-and-switch-on-linux-users/",
+      "score": 325,
+      "by": "teleforce",
+      "time": 1779965815,
+      "comments": 153,
+      "hn_url": "https://news.ycombinator.com/item?id=48307231",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48302822",
+      "title_zh": "Google员工因Polymarket内幕交易被捕",
+      "abstract": "一名Google员工Michele Spagnuolo因涉嫌利用内幕信息在Polymarket上进行内幕交易而被联邦检察官起诉。他被指控通过Google内部数据系统获取机密信息，成功预测了2025年Google年度搜索榜单，并从中获利约120万美元。该员工被控洗钱、商品欺诈和电汇欺诈等多项罪名，目前已被Google停职。Polymarket方面表示，这是美国首个因配合执法部门而引发内幕交易指控的预",
+      "url": "https://www.cnbc.com/2026/05/27/google-employee-polymarket-insider-trading.html",
+      "score": 291,
+      "by": "pseudolus",
+      "time": 1779929398,
+      "comments": 202,
+      "hn_url": "https://news.ycombinator.com/item?id=48302822",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48309302",
+      "title_zh": "欧盟重罚Temu两亿欧元",
+      "abstract": "欧盟对Temu开出了2亿欧元的巨额罚单，原因是其平台上充斥着危险婴儿玩具和故障充电器等非法产品。欧盟委员会指出，Temu未能有效识别和评估这些系统性风险，严重威胁了消费者权益。此次调查通过神秘购物发现，大量Temu在售商品未能通过基本安全测试。Temu方面对此表示强烈反对，认为罚款不成比例，并正在考虑所有可用选项。这一决定是欧盟《数字服务法》实施以来的第二起重大处罚，旨在向在线市场平台发出强烈信号",
+      "url": "https://www.bbc.co.uk/news/articles/c1k2ydn1rz8o",
+      "score": 263,
+      "by": "jjp",
+      "time": 1779977898,
+      "comments": 187,
+      "hn_url": "https://news.ycombinator.com/item?id=48309302",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48302220",
+      "title_zh": "我分析了20年的聊天记录",
+      "abstract": "受Tim Urban的'生命周数'图启发，我不想让时间只是数字，而是想量化自己作为朋友的真实表现。于是，我利用GDPR从Instagram、Telegram、VK等平台导出了20年的聊天数据。面对海量噪音和复杂的昵称指代问题，我放弃了传统关键词匹配，转而使用LLM对120万条消息进行清洗和分类。这场实验不仅帮我构建了个人CRM，更揭示了我词汇量在20多岁就基本定型，以及我在人际关系中那些被遗忘的真",
+      "url": "https://drobinin.com/posts/am-i-a-bad-friend/",
+      "score": 243,
+      "by": "valzevul",
+      "time": 1779924673,
+      "comments": 141,
+      "hn_url": "https://news.ycombinator.com/item?id=48302220",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48307098",
+      "title_zh": "AI 账单吓坏美国企业",
+      "abstract": "企业高管们开始质疑：疯狂投入的 AI 到底带来了什么？Microsoft 砍掉了大部分 Claude Code 授权，Uber 的 COO 直言 AI 成本越来越难交代。更有客户因没设限，单月烧掉 5 亿美元。虽然企业想用 AI 自动化裁员来省钱，但员工却在悄悄抵制。专家 Ali Ansari 指出，现在 AI 其实只擅长写代码，盲目追求“tokenmaxxing”只会让 IT 账单飙升却收效甚微",
+      "url": "https://www.axios.com/2026/05/28/ai-spending-roi-enterprise-costs",
+      "score": 147,
+      "by": "1vuio0pswjnm7",
+      "time": 1779964772,
+      "comments": 131,
+      "hn_url": "https://news.ycombinator.com/item?id=48307098",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "48305446",
+      "title_zh": "AI 搞不定的难题，这台机器能行",
+      "abstract": "当 AI 还在写小说、开飞船时，面对物流调度、芯片布线等组合优化难题却束手无策。来自 IISc 等多机构的团队联手打造了一台“尤里卡机器”，它结合了 Fowler-Nordheim 退火器与神经形态架构，像大自然一样在复杂的能量景观中探索。这项发表在 Nature Communications 上的研究指出，基于 CMOS 技术的量子启发式计算机，能高效解决蛋白质折叠等棘手问题。这不仅是算力的提升",
+      "url": "https://iisc.ac.in/a-eureka-machine-that-thinks-like-nature-and-explores-what-ai-cannot/",
+      "score": 141,
+      "by": "kunalsin9h",
+      "time": 1779950431,
+      "comments": 42,
+      "hn_url": "https://news.ycombinator.com/item?id=48305446",
+      "source": "zeli_rsc"
+    }
+  ]
+}
