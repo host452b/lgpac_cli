@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-05-28 21:56 UTC
+> Updated: 2026-06-11 22:01 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 1024 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) | [813](https://news.ycombinator.com/item?id=48311647) |
-| 2 | 327 | [Bricks and Minifigs Stole a Man's $200k Lego Collection](https://mybricklog.com/blog/bricks-minifigs-corporate-stole-old-mans-200000-lego-collection) | [155](https://news.ycombinator.com/item?id=48314136) |
-| 3 | 192 | [Just Use Postgres for Durable Workflows](https://www.dbos.dev/blog/postgres-is-all-you-need-for-durable-execution) | [73](https://news.ycombinator.com/item?id=48313530) |
-| 4 | 82 | [Various LLM Smells](https://shvbsle.in/various-llm-smells/) | [47](https://news.ycombinator.com/item?id=48313810) |
-| 5 | 76 | [Nitpicking the shell history scene in 'Tron: Legacy'](https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/tron-legacy/) | [22](https://news.ycombinator.com/item?id=48314002) |
-| 6 | 20 | [I Made a Million Dollar Product from My Dorm Room (2025)](https://nick.winans.io/blog/nice-nano/) | [0](https://news.ycombinator.com/item?id=48314951) |
-| 7 | 60 | [Bitburner, programming-based incremental game](https://bitburner-official.github.io/) | [8](https://news.ycombinator.com/item?id=48312616) |
-| 8 | 82 | [I hated writing–until I learned there's a science to it(2024)](https://www.science.org/content/article/i-hated-writing-until-i-learned-there-s-science-it) | [35](https://news.ycombinator.com/item?id=48312528) |
-| 9 | 105 | [News about Raspberry Pi 6 and Microcontroller Development](https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/) | [78](https://news.ycombinator.com/item?id=48276598) |
-| 10 | 192 | [Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue](https://llmgame.scalex.dev) | [93](https://news.ycombinator.com/item?id=48308376) |
+| 1 | 790 | [Show HN: Homebrew 6.0.0](https://brew.sh/2026/06/11/homebrew-6.0.0/) | [190](https://news.ycombinator.com/item?id=48490024) |
+| 2 | 81 | [Shall we play a game? – LLMs use tactical nukes in 95% of simulations](https://www.kennethpayne.uk/p/shall-we-play-a-game) | [64](https://news.ycombinator.com/item?id=48495575) |
+| 3 | 375 | [MiMo Code is now released and open-source](https://mimo.xiaomi.com/mimocode) | [209](https://news.ycombinator.com/item?id=48490826) |
+| 4 | 23 | [Show HN: FablePool – pool money behind a prompt, and Fable builds it in public](https://fablepool.com) | [8](https://news.ycombinator.com/item?id=48496539) |
+| 5 | 279 | [Petition to Withdraw Canada's Bill C-22](https://www.ourcommons.ca/petitions/en/Petition/Sign/e-7416) | [100](https://news.ycombinator.com/item?id=48491830) |
+| 6 | 183 | [The RCE that AMD wouldn't fix](https://mrbruh.com/amd2/) | [67](https://news.ycombinator.com/item?id=48492215) |
+| 7 | 194 | [Emacs appearances in pop culture](https://ianyepan.github.io/posts/emacs-in-pop-culture/) | [36](https://news.ycombinator.com/item?id=48474274) |
+| 8 | 47 | [Travel Locally, Where You Are](https://www.ssp.sh/brain/travel-where-you-are/) | [24](https://news.ycombinator.com/item?id=48495751) |
+| 9 | 17 | [Show HN: Boo – screen-style terminal multiplexer built on libghostty](https://github.com/coder/boo) | [1](https://news.ycombinator.com/item?id=48496250) |
+| 10 | 90 | [Ear Training Practice Exercises](https://tonedear.com/) | [59](https://news.ycombinator.com/item?id=48447598) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [AI 让效率翻倍，我能周五放假吗？](https://news.ycombinator.com/item?id=48302745) | [HN](https://news.ycombinator.com/item?id=48302745) |
-| 2 | [五大前沿 LLM 在事实核查中分歧严重](https://news.ycombinator.com/item?id=48307887) | [HN](https://news.ycombinator.com/item?id=48307887) |
-| 3 | [FBI逮捕CIA高官，家中藏4000万美元金条](https://news.ycombinator.com/item?id=48302151) | [HN](https://news.ycombinator.com/item?id=48302151) |
-| 4 | [UC教授呼吁STEM专业重考SAT](https://news.ycombinator.com/item?id=48309233) | [HN](https://news.ycombinator.com/item?id=48309233) |
-| 5 | [AMD对Linux用户玩起了Vivado的诱饵策略](https://news.ycombinator.com/item?id=48307231) | [HN](https://news.ycombinator.com/item?id=48307231) |
-| 6 | [Google员工因Polymarket内幕交易被捕](https://news.ycombinator.com/item?id=48302822) | [HN](https://news.ycombinator.com/item?id=48302822) |
-| 7 | [欧盟重罚Temu两亿欧元](https://news.ycombinator.com/item?id=48309302) | [HN](https://news.ycombinator.com/item?id=48309302) |
-| 8 | [我分析了20年的聊天记录](https://news.ycombinator.com/item?id=48302220) | [HN](https://news.ycombinator.com/item?id=48302220) |
-| 9 | [AI 账单吓坏美国企业](https://news.ycombinator.com/item?id=48307098) | [HN](https://news.ycombinator.com/item?id=48307098) |
-| 10 | [AI 搞不定的难题，这台机器能行](https://news.ycombinator.com/item?id=48305446) | [HN](https://news.ycombinator.com/item?id=48305446) |
+| 1 | [Pokémon Go 扫描数据竟训练了军用无人机](https://news.ycombinator.com/item?id=48487029) | [HN](https://news.ycombinator.com/item?id=48487029) |
+| 2 | [AI 代理失控：Fedora 项目遭遇神秘入侵](https://news.ycombinator.com/item?id=48484584) | [HN](https://news.ycombinator.com/item?id=48484584) |
+| 3 | [MiMo Code 开源发布，小米再掀代码革命](https://news.ycombinator.com/item?id=48490826) | [HN](https://news.ycombinator.com/item?id=48490826) |
+| 4 | [美国太阳能首超煤炭，特朗普力推难挡](https://news.ycombinator.com/item?id=48492306) | [HN](https://news.ycombinator.com/item?id=48492306) |
+| 5 | [AI 代码量暴涨：是进步还是虚荣指标？](https://news.ycombinator.com/item?id=48489402) | [HN](https://news.ycombinator.com/item?id=48489402) |
+| 6 | [macOS 27 终于删掉菜单里的蠢图标](https://news.ycombinator.com/item?id=48487435) | [HN](https://news.ycombinator.com/item?id=48487435) |
+| 7 | [加拿大Bill C-22：无差别监控引众怒](https://news.ycombinator.com/item?id=48491830) | [HN](https://news.ycombinator.com/item?id=48491830) |
+| 8 | [AI 为何没能取代软件工程师](https://news.ycombinator.com/item?id=48487540) | [HN](https://news.ycombinator.com/item?id=48487540) |
+| 9 | [每周6.4小时](https://news.ycombinator.com/item?id=48490057) | [HN](https://news.ycombinator.com/item?id=48490057) |
+| 10 | [Hugging Face 开源 DeepSeek-R1 完整复现方案](https://news.ycombinator.com/item?id=48489917) | [HN](https://news.ycombinator.com/item?id=48489917) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-05-28T21:56:21.714305+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-06-11T22:01:42.095979+00:00*
