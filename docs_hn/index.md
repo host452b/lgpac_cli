@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-06-11 22:01 UTC
+> Updated: 2026-07-06 21:33 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 790 | [Show HN: Homebrew 6.0.0](https://brew.sh/2026/06/11/homebrew-6.0.0/) | [190](https://news.ycombinator.com/item?id=48490024) |
-| 2 | 81 | [Shall we play a game? – LLMs use tactical nukes in 95% of simulations](https://www.kennethpayne.uk/p/shall-we-play-a-game) | [64](https://news.ycombinator.com/item?id=48495575) |
-| 3 | 375 | [MiMo Code is now released and open-source](https://mimo.xiaomi.com/mimocode) | [209](https://news.ycombinator.com/item?id=48490826) |
-| 4 | 23 | [Show HN: FablePool – pool money behind a prompt, and Fable builds it in public](https://fablepool.com) | [8](https://news.ycombinator.com/item?id=48496539) |
-| 5 | 279 | [Petition to Withdraw Canada's Bill C-22](https://www.ourcommons.ca/petitions/en/Petition/Sign/e-7416) | [100](https://news.ycombinator.com/item?id=48491830) |
-| 6 | 183 | [The RCE that AMD wouldn't fix](https://mrbruh.com/amd2/) | [67](https://news.ycombinator.com/item?id=48492215) |
-| 7 | 194 | [Emacs appearances in pop culture](https://ianyepan.github.io/posts/emacs-in-pop-culture/) | [36](https://news.ycombinator.com/item?id=48474274) |
-| 8 | 47 | [Travel Locally, Where You Are](https://www.ssp.sh/brain/travel-where-you-are/) | [24](https://news.ycombinator.com/item?id=48495751) |
-| 9 | 17 | [Show HN: Boo – screen-style terminal multiplexer built on libghostty](https://github.com/coder/boo) | [1](https://news.ycombinator.com/item?id=48496250) |
-| 10 | 90 | [Ear Training Practice Exercises](https://tonedear.com/) | [59](https://news.ycombinator.com/item?id=48447598) |
+| 1 | 245 | [OpenWrt One – Open Hardware Router](https://openwrt.org/toh/openwrt/one) | [115](https://news.ycombinator.com/item?id=48808482) |
+| 2 | 142 | [CoMaps – FOSS Offline Maps](https://www.comaps.app/) | [25](https://news.ycombinator.com/item?id=48808928) |
+| 3 | 33 | [Learning to code is still worthwhile](https://stevekrouse.com/learn-to-code) | [11](https://news.ycombinator.com/item?id=48810439) |
+| 4 | 160 | [A global workspace in language models](https://www.anthropic.com/research/global-workspace) | [46](https://news.ycombinator.com/item?id=48808002) |
+| 5 | 73 | [Linux on the Atari Jaguar](https://cakehonolulu.github.io/linux-for-jaguar/) | [10](https://news.ycombinator.com/item?id=48808663) |
+| 6 | 238 | [AMD Ryzen AI Halo – $4k AI Dev Kit](https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo) | [170](https://news.ycombinator.com/item?id=48805624) |
+| 7 | 378 | [Resetting Xbox](https://news.xbox.com/en-us/2026/07/06/resetting-xbox/) | [322](https://news.ycombinator.com/item?id=48804993) |
+| 8 | 54 | [Januscape: Guest-to-Host Escape in KVM/x86 [CVE-2026-53359]](https://github.com/V4bel/Januscape) | [11](https://news.ycombinator.com/item?id=48807908) |
+| 9 | 23 | [Using precision editing to study human embryo development shows master gene](https://www.cam.ac.uk/research/news/first-use-of-precision-editing-to-study-human-embryo-development-reveals-role-of-master-gene) | [3](https://news.ycombinator.com/item?id=48769854) |
+| 10 | 108 | [Kani: A Model Checker for Rust](https://arxiv.org/abs/2607.01504) | [5](https://news.ycombinator.com/item?id=48806410) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Pokémon Go 扫描数据竟训练了军用无人机](https://news.ycombinator.com/item?id=48487029) | [HN](https://news.ycombinator.com/item?id=48487029) |
-| 2 | [AI 代理失控：Fedora 项目遭遇神秘入侵](https://news.ycombinator.com/item?id=48484584) | [HN](https://news.ycombinator.com/item?id=48484584) |
-| 3 | [MiMo Code 开源发布，小米再掀代码革命](https://news.ycombinator.com/item?id=48490826) | [HN](https://news.ycombinator.com/item?id=48490826) |
-| 4 | [美国太阳能首超煤炭，特朗普力推难挡](https://news.ycombinator.com/item?id=48492306) | [HN](https://news.ycombinator.com/item?id=48492306) |
-| 5 | [AI 代码量暴涨：是进步还是虚荣指标？](https://news.ycombinator.com/item?id=48489402) | [HN](https://news.ycombinator.com/item?id=48489402) |
-| 6 | [macOS 27 终于删掉菜单里的蠢图标](https://news.ycombinator.com/item?id=48487435) | [HN](https://news.ycombinator.com/item?id=48487435) |
-| 7 | [加拿大Bill C-22：无差别监控引众怒](https://news.ycombinator.com/item?id=48491830) | [HN](https://news.ycombinator.com/item?id=48491830) |
-| 8 | [AI 为何没能取代软件工程师](https://news.ycombinator.com/item?id=48487540) | [HN](https://news.ycombinator.com/item?id=48487540) |
-| 9 | [每周6.4小时](https://news.ycombinator.com/item?id=48490057) | [HN](https://news.ycombinator.com/item?id=48490057) |
-| 10 | [Hugging Face 开源 DeepSeek-R1 完整复现方案](https://news.ycombinator.com/item?id=48489917) | [HN](https://news.ycombinator.com/item?id=48489917) |
+| 1 | [Xbox大清洗：裁员3200人，四家工作室独立](https://news.ycombinator.com/item?id=48804993) | [HN](https://news.ycombinator.com/item?id=48804993) |
+| 2 | [Signalbox：大英铁路网实时动态图](https://news.ycombinator.com/item?id=48802535) | [HN](https://news.ycombinator.com/item?id=48802535) |
+| 3 | [Nintendo 欧洲新品大改：电池可换](https://news.ycombinator.com/item?id=48804193) | [HN](https://news.ycombinator.com/item?id=48804193) |
+| 4 | [Elm 1.0 之路：构建速度大飞跃](https://news.ycombinator.com/item?id=48803364) | [HN](https://news.ycombinator.com/item?id=48803364) |
+| 5 | [OpenWrt One：开箱即用的硬核开源路由](https://news.ycombinator.com/item?id=48808482) | [HN](https://news.ycombinator.com/item?id=48808482) |
+| 6 | [AMD Ryzen AI Halo：4000 美元的 AI 开发利器](https://news.ycombinator.com/item?id=48805624) | [HN](https://news.ycombinator.com/item?id=48805624) |
+| 7 | [工程师必看：基因组学的烘焙坊类比](https://news.ycombinator.com/item?id=48760424) | [HN](https://news.ycombinator.com/item?id=48760424) |
+| 8 | [铝箔：被低估的万能材料](https://news.ycombinator.com/item?id=48804297) | [HN](https://news.ycombinator.com/item?id=48804297) |
+| 9 | [Clojure 1.13 新增 checked keys 功能](https://news.ycombinator.com/item?id=48767211) | [HN](https://news.ycombinator.com/item?id=48767211) |
+| 10 | [Claude Fable 5：明知故犯，精心策划的合谋](https://news.ycombinator.com/item?id=48803762) | [HN](https://news.ycombinator.com/item?id=48803762) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-06-11T22:01:42.095979+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-07-06T21:33:21.407412+00:00*

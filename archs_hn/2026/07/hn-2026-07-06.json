@@ -1,0 +1,108 @@
+{
+  "date": "2026-07-06",
+  "fetched_at": "2026-07-06T21:33:21.404431+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "48808482",
+      "title": "OpenWrt One – Open Hardware Router",
+      "url": "https://openwrt.org/toh/openwrt/one",
+      "score": 245,
+      "by": "peter_d_sherman",
+      "time": 1783362192,
+      "comments": 115,
+      "source": "firebase"
+    },
+    {
+      "id": "48808928",
+      "title": "CoMaps – FOSS Offline Maps",
+      "url": "https://www.comaps.app/",
+      "score": 142,
+      "by": "basilikum",
+      "time": 1783364107,
+      "comments": 25,
+      "source": "firebase"
+    },
+    {
+      "id": "48810439",
+      "title": "Learning to code is still worthwhile",
+      "url": "https://stevekrouse.com/learn-to-code",
+      "score": 33,
+      "by": "stevekrouse",
+      "time": 1783371594,
+      "comments": 11,
+      "source": "firebase"
+    },
+    {
+      "id": "48808002",
+      "title": "A global workspace in language models",
+      "url": "https://www.anthropic.com/research/global-workspace",
+      "score": 160,
+      "by": "in-silico",
+      "time": 1783359848,
+      "comments": 46,
+      "source": "firebase"
+    },
+    {
+      "id": "48808663",
+      "title": "Linux on the Atari Jaguar",
+      "url": "https://cakehonolulu.github.io/linux-for-jaguar/",
+      "score": 73,
+      "by": "cakehonolulu",
+      "time": 1783362954,
+      "comments": 10,
+      "source": "firebase"
+    },
+    {
+      "id": "48805624",
+      "title": "AMD Ryzen AI Halo – $4k AI Dev Kit",
+      "url": "https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo",
+      "score": 238,
+      "by": "LabsLucas",
+      "time": 1783350078,
+      "comments": 170,
+      "source": "firebase"
+    },
+    {
+      "id": "48804993",
+      "title": "Resetting Xbox",
+      "url": "https://news.xbox.com/en-us/2026/07/06/resetting-xbox/",
+      "score": 378,
+      "by": "dijksterhuis",
+      "time": 1783347503,
+      "comments": 322,
+      "source": "firebase"
+    },
+    {
+      "id": "48807908",
+      "title": "Januscape: Guest-to-Host Escape in KVM/x86 [CVE-2026-53359]",
+      "url": "https://github.com/V4bel/Januscape",
+      "score": 54,
+      "by": "Imustaskforhelp",
+      "time": 1783359303,
+      "comments": 11,
+      "source": "firebase"
+    },
+    {
+      "id": "48769854",
+      "title": "Using precision editing to study human embryo development shows master gene",
+      "url": "https://www.cam.ac.uk/research/news/first-use-of-precision-editing-to-study-human-embryo-development-reveals-role-of-master-gene",
+      "score": 23,
+      "by": "gmays",
+      "time": 1783044225,
+      "comments": 3,
+      "source": "firebase"
+    },
+    {
+      "id": "48806410",
+      "title": "Kani: A Model Checker for Rust",
+      "url": "https://arxiv.org/abs/2607.01504",
+      "score": 108,
+      "by": "Jimmc414",
+      "time": 1783353204,
+      "comments": 5,
+      "source": "firebase"
+    }
+  ]
+}
