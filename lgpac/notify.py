@@ -3,6 +3,7 @@ shared notification layer.
 single implementation for email (SMTP) and webhook (dingtalk/slack/generic).
 all env vars are read once at call time, never hardcoded.
 """
+
 import json
 import logging
 import os
@@ -24,9 +25,7 @@ class EmailDeliveryError(RuntimeError):
     """Safe email failure that preserves the original exception chain."""
 
 
-def send_email(
-    subject: str, html_body: str, *, raise_on_error: bool = False
-) -> bool:
+def send_email(subject: str, html_body: str, *, raise_on_error: bool = False) -> bool:
     """
     send an HTML email.
     reads LGPAC_NOTIFY_EMAIL, LGPAC_SMTP_USER, LGPAC_SMTP_PASS,
@@ -67,6 +66,7 @@ def send_email(
 # webhook
 # ------------------------------------------------------------------ #
 
+
 def send_webhook(text: str, webhook_url: Optional[str] = None):
     """
     send alert via webhook. auto-detects platform by URL:
@@ -99,17 +99,24 @@ def _build_webhook_payload(url: str, text: str) -> Dict:
 # HTML helpers
 # ------------------------------------------------------------------ #
 
-_CELL_STYLE = 'padding:6px 8px;'
-_HEADER_STYLE = 'padding:6px 8px;text-align:left;'
-_TABLE_STYLE = 'border-collapse:collapse;width:100%;font-size:14px;'
+_CELL_STYLE = "padding:6px 8px;"
+_HEADER_STYLE = "padding:6px 8px;text-align:left;"
+_TABLE_STYLE = "border-collapse:collapse;width:100%;font-size:14px;"
 
 
-def build_html_email(title: str, heading_color: str, table_headers: List[str], table_rows: List[List[str]]) -> str:
+def build_html_email(
+    title: str,
+    heading_color: str,
+    table_headers: List[str],
+    table_rows: List[List[str]],
+) -> str:
     """
     build a complete HTML email body with a heading + table.
     each row is a list of cell HTML strings (can contain links, styling).
     """
-    header_cells = "".join(f'<th style="{_HEADER_STYLE}">{h}</th>' for h in table_headers)
+    header_cells = "".join(
+        f'<th style="{_HEADER_STYLE}">{h}</th>' for h in table_headers
+    )
     body_rows = ""
     for row in table_rows:
         cells = "".join(f'<td style="{_CELL_STYLE}">{cell}</td>' for cell in row)
@@ -120,6 +127,6 @@ def build_html_email(title: str, heading_color: str, table_headers: List[str], t
         f'<h2 style="color:{heading_color};">{title}</h2>'
         f'<table style="{_TABLE_STYLE}">'
         f'<tr style="background:#f6f8fa;">{header_cells}</tr>'
-        f'{body_rows}'
-        f'</table></body></html>'
+        f"{body_rows}"
+        f"</table></body></html>"
     )

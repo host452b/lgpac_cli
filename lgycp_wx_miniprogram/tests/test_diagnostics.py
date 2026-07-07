@@ -70,9 +70,7 @@ def _raise_sensitive_chain():
         raise RuntimeError("wrapper-canary") from exc
 
 
-def test_diagnostics_failure_keeps_traceback_and_redacts_values(
-    tmp_path, monkeypatch
-):
+def test_diagnostics_failure_keeps_traceback_and_redacts_values(tmp_path, monkeypatch):
     diagnostics_module = importlib.import_module("lgycp_wx_miniprogram.diagnostics")
     path = tmp_path / "diagnostics.json"
     summary = tmp_path / "summary.md"

@@ -115,13 +115,9 @@ def fetch_response(
             if attempt < MAX_ATTEMPTS:
                 sleep(_retry_delay(response, attempt, jitter))
                 continue
-            raise ApiError(
-                f"course API returned HTTP {response.status_code}", trace
-            )
+            raise ApiError(f"course API returned HTTP {response.status_code}", trace)
         if response.status_code >= 400:
-            raise ApiError(
-                f"course API returned HTTP {response.status_code}", trace
-            )
+            raise ApiError(f"course API returned HTTP {response.status_code}", trace)
         return FetchedResponse(response=response, trace=trace)
 
     raise ApiError("course API failed after retries")
@@ -142,7 +138,5 @@ def fetch_payload(
     sleep: Callable[[float], None] = time.sleep,
     jitter: Callable[[], float] = random.random,
 ) -> Any:
-    fetched = fetch_response(
-        settings, session=session, sleep=sleep, jitter=jitter
-    )
+    fetched = fetch_response(settings, session=session, sleep=sleep, jitter=jitter)
     return decode_response(fetched).payload

@@ -113,9 +113,7 @@ def load_settings() -> Settings:
         schedule_path=_optional("LGYCP_WX_SCHEDULE_PATH"),
         price_path=_defaulted("LGYCP_WX_PRICE_PATH", "subjectPrice"),
         fallback_price_path=_defaulted("LGYCP_WX_FALLBACK_PRICE_PATH", "price"),
-        course_type_path=_defaulted(
-            "LGYCP_WX_COURSE_TYPE_PATH", "courseTypeName"
-        ),
+        course_type_path=_defaulted("LGYCP_WX_COURSE_TYPE_PATH", "courseTypeName"),
         start_date_path=_defaulted("LGYCP_WX_START_DATE_PATH", "startDate"),
         end_date_path=_defaulted("LGYCP_WX_END_DATE_PATH", "endDate"),
         remaining_path=_optional("LGYCP_WX_REMAINING_PATH"),

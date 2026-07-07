@@ -52,12 +52,15 @@ def test_first_run_builds_baseline_without_candidates():
         "baseline": True,
         "notified_at": None,
     }
-    assert not {
-        "coursePicUrl",
-        "image_url",
-        "registration_time",
-        "campus",
-    } & updated["courses"]["baseline"].keys()
+    assert (
+        not {
+            "coursePicUrl",
+            "image_url",
+            "registration_time",
+            "campus",
+        }
+        & updated["courses"]["baseline"].keys()
+    )
 
 
 def test_second_run_returns_only_new_recent_course():

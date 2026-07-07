@@ -43,9 +43,7 @@ def _business_fields(course: Course) -> dict[str, str]:
     }
 
 
-def _course_record(
-    course: Course, timestamp: str, baseline: bool
-) -> dict[str, Any]:
+def _course_record(course: Course, timestamp: str, baseline: bool) -> dict[str, Any]:
     return {
         **_business_fields(course),
         "first_seen_at": timestamp,

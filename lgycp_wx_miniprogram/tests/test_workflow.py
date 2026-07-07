@@ -62,8 +62,7 @@ def test_workflow_captures_all_command_steps_without_masking_failures():
     assert text.count("set -o pipefail") >= 4
     assert text.count('tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"') >= 4
     assert (
-        "LGYCP_DIAGNOSTICS_PATH: "
-        "${{ runner.temp }}/lgycp-wx-diagnostics.json"
+        "LGYCP_DIAGNOSTICS_PATH: " "${{ runner.temp }}/lgycp-wx-diagnostics.json"
     ) in text
 
 
