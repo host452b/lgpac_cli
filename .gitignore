@@ -21,6 +21,8 @@ archs/
 .venv/
 venv/
 .worktrees/
+lgycp_wx_miniprogram/.env
+lgycp_wx_miniprogram/captures/
 
 # os
 .DS_Store
