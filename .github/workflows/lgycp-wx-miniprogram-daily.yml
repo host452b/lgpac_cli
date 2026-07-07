@@ -1,0 +1,89 @@
+name: lgycp wx miniprogram daily
+
+on:
+  schedule:
+    # UTC 03:05 = Asia/Shanghai 11:05
+    - cron: "5 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgycp-wx-miniprogram-daily
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
+      LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
+      LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
+      LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
+      LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
+      LGYCP_DIAGNOSTICS_PATH: ${{ runner.temp }}/lgycp-wx-diagnostics.json
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: lgycp_wx_miniprogram/requirements.txt
+
+      - name: install
+        run: |
+          set -o pipefail
+          pip install -r lgycp_wx_miniprogram/requirements.txt 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
+
+      - name: test
+        run: |
+          set -o pipefail
+          python -m pytest lgycp_wx_miniprogram/tests -q 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
+
+      - name: monitor
+        run: |
+          set -o pipefail
+          python -m lgycp_wx_miniprogram.main 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
+
+      - name: commit archive
+        run: |
+          set -o pipefail
+          {
+            echo "stage=git_commit_push"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add lgycp_wx_miniprogram/data/archive.json
+            if git diff --cached --quiet; then
+              echo "no archive changes"
+              exit 0
+            fi
+            git commit -m "lgycp-wx: daily course snapshot"
+            for attempt in 1 2 3; do
+              git push && exit 0
+              echo "push failed; rebasing attempt ${attempt}/3"
+              git pull --rebase origin main
+            done
+            exit 1
+          } 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
+
+      - name: append workflow status summary
+        if: always()
+        run: |
+          echo "## Workflow result" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Prior steps: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgycp-wx-diagnostics-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/lgycp-wx-diagnostics.json
+            ${{ runner.temp }}/lgycp-wx-workflow.log
+          if-no-files-found: warn
+          retention-days: 30

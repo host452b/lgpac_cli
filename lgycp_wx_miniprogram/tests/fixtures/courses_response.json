@@ -1,0 +1,25 @@
+{
+  "trainingCourseNewModel": "1",
+  "sysdate": "2026-07-07 13:37:51",
+  "pageInfo": {
+    "pageNum": 1,
+    "pageSize": 999,
+    "total": 1,
+    "list": [
+      {
+        "courseId": 10027282,
+        "courseName": "小小飞行员（国赛集训）",
+        "createTime": "2026-06-12 15:18:40",
+        "centerName": "临港青少年活动中心",
+        "subjectPrice": 64000,
+        "price": 65000,
+        "courseTypeName": "无人机创客营",
+        "startDate": "2026-07-15",
+        "endDate": "2026-08-15",
+        "coursePicUrl": "https://example.invalid/must-not-be-stored.jpg"
+      }
+    ]
+  },
+  "error": 0,
+  "message": "ok"
+}
