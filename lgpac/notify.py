@@ -19,7 +19,14 @@ logger = logging.getLogger("lgpac.notify")
 # email
 # ------------------------------------------------------------------ #
 
-def send_email(subject: str, html_body: str) -> bool:
+
+class EmailDeliveryError(RuntimeError):
+    """Safe email failure that preserves the original exception chain."""
+
+
+def send_email(
+    subject: str, html_body: str, *, raise_on_error: bool = False
+) -> bool:
     """
     send an HTML email.
     reads LGPAC_NOTIFY_EMAIL, LGPAC_SMTP_USER, LGPAC_SMTP_PASS,
@@ -34,6 +41,8 @@ def send_email(subject: str, html_body: str) -> bool:
 
     if not to_addr or not smtp_user or not smtp_pass:
         logger.debug("email: credentials not configured, skipped")
+        if raise_on_error:
+            raise EmailDeliveryError("email configuration is incomplete")
         return False
 
     msg = MIMEText(html_body, "html", "utf-8")
@@ -49,6 +58,8 @@ def send_email(subject: str, html_body: str) -> bool:
         return True
     except Exception as e:
         logger.warning(f"email: send failed - {type(e).__name__}")
+        if raise_on_error:
+            raise EmailDeliveryError("email delivery failed") from e
         return False
 
 

@@ -1,70 +1,43 @@
-"""HTML email rendering and SMTP delivery for new courses."""
+"""Approved-field email rendering backed by the repository SMTP layer."""
 
-from email.mime.text import MIMEText
 from html import escape
-import smtplib
-from urllib.parse import urlsplit
 
-from lgycp_wx_miniprogram.config import Settings
+from lgpac.notify import build_html_email, send_email as shared_send_email
 from lgycp_wx_miniprogram.models import Course
 
 
-def _safe_link(url: str) -> str:
-    if not url:
-        return ""
-    parsed = urlsplit(url)
-    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-        return ""
-    return escape(url, quote=True)
-
-
-def build_message(courses: list[Course], settings: Settings) -> MIMEText:
-    rows = []
-    for course in courses:
-        title = escape(course.title)
-        link = _safe_link(course.detail_url)
-        if link:
-            title = f'<a href="{link}">{title}</a>'
-        values = [
-            title,
+def build_email(courses: list[Course]) -> tuple[str, str]:
+    subject = f"[临港少年宫] {len(courses)} 门新课程"
+    rows = [
+        [
+            escape(course.title),
+            escape(course.price_yuan),
+            escape(course.course_type),
             escape(course.published_at.isoformat()),
-            escape(course.campus),
-            escape(course.term),
-            escape(course.schedule),
-            escape(course.price),
-            escape(course.remaining),
+            escape(course.course_start_date),
+            escape(course.course_end_date),
         ]
-        cells = "".join(f'<td style="padding:6px 8px">{value}</td>' for value in values)
-        rows.append(f"<tr>{cells}</tr>")
-
-    body = (
-        '<html><body style="font-family:-apple-system,Arial,sans-serif">'
-        "<h2>临港少年宫新课程</h2>"
-        '<table style="border-collapse:collapse;width:100%">'
-        "<tr><th>课程</th><th>上架时间</th><th>校区</th><th>学期</th>"
-        "<th>上课时间</th><th>价格</th><th>剩余名额</th></tr>"
-        + "".join(rows)
-        + "</table></body></html>"
+        for course in courses
+    ]
+    body = build_html_email(
+        title="临港少年宫新课程",
+        heading_color="#1f2937",
+        table_headers=[
+            "课程名",
+            "价格（元）",
+            "类型",
+            "上架时间",
+            "课程开始",
+            "课程结束",
+        ],
+        table_rows=rows,
     )
-    message = MIMEText(body, "html", "utf-8")
-    message["Subject"] = f"[临港少年宫] {len(courses)} 门新课程"
-    message["From"] = settings.smtp_user
-    message["To"] = settings.notify_email
-    return message
+    return subject, body
 
 
-def send_courses(courses: list[Course], settings: Settings) -> bool:
+def send_courses(courses: list[Course], settings: object | None = None) -> bool:
+    """Send one aggregate email; settings remains optional for call compatibility."""
     if not courses:
         return True
-    message = build_message(courses, settings)
-    try:
-        with smtplib.SMTP_SSL(
-            settings.smtp_server, settings.smtp_port, timeout=15
-        ) as smtp:
-            smtp.login(settings.smtp_user, settings.smtp_pass)
-            smtp.sendmail(
-                settings.smtp_user, [settings.notify_email], message.as_string()
-            )
-    except (OSError, smtplib.SMTPException):
-        return False
-    return True
+    subject, body = build_email(courses)
+    return shared_send_email(subject, body, raise_on_error=True)
