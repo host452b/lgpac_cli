@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from lgycp_wx_miniprogram.config import Settings
+import lgycp_wx_miniprogram.models as models_module
 from lgycp_wx_miniprogram.models import (
     Course,
     CourseParseError,
@@ -180,6 +181,21 @@ def test_extract_courses_rejects_incomplete_page():
 
     with pytest.raises(CourseParseError, match="course response is incomplete"):
         extract_courses(payload, settings())
+
+
+def test_validate_and_normalize_are_separate_diagnostic_steps():
+    payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    payload["pageInfo"]["list"].insert(0, {"courseName": "缺少发布时间"})
+    payload["pageInfo"]["total"] = 2
+
+    contract = models_module.validate_payload(payload, settings())
+    extraction = models_module.normalize_courses(contract, settings())
+
+    assert contract.source_total == 2
+    assert contract.top_level_keys == tuple(sorted(payload))
+    assert len(contract.items) == 2
+    assert len(extraction.courses) == 1
+    assert extraction.skipped_invalid_count == 1
 
 
 def test_identity_fallback_is_stable_and_ignores_published_time():

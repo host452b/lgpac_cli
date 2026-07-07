@@ -49,6 +49,19 @@ class Course:
         return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+@dataclass(frozen=True)
+class CoursePayload:
+    items: list[Any]
+    source_total: int
+    top_level_keys: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class CourseExtraction:
+    courses: list[Course]
+    skipped_invalid_count: int
+
+
 def lookup(value: Any, path: str) -> Any:
     current = value
     for part in path.split("."):
@@ -108,9 +121,7 @@ def parse_price_yuan(primary: Any, fallback: Any) -> str:
         raise CourseParseError("invalid course price") from exc
     if not cents.is_finite() or cents < 0:
         raise CourseParseError("invalid course price")
-    yuan = (cents / Decimal("100")).quantize(
-        Decimal("0.01"), rounding=ROUND_HALF_UP
-    )
+    yuan = (cents / Decimal("100")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     return format(yuan, ".2f")
 
 
@@ -142,7 +153,7 @@ def parse_course(item: Any, settings: Settings) -> Course:
     )
 
 
-def extract_courses(payload: Any, settings: Settings) -> list[Course]:
+def validate_payload(payload: Any, settings: Settings) -> CoursePayload:
     if isinstance(payload, dict) and payload.get("error") not in {None, 0, "0"}:
         raise CourseParseError("course API reported an error")
 
@@ -150,22 +161,42 @@ def extract_courses(payload: Any, settings: Settings) -> list[Course]:
     if not isinstance(items, list) or not items:
         raise CourseParseError("course list is empty or invalid")
 
+    source_total = len(items)
     if isinstance(payload, dict) and isinstance(payload.get("pageInfo"), dict):
         total = payload["pageInfo"].get("total")
         if total is not None:
             try:
-                total_count = int(total)
+                source_total = int(total)
             except (TypeError, ValueError) as exc:
                 raise CourseParseError("invalid course total") from exc
-            if total_count > len(items):
+            if source_total > len(items):
                 raise CourseParseError("course response is incomplete")
 
+    return CoursePayload(
+        items=items,
+        source_total=source_total,
+        top_level_keys=tuple(sorted(str(key) for key in payload))
+        if isinstance(payload, dict)
+        else (),
+    )
+
+
+def normalize_courses(payload: CoursePayload, settings: Settings) -> CourseExtraction:
     courses: list[Course] = []
-    for index, item in enumerate(items):
+    skipped_invalid_count = 0
+    for index, item in enumerate(payload.items):
         try:
             courses.append(parse_course(item, settings))
         except CourseParseError as exc:
+            skipped_invalid_count += 1
             logger.warning("skipping course item at index %d: %s", index, exc)
     if not courses:
         raise CourseParseError("no valid courses in response")
-    return courses
+    return CourseExtraction(
+        courses=courses, skipped_invalid_count=skipped_invalid_count
+    )
+
+
+def extract_courses(payload: Any, settings: Settings) -> list[Course]:
+    contract = validate_payload(payload, settings)
+    return normalize_courses(contract, settings).courses

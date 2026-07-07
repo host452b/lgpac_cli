@@ -53,9 +53,7 @@ class RunDiagnostics:
     ) -> None:
         self.path = Path(path)
         self.started_at = started_at
-        environment_secrets = [
-            os.environ.get(name, "") for name in _SECRET_ENV_NAMES
-        ]
+        environment_secrets = [os.environ.get(name, "") for name in _SECRET_ENV_NAMES]
         self._secret_values = sorted(
             {
                 str(value)
@@ -88,6 +86,10 @@ class RunDiagnostics:
             },
         }
 
+    @property
+    def current_stage(self) -> str | None:
+        return self._current_stage
+
     @contextmanager
     def stage(self, name: str) -> Iterator[None]:
         if name not in STAGES:
@@ -100,15 +102,11 @@ class RunDiagnostics:
             yield
         except BaseException:
             record["status"] = "failed"
-            record["duration_ms"] = max(
-                0, round((time.monotonic() - started) * 1000)
-            )
+            record["duration_ms"] = max(0, round((time.monotonic() - started) * 1000))
             raise
         else:
             record["status"] = "success"
-            record["duration_ms"] = max(
-                0, round((time.monotonic() - started) * 1000)
-            )
+            record["duration_ms"] = max(0, round((time.monotonic() - started) * 1000))
             self._current_stage = None
 
     def record_http(self, trace: HttpTrace) -> None:
@@ -126,7 +124,9 @@ class RunDiagnostics:
     ) -> None:
         keys = sorted(str(key) for key in payload) if isinstance(payload, dict) else []
         self.data["contract"] = {
-            "response_type": "object" if isinstance(payload, dict) else type(payload).__name__,
+            "response_type": "object"
+            if isinstance(payload, dict)
+            else type(payload).__name__,
             "top_level_keys": keys,
             "source_total": source_total,
             "list_length": list_length,
@@ -186,9 +186,7 @@ class RunDiagnostics:
         if isinstance(value, list):
             return [self._sanitized_data(item) for item in value]
         if isinstance(value, dict):
-            return {
-                str(key): self._sanitized_data(item) for key, item in value.items()
-            }
+            return {str(key): self._sanitized_data(item) for key, item in value.items()}
         return value
 
     def _write_outputs(self) -> None:
