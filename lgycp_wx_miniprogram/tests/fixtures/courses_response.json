@@ -1,0 +1,17 @@
+{
+  "data": {
+    "list": [
+      {
+        "courseId": "course-001",
+        "name": "少儿绘画",
+        "publishTime": "2026-07-06 10:00:00",
+        "campus": "临港校区",
+        "term": "暑期",
+        "schedule": "周六 10:00",
+        "price": 800,
+        "remaining": 5,
+        "url": "https://example.invalid/course-001"
+      }
+    ]
+  }
+}
