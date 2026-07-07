@@ -9,7 +9,9 @@ NOW = datetime(2026, 7, 7, 11, 5, tzinfo=SHANGHAI)
 
 
 def course(course_id: str, published_at: datetime) -> Course:
-    return Course(course_id=course_id, title=f"课程 {course_id}", published_at=published_at)
+    return Course(
+        course_id=course_id, title=f"课程 {course_id}", published_at=published_at
+    )
 
 
 def test_recent_window_is_inclusive_and_rejects_future():
@@ -79,9 +81,10 @@ def test_unnotified_course_is_retried_until_marked():
         [new_course], archive, NOW + timedelta(days=1)
     )
     assert final_candidates == []
-    assert archive["courses"]["new"]["notified_at"] == (
-        NOW + timedelta(hours=1)
-    ).isoformat()
+    assert (
+        archive["courses"]["new"]["notified_at"]
+        == (NOW + timedelta(hours=1)).isoformat()
+    )
 
 
 def test_duplicate_identity_produces_one_candidate():

@@ -49,9 +49,7 @@ def lookup(value: Any, path: str) -> Any:
 
 
 def parse_published_at(value: Any) -> datetime:
-    if isinstance(value, (int, float)) or (
-        isinstance(value, str) and value.isdigit()
-    ):
+    if isinstance(value, (int, float)) or (isinstance(value, str) and value.isdigit()):
         number = float(value)
         if number >= 1_000_000_000_000:
             number /= 1000

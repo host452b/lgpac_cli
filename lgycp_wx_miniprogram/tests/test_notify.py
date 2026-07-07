@@ -40,7 +40,11 @@ def test_build_message_contains_count_and_course_fields():
 
 def test_build_message_escapes_html_and_rejects_unsafe_link_scheme():
     message = build_message(
-        [sample_course(title="<script>alert(1)</script>", detail_url="javascript:alert(1)")],
+        [
+            sample_course(
+                title="<script>alert(1)</script>", detail_url="javascript:alert(1)"
+            )
+        ],
         settings(),
     )
     body = html_body(message)

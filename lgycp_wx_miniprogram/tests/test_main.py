@@ -58,7 +58,9 @@ def test_first_run_saves_baseline_without_sending(monkeypatch):
     sent = []
     saved = []
     monkeypatch.setattr(main_module, "send_courses", lambda *args: sent.append(args))
-    monkeypatch.setattr(main_module, "save_archive", lambda path, data: saved.append(data))
+    monkeypatch.setattr(
+        main_module, "save_archive", lambda path, data: saved.append(data)
+    )
 
     assert main_module.run(settings(), now=NOW) == 0
     assert sent == []
@@ -77,7 +79,9 @@ def test_new_course_is_marked_only_after_successful_email(monkeypatch):
         "send_courses",
         lambda courses, configured: sent.append(courses) or True,
     )
-    monkeypatch.setattr(main_module, "save_archive", lambda path, data: saved.append(data))
+    monkeypatch.setattr(
+        main_module, "save_archive", lambda path, data: saved.append(data)
+    )
 
     assert main_module.run(settings(), now=NOW) == 0
     assert sent == [[COURSE]]
@@ -114,7 +118,9 @@ def test_existing_course_updates_last_seen_and_saves_without_email(monkeypatch):
         "send_courses",
         lambda *args: (_ for _ in ()).throw(AssertionError("must not send")),
     )
-    monkeypatch.setattr(main_module, "save_archive", lambda path, data: saved.append(data))
+    monkeypatch.setattr(
+        main_module, "save_archive", lambda path, data: saved.append(data)
+    )
 
     assert main_module.run(settings(), now=NOW) == 0
     assert saved[0]["courses"]["course-001"]["last_seen_at"] == NOW.isoformat()
