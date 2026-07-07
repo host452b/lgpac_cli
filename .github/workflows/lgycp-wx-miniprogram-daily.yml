@@ -1,0 +1,75 @@
+name: lgycp wx miniprogram daily
+
+on:
+  schedule:
+    # UTC 03:05 = Asia/Shanghai 11:05
+    - cron: "5 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgycp-wx-miniprogram-daily
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      LGYCP_WX_API_URL: ${{ secrets.LGYCP_WX_API_URL }}
+      LGYCP_WX_API_METHOD: ${{ vars.LGYCP_WX_API_METHOD }}
+      LGYCP_WX_API_HEADERS_JSON: ${{ secrets.LGYCP_WX_API_HEADERS_JSON }}
+      LGYCP_WX_API_BODY_JSON: ${{ secrets.LGYCP_WX_API_BODY_JSON }}
+      LGYCP_WX_ITEMS_PATH: ${{ vars.LGYCP_WX_ITEMS_PATH }}
+      LGYCP_WX_ID_PATH: ${{ vars.LGYCP_WX_ID_PATH }}
+      LGYCP_WX_TITLE_PATH: ${{ vars.LGYCP_WX_TITLE_PATH }}
+      LGYCP_WX_PUBLISHED_PATH: ${{ vars.LGYCP_WX_PUBLISHED_PATH }}
+      LGYCP_WX_CAMPUS_PATH: ${{ vars.LGYCP_WX_CAMPUS_PATH }}
+      LGYCP_WX_TERM_PATH: ${{ vars.LGYCP_WX_TERM_PATH }}
+      LGYCP_WX_SCHEDULE_PATH: ${{ vars.LGYCP_WX_SCHEDULE_PATH }}
+      LGYCP_WX_PRICE_PATH: ${{ vars.LGYCP_WX_PRICE_PATH }}
+      LGYCP_WX_REMAINING_PATH: ${{ vars.LGYCP_WX_REMAINING_PATH }}
+      LGYCP_WX_DETAIL_URL_PATH: ${{ vars.LGYCP_WX_DETAIL_URL_PATH }}
+      LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
+      LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
+      LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
+      LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
+      LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: lgycp_wx_miniprogram/requirements.txt
+
+      - name: install
+        run: pip install -r lgycp_wx_miniprogram/requirements.txt
+
+      - name: test
+        run: python -m pytest lgycp_wx_miniprogram/tests -q
+
+      - name: monitor
+        run: python -m lgycp_wx_miniprogram.main
+
+      - name: commit archive
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lgycp_wx_miniprogram/data/archive.json
+          if git diff --cached --quiet; then
+            echo "no archive changes"
+            exit 0
+          fi
+          git commit -m "lgycp-wx: daily course snapshot"
+          for attempt in 1 2 3; do
+            git push && exit 0
+            echo "push failed; rebasing attempt ${attempt}/3"
+            git pull --rebase origin main
+          done
+          exit 1
