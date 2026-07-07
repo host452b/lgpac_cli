@@ -6,6 +6,21 @@ import os
 from typing import Any
 
 
+DEFAULT_API_URL = (
+    "https://lg-venue.xports.cn/aisports-api/api/training/queryTrainings0103"
+)
+DEFAULT_API_PARAMS = {
+    "channelId": "11",
+    "centerId": "32057878",
+    "pageNo": "1",
+    "pageSize": "999",
+    "userLatitude": "",
+    "userLongitude": "",
+    "serviceId": "",
+    "courseAttrId": "",
+}
+
+
 class ConfigError(ValueError):
     """Raised when required configuration is missing or malformed."""
 
@@ -15,6 +30,7 @@ class Settings:
     api_url: str
     api_method: str
     api_headers: dict[str, str]
+    api_params: dict[str, str]
     api_body: dict[str, Any] | None
     timeout_seconds: int
     items_path: str
@@ -45,6 +61,10 @@ def _optional(name: str) -> str | None:
     return os.environ.get(name, "").strip() or None
 
 
+def _defaulted(name: str, default: str) -> str:
+    return os.environ.get(name, "").strip() or default
+
+
 def _json_object(name: str) -> dict[str, Any] | None:
     raw = os.environ.get(name, "").strip()
     if not raw:
@@ -71,18 +91,20 @@ def _positive_int(name: str, default: int) -> int:
 
 def load_settings() -> Settings:
     headers = _json_object("LGYCP_WX_API_HEADERS_JSON") or {}
+    params = _json_object("LGYCP_WX_API_PARAMS_JSON") or DEFAULT_API_PARAMS
     return Settings(
-        api_url=_required("LGYCP_WX_API_URL"),
+        api_url=_defaulted("LGYCP_WX_API_URL", DEFAULT_API_URL),
         api_method=(os.environ.get("LGYCP_WX_API_METHOD") or "").strip().upper()
         or "GET",
         api_headers={str(key): str(value) for key, value in headers.items()},
+        api_params={str(key): str(value) for key, value in params.items()},
         api_body=_json_object("LGYCP_WX_API_BODY_JSON"),
         timeout_seconds=_positive_int("LGYCP_WX_TIMEOUT_SECONDS", 15),
-        items_path=_required("LGYCP_WX_ITEMS_PATH"),
-        id_path=_optional("LGYCP_WX_ID_PATH"),
-        title_path=_required("LGYCP_WX_TITLE_PATH"),
-        published_path=_required("LGYCP_WX_PUBLISHED_PATH"),
-        campus_path=_optional("LGYCP_WX_CAMPUS_PATH"),
+        items_path=_defaulted("LGYCP_WX_ITEMS_PATH", "pageInfo.list"),
+        id_path=_defaulted("LGYCP_WX_ID_PATH", "courseId"),
+        title_path=_defaulted("LGYCP_WX_TITLE_PATH", "courseName"),
+        published_path=_defaulted("LGYCP_WX_PUBLISHED_PATH", "createTime"),
+        campus_path=_defaulted("LGYCP_WX_CAMPUS_PATH", "centerName"),
         term_path=_optional("LGYCP_WX_TERM_PATH"),
         schedule_path=_optional("LGYCP_WX_SCHEDULE_PATH"),
         price_path=_optional("LGYCP_WX_PRICE_PATH"),

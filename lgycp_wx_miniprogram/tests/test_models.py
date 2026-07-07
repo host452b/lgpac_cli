@@ -26,18 +26,19 @@ def settings() -> Settings:
         api_url="https://example.invalid/courses",
         api_method="GET",
         api_headers={},
+        api_params={},
         api_body=None,
         timeout_seconds=15,
-        items_path="data.list",
+        items_path="pageInfo.list",
         id_path="courseId",
-        title_path="name",
-        published_path="publishTime",
-        campus_path="campus",
-        term_path="term",
-        schedule_path="schedule",
-        price_path="price",
-        remaining_path="remaining",
-        detail_url_path="url",
+        title_path="courseName",
+        published_path="createTime",
+        campus_path="centerName",
+        term_path=None,
+        schedule_path=None,
+        price_path=None,
+        remaining_path=None,
+        detail_url_path=None,
         notify_email="to@example.com",
         smtp_user="from@example.com",
         smtp_pass="secret",
@@ -89,25 +90,20 @@ def test_extract_courses_maps_required_and_optional_fields():
 
     assert courses == [
         Course(
-            course_id="course-001",
-            title="少儿绘画",
-            published_at=datetime(2026, 7, 6, 10, 0, tzinfo=SHANGHAI),
-            campus="临港校区",
-            term="暑期",
-            schedule="周六 10:00",
-            price="800",
-            remaining="5",
-            detail_url="https://example.invalid/course-001",
+            course_id="10027282",
+            title="小小飞行员（国赛集训）",
+            published_at=datetime(2026, 6, 12, 15, 18, 40, tzinfo=SHANGHAI),
+            campus="临港青少年活动中心",
         )
     ]
-    assert courses[0].identity == "course-001"
+    assert courses[0].identity == "10027282"
 
 
 def test_parse_course_rejects_null_title():
     item = {
         "courseId": "course-null-title",
-        "name": None,
-        "publishTime": "2026-07-06 10:00:00",
+        "courseName": None,
+        "createTime": "2026-07-06 10:00:00",
     }
 
     with pytest.raises(CourseParseError, match="missing title"):
@@ -116,21 +112,40 @@ def test_parse_course_rejects_null_title():
 
 def test_extract_courses_skips_one_bad_item_and_logs_index(caplog):
     payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
-    payload["data"]["list"].insert(0, {"name": "缺少时间"})
+    payload["pageInfo"]["list"].insert(0, {"courseName": "缺少时间"})
 
     with caplog.at_level(logging.WARNING):
         courses = extract_courses(payload, settings())
 
-    assert [course.course_id for course in courses] == ["course-001"]
+    assert [course.course_id for course in courses] == ["10027282"]
     assert "index 0" in caplog.text
     assert "缺少时间" not in caplog.text
 
 
 def test_extract_courses_rejects_empty_or_all_invalid_list():
     with pytest.raises(CourseParseError, match="empty or invalid"):
-        extract_courses({"data": {"list": []}}, settings())
+        extract_courses({"pageInfo": {"list": []}}, settings())
     with pytest.raises(CourseParseError, match="no valid courses"):
-        extract_courses({"data": {"list": [{"name": "缺少时间"}]}}, settings())
+        extract_courses(
+            {"pageInfo": {"list": [{"courseName": "缺少时间"}]}}, settings()
+        )
+
+
+def test_extract_courses_rejects_api_error_response():
+    payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    payload["error"] = 500
+    payload["message"] = "internal details must not be logged"
+
+    with pytest.raises(CourseParseError, match="course API reported an error"):
+        extract_courses(payload, settings())
+
+
+def test_extract_courses_rejects_incomplete_page():
+    payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    payload["pageInfo"]["total"] = 2
+
+    with pytest.raises(CourseParseError, match="course response is incomplete"):
+        extract_courses(payload, settings())
 
 
 def test_identity_fallback_is_stable_and_ignores_published_time():

@@ -35,8 +35,15 @@ def test_workflow_only_commits_course_archive():
     assert git_add_lines == ["git add lgycp_wx_miniprogram/data/archive.json"]
 
 
-def test_workflow_injects_api_mapping_and_smtp_configuration():
+def test_workflow_only_injects_smtp_configuration():
     text = workflow_text()
+
+    for name in [
+        "LGPAC_NOTIFY_EMAIL",
+        "LGPAC_SMTP_USER",
+        "LGPAC_SMTP_PASS",
+    ]:
+        assert f"{name}:" in text
 
     for name in [
         "LGYCP_WX_API_URL",
@@ -44,8 +51,5 @@ def test_workflow_injects_api_mapping_and_smtp_configuration():
         "LGYCP_WX_ITEMS_PATH",
         "LGYCP_WX_TITLE_PATH",
         "LGYCP_WX_PUBLISHED_PATH",
-        "LGPAC_NOTIFY_EMAIL",
-        "LGPAC_SMTP_USER",
-        "LGPAC_SMTP_PASS",
     ]:
-        assert f"{name}:" in text
+        assert f"{name}:" not in text

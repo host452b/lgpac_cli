@@ -102,9 +102,22 @@ def parse_course(item: Any, settings: Settings) -> Course:
 
 
 def extract_courses(payload: Any, settings: Settings) -> list[Course]:
+    if isinstance(payload, dict) and payload.get("error") not in {None, 0, "0"}:
+        raise CourseParseError("course API reported an error")
+
     items = lookup(payload, settings.items_path)
     if not isinstance(items, list) or not items:
         raise CourseParseError("course list is empty or invalid")
+
+    if isinstance(payload, dict) and isinstance(payload.get("pageInfo"), dict):
+        total = payload["pageInfo"].get("total")
+        if total is not None:
+            try:
+                total_count = int(total)
+            except (TypeError, ValueError) as exc:
+                raise CourseParseError("invalid course total") from exc
+            if total_count > len(items):
+                raise CourseParseError("course response is incomplete")
 
     courses: list[Course] = []
     for index, item in enumerate(items):

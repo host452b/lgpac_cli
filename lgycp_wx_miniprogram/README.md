@@ -10,18 +10,21 @@
 - 不自动报名，不提交个人信息，不绕过验证码、签名或其他访问控制。
 - 接口不能由普通 HTTP 客户端稳定重放时停止，不切换到 RPA。
 
-## 抓包输入
+## 已验证的课程接口
 
-从本人可正常访问的小程序会话中取得课程列表请求，确认它能由普通 HTTP 客户端重放。需要记录：
+2026-07-07 已从“临港青少年活动中心”小程序确认并以普通、无认证的 HTTP GET 重放：
 
-- 请求 URL 和 HTTP 方法；
-- 必要请求头和 JSON 请求体；
-- 课程数组在响应中的点分路径，例如 `data.list`；
-- 课程名称和上架时间的字段路径；
-- 可选的课程 ID、校区、学期、上课时间、价格、余量和详情链接字段路径；
-- 接口是否分页；如果分页，必须确认如何取完所有页面。
+- URL：`https://lg-venue.xports.cn/aisports-api/api/training/queryTrainings0103`
+- 固定参数：`channelId=11`、`centerId=32057878`、`pageNo=1`、`pageSize=999`
+- 课程数组：`pageInfo.list`
+- 课程 ID：`courseId`
+- 课程名称：`courseName`
+- 小程序上架/创建时间：`createTime`
+- 场馆名称：`centerName`
 
-不要把 Token、Cookie、原始 cURL、HAR、完整抓包或个人信息提交到 Git。`lgycp_wx_miniprogram/.env` 和 `lgycp_wx_miniprogram/captures/` 已被忽略。
+接口当前返回 52 门课程且 `pageInfo.total` 与列表长度一致。程序会检查 `error` 和分页完整性；如果未来课程超过当前单页或响应结构变化，本次运行失败并保留旧归档，不会静默漏报。
+
+仓库不保存 Token、Cookie、原始 cURL、HAR、完整小程序包或完整接口响应。测试 fixture 仅保留一门公开课程的最小字段样本。
 
 ## 配置
 
@@ -29,30 +32,22 @@ GitHub Secrets：
 
 | 名称 | 用途 |
 |---|---|
-| `LGYCP_WX_API_URL` | 课程接口 URL |
-| `LGYCP_WX_API_HEADERS_JSON` | 必需请求头的 JSON object；没有时保存 `{}` |
-| `LGYCP_WX_API_BODY_JSON` | JSON 请求体；GET 或无 body 时可为空 |
 | `LGPAC_NOTIFY_EMAIL` | 收件地址 |
 | `LGPAC_SMTP_USER` | SMTP 发件账号 |
 | `LGPAC_SMTP_PASS` | SMTP 授权码 |
 | `LGPAC_SMTP_SERVER` | SMTP 服务器，空值时默认 `smtp.qq.com` |
 | `LGPAC_SMTP_PORT` | SMTP SSL 端口，空值时默认 `465` |
 
-GitHub Variables：
+接口高级覆盖项（通常无需设置）：
 
-| 名称 | 必需 | 用途 |
-|---|---:|---|
-| `LGYCP_WX_API_METHOD` | 否 | 默认 `GET` |
-| `LGYCP_WX_ITEMS_PATH` | 是 | 课程数组点分路径 |
-| `LGYCP_WX_TITLE_PATH` | 是 | 课程名称字段路径 |
-| `LGYCP_WX_PUBLISHED_PATH` | 是 | 课程上架/发布时间字段路径 |
-| `LGYCP_WX_ID_PATH` | 否 | 稳定课程 ID；没有时使用内容指纹 |
-| `LGYCP_WX_CAMPUS_PATH` | 否 | 校区字段路径 |
-| `LGYCP_WX_TERM_PATH` | 否 | 学期字段路径 |
-| `LGYCP_WX_SCHEDULE_PATH` | 否 | 上课时间字段路径 |
-| `LGYCP_WX_PRICE_PATH` | 否 | 价格字段路径 |
-| `LGYCP_WX_REMAINING_PATH` | 否 | 剩余名额字段路径 |
-| `LGYCP_WX_DETAIL_URL_PATH` | 否 | 课程详情 URL 字段路径 |
+| 名称 | 用途 |
+|---|---|
+| `LGYCP_WX_API_URL` | 覆盖默认课程 URL |
+| `LGYCP_WX_API_PARAMS_JSON` | 覆盖默认 query 参数 JSON object |
+| `LGYCP_WX_API_METHOD` | 覆盖默认 `GET` |
+| `LGYCP_WX_API_HEADERS_JSON` | 额外请求头；默认 `{}` |
+| `LGYCP_WX_API_BODY_JSON` | JSON 请求体；默认无 body |
+| `LGYCP_WX_ITEMS_PATH` 等字段变量 | 接口结构变化时临时覆盖默认字段路径 |
 
 字段路径相对于单条课程 object；课程数组路径相对于整个响应。路径只支持字典 key 的点分访问，不执行表达式。
 
@@ -82,7 +77,7 @@ python -m lgycp_wx_miniprogram.main
 ## 故障排查
 
 - `configuration failed`：检查必需 Secret/Variable 是否为空，JSON 配置是否为 object。
-- HTTP 401/403：认证信息已失效或接口拒绝请求；更新 Secret，不要把认证头打印到日志。
+- HTTP 401/403：公开接口开始要求认证或拒绝请求；停止运行并重新确认合法访问方式，不提交认证头到 Git。
 - HTTP 5xx 或网络超时：运行器最多重试两次，仍失败时保留旧归档。
 - `course list is empty or invalid`：响应结构、字段路径或分页规则可能变化；不要用空结果覆盖归档。
 - `no valid courses in response`：课程缺少名称或可解析的接口上架时间。

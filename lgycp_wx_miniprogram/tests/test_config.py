@@ -4,10 +4,6 @@ from lgycp_wx_miniprogram.config import ConfigError, load_settings
 
 
 REQUIRED = {
-    "LGYCP_WX_API_URL": "https://example.invalid/courses",
-    "LGYCP_WX_ITEMS_PATH": "data.list",
-    "LGYCP_WX_TITLE_PATH": "name",
-    "LGYCP_WX_PUBLISHED_PATH": "publishTime",
     "LGPAC_NOTIFY_EMAIL": "to@example.com",
     "LGPAC_SMTP_USER": "from@example.com",
     "LGPAC_SMTP_PASS": "secret",
@@ -19,6 +15,7 @@ def clean_environment(monkeypatch):
     for name in list(REQUIRED) + [
         "LGYCP_WX_API_METHOD",
         "LGYCP_WX_API_HEADERS_JSON",
+        "LGYCP_WX_API_PARAMS_JSON",
         "LGYCP_WX_API_BODY_JSON",
         "LGYCP_WX_TIMEOUT_SECONDS",
         "LGYCP_WX_ID_PATH",
@@ -39,10 +36,6 @@ def clean_environment(monkeypatch):
 @pytest.mark.parametrize(
     "name",
     [
-        "LGYCP_WX_API_URL",
-        "LGYCP_WX_ITEMS_PATH",
-        "LGYCP_WX_TITLE_PATH",
-        "LGYCP_WX_PUBLISHED_PATH",
         "LGPAC_NOTIFY_EMAIL",
         "LGPAC_SMTP_USER",
         "LGPAC_SMTP_PASS",
@@ -65,6 +58,7 @@ def test_load_settings_rejects_invalid_headers_json(monkeypatch, raw):
 
 def test_load_settings_parses_json_and_safe_defaults(monkeypatch):
     monkeypatch.setenv("LGYCP_WX_API_HEADERS_JSON", '{"Authorization":"redacted"}')
+    monkeypatch.setenv("LGYCP_WX_API_PARAMS_JSON", '{"pageNo":1}')
     monkeypatch.setenv("LGYCP_WX_API_BODY_JSON", '{"page":1}')
     monkeypatch.setenv("LGYCP_WX_API_METHOD", "")
     monkeypatch.setenv("LGPAC_SMTP_SERVER", "")
@@ -74,6 +68,7 @@ def test_load_settings_parses_json_and_safe_defaults(monkeypatch):
 
     assert settings.api_method == "GET"
     assert settings.api_headers == {"Authorization": "redacted"}
+    assert settings.api_params == {"pageNo": "1"}
     assert settings.api_body == {"page": 1}
     assert settings.timeout_seconds == 15
     assert settings.smtp_server == "smtp.qq.com"
@@ -98,4 +93,37 @@ def test_load_settings_reads_optional_field_paths(monkeypatch):
 
     assert settings.id_path == "courseId"
     assert settings.detail_url_path == "links.detail"
-    assert settings.campus_path is None
+    assert settings.campus_path == "centerName"
+
+
+def test_load_settings_uses_verified_public_course_api_defaults(monkeypatch):
+    for name in [
+        "LGYCP_WX_API_URL",
+        "LGYCP_WX_ITEMS_PATH",
+        "LGYCP_WX_ID_PATH",
+        "LGYCP_WX_TITLE_PATH",
+        "LGYCP_WX_PUBLISHED_PATH",
+        "LGYCP_WX_CAMPUS_PATH",
+    ]:
+        monkeypatch.delenv(name, raising=False)
+
+    settings = load_settings()
+
+    assert settings.api_url == (
+        "https://lg-venue.xports.cn/aisports-api/api/training/queryTrainings0103"
+    )
+    assert settings.api_params == {
+        "channelId": "11",
+        "centerId": "32057878",
+        "pageNo": "1",
+        "pageSize": "999",
+        "userLatitude": "",
+        "userLongitude": "",
+        "serviceId": "",
+        "courseAttrId": "",
+    }
+    assert settings.items_path == "pageInfo.list"
+    assert settings.id_path == "courseId"
+    assert settings.title_path == "courseName"
+    assert settings.published_path == "createTime"
+    assert settings.campus_path == "centerName"

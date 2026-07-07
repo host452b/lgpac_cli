@@ -1,5 +1,370 @@
 {
-  "schema_version": 1,
-  "initialized_at": null,
-  "courses": {}
+  "courses": {
+    "10027040": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-05T21:14:42+08:00"
+    },
+    "10027041": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-05T21:21:55+08:00"
+    },
+    "10027042": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-05T21:26:30+08:00"
+    },
+    "10027044": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T11:05:13+08:00"
+    },
+    "10027046": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T11:11:34+08:00"
+    },
+    "10027047": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T11:14:55+08:00"
+    },
+    "10027051": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T11:51:32+08:00"
+    },
+    "10027053": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T11:58:58+08:00"
+    },
+    "10027055": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T12:01:33+08:00"
+    },
+    "10027057": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T12:04:34+08:00"
+    },
+    "10027058": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T12:05:53+08:00"
+    },
+    "10027059": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-06T12:06:57+08:00"
+    },
+    "10027079": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T10:29:31+08:00"
+    },
+    "10027080": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T10:29:57+08:00"
+    },
+    "10027081": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T10:33:07+08:00"
+    },
+    "10027082": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T10:34:11+08:00"
+    },
+    "10027084": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T14:16:18+08:00"
+    },
+    "10027085": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T14:19:04+08:00"
+    },
+    "10027087": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T14:27:06+08:00"
+    },
+    "10027088": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T14:28:29+08:00"
+    },
+    "10027093": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-07T14:42:01+08:00"
+    },
+    "10027103": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-10T14:16:36+08:00"
+    },
+    "10027106": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-06-11T09:11:09+08:00"
+    },
+    "10027220": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T14:01:15+08:00"
+    },
+    "10027221": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T14:10:04+08:00"
+    },
+    "10027222": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T14:14:40+08:00"
+    },
+    "10027223": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T15:06:42+08:00"
+    },
+    "10027224": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T15:09:24+08:00"
+    },
+    "10027225": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T15:14:31+08:00"
+    },
+    "10027226": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T15:17:46+08:00"
+    },
+    "10027227": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-12T15:23:10+08:00"
+    },
+    "10027237": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-20T12:49:52+08:00"
+    },
+    "10027242": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-21T15:49:11+08:00"
+    },
+    "10027245": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T15:39:18+08:00"
+    },
+    "10027246": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T15:44:42+08:00"
+    },
+    "10027247": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T15:51:57+08:00"
+    },
+    "10027248": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T15:58:55+08:00"
+    },
+    "10027249": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T16:14:18+08:00"
+    },
+    "10027250": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T16:32:39+08:00"
+    },
+    "10027251": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2025-12-24T16:34:39+08:00"
+    },
+    "10027252": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-01-08T10:55:52+08:00"
+    },
+    "10027274": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-11T17:21:51+08:00"
+    },
+    "10027278": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-11T18:16:29+08:00"
+    },
+    "10027280": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T12:46:53+08:00"
+    },
+    "10027281": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T12:51:25+08:00"
+    },
+    "10027282": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T15:18:40+08:00"
+    },
+    "10027284": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T15:47:57+08:00"
+    },
+    "10027285": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T15:53:01+08:00"
+    },
+    "10027286": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T16:12:38+08:00"
+    },
+    "10027287": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-12T16:22:30+08:00"
+    },
+    "10027288": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-13T15:38:53+08:00"
+    },
+    "10027290": {
+      "baseline": true,
+      "first_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "last_seen_at": "2026-07-07T13:44:30.257135+08:00",
+      "notified_at": null,
+      "published_at": "2026-06-17T12:42:48+08:00"
+    }
+  },
+  "initialized_at": "2026-07-07T13:44:30.257135+08:00",
+  "schema_version": 1
 }

@@ -42,6 +42,7 @@ def test_fetch_payload_sends_configured_request():
         settings(),
         api_method="POST",
         api_headers={"Authorization": "redacted"},
+        api_params={"pageNo": "1"},
         api_body={"page": 1},
         timeout_seconds=9,
     )
@@ -56,6 +57,7 @@ def test_fetch_payload_sends_configured_request():
             "https://example.invalid/courses",
             {
                 "headers": {"Authorization": "redacted"},
+                "params": {"pageNo": "1"},
                 "json": {"page": 1},
                 "timeout": 9,
             },

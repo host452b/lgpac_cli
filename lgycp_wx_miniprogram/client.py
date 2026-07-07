@@ -20,6 +20,7 @@ def fetch_payload(settings: Settings, session: requests.Session | None = None) -
                 settings.api_method,
                 settings.api_url,
                 headers=settings.api_headers,
+                params=settings.api_params,
                 json=settings.api_body,
                 timeout=settings.timeout_seconds,
             )

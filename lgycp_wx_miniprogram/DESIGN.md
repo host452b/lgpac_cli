@@ -19,11 +19,17 @@
 - 不绕过验证码、证书锁定、接口签名或其他访问控制。
 - 不提供分钟级或实时通知。
 
-## 3. 前置条件
+## 3. 已验证前置条件
 
-开始实现课程解析前，需要从用户本人能够正常访问的小程序会话中取得一份课程列表请求及其响应，包括请求 URL、HTTP 方法、必要请求头、请求体和课程 JSON。
+2026-07-07 已确认目标小程序 AppID 为 `wx30b66dcae36d63cd`，并从“课外教育 → 查看全部”的静态代码和真实只读请求验证课程接口：
 
-该请求必须能够由普通 HTTP 客户端重放。如果接口依赖无法合法、稳定重放的动态签名或访问控制，本方案应明确报告阻塞，不引入本设计范围之外的 RPA 或绕过手段。
+- `GET https://lg-venue.xports.cn/aisports-api/api/training/queryTrainings0103`
+- 不需要 Cookie、Token、登录态或客户端签名。
+- 固定参数包含 `channelId=11`、`centerId=32057878`、`pageNo=1`、`pageSize=999`。
+- 响应课程数组为 `pageInfo.list`，上架/创建时间字段为 `createTime`。
+- 课程稳定 ID 为 `courseId`，名称为 `courseName`，场馆名称为 `centerName`。
+
+当前返回 `pageInfo.total=52`，与列表长度一致。程序必须验证服务端 `error` 和分页完整性；不能完整获取所有课程时失败退出，不覆盖归档。
 
 ## 4. 目录边界
 
@@ -144,7 +150,7 @@ lgycp_wx_miniprogram/
 
 ## 10. 配置与安全
 
-接口 URL、认证信息和 SMTP 凭据全部通过 GitHub Secrets 或本地环境变量注入。仓库只保存非敏感配置说明和课程公开字段，不提交 Cookie、Token、完整抓包文件或个人信息。
+公开课程接口 URL、固定 query 参数和字段映射作为非敏感默认值保存在代码中，并允许通过环境变量覆盖。SMTP 凭据只通过 GitHub Secrets 或本地环境变量注入。仓库不提交 Cookie、Token、客户端静态密钥、完整抓包、小程序包或个人信息。
 
 GitHub Actions 工作流只需要读取 Secrets、运行脚本，并在归档变化时提交 `lgycp_wx_miniprogram/data/archive.json`。其权限限制为完成该提交所需的最小范围。
 
