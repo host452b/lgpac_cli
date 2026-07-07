@@ -13,6 +13,7 @@ from lgycp_wx_miniprogram.models import (
     SHANGHAI,
     extract_courses,
     lookup,
+    parse_course,
     parse_published_at,
 )
 
@@ -100,6 +101,17 @@ def test_extract_courses_maps_required_and_optional_fields():
         )
     ]
     assert courses[0].identity == "course-001"
+
+
+def test_parse_course_rejects_null_title():
+    item = {
+        "courseId": "course-null-title",
+        "name": None,
+        "publishTime": "2026-07-06 10:00:00",
+    }
+
+    with pytest.raises(CourseParseError, match="missing title"):
+        parse_course(item, settings())
 
 
 def test_extract_courses_skips_one_bad_item_and_logs_index(caplog):

@@ -84,7 +84,10 @@ def _optional(item: dict[str, Any], path: str | None) -> str:
 def parse_course(item: Any, settings: Settings) -> Course:
     if not isinstance(item, dict):
         raise CourseParseError("course item must be an object")
-    title = str(lookup(item, settings.title_path)).strip()
+    title_value = lookup(item, settings.title_path)
+    if title_value is None:
+        raise CourseParseError("missing title")
+    title = str(title_value).strip()
     if not title:
         raise CourseParseError("missing title")
     return Course(

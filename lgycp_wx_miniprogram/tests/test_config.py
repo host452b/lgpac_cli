@@ -80,6 +80,16 @@ def test_load_settings_parses_json_and_safe_defaults(monkeypatch):
     assert settings.smtp_port == 465
 
 
+def test_load_settings_treats_whitespace_defaults_as_empty(monkeypatch):
+    monkeypatch.setenv("LGYCP_WX_API_METHOD", "   ")
+    monkeypatch.setenv("LGPAC_SMTP_SERVER", "   ")
+
+    settings = load_settings()
+
+    assert settings.api_method == "GET"
+    assert settings.smtp_server == "smtp.qq.com"
+
+
 def test_load_settings_reads_optional_field_paths(monkeypatch):
     monkeypatch.setenv("LGYCP_WX_ID_PATH", "courseId")
     monkeypatch.setenv("LGYCP_WX_DETAIL_URL_PATH", "links.detail")

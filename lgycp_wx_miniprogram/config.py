@@ -73,7 +73,8 @@ def load_settings() -> Settings:
     headers = _json_object("LGYCP_WX_API_HEADERS_JSON") or {}
     return Settings(
         api_url=_required("LGYCP_WX_API_URL"),
-        api_method=(os.environ.get("LGYCP_WX_API_METHOD") or "GET").strip().upper(),
+        api_method=(os.environ.get("LGYCP_WX_API_METHOD") or "").strip().upper()
+        or "GET",
         api_headers={str(key): str(value) for key, value in headers.items()},
         api_body=_json_object("LGYCP_WX_API_BODY_JSON"),
         timeout_seconds=_positive_int("LGYCP_WX_TIMEOUT_SECONDS", 15),
@@ -90,6 +91,7 @@ def load_settings() -> Settings:
         notify_email=_required("LGPAC_NOTIFY_EMAIL"),
         smtp_user=_required("LGPAC_SMTP_USER"),
         smtp_pass=_required("LGPAC_SMTP_PASS"),
-        smtp_server=(os.environ.get("LGPAC_SMTP_SERVER") or "smtp.qq.com").strip(),
+        smtp_server=(os.environ.get("LGPAC_SMTP_SERVER") or "").strip()
+        or "smtp.qq.com",
         smtp_port=_positive_int("LGPAC_SMTP_PORT", 465),
     )
