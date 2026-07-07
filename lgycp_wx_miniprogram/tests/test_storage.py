@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -101,3 +102,18 @@ def test_failed_replace_does_not_destroy_existing_archive(tmp_path, monkeypatch)
 
     assert json.loads(path.read_text(encoding="utf-8")) == original
     assert list(tmp_path.glob(".archive.json.*")) == []
+
+
+def test_checked_in_archive_migrates_and_round_trips_as_v2(tmp_path):
+    source = Path(__file__).parents[1] / "data" / "archive.json"
+    working = tmp_path / "archive.json"
+    working.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+
+    migrated = load_archive(working)
+    save_archive(working, migrated)
+    reloaded = load_archive(working)
+
+    assert reloaded == migrated
+    assert reloaded["schema_version"] == 2
+    assert len(reloaded["courses"]) == 52
+    assert all(record["baseline"] for record in reloaded["courses"].values())
