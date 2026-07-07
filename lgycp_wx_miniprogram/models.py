@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from datetime import datetime
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import hashlib
 import logging
 from typing import Any
@@ -29,12 +30,21 @@ class Course:
     price: str = ""
     remaining: str = ""
     detail_url: str = ""
+    price_yuan: str = ""
+    course_type: str = ""
+    course_start_date: str = ""
+    course_end_date: str = ""
 
     @property
     def identity(self) -> str:
         if self.course_id:
             return self.course_id
-        parts = [self.title, self.campus, self.term, self.schedule]
+        parts = [
+            self.title,
+            self.course_type,
+            self.course_start_date,
+            self.course_end_date,
+        ]
         canonical = "\x1f".join(" ".join(part.split()).casefold() for part in parts)
         return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
@@ -79,6 +89,31 @@ def _optional(item: dict[str, Any], path: str | None) -> str:
     return "" if value is None else str(value)
 
 
+def _optional_value(item: dict[str, Any], path: str | None) -> Any:
+    if not path:
+        return None
+    try:
+        return lookup(item, path)
+    except CourseParseError:
+        return None
+
+
+def parse_price_yuan(primary: Any, fallback: Any) -> str:
+    raw = primary if primary is not None and primary != "" else fallback
+    if raw is None or raw == "":
+        return ""
+    try:
+        cents = Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise CourseParseError("invalid course price") from exc
+    if not cents.is_finite() or cents < 0:
+        raise CourseParseError("invalid course price")
+    yuan = (cents / Decimal("100")).quantize(
+        Decimal("0.01"), rounding=ROUND_HALF_UP
+    )
+    return format(yuan, ".2f")
+
+
 def parse_course(item: Any, settings: Settings) -> Course:
     if not isinstance(item, dict):
         raise CourseParseError("course item must be an object")
@@ -95,9 +130,15 @@ def parse_course(item: Any, settings: Settings) -> Course:
         campus=_optional(item, settings.campus_path),
         term=_optional(item, settings.term_path),
         schedule=_optional(item, settings.schedule_path),
-        price=_optional(item, settings.price_path),
         remaining=_optional(item, settings.remaining_path),
         detail_url=_optional(item, settings.detail_url_path),
+        price_yuan=parse_price_yuan(
+            _optional_value(item, settings.price_path),
+            _optional_value(item, settings.fallback_price_path),
+        ),
+        course_type=_optional(item, settings.course_type_path),
+        course_start_date=_optional(item, settings.start_date_path),
+        course_end_date=_optional(item, settings.end_date_path),
     )
 
 

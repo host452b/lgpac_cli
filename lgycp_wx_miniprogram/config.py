@@ -41,6 +41,10 @@ class Settings:
     term_path: str | None
     schedule_path: str | None
     price_path: str | None
+    fallback_price_path: str | None
+    course_type_path: str | None
+    start_date_path: str | None
+    end_date_path: str | None
     remaining_path: str | None
     detail_url_path: str | None
     notify_email: str
@@ -107,7 +111,13 @@ def load_settings() -> Settings:
         campus_path=_defaulted("LGYCP_WX_CAMPUS_PATH", "centerName"),
         term_path=_optional("LGYCP_WX_TERM_PATH"),
         schedule_path=_optional("LGYCP_WX_SCHEDULE_PATH"),
-        price_path=_optional("LGYCP_WX_PRICE_PATH"),
+        price_path=_defaulted("LGYCP_WX_PRICE_PATH", "subjectPrice"),
+        fallback_price_path=_defaulted("LGYCP_WX_FALLBACK_PRICE_PATH", "price"),
+        course_type_path=_defaulted(
+            "LGYCP_WX_COURSE_TYPE_PATH", "courseTypeName"
+        ),
+        start_date_path=_defaulted("LGYCP_WX_START_DATE_PATH", "startDate"),
+        end_date_path=_defaulted("LGYCP_WX_END_DATE_PATH", "endDate"),
         remaining_path=_optional("LGYCP_WX_REMAINING_PATH"),
         detail_url_path=_optional("LGYCP_WX_DETAIL_URL_PATH"),
         notify_email=_required("LGPAC_NOTIFY_EMAIL"),

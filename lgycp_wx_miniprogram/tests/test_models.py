@@ -36,7 +36,11 @@ def settings() -> Settings:
         campus_path="centerName",
         term_path=None,
         schedule_path=None,
-        price_path=None,
+        price_path="subjectPrice",
+        fallback_price_path="price",
+        course_type_path="courseTypeName",
+        start_date_path="startDate",
+        end_date_path="endDate",
         remaining_path=None,
         detail_url_path=None,
         notify_email="to@example.com",
@@ -94,9 +98,39 @@ def test_extract_courses_maps_required_and_optional_fields():
             title="小小飞行员（国赛集训）",
             published_at=datetime(2026, 6, 12, 15, 18, 40, tzinfo=SHANGHAI),
             campus="临港青少年活动中心",
+            price_yuan="640.00",
+            course_type="无人机创客营",
+            course_start_date="2026-07-15",
+            course_end_date="2026-08-15",
         )
     ]
     assert courses[0].identity == "10027282"
+    assert not hasattr(courses[0], "registration_time")
+    assert not hasattr(courses[0], "image_url")
+
+
+@pytest.mark.parametrize(
+    ("primary", "fallback", "expected"),
+    [
+        (64000, 65000, "640.00"),
+        (None, 65000, "650.00"),
+        (1, None, "0.01"),
+        (64000.5, None, "640.01"),
+        (None, None, ""),
+    ],
+)
+def test_parse_course_converts_price_cents_exactly(primary, fallback, expected):
+    item = {
+        "courseId": "price-test",
+        "courseName": "价格测试",
+        "createTime": "2026-07-06 10:00:00",
+    }
+    if primary is not None:
+        item["subjectPrice"] = primary
+    if fallback is not None:
+        item["price"] = fallback
+
+    assert parse_course(item, settings()).price_yuan == expected
 
 
 def test_parse_course_rejects_null_title():

@@ -23,6 +23,10 @@ def clean_environment(monkeypatch):
         "LGYCP_WX_TERM_PATH",
         "LGYCP_WX_SCHEDULE_PATH",
         "LGYCP_WX_PRICE_PATH",
+        "LGYCP_WX_FALLBACK_PRICE_PATH",
+        "LGYCP_WX_COURSE_TYPE_PATH",
+        "LGYCP_WX_START_DATE_PATH",
+        "LGYCP_WX_END_DATE_PATH",
         "LGYCP_WX_REMAINING_PATH",
         "LGYCP_WX_DETAIL_URL_PATH",
         "LGPAC_SMTP_SERVER",
@@ -127,3 +131,8 @@ def test_load_settings_uses_verified_public_course_api_defaults(monkeypatch):
     assert settings.title_path == "courseName"
     assert settings.published_path == "createTime"
     assert settings.campus_path == "centerName"
+    assert settings.price_path == "subjectPrice"
+    assert settings.fallback_price_path == "price"
+    assert settings.course_type_path == "courseTypeName"
+    assert settings.start_date_path == "startDate"
+    assert settings.end_date_path == "endDate"
