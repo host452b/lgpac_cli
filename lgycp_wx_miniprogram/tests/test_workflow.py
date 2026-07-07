@@ -61,9 +61,33 @@ def test_workflow_captures_all_command_steps_without_masking_failures():
 
     assert text.count("set -o pipefail") >= 4
     assert text.count('tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"') >= 4
-    assert (
-        "LGYCP_DIAGNOSTICS_PATH: " "${{ runner.temp }}/lgycp-wx-diagnostics.json"
-    ) in text
+
+
+def test_job_env_does_not_reference_runner_only_context():
+    text = workflow_text()
+    job_header = text.split("jobs:\n", maxsplit=1)[1].split("\n    steps:", maxsplit=1)[
+        0
+    ]
+
+    assert "    env:" not in job_header
+    assert "${{ runner." not in job_header
+    assert 'export LGYCP_DIAGNOSTICS_PATH="$RUNNER_TEMP/' in text
+
+
+def test_smtp_secrets_are_scoped_to_monitor_step():
+    text = workflow_text()
+    before_monitor, after_monitor = text.split("      - name: monitor\n", maxsplit=1)
+    monitor_step = after_monitor.split("      - name: commit archive\n", maxsplit=1)[0]
+
+    for name in [
+        "LGPAC_NOTIFY_EMAIL",
+        "LGPAC_SMTP_SERVER",
+        "LGPAC_SMTP_PORT",
+        "LGPAC_SMTP_USER",
+        "LGPAC_SMTP_PASS",
+    ]:
+        assert name not in before_monitor
+        assert f"{name}: ${{{{ secrets.{name} }}}}" in monitor_step
 
 
 def test_workflow_always_summarizes_and_uploads_failure_artifact():

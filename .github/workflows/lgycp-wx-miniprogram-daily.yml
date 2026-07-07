@@ -18,14 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
-    env:
-      LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
-      LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
-      LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
-      LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
-      LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
-      LGYCP_DIAGNOSTICS_PATH: ${{ runner.temp }}/lgycp-wx-diagnostics.json
-
     steps:
       - uses: actions/checkout@v4
 
@@ -46,8 +38,15 @@ jobs:
           python -m pytest lgycp_wx_miniprogram/tests -q 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
 
       - name: monitor
+        env:
+          LGPAC_NOTIFY_EMAIL: ${{ secrets.LGPAC_NOTIFY_EMAIL }}
+          LGPAC_SMTP_SERVER: ${{ secrets.LGPAC_SMTP_SERVER }}
+          LGPAC_SMTP_PORT: ${{ secrets.LGPAC_SMTP_PORT }}
+          LGPAC_SMTP_USER: ${{ secrets.LGPAC_SMTP_USER }}
+          LGPAC_SMTP_PASS: ${{ secrets.LGPAC_SMTP_PASS }}
         run: |
           set -o pipefail
+          export LGYCP_DIAGNOSTICS_PATH="$RUNNER_TEMP/lgycp-wx-diagnostics.json"
           python -m lgycp_wx_miniprogram.main 2>&1 | tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"
 
       - name: commit archive

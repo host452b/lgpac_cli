@@ -21,7 +21,7 @@
 
 ## 3. 已验证前置条件
 
-2026-07-07 已确认目标小程序 AppID 为 `wx30b66dcae36d63cd`，并从“课外教育 → 查看全部”的静态代码和真实只读请求验证课程接口：
+2026-07-07 已在本地确认目标小程序身份（仓库不记录 AppID），并从“课外教育 → 查看全部”的静态代码和真实只读请求验证课程接口：
 
 - `GET https://lg-venue.xports.cn/aisports-api/api/training/queryTrainings0103`
 - 不需要 Cookie、Token、登录态或客户端签名。
