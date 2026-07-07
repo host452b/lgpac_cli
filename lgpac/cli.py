@@ -10,8 +10,6 @@ commands:
 """
 import logging
 from pathlib import Path
-from typing import Optional
-
 import typer
 from rich.console import Console
 from rich.table import Table
@@ -336,79 +334,6 @@ def lgycp(
     console.print(f"[green]archive: {len(archive.keys())} articles[/green]")
     if page:
         console.print("[green]docs_lgycp/index.md generated[/green]")
-
-
-# ------------------------------------------------------------------ #
-# xbirds - X/Twitter post tracker
-# ------------------------------------------------------------------ #
-
-@app.command()
-def xbirds(
-    notify: bool = typer.Option(False, "--notify", "-n", help="send email on new posts"),
-    page: bool = typer.Option(False, "--page", help="generate docs_xbirds/index.md"),
-    hours: int = typer.Option(24, "--hours", help="lookback window in hours (default 24, use 168 for 1 week)"),
-    stage: Optional[str] = typer.Option(None, "--stage", "-s", help="only fetch specific stages, e.g. '0,1' or '0-2'"),
-    add: Optional[str] = typer.Option(None, "--add", help="add a username to track"),
-    remove: Optional[str] = typer.Option(None, "--remove", help="remove a tracked username"),
-    debug: bool = typer.Option(False, "--debug", "-d"),
-):
-    """track X/Twitter posts from followed users (tracked.yml)."""
-    _setup_logging(debug)
-
-    from lgpac.xbirds import run_monitor, add_user, remove_user, get_usernames, parse_tweet_date
-
-    if add:
-        name = add.lstrip("@")
-        if add_user(name):
-            console.print(f"[green]added @{name}[/green]")
-        else:
-            console.print(f"[dim]@{name} already tracked[/dim]")
-        return
-
-    if remove:
-        name = remove.lstrip("@")
-        if remove_user(name):
-            console.print(f"[yellow]removed @{name}[/yellow]")
-        else:
-            console.print(f"[dim]@{name} not in list[/dim]")
-        return
-
-    usernames = get_usernames()
-    console.print(f"tracking {len(usernames)} users\n")
-
-    # parse --stage filter
-    stage_filter = None
-    if stage:
-        stages = set()
-        for part in stage.split(","):
-            part = part.strip()
-            if "-" in part:
-                lo, hi = part.split("-", 1)
-                stages.update(range(int(lo), int(hi) + 1))
-            else:
-                stages.add(int(part))
-        stage_filter = stages
-
-    new_posts, warnings = run_monitor(notify=notify, page=page, recent_hours=hours, stage_filter=stage_filter)
-
-    if new_posts:
-        table = Table(title=f"{len(new_posts)} new post(s)")
-        table.add_column("user", style="cyan")
-        table.add_column("post", style="bold")
-        table.add_column("date", style="dim")
-        for p in new_posts:
-            table.add_row(f"@{p['username']}", p['text'][:60], parse_tweet_date(p.get('created_at', '')))
-        console.print(table)
-    else:
-        console.print("[dim]no new posts[/dim]")
-
-    if warnings:
-        console.print(f"\n[yellow]⚠ {len(warnings)} account(s) with issues:[/yellow]")
-        for w in warnings:
-            console.print(f"  [dim]@{w['username']} ({w['name']}): {w['issue']}[/dim]")
-
-    if page:
-        console.print(f"\n[green]docs_xbirds/index.md generated[/green]")
 
 
 # ------------------------------------------------------------------ #

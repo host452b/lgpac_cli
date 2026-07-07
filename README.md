@@ -1,6 +1,6 @@
-# lgpac & lgycp & xbirds
+# lgpac & lgycp
 
-Three independent monitors running on a shared infrastructure. Built for learning and research purposes.
+Two independent monitors running on a shared infrastructure. Built for learning and research purposes.
 
 > **DISCLAIMER / 免责声明**
 >
@@ -114,7 +114,7 @@ pip install playwright && python -m playwright install chromium
 
 ### GitHub Actions
 
-Two workflows run on schedule:
+The core monitoring workflow runs on schedule:
 
 **`crawl.yml`** — every 12 hours (Beijing 08:00 / 20:00):
 
@@ -122,12 +122,7 @@ Two workflows run on schedule:
 2. `lgycp --notify --page` (WeChat article monitor)
 3. Commits `RSS.md`, `docs_lgpac/`, `docs_lgycp/`, `monitor_history.json`, `archs_lgycp/`
 
-**`xbirds-daily.yml`** — once daily (Beijing 08:00):
-
-1. `xbirds --page --notify` (daily digest email if new posts found)
-2. Commits `docs_xbirds/`, `archs_xbirds/`
-
-All support manual trigger via **Actions → Run workflow**.
+It also supports manual trigger via **Actions → Run workflow**.
 
 ### Configuration (GitHub Secrets)
 
@@ -157,7 +152,6 @@ All support manual trigger via **Actions → Run workflow**.
 │   ├── archive.py              # shared JSON archive
 │   ├── monitor.py              # ticket monitor (lgpac)
 │   ├── lgycp.py                # article monitor (lgycp)
-│   ├── xbirds.py               # X/Twitter tracker (xbirds)
 │   ├── page.py                 # docs_lgpac/index.md generator
 │   ├── rss.py                  # RSS.md incremental feed
 │   ├── spider.py               # crawl orchestration
@@ -171,17 +165,13 @@ All support manual trigger via **Actions → Run workflow**.
 ├── playbooks/                  # replay definitions
 ├── docs_lgpac/index.md          # ticket monitor page (auto-updated)
 ├── docs_lgycp/index.md          # article monitor page (auto-updated)
-├── docs_xbirds/index.md         # X/Twitter tracker page (auto-updated)
 ├── RSS.md                       # show feed (auto-updated)
 ├── monitor_history.json         # show state (auto-updated)
 ├── archs_lgycp/archive.json     # article archive (auto-updated)
-├── archs_xbirds/tracked.yml     # tracked X accounts (30 active / 209 total)
-├── archs_xbirds/archive.json    # tweet archive (auto-updated)
 ├── SITE_STRUCTURE.md            # API reference
-├── .github/workflows/crawl.yml           # 12h monitor
-└── .github/workflows/xbirds-daily.yml    # daily xbirds digest
+└── .github/workflows/crawl.yml  # 12h monitor
 ```
 
 ## License
 
-MIT — see [DISCLAIMER](#lgpac--lgycp--xbirds) above.
+MIT — see [DISCLAIMER](#lgpac--lgycp) above.

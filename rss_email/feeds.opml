@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  feeds organized by wave_stage (mirrors archs_xbirds/tracked.yml).
+  feeds organized by wave_stage.
   read top-down: stage 0 = frontier, stage 4 = exhausted.
 
   HOW TO ADD A FEED:
     1. pick the correct stage folder (0-4) based on WHERE the author
        sits in the information lifecycle (not who they are).
-    2. set category= to one of the 13 tracked.yml role types:
+    2. set category= to one of the supported role types:
          titan, foundation, scientist, core, org,
          influencer-cn, influencer-en, indie-dev, startup,
          investor, prompt, workflow, thinker

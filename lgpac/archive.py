@@ -1,6 +1,6 @@
 """
 generic JSON archive for incremental tracking.
-used by monitor, lgycp, and xbirds to persist state across runs.
+used by monitor and lgycp to persist state across runs.
 """
 import json
 import logging
@@ -15,7 +15,7 @@ class JsonArchive:
     simple key-value JSON archive with incremental add/check.
 
     usage:
-        archive = JsonArchive("archs_xbirds/archive.json")
+        archive = JsonArchive("archs_lgycp/archive.json")
         data = archive.load()
         if not archive.has("some_key"):
             archive.add("some_key", {"url": "...", "found_at": "..."})
@@ -71,7 +71,7 @@ class JsonArchive:
         return set()
 
     def add_to_list(self, key: str, value: Any):
-        """add a value to a list field (e.g. tweet_ids)."""
+        """add a value to a list field (e.g. item_ids)."""
         lst = self._data.setdefault(key, [])
         if isinstance(lst, list) and value not in lst:
             lst.append(value)

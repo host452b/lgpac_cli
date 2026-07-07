@@ -41,8 +41,6 @@ jobs:
       - name: run weixin article monitor
         run: python lgpac_cli.py lgycp --notify --page
 
-      # xbirds removed from here — runs only in xbirds-daily.yml to stay under rate limits
-
       - name: commit results
         run: |
           git config user.name "github-actions[bot]"

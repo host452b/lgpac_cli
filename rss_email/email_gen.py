@@ -1,6 +1,6 @@
 """
 email generator — multipart HTML + plain text digest.
-groups feeds by wave_stage to match the tracked.yml propagation model.
+groups feeds by wave_stage to match the propagation model.
 """
 import html
 import smtplib

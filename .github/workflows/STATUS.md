@@ -15,25 +15,16 @@
 |----------|------|-------------------|--------|--------|------|
 | **rss email digest** | `rss-email-daily.yml` | `0 2 * * *` (UTC 02:00) | **DISABLED** | Replaced by `hn-daily.yml`. Substack/RSS feeds no longer needed. Manual dispatch still available. | 2026-04-17 |
 
-## Manual-Only
-
-| Workflow | File | Status | Description |
-|----------|------|--------|-------------|
-| **xbirds daily digest** | `xbirds-daily.yml` | **MANUAL** | X/Twitter post tracker. Run via `workflow_dispatch` only. Default lookback 24h. |
-
----
-
 ## Changelog
 
 ### 2026-04-17
 - **Added** `hn-daily.yml` — daily HN + zeli.app top-10 with 4-layer fallback
 - **Disabled** `rss-email-daily.yml` cron — replaced by HN tracker
-- No changes to `crawl.yml` or `xbirds-daily.yml`
+- No changes to `crawl.yml`
 
 ### 2026-04-11 (initial)
 - `crawl.yml` — ticket monitor + weixin scan every 12h
 - `rss-email-daily.yml` — RSS email digest daily at UTC 02:00
-- `xbirds-daily.yml` — X/Twitter tracker, manual-only
 
 ---
 
