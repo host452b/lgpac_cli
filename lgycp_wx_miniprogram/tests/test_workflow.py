@@ -14,6 +14,7 @@ def test_workflow_runs_daily_at_beijing_1105_and_manually():
     text = workflow_text()
 
     assert re.search(r'cron:\s*["\']5 3 \* \* \*["\']', text)
+    assert len(re.findall(r"\bcron:\s*", text)) == 1
     assert "workflow_dispatch:" in text
 
 
@@ -53,3 +54,35 @@ def test_workflow_only_injects_smtp_configuration():
         "LGYCP_WX_PUBLISHED_PATH",
     ]:
         assert f"{name}:" not in text
+
+
+def test_workflow_captures_all_command_steps_without_masking_failures():
+    text = workflow_text()
+
+    assert text.count("set -o pipefail") >= 4
+    assert text.count('tee -a "$RUNNER_TEMP/lgycp-wx-workflow.log"') >= 4
+    assert (
+        "LGYCP_DIAGNOSTICS_PATH: "
+        "${{ runner.temp }}/lgycp-wx-diagnostics.json"
+    ) in text
+
+
+def test_workflow_always_summarizes_and_uploads_failure_artifact():
+    text = workflow_text()
+
+    assert "if: always()" in text
+    assert "if: failure()" in text
+    assert "uses: actions/upload-artifact@v4" in text
+    assert "retention-days: 30" in text
+    assert "lgycp-wx-diagnostics-${{ github.run_id }}" in text
+    assert "${{ runner.temp }}/lgycp-wx-diagnostics.json" in text
+    assert "${{ runner.temp }}/lgycp-wx-workflow.log" in text
+    assert "if-no-files-found: warn" in text
+
+
+def test_workflow_has_no_watchdog_or_backup_api():
+    text = workflow_text()
+
+    assert len(re.findall(r"\bschedule:\s*", text)) == 1
+    assert "backup" not in text.casefold()
+    assert "fallback" not in text.casefold()
