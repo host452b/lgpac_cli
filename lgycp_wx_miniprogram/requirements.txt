@@ -1,0 +1,2 @@
+requests>=2.28,<3
+pytest>=8,<9
