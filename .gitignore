@@ -20,6 +20,7 @@ archs/
 .env
 .venv/
 venv/
+.worktrees/
 
 # os
 .DS_Store
