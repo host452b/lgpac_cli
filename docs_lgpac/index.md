@@ -1,6 +1,6 @@
 # 🎭 Show Monitor
 
-> updated: 2026-07-23 13:43 UTC · price threshold: ¥120
+> updated: 2026-07-24 02:07 UTC · price threshold: ¥120
 
 ## 🎫 Affordable Tickets
 
