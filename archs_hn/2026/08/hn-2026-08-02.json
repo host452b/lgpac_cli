@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-02",
+  "fetched_at": "2026-08-02T20:51:12.959254+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49140998",
+      "title": "Karpathy’s Pelican",
+      "url": "https://twitter.com/karpathy/status/2083749667410727319",
+      "score": 261,
+      "by": "delichon",
+      "time": 1785643556,
+      "comments": 204,
+      "source": "firebase"
+    },
+    {
+      "id": "49145937",
+      "title": "Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM",
+      "url": "https://github.com/wie-project/kakehashi",
+      "score": 111,
+      "by": "vlad_kalinkin",
+      "time": 1785688000,
+      "comments": 27,
+      "source": "firebase"
+    },
+    {
+      "id": "49084324",
+      "title": "Note-Taking and Personal Knowledge Management",
+      "url": "https://unattributed.cc/note-taking-and-personal-knowledge-management",
+      "score": 40,
+      "by": "surprisetalk",
+      "time": 1785248470,
+      "comments": 8,
+      "source": "firebase"
+    },
+    {
+      "id": "49097961",
+      "title": "Developers are attached to tools because tools encode trust",
+      "url": "https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust/",
+      "score": 82,
+      "by": "HieronymusBosch",
+      "time": 1785335154,
+      "comments": 36,
+      "source": "firebase"
+    },
+    {
+      "id": "49146267",
+      "title": "Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark",
+      "url": "https://github.com/graham33/nixos-dgx-spark",
+      "score": 62,
+      "by": "graham33",
+      "time": 1785690354,
+      "comments": 16,
+      "source": "firebase"
+    },
+    {
+      "id": "49147622",
+      "title": "My personal AI benchmark: \"Generate an SVG of a frog with a Habsburg jaw.\"",
+      "url": "https://frogs.vaguespac.es/",
+      "score": 21,
+      "by": "thebigship",
+      "time": 1785699728,
+      "comments": 9,
+      "source": "firebase"
+    },
+    {
+      "id": "49111194",
+      "title": "Schmitt Trigger: Robust Comparator Design with Hysteresis",
+      "url": "https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis",
+      "score": 6,
+      "by": "ankitg12",
+      "time": 1785424337,
+      "comments": 0,
+      "source": "firebase"
+    },
+    {
+      "id": "49143967",
+      "title": "Twenty Years of RISC OS Open",
+      "url": "https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open",
+      "score": 131,
+      "by": "AlexeyBrin",
+      "time": 1785674167,
+      "comments": 20,
+      "source": "firebase"
+    },
+    {
+      "id": "49143925",
+      "title": "F*: A general-purpose proof-oriented programming language",
+      "url": "https://fstar-lang.org/",
+      "score": 124,
+      "by": "ducktective",
+      "time": 1785673876,
+      "comments": 48,
+      "source": "firebase"
+    },
+    {
+      "id": "49145883",
+      "title": "Rooting, firmware analysis and persistent credentials of TP-Link TL-841N",
+      "url": "https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1/",
+      "score": 60,
+      "by": "mindracer",
+      "time": 1785687557,
+      "comments": 7,
+      "source": "firebase"
+    }
+  ]
+}

@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-07-06 21:33 UTC
+> Updated: 2026-08-02 20:51 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 245 | [OpenWrt One – Open Hardware Router](https://openwrt.org/toh/openwrt/one) | [115](https://news.ycombinator.com/item?id=48808482) |
-| 2 | 142 | [CoMaps – FOSS Offline Maps](https://www.comaps.app/) | [25](https://news.ycombinator.com/item?id=48808928) |
-| 3 | 33 | [Learning to code is still worthwhile](https://stevekrouse.com/learn-to-code) | [11](https://news.ycombinator.com/item?id=48810439) |
-| 4 | 160 | [A global workspace in language models](https://www.anthropic.com/research/global-workspace) | [46](https://news.ycombinator.com/item?id=48808002) |
-| 5 | 73 | [Linux on the Atari Jaguar](https://cakehonolulu.github.io/linux-for-jaguar/) | [10](https://news.ycombinator.com/item?id=48808663) |
-| 6 | 238 | [AMD Ryzen AI Halo – $4k AI Dev Kit](https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo) | [170](https://news.ycombinator.com/item?id=48805624) |
-| 7 | 378 | [Resetting Xbox](https://news.xbox.com/en-us/2026/07/06/resetting-xbox/) | [322](https://news.ycombinator.com/item?id=48804993) |
-| 8 | 54 | [Januscape: Guest-to-Host Escape in KVM/x86 [CVE-2026-53359]](https://github.com/V4bel/Januscape) | [11](https://news.ycombinator.com/item?id=48807908) |
-| 9 | 23 | [Using precision editing to study human embryo development shows master gene](https://www.cam.ac.uk/research/news/first-use-of-precision-editing-to-study-human-embryo-development-reveals-role-of-master-gene) | [3](https://news.ycombinator.com/item?id=48769854) |
-| 10 | 108 | [Kani: A Model Checker for Rust](https://arxiv.org/abs/2607.01504) | [5](https://news.ycombinator.com/item?id=48806410) |
+| 1 | 261 | [Karpathy’s Pelican](https://twitter.com/karpathy/status/2083749667410727319) | [204](https://news.ycombinator.com/item?id=49140998) |
+| 2 | 111 | [Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM](https://github.com/wie-project/kakehashi) | [27](https://news.ycombinator.com/item?id=49145937) |
+| 3 | 40 | [Note-Taking and Personal Knowledge Management](https://unattributed.cc/note-taking-and-personal-knowledge-management) | [8](https://news.ycombinator.com/item?id=49084324) |
+| 4 | 82 | [Developers are attached to tools because tools encode trust](https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust/) | [36](https://news.ycombinator.com/item?id=49097961) |
+| 5 | 62 | [Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark](https://github.com/graham33/nixos-dgx-spark) | [16](https://news.ycombinator.com/item?id=49146267) |
+| 6 | 21 | [My personal AI benchmark: "Generate an SVG of a frog with a Habsburg jaw."](https://frogs.vaguespac.es/) | [9](https://news.ycombinator.com/item?id=49147622) |
+| 7 | 6 | [Schmitt Trigger: Robust Comparator Design with Hysteresis](https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis) | [0](https://news.ycombinator.com/item?id=49111194) |
+| 8 | 131 | [Twenty Years of RISC OS Open](https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open) | [20](https://news.ycombinator.com/item?id=49143967) |
+| 9 | 124 | [F*: A general-purpose proof-oriented programming language](https://fstar-lang.org/) | [48](https://news.ycombinator.com/item?id=49143925) |
+| 10 | 60 | [Rooting, firmware analysis and persistent credentials of TP-Link TL-841N](https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1/) | [7](https://news.ycombinator.com/item?id=49145883) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Xbox大清洗：裁员3200人，四家工作室独立](https://news.ycombinator.com/item?id=48804993) | [HN](https://news.ycombinator.com/item?id=48804993) |
-| 2 | [Signalbox：大英铁路网实时动态图](https://news.ycombinator.com/item?id=48802535) | [HN](https://news.ycombinator.com/item?id=48802535) |
-| 3 | [Nintendo 欧洲新品大改：电池可换](https://news.ycombinator.com/item?id=48804193) | [HN](https://news.ycombinator.com/item?id=48804193) |
-| 4 | [Elm 1.0 之路：构建速度大飞跃](https://news.ycombinator.com/item?id=48803364) | [HN](https://news.ycombinator.com/item?id=48803364) |
-| 5 | [OpenWrt One：开箱即用的硬核开源路由](https://news.ycombinator.com/item?id=48808482) | [HN](https://news.ycombinator.com/item?id=48808482) |
-| 6 | [AMD Ryzen AI Halo：4000 美元的 AI 开发利器](https://news.ycombinator.com/item?id=48805624) | [HN](https://news.ycombinator.com/item?id=48805624) |
-| 7 | [工程师必看：基因组学的烘焙坊类比](https://news.ycombinator.com/item?id=48760424) | [HN](https://news.ycombinator.com/item?id=48760424) |
-| 8 | [铝箔：被低估的万能材料](https://news.ycombinator.com/item?id=48804297) | [HN](https://news.ycombinator.com/item?id=48804297) |
-| 9 | [Clojure 1.13 新增 checked keys 功能](https://news.ycombinator.com/item?id=48767211) | [HN](https://news.ycombinator.com/item?id=48767211) |
-| 10 | [Claude Fable 5：明知故犯，精心策划的合谋](https://news.ycombinator.com/item?id=48803762) | [HN](https://news.ycombinator.com/item?id=48803762) |
+| 1 | [Diátaxis：重塑技术文档的四大支柱](https://news.ycombinator.com/item?id=49138188) | [HN](https://news.ycombinator.com/item?id=49138188) |
+| 2 | [Go 1.27 重磅更新：泛型方法终于来了](https://news.ycombinator.com/item?id=49140218) | [HN](https://news.ycombinator.com/item?id=49140218) |
+| 3 | [从山羊到尽管：英语核心词汇的70年变迁](https://news.ycombinator.com/item?id=49145590) | [HN](https://news.ycombinator.com/item?id=49145590) |
+| 4 | [Meshdiff：浏览器内对比 3D 模型版本](https://news.ycombinator.com/item?id=49143479) | [HN](https://news.ycombinator.com/item?id=49143479) |
+| 5 | [Holocloth：重新定义布料模拟体验](https://news.ycombinator.com/item?id=49116917) | [HN](https://news.ycombinator.com/item?id=49116917) |
+| 6 | [RISC OS Open 二十周年：从封闭到开源的逆袭](https://news.ycombinator.com/item?id=49143967) | [HN](https://news.ycombinator.com/item?id=49143967) |
+| 7 | [F*：让代码证明自身安全的编程语言](https://news.ycombinator.com/item?id=49143925) | [HN](https://news.ycombinator.com/item?id=49143925) |
+| 8 | [免费打印太阳系与地球折叠纸球](https://news.ycombinator.com/item?id=49093845) | [HN](https://news.ycombinator.com/item?id=49093845) |
+| 9 | [中世纪魔法手稿与AI：瞬间获取知识的诱惑](https://news.ycombinator.com/item?id=49143001) | [HN](https://news.ycombinator.com/item?id=49143001) |
+| 10 | [用 C 和 SDL 2 复刻 Fasttracker II](https://news.ycombinator.com/item?id=49094151) | [HN](https://news.ycombinator.com/item?id=49094151) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-07-06T21:33:21.407412+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-02T20:51:12.962454+00:00*

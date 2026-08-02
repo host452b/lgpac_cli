@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-02",
+  "fetched_at": "2026-08-02T20:51:12.960517+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49138188",
+      "title_zh": "Diátaxis：重塑技术文档的四大支柱",
+      "abstract": "技术文档常常陷入内容混乱、架构不清的困境，Diátaxis 提供了一套系统化的解决思路。它将文档需求精准拆解为教程、操作指南、技术参考和解释说明四种形式，并主张文档架构应围绕这些需求构建。这套轻量级方法论不仅解决了写什么、怎么写以及如何组织的问题，更被 Vonage、Gatsby 和 Cloudflare 等团队成功实践。通过明确用户目标，Diátaxis 让文档创作者能更高效地维护高质量内容，帮",
+      "url": "https://diataxis.fr/",
+      "score": 510,
+      "by": "ryanseys",
+      "time": 1785616407,
+      "comments": 57,
+      "hn_url": "https://news.ycombinator.com/item?id=49138188",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49140218",
+      "title_zh": "Go 1.27 重磅更新：泛型方法终于来了",
+      "abstract": "Go 1.27 即将发布，带来了多项令人期待的特性。最引人注目的是泛型方法（Generic methods）的正式落地，让方法声明可以拥有独立的类型参数，不再局限于包级函数。此外，结构体字面量现在支持直接设置提升字段，函数类型推断也更加通用，无需手动指定类型参数。性能方面，编译器引入了针对小对象优化的内存分配，能提升约 1% 的分配效率。调试能力也大幅增强，goroutine 标签将出现在回溯信息",
+      "url": "https://victoriametrics.com/blog/go-1-27/index.html",
+      "score": 336,
+      "by": "Hixon10",
+      "time": 1785634551,
+      "comments": 171,
+      "hn_url": "https://news.ycombinator.com/item?id=49140218",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49145590",
+      "title_zh": "从山羊到尽管：英语核心词汇的70年变迁",
+      "abstract": "对比1953年与2023年的英语核心词汇表，你会发现世界发生了巨大变化。70年间，约600个具体词汇如“山羊”、“面粉”和“电报”被淘汰，取而代之的是超过1100个抽象概念，如“抵押”、“分析”和“尽管”。这一变迁折射出社会从体力劳动向白领工作的转型：我们的语言不再聚焦于触手可及的实物，而是转向了更庞大、更抽象的机构与系统。随着具体词汇占比下降，副词数量激增，现代英语要求我们对一切进行更精确的界定",
+      "url": "https://pudding.cool/2026/07/essential-words/",
+      "score": 164,
+      "by": "c-oreills",
+      "time": 1785685268,
+      "comments": 92,
+      "hn_url": "https://news.ycombinator.com/item?id=49145590",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49143479",
+      "title_zh": "Meshdiff：浏览器内对比 3D 模型版本",
+      "abstract": "Meshdiff 是一款能在浏览器中直接对比 STL、3MF 和 OBJ 等 3D 模型版本差异的工具。其核心亮点在于完全在客户端运行，所有文件解析与差异计算均在本地完成，确保数据绝不离开你的浏览器。工具不仅支持体素差异可视化，还能精确计算体积变化百分比，并生成 JSON 格式的对比报告。目前，表面热力图差异和移除材料幽灵叠加功能正处于测试阶段，而自动对齐、截面视图及团队协作审批等功能也在规划路线",
+      "url": "https://meshdiff.com/",
+      "score": 154,
+      "by": "projscope",
+      "time": 1785670481,
+      "comments": 15,
+      "hn_url": "https://news.ycombinator.com/item?id=49143479",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49116917",
+      "title_zh": "Holocloth：重新定义布料模拟体验",
+      "abstract": "Holocloth 是一个令人耳目一新的项目，它利用现代 Web 技术实现了逼真的布料物理模拟。在这个演示中，你可以直观地看到布料在虚拟空间中的自然垂坠、飘动和碰撞效果，仿佛触手可及。开发者通过精心优化的算法，让复杂的物理计算在浏览器中流畅运行，无需安装任何插件。这不仅展示了图形渲染技术的进步，也为游戏开发、虚拟试衣和数字时尚设计提供了新的可能性。如果你曾好奇布料在数字世界中如何‘呼吸’，这个页面",
+      "url": "https://holocloth.vercel.app",
+      "score": 152,
+      "by": "ingve",
+      "time": 1785452367,
+      "comments": 29,
+      "hn_url": "https://news.ycombinator.com/item?id=49116917",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49143967",
+      "title_zh": "RISC OS Open 二十周年：从封闭到开源的逆袭",
+      "abstract": "2006 年，我们带着一个看似疯狂的野心成立了 RISC OS Open Ltd，试图将一个专有操作系统向所有人开放。二十年后，这个目标不仅实现了，RISC OS 的健康状况也比当年好得多。从最初的源码共享到 RISC OS Pi 的发布，再到如今代码库完全公开托管在 GitLab 上，每一步都离不开社区的支持。我们见证了 RISC OS 登陆 Raspberry Pi、被 SpaceX 选中用于",
+      "url": "https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open",
+      "score": 129,
+      "by": "AlexeyBrin",
+      "time": 1785674167,
+      "comments": 20,
+      "hn_url": "https://news.ycombinator.com/item?id=49143967",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49143925",
+      "title_zh": "F*：让代码证明自身安全的编程语言",
+      "abstract": "F* 是一款面向证明的通用编程语言，由 Microsoft Research 和 Inria 等机构联合开发。它巧妙结合了依赖类型的表达力与基于 SMT 求解的自动化证明能力，支持纯函数式与效应式编程。F* 程序默认编译为 OCaml，也可通过 KaRaMeL 提取为 C、Wasm 或 F#，甚至利用 Vale 工具链生成汇编代码。从 Mozilla Firefox 到 Linux 内核，再到 T",
+      "url": "https://fstar-lang.org/",
+      "score": 120,
+      "by": "ducktective",
+      "time": 1785673876,
+      "comments": 47,
+      "hn_url": "https://news.ycombinator.com/item?id=49143925",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49093845",
+      "title_zh": "免费打印太阳系与地球折叠纸球",
+      "abstract": "MapScaping 推出了一个令人惊喜的项目，提供完全免费的折叠纸球模板。从太阳、月球到火星等太阳系天体，再到展现地球夜间灯光、海洋温度、人口密度等独特视角的地球模型，所有资源均可直接下载、打印并折叠。这些纸球不仅涵盖自然地理，还包含地震、火山、陨石撞击等数据可视化主题。用户甚至可以通过 custom globe builder 工具自定义形状或标记专属地点。所有地图数据均基于开源授权，让探索宇",
+      "url": "https://foldingglobes.com/globes",
+      "score": 120,
+      "by": "dango2506",
+      "time": 1785304380,
+      "comments": 27,
+      "hn_url": "https://news.ycombinator.com/item?id=49093845",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49143001",
+      "title_zh": "中世纪魔法手稿与AI：瞬间获取知识的诱惑",
+      "abstract": "在Neo于《黑客帝国》中瞬间掌握功夫之前几个世纪，中世纪学者就发现了捷径：一本名为Ars notoria的魔法手稿，承诺通过图表、咒语和神秘仪式，快速传授大学课程所需的全部知识。尽管被教会谴责，这本手稿仍流传至今，其复杂的几何图形和不可发音的词汇，被信徒视为与天使乃至上帝直接沟通的媒介。文章探讨了Ars notoria如何以虔诚的祈祷包装，却因涉及与恶魔的契约而遭到圣托马斯·阿奎那的严厉批判，揭示",
+      "url": "https://publicdomainreview.org/essay/ars-notoria/",
+      "score": 114,
+      "by": "jruohonen",
+      "time": 1785665904,
+      "comments": 27,
+      "hn_url": "https://news.ycombinator.com/item?id=49143001",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49094151",
+      "title_zh": "用 C 和 SDL 2 复刻 Fasttracker II",
+      "abstract": "我用 C 语言和 SDL 2 编写了一个可移植的 Fasttracker II 克隆版。这个项目旨在让经典音乐制作工具在现代系统上焕发新生。目前版本为 v2.22，支持 Windows、macOS（Intel 和 Apple silicon 通用）以及 Linux。不过，如果你连接了刷新率不同的多显示器，可能会遇到程序问题。在 Windows 上，NVIDIA 显卡用户需注意 GeForce Ex",
+      "url": "https://16-bits.org/ft2.php",
+      "score": 96,
+      "by": "andsoitis",
+      "time": 1785307642,
+      "comments": 31,
+      "hn_url": "https://news.ycombinator.com/item?id=49094151",
+      "source": "zeli_rsc"
+    }
+  ]
+}
