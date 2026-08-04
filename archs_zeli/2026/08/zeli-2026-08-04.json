@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-04",
+  "fetched_at": "2026-08-04T21:16:19.666917+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49167448",
+      "title_zh": "Xbox 宕机：光盘游戏也玩不了",
+      "abstract": "周日傍晚，Xbox 遭遇大规模服务中断，不仅数字版游戏无法运行，连物理光盘游戏也彻底瘫痪。这让我反思，如今所谓的“拥有”光盘，本质上只是一份需要网络验证的许可。即便你手握实体盘，Microsoft 或 Sony 也能因意外或故意阻止你游玩。更讽刺的是，光盘插入后游戏仍会安装到硬盘并强制更新，这与 PC 端的纯数字体验并无二致。相比之下，我手中的 Game Boy 卡带无需任何授权即可在模拟器上完美",
+      "url": "https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/",
+      "score": 505,
+      "by": "surprisetalk",
+      "time": 1785844862,
+      "comments": 551,
+      "hn_url": "https://news.ycombinator.com/item?id=49167448",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49173165",
+      "title_zh": "Stephen Wolfram 悼念妻子 Elise Cawley",
+      "abstract": "我的妻子 Elise Cawley 在心脏手术后突发心血管意外，与我们永远告别了。我们共同度过了 36 个美好的年头。Elise 不仅是一位才华横溢的数学家，更是一位充满人文关怀的思想者。她总能轻松洞察事物的本质，坚信真理与美终归同一。在我们的婚姻中，她以独特的智慧、爱与活力点亮了我的生活。尽管我们在数学基础等议题上曾激烈争论，但最终我意识到她关于数学本质的许多直觉是正确的。她热爱生活，注重细节，",
+      "url": "https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/",
+      "score": 354,
+      "by": "jdcampolargo",
+      "time": 1785869498,
+      "comments": 16,
+      "hn_url": "https://news.ycombinator.com/item?id=49173165",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49166386",
+      "title_zh": "单卡 AMD MI300X 跑满 DeepSeek V4",
+      "abstract": "我在单张 AMD MI300X 上成功部署了 DeepSeek-V4-Flash 模型，无需额外的权重量化或卸载。通过修复 FP8 格式兼容性、MoE 路由及内核调优，该配置在 192GB HBM 中完整容纳了 304B 参数模型。实测单流解码速度达 168.6 tok/s，Prefill 速度突破 8.5K tok/s，甚至能支撑 64 路并发而不报错。这份生产级配置包含 Docker Comp",
+      "url": "https://github.com/ryanzhou/deepseek-v4-flash-mi300x",
+      "score": 339,
+      "by": "zhoutong",
+      "time": 1785837655,
+      "comments": 87,
+      "hn_url": "https://news.ycombinator.com/item?id=49166386",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49162653",
+      "title_zh": "雷·布拉德伯里的《柔雨将至》",
+      "abstract": "这篇文档收录了雷·布拉德伯里的经典短篇故事《柔雨将至》。故事描绘了一个高度自动化的未来世界，当人类早已灭绝，智能家居系统却依然不知疲倦地运行着。它按时准备早餐、清理灰尘、播放新闻，甚至试图在火灾中拯救不存在的家人。这种机械的忠诚与荒凉的现实形成了强烈对比，让人在感叹科技奇迹的同时，也不禁反思人类在其中的位置。这是一个关于时间、记忆与文明脆弱性的深刻寓言。",
+      "url": "https://users.wpi.edu/~zrbutzke/Docs/BradburyStories(1).pdf",
+      "score": 322,
+      "by": "pmg101",
+      "time": 1785799493,
+      "comments": 357,
+      "hn_url": "https://news.ycombinator.com/item?id=49162653",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49164896",
+      "title_zh": "Harness Engineering：AI 自我进化的新引擎",
+      "abstract": "递归自我改进（RSI）的未来或许不在于模型直接重写权重，而在于 Harness Engineering 的进化。文章深入探讨了围绕基础模型的系统架构，包括工作流设计、文件系统作为持久化记忆、以及子代理与后台任务的协同。从 Agentic Context Engineering (ACE) 到 Meta Context Engineering (MCE)，再到 Meta-Harness，这些技术将上",
+      "url": "https://lilianweng.github.io/posts/2026-07-04-harness/",
+      "score": 278,
+      "by": "tosh",
+      "time": 1785824274,
+      "comments": 59,
+      "hn_url": "https://news.ycombinator.com/item?id=49164896",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49170479",
+      "title_zh": "Apple 指控更多前员工向 OpenAI 泄露机密",
+      "abstract": "Apple 正在升级与 OpenAI 的法律战，不仅寻求初步禁令以阻止对方开发基于其技术的产品，还指控更多前员工卷入商业机密盗窃案。Apple 在最新文件中指出，除已被起诉的 Chang Liu 和 Tang Yew Tan 外，另有 11 名前员工可能涉案，其中包括在面试前讨论未发布产品机密或截图保密文档的人员。此外，多名现任职于 OpenAI 的前 Apple 员工在诉讼后主动联系归还公司设备",
+      "url": "https://techcrunch.com/2026/08/04/apple-says-more-ex-employees-may-have-taken-confidential-data-to-openai/",
+      "score": 267,
+      "by": "thewebguyd",
+      "time": 1785857862,
+      "comments": 208,
+      "hn_url": "https://news.ycombinator.com/item?id=49170479",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49166874",
+      "title_zh": "Keyv 遭 Shai-Hulud 供应链攻击",
+      "abstract": "2026 年 8 月 4 日，拥有月均 6.19 亿下载量的 keyv 及其关联库遭遇名为 Shai-Hulud 的供应链攻击。攻击者入侵了维护者的 GitHub 账号，向 main 分支注入恶意文件并发布带签名的毒化版本。这些包在 npm install 时会自动执行 setup.mjs，静默下载 Bun 运行时代码，进而窃取 npm、GitHub CLI、AWS 及 HashiCorp Vau",
+      "url": "https://www.aikido.dev/blog/keyv-and-friends-compromised-in-npm-supply-chain-attack",
+      "score": 212,
+      "by": "cimi_",
+      "time": 1785841297,
+      "comments": 108,
+      "hn_url": "https://news.ycombinator.com/item?id=49166874",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49170001",
+      "title_zh": "Adform 被黑：广告拦截器为何必不可少",
+      "abstract": "在线广告巨头 Adform 遭遇黑客攻击，从 7 月 27 日开始，其投放的广告中嵌入了恶意代码。据安全研究员 Kevin Beaumont 披露，这段被篡改的代码会在用户浏览器加载时触发，每三秒替换一次剪贴板中的加密货币钱包地址，诱导用户将资产误转给黑客。Adform 日均服务 15 亿次广告展示，这意味着下游网站用户都可能面临设备被植入窃取软件的风险。当我尝试访问 Adform 的官方声明时，",
+      "url": "https://this.weekinsecurity.com/online-advertising-giant-adform-was-hacked-proving-once-again-why-ad-blockers-are-necessary/",
+      "score": 195,
+      "by": "speckx",
+      "time": 1785855933,
+      "comments": 68,
+      "hn_url": "https://news.ycombinator.com/item?id=49170001",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49171268",
+      "title_zh": "Mistral Shieldstral：3B模型如何碾压7倍大模型",
+      "abstract": "Mistral AI 发布了开源模型 Shieldstral，这是一个仅 30 亿参数的多模态安全分类器。它打破了传统护栏模型需要针对新策略重新训练的局限，允许用户在推理时直接通过自然语言提问来定义安全策略。无论是文本还是图像，Shieldstral 都能输出校准后的安全评分，且性能可媲美甚至超越体积大 7 倍的模型。该模型基于 Apache 2.0 协议开源，仅需单张 16GB NVIDIA G",
+      "url": "https://mistral.ai/news/shieldstral/",
+      "score": 161,
+      "by": "riadsila",
+      "time": 1785861365,
+      "comments": 47,
+      "hn_url": "https://news.ycombinator.com/item?id=49171268",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49172834",
+      "title_zh": "Cloudflare 新功能竟像钓鱼攻击？",
+      "abstract": "我偶然发现 Cloudflare 推出了一项新产品，却因域名使用 .pay 后缀、授权页面设计可疑而误以为遭遇了高明的钓鱼攻击。那种紧迫感让我差点中招，甚至怀疑连绿色对勾都是伪造的。直到反复查证才发现，这确实是 Cloudflare 的合法服务，只是其安全 UI 设计过于激进，导致用户难以分辨真伪。这一经历深刻揭示了 Web 安全的困境：当合法网站看起来像诈骗时，不仅用户防不胜防，连 Micros",
+      "url": "https://textslashplain.com/2026/08/04/security-is-hard-yall/",
+      "score": 153,
+      "by": "kevincox",
+      "time": 1785868172,
+      "comments": 69,
+      "hn_url": "https://news.ycombinator.com/item?id=49172834",
+      "source": "zeli_rsc"
+    }
+  ]
+}

@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-02 20:51 UTC
+> Updated: 2026-08-04 21:16 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 261 | [Karpathy’s Pelican](https://twitter.com/karpathy/status/2083749667410727319) | [204](https://news.ycombinator.com/item?id=49140998) |
-| 2 | 111 | [Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM](https://github.com/wie-project/kakehashi) | [27](https://news.ycombinator.com/item?id=49145937) |
-| 3 | 40 | [Note-Taking and Personal Knowledge Management](https://unattributed.cc/note-taking-and-personal-knowledge-management) | [8](https://news.ycombinator.com/item?id=49084324) |
-| 4 | 82 | [Developers are attached to tools because tools encode trust](https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust/) | [36](https://news.ycombinator.com/item?id=49097961) |
-| 5 | 62 | [Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark](https://github.com/graham33/nixos-dgx-spark) | [16](https://news.ycombinator.com/item?id=49146267) |
-| 6 | 21 | [My personal AI benchmark: "Generate an SVG of a frog with a Habsburg jaw."](https://frogs.vaguespac.es/) | [9](https://news.ycombinator.com/item?id=49147622) |
-| 7 | 6 | [Schmitt Trigger: Robust Comparator Design with Hysteresis](https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis) | [0](https://news.ycombinator.com/item?id=49111194) |
-| 8 | 131 | [Twenty Years of RISC OS Open](https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open) | [20](https://news.ycombinator.com/item?id=49143967) |
-| 9 | 124 | [F*: A general-purpose proof-oriented programming language](https://fstar-lang.org/) | [48](https://news.ycombinator.com/item?id=49143925) |
-| 10 | 60 | [Rooting, firmware analysis and persistent credentials of TP-Link TL-841N](https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1/) | [7](https://news.ycombinator.com/item?id=49145883) |
+| 1 | 163 | [Mistral's Shieldstral: 3B open-weights model for multimodal moderation](https://mistral.ai/news/shieldstral/) | [48](https://news.ycombinator.com/item?id=49171268) |
+| 2 | 387 | [Show HN: Simple algorithm and color space to generate diverse skin tones](https://toneyalexander.github.io/inclusive-color-space/) | [85](https://news.ycombinator.com/item?id=49170165) |
+| 3 | 142 | [Waymo – Dallas Open to All](https://waymo.com/blog/shorts/dallas-open-to-all/) | [131](https://news.ycombinator.com/item?id=49172836) |
+| 4 | 363 | [In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years](https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/) | [17](https://news.ycombinator.com/item?id=49173165) |
+| 5 | 124 | [Why some people mow a lawn better than others](https://pudding.cool/2026/06/mow/) | [107](https://news.ycombinator.com/item?id=49172550) |
+| 6 | 339 | [DeepSeek V4 Flash on a Single AMD MI300X](https://github.com/ryanzhou/deepseek-v4-flash-mi300x) | [87](https://news.ycombinator.com/item?id=49166386) |
+| 7 | 16 | [Don't stop early: Case-folding source code at memory speed](https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/) | [1](https://news.ycombinator.com/item?id=49127983) |
+| 8 | 20 | [Launch HN: EdotEnv (YC S26) – Quant Trading RL Envs to Teach LLMs Research](https://edotenv.com/) | [6](https://news.ycombinator.com/item?id=49172936) |
+| 9 | 56 | [When AI Benchmarks Plateau: A Systematic Study of Benchmark Saturation](https://arxiv.org/abs/2602.16763) | [61](https://news.ycombinator.com/item?id=49170915) |
+| 10 | 55 | [Hop.earth – OpenStreetMap based car racing game](https://hop.earth/?server=lkhr7&route=fQ5nuu9R) | [28](https://news.ycombinator.com/item?id=49172405) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Diátaxis：重塑技术文档的四大支柱](https://news.ycombinator.com/item?id=49138188) | [HN](https://news.ycombinator.com/item?id=49138188) |
-| 2 | [Go 1.27 重磅更新：泛型方法终于来了](https://news.ycombinator.com/item?id=49140218) | [HN](https://news.ycombinator.com/item?id=49140218) |
-| 3 | [从山羊到尽管：英语核心词汇的70年变迁](https://news.ycombinator.com/item?id=49145590) | [HN](https://news.ycombinator.com/item?id=49145590) |
-| 4 | [Meshdiff：浏览器内对比 3D 模型版本](https://news.ycombinator.com/item?id=49143479) | [HN](https://news.ycombinator.com/item?id=49143479) |
-| 5 | [Holocloth：重新定义布料模拟体验](https://news.ycombinator.com/item?id=49116917) | [HN](https://news.ycombinator.com/item?id=49116917) |
-| 6 | [RISC OS Open 二十周年：从封闭到开源的逆袭](https://news.ycombinator.com/item?id=49143967) | [HN](https://news.ycombinator.com/item?id=49143967) |
-| 7 | [F*：让代码证明自身安全的编程语言](https://news.ycombinator.com/item?id=49143925) | [HN](https://news.ycombinator.com/item?id=49143925) |
-| 8 | [免费打印太阳系与地球折叠纸球](https://news.ycombinator.com/item?id=49093845) | [HN](https://news.ycombinator.com/item?id=49093845) |
-| 9 | [中世纪魔法手稿与AI：瞬间获取知识的诱惑](https://news.ycombinator.com/item?id=49143001) | [HN](https://news.ycombinator.com/item?id=49143001) |
-| 10 | [用 C 和 SDL 2 复刻 Fasttracker II](https://news.ycombinator.com/item?id=49094151) | [HN](https://news.ycombinator.com/item?id=49094151) |
+| 1 | [Xbox 宕机：光盘游戏也玩不了](https://news.ycombinator.com/item?id=49167448) | [HN](https://news.ycombinator.com/item?id=49167448) |
+| 2 | [Stephen Wolfram 悼念妻子 Elise Cawley](https://news.ycombinator.com/item?id=49173165) | [HN](https://news.ycombinator.com/item?id=49173165) |
+| 3 | [单卡 AMD MI300X 跑满 DeepSeek V4](https://news.ycombinator.com/item?id=49166386) | [HN](https://news.ycombinator.com/item?id=49166386) |
+| 4 | [雷·布拉德伯里的《柔雨将至》](https://news.ycombinator.com/item?id=49162653) | [HN](https://news.ycombinator.com/item?id=49162653) |
+| 5 | [Harness Engineering：AI 自我进化的新引擎](https://news.ycombinator.com/item?id=49164896) | [HN](https://news.ycombinator.com/item?id=49164896) |
+| 6 | [Apple 指控更多前员工向 OpenAI 泄露机密](https://news.ycombinator.com/item?id=49170479) | [HN](https://news.ycombinator.com/item?id=49170479) |
+| 7 | [Keyv 遭 Shai-Hulud 供应链攻击](https://news.ycombinator.com/item?id=49166874) | [HN](https://news.ycombinator.com/item?id=49166874) |
+| 8 | [Adform 被黑：广告拦截器为何必不可少](https://news.ycombinator.com/item?id=49170001) | [HN](https://news.ycombinator.com/item?id=49170001) |
+| 9 | [Mistral Shieldstral：3B模型如何碾压7倍大模型](https://news.ycombinator.com/item?id=49171268) | [HN](https://news.ycombinator.com/item?id=49171268) |
+| 10 | [Cloudflare 新功能竟像钓鱼攻击？](https://news.ycombinator.com/item?id=49172834) | [HN](https://news.ycombinator.com/item?id=49172834) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-02T20:51:12.962454+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-04T21:16:19.668799+00:00*

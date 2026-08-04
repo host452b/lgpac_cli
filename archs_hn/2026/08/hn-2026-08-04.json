@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-04",
+  "fetched_at": "2026-08-04T21:16:19.665718+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49171268",
+      "title": "Mistral's Shieldstral: 3B open-weights model for multimodal moderation",
+      "url": "https://mistral.ai/news/shieldstral/",
+      "score": 163,
+      "by": "riadsila",
+      "time": 1785861365,
+      "comments": 48,
+      "source": "firebase"
+    },
+    {
+      "id": "49170165",
+      "title": "Show HN: Simple algorithm and color space to generate diverse skin tones",
+      "url": "https://toneyalexander.github.io/inclusive-color-space/",
+      "score": 387,
+      "by": "automatoney",
+      "time": 1785856582,
+      "comments": 85,
+      "source": "firebase"
+    },
+    {
+      "id": "49172836",
+      "title": "Waymo – Dallas Open to All",
+      "url": "https://waymo.com/blog/shorts/dallas-open-to-all/",
+      "score": 142,
+      "by": "xnx",
+      "time": 1785868181,
+      "comments": 131,
+      "source": "firebase"
+    },
+    {
+      "id": "49173165",
+      "title": "In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years",
+      "url": "https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/",
+      "score": 363,
+      "by": "jdcampolargo",
+      "time": 1785869498,
+      "comments": 17,
+      "source": "firebase"
+    },
+    {
+      "id": "49172550",
+      "title": "Why some people mow a lawn better than others",
+      "url": "https://pudding.cool/2026/06/mow/",
+      "score": 124,
+      "by": "carlos-menezes",
+      "time": 1785866772,
+      "comments": 107,
+      "source": "firebase"
+    },
+    {
+      "id": "49166386",
+      "title": "DeepSeek V4 Flash on a Single AMD MI300X",
+      "url": "https://github.com/ryanzhou/deepseek-v4-flash-mi300x",
+      "score": 339,
+      "by": "zhoutong",
+      "time": 1785837655,
+      "comments": 87,
+      "source": "firebase"
+    },
+    {
+      "id": "49127983",
+      "title": "Don't stop early: Case-folding source code at memory speed",
+      "url": "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/",
+      "score": 16,
+      "by": "sbulaev",
+      "time": 1785528426,
+      "comments": 1,
+      "source": "firebase"
+    },
+    {
+      "id": "49172936",
+      "title": "Launch HN: EdotEnv (YC S26) – Quant Trading RL Envs to Teach LLMs Research",
+      "url": "https://edotenv.com/",
+      "score": 20,
+      "by": "Mzzzzz",
+      "time": 1785868562,
+      "comments": 6,
+      "source": "firebase"
+    },
+    {
+      "id": "49170915",
+      "title": "When AI Benchmarks Plateau: A Systematic Study of Benchmark Saturation",
+      "url": "https://arxiv.org/abs/2602.16763",
+      "score": 56,
+      "by": "doppp",
+      "time": 1785859839,
+      "comments": 61,
+      "source": "firebase"
+    },
+    {
+      "id": "49172405",
+      "title": "Hop.earth – OpenStreetMap based car racing game",
+      "url": "https://hop.earth/?server=lkhr7&route=fQ5nuu9R",
+      "score": 55,
+      "by": "faebi",
+      "time": 1785866119,
+      "comments": 28,
+      "source": "firebase"
+    }
+  ]
+}
