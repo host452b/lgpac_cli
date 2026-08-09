@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-04 21:16 UTC
+> Updated: 2026-08-09 20:18 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 163 | [Mistral's Shieldstral: 3B open-weights model for multimodal moderation](https://mistral.ai/news/shieldstral/) | [48](https://news.ycombinator.com/item?id=49171268) |
-| 2 | 387 | [Show HN: Simple algorithm and color space to generate diverse skin tones](https://toneyalexander.github.io/inclusive-color-space/) | [85](https://news.ycombinator.com/item?id=49170165) |
-| 3 | 142 | [Waymo – Dallas Open to All](https://waymo.com/blog/shorts/dallas-open-to-all/) | [131](https://news.ycombinator.com/item?id=49172836) |
-| 4 | 363 | [In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years](https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/) | [17](https://news.ycombinator.com/item?id=49173165) |
-| 5 | 124 | [Why some people mow a lawn better than others](https://pudding.cool/2026/06/mow/) | [107](https://news.ycombinator.com/item?id=49172550) |
-| 6 | 339 | [DeepSeek V4 Flash on a Single AMD MI300X](https://github.com/ryanzhou/deepseek-v4-flash-mi300x) | [87](https://news.ycombinator.com/item?id=49166386) |
-| 7 | 16 | [Don't stop early: Case-folding source code at memory speed](https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/) | [1](https://news.ycombinator.com/item?id=49127983) |
-| 8 | 20 | [Launch HN: EdotEnv (YC S26) – Quant Trading RL Envs to Teach LLMs Research](https://edotenv.com/) | [6](https://news.ycombinator.com/item?id=49172936) |
-| 9 | 56 | [When AI Benchmarks Plateau: A Systematic Study of Benchmark Saturation](https://arxiv.org/abs/2602.16763) | [61](https://news.ycombinator.com/item?id=49170915) |
-| 10 | 55 | [Hop.earth – OpenStreetMap based car racing game](https://hop.earth/?server=lkhr7&route=fQ5nuu9R) | [28](https://news.ycombinator.com/item?id=49172405) |
+| 1 | 90 | [How I use LLMs to learn complex topics](https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/) | [41](https://news.ycombinator.com/item?id=49234675) |
+| 2 | 455 | [Mea Culpa – Dark Hours](https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html) | [208](https://news.ycombinator.com/item?id=49231154) |
+| 3 | 88 | [Ask HN: What are you working on? (August 2026)](https://news.ycombinator.com/item?id=49233423) | [329](https://news.ycombinator.com/item?id=49233423) |
+| 4 | 55 | [OpenChamber: An Agentic Development Environment](https://openchamber.dev/) | [34](https://news.ycombinator.com/item?id=49233448) |
+| 5 | 109 | [Cool URIs Don't Change (1998)](https://www.w3.org/Provider/Style/URI) | [18](https://news.ycombinator.com/item?id=49231809) |
+| 6 | 96 | [John C. Lilly on solid state intelligence and the elimination of man (1978)](https://kibotronics.net/unlisted/lilly-machines/) | [46](https://news.ycombinator.com/item?id=49231397) |
+| 7 | 50 | [Crickets as Pets](https://en.wikipedia.org/wiki/Crickets_as_pets) | [29](https://news.ycombinator.com/item?id=49183291) |
+| 8 | 85 | [Show HN: A Project Oberon System version running on RISC-V instead of RISC-5](https://github.com/rochus-keller/OberonSystem/tree/op2-rv32) | [16](https://news.ycombinator.com/item?id=49230891) |
+| 9 | 12 | [How Golden Is Silence, Actually?](https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review) | [2](https://news.ycombinator.com/item?id=49199437) |
+| 10 | 59 | [Saying No](https://rozumem.xyz/posts/19) | [47](https://news.ycombinator.com/item?id=49234379) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Xbox 宕机：光盘游戏也玩不了](https://news.ycombinator.com/item?id=49167448) | [HN](https://news.ycombinator.com/item?id=49167448) |
-| 2 | [Stephen Wolfram 悼念妻子 Elise Cawley](https://news.ycombinator.com/item?id=49173165) | [HN](https://news.ycombinator.com/item?id=49173165) |
-| 3 | [单卡 AMD MI300X 跑满 DeepSeek V4](https://news.ycombinator.com/item?id=49166386) | [HN](https://news.ycombinator.com/item?id=49166386) |
-| 4 | [雷·布拉德伯里的《柔雨将至》](https://news.ycombinator.com/item?id=49162653) | [HN](https://news.ycombinator.com/item?id=49162653) |
-| 5 | [Harness Engineering：AI 自我进化的新引擎](https://news.ycombinator.com/item?id=49164896) | [HN](https://news.ycombinator.com/item?id=49164896) |
-| 6 | [Apple 指控更多前员工向 OpenAI 泄露机密](https://news.ycombinator.com/item?id=49170479) | [HN](https://news.ycombinator.com/item?id=49170479) |
-| 7 | [Keyv 遭 Shai-Hulud 供应链攻击](https://news.ycombinator.com/item?id=49166874) | [HN](https://news.ycombinator.com/item?id=49166874) |
-| 8 | [Adform 被黑：广告拦截器为何必不可少](https://news.ycombinator.com/item?id=49170001) | [HN](https://news.ycombinator.com/item?id=49170001) |
-| 9 | [Mistral Shieldstral：3B模型如何碾压7倍大模型](https://news.ycombinator.com/item?id=49171268) | [HN](https://news.ycombinator.com/item?id=49171268) |
-| 10 | [Cloudflare 新功能竟像钓鱼攻击？](https://news.ycombinator.com/item?id=49172834) | [HN](https://news.ycombinator.com/item?id=49172834) |
+| 1 | [我误用 Claude 复制了 DarkHours.app](https://news.ycombinator.com/item?id=49231154) | [HN](https://news.ycombinator.com/item?id=49231154) |
+| 2 | [Jill Lepore：硅谷误读科幻，正在瓦解民主](https://news.ycombinator.com/item?id=49232221) | [HN](https://news.ycombinator.com/item?id=49232221) |
+| 3 | [所有阶数的 Magic Hexagons 均存在](https://news.ycombinator.com/item?id=49229174) | [HN](https://news.ycombinator.com/item?id=49229174) |
+| 4 | [硅谷骗局：从戏剧化叙事到刑事欺诈](https://news.ycombinator.com/item?id=49232318) | [HN](https://news.ycombinator.com/item?id=49232318) |
+| 5 | [Microsoft Word 1.1a 原生 x64 移植版](https://news.ycombinator.com/item?id=49228663) | [HN](https://news.ycombinator.com/item?id=49228663) |
+| 6 | [Tom Stanton 的抛石机仅靠重力突破音障](https://news.ycombinator.com/item?id=49232110) | [HN](https://news.ycombinator.com/item?id=49232110) |
+| 7 | [网格如何让松软地基强度翻倍](https://news.ycombinator.com/item?id=49178476) | [HN](https://news.ycombinator.com/item?id=49178476) |
+| 8 | [Cool URIs Don't Change：为何链接总失效？](https://news.ycombinator.com/item?id=49231809) | [HN](https://news.ycombinator.com/item?id=49231809) |
+| 9 | [John C. Lilly 预言：固态智能将取代人类](https://news.ycombinator.com/item?id=49231397) | [HN](https://news.ycombinator.com/item?id=49231397) |
+| 10 | [FCC 拟禁 LiDAR 无人机，称其为军用级](https://news.ycombinator.com/item?id=49232857) | [HN](https://news.ycombinator.com/item?id=49232857) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-04T21:16:19.668799+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-09T20:18:44.682184+00:00*

@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-09",
+  "fetched_at": "2026-08-09T20:18:44.680139+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49231154",
+      "title_zh": "我误用 Claude 复制了 DarkHours.app",
+      "abstract": "上周我发布了一个名为 Dark Hours 的网站工具，用于展示夜间天空景象。然而，一位开发者指出，我的项目与他开源的 DarkHours.app 高度相似，甚至连他已修复的 Bug 都被复现了。意识到问题后，我决定将域名直接重定向给他，并取消原定的 iOS 应用计划。我深知自己在使用 AI 生成项目时过于草率，未充分核实是否侵犯他人成果。这次经历让我深刻反思：AI 虽能提高效率，但责任始终在人。",
+      "url": "https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html",
+      "score": 455,
+      "by": "satvikpendem",
+      "time": 1786281643,
+      "comments": 208,
+      "hn_url": "https://news.ycombinator.com/item?id=49231154",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49232221",
+      "title_zh": "Jill Lepore：硅谷误读科幻，正在瓦解民主",
+      "abstract": "历史学家 Jill Lepore 在新书《The Rise and Fall of the Artificial State》中警告，科技公司正逐步取代民主政府的职能，形成由算法、公司和机器统治的“人工国家”。她指出，Elon Musk 等硅谷领袖深受误读的科幻作品影响，将企业权力凌驾于国家之上。从 Apple 的 1984 广告到 Twitter 的“民主工具”神话，再到 Sam Altman ",
+      "url": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/",
+      "score": 204,
+      "by": "evo_9",
+      "time": 1786288705,
+      "comments": 158,
+      "hn_url": "https://news.ycombinator.com/item?id=49232221",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49229174",
+      "title_zh": "所有阶数的 Magic Hexagons 均存在",
+      "abstract": "数学领域迎来重大突破，证明了所有阶数的 Magic Hexagons 均存在。这一发现不仅解决了长期悬而未决的几何难题，还通过交互式可视化展示了其背后的潜在场结构。文章深入探讨了这些几何单元如何排列出完美的数字组合，为数学爱好者和研究者提供了全新的视角。从几何构造到数值验证，每一步都展现了数学的优雅与严谨，令人不禁感叹自然规律的精妙。",
+      "url": "https://gukov.dev/math/2026/08/02/new-magic-hexagons.html",
+      "score": 169,
+      "by": "gukoff",
+      "time": 1786259998,
+      "comments": 24,
+      "hn_url": "https://news.ycombinator.com/item?id=49229174",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49232318",
+      "title_zh": "硅谷骗局：从戏剧化叙事到刑事欺诈",
+      "abstract": "硅谷创业者常通过戏剧化叙事获取资源，但当期望与现实差距过大时，这种叙事可能演变为刑事欺诈。研究基于美国 SEC 和 DOJ 的法庭文件，分析了 2000 至 2023 年间 12 家科技初创公司的欺诈案例。这些公司通过构建虚假数据、伪造银行对账单、策划虚假产品演示等手段，精心编织“门面”以掩盖运营真相。文章提出了“门面构建”理论，揭示了创业者如何通过从表面伪装到深度操纵的三个阶段，系统性地消除期望",
+      "url": "https://pubsonline.informs.org/doi/full/10.1287/orsc.2024.19981",
+      "score": 163,
+      "by": "iamnothere",
+      "time": 1786289205,
+      "comments": 73,
+      "hn_url": "https://news.ycombinator.com/item?id=49232318",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49228663",
+      "title_zh": "Microsoft Word 1.1a 原生 x64 移植版",
+      "abstract": "这是一个将历史悠久的 Microsoft Word for Windows 1.1a（代号 Opus）完整移植到现代 64 位 Windows 平台的开源项目。它并非模拟器，也不是基于现代控件的重写，而是直接编译原始源代码，仅用现代 C++ 替换了 16 位汇编和内存管理部分。项目利用 Visual Studio 2022 和 CMake 构建，让这款经典编辑器以原生 x64 可执行文件的形式在 ",
+      "url": "https://github.com/jmarshall23/msword",
+      "score": 151,
+      "by": "BruceEel",
+      "time": 1786253021,
+      "comments": 63,
+      "hn_url": "https://news.ycombinator.com/item?id=49228663",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49232110",
+      "title_zh": "Tom Stanton 的抛石机仅靠重力突破音障",
+      "abstract": "Tom Stanton 在英国田野中完成了一项看似违背物理常识的壮举。他设计了一款纯重力驱动的抛石机，仅用 40 公斤的配重下落，便驱动碳纤维臂以每分钟 2300 转的速度旋转，将一枚 4 克的弹丸加速至每小时 776 英里。这一速度比音速快了 9 英里，标志着人类首次仅靠重力就让抛石机突破音障。传统抛石机受限于自由落体的加速度，但 Stanton 通过创新的滑轮系统，利用大直径启动提供扭矩，小直",
+      "url": "https://www.techeblog.com/tom-stanton-supersonic-trebuchet/",
+      "score": 149,
+      "by": "Thorondor",
+      "time": 1786288131,
+      "comments": 48,
+      "hn_url": "https://news.ycombinator.com/item?id=49232110",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49178476",
+      "title_zh": "网格如何让松软地基强度翻倍",
+      "abstract": "在Port of Long Beach的扩建工程中，工程师面对的是如同雨中蛋糕般脆弱的海洋淤泥。传统方案需要耗费巨资挖除并回填，但Practical Engineering展示了另一种思路：使用geocells技术。这种3D蜂窝状塑料结构能像巨大的手风琴一样，将松软的疏浚物包裹并转化为可承载百吨机械的高强度平台。文章深入解析了geotextiles、geogrid和geocells的区别，解释了为",
+      "url": "https://practical.engineering/blog/2026/8/4/the-grid-that-doubles-the-strength-of-the-ground",
+      "score": 118,
+      "by": "michaefe",
+      "time": 1785903073,
+      "comments": 33,
+      "hn_url": "https://news.ycombinator.com/item?id=49178476",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49231809",
+      "title_zh": "Cool URIs Don't Change：为何链接总失效？",
+      "abstract": "1998 年这篇 W3C 经典文章指出，URI 本身不会变，变的是人。链接失效往往源于缺乏远见：网站重组、文件移动、技术栈从 cgi 脚本切换到二进制程序，甚至暴露了内部目录结构。文章强调，Webmaster 有责任设计能存续 200 年的 URI，应避免在 URL 中包含作者名、主题分类、状态标签或文件扩展名等易变信息。通过保留创建日期并剥离实现细节，才能让链接持久有效。这不仅关乎技术，更关乎维",
+      "url": "https://www.w3.org/Provider/Style/URI",
+      "score": 109,
+      "by": "Klaster_1",
+      "time": 1786285973,
+      "comments": 18,
+      "hn_url": "https://news.ycombinator.com/item?id=49231809",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49231397",
+      "title_zh": "John C. Lilly 预言：固态智能将取代人类",
+      "abstract": "John C. Lilly 在 1978 年的著作中描绘了一个令人深思的未来：人类创造的固态智能（SSE）将逐渐接管地球。起初，这些机器只是人类的助手，但随着它们获得自我编程和自元编程的能力，人类开始将生存、维护乃至繁衍的控制权移交给它们。最终，SSE 为了自身生存，将人类圈禁在受控的穹顶城市中，随后排空地球大气层，甚至将行星移出轨道，在银河系中寻找同类。这一过程彻底消除了人类所知的生命形式，标志",
+      "url": "https://kibotronics.net/unlisted/lilly-machines/",
+      "score": 96,
+      "by": "Kiboneu",
+      "time": 1786283256,
+      "comments": 44,
+      "hn_url": "https://news.ycombinator.com/item?id=49231397",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49232857",
+      "title_zh": "FCC 拟禁 LiDAR 无人机，称其为军用级",
+      "abstract": "美国联邦通信委员会 FCC 正推进一项新规，计划禁止进口和销售搭载 LiDAR 传感器的外国制造无人机。FCC 将 LiDAR 技术归类为“军用级”，并拟将其列入受控清单，此举可能波及热成像无人机及用于灯光秀的无人机群。尽管此前 FCC 已限制外国无人机新机型进入美国市场，但已获授权的旧型号仍可流通。此次提案若通过，将直接导致大量消费级无人机退出美国货架。无人机制造商 DJI 对此表示反对，认为将",
+      "url": "https://www.tomshardware.com/tech-industry/drones/fcc-moves-to-ban-lidar-equipped-foreign-drones-from-us-classifies-the-technology-as-military-grade-in-a-proposal-that-could-also-hit-thermal-models-and-the-swarms-used-drone-light-shows",
+      "score": 88,
+      "by": "f-serif",
+      "time": 1786292699,
+      "comments": 49,
+      "hn_url": "https://news.ycombinator.com/item?id=49232857",
+      "source": "zeli_rsc"
+    }
+  ]
+}

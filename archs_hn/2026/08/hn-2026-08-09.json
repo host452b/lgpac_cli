@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-09",
+  "fetched_at": "2026-08-09T20:18:44.678914+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49234675",
+      "title": "How I use LLMs to learn complex topics",
+      "url": "https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/",
+      "score": 90,
+      "by": "laurentiurad",
+      "time": 1786303009,
+      "comments": 41,
+      "source": "firebase"
+    },
+    {
+      "id": "49231154",
+      "title": "Mea Culpa – Dark Hours",
+      "url": "https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html",
+      "score": 455,
+      "by": "satvikpendem",
+      "time": 1786281643,
+      "comments": 208,
+      "source": "firebase"
+    },
+    {
+      "id": "49233423",
+      "title": "Ask HN: What are you working on? (August 2026)",
+      "url": "https://news.ycombinator.com/item?id=49233423",
+      "score": 88,
+      "by": "david927",
+      "time": 1786296202,
+      "comments": 329,
+      "source": "firebase"
+    },
+    {
+      "id": "49233448",
+      "title": "OpenChamber: An Agentic Development Environment",
+      "url": "https://openchamber.dev/",
+      "score": 55,
+      "by": "hexomancer",
+      "time": 1786296436,
+      "comments": 34,
+      "source": "firebase"
+    },
+    {
+      "id": "49231809",
+      "title": "Cool URIs Don't Change (1998)",
+      "url": "https://www.w3.org/Provider/Style/URI",
+      "score": 109,
+      "by": "Klaster_1",
+      "time": 1786285973,
+      "comments": 18,
+      "source": "firebase"
+    },
+    {
+      "id": "49231397",
+      "title": "John C. Lilly on solid state intelligence and the elimination of man (1978)",
+      "url": "https://kibotronics.net/unlisted/lilly-machines/",
+      "score": 96,
+      "by": "Kiboneu",
+      "time": 1786283256,
+      "comments": 46,
+      "source": "firebase"
+    },
+    {
+      "id": "49183291",
+      "title": "Crickets as Pets",
+      "url": "https://en.wikipedia.org/wiki/Crickets_as_pets",
+      "score": 50,
+      "by": "Michelangelo11",
+      "time": 1785939490,
+      "comments": 29,
+      "source": "firebase"
+    },
+    {
+      "id": "49230891",
+      "title": "Show HN: A Project Oberon System version running on RISC-V instead of RISC-5",
+      "url": "https://github.com/rochus-keller/OberonSystem/tree/op2-rv32",
+      "score": 85,
+      "by": "Rochus",
+      "time": 1786279396,
+      "comments": 16,
+      "source": "firebase"
+    },
+    {
+      "id": "49199437",
+      "title": "How Golden Is Silence, Actually?",
+      "url": "https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review",
+      "score": 12,
+      "by": "tintinnabula",
+      "time": 1786036084,
+      "comments": 2,
+      "source": "firebase"
+    },
+    {
+      "id": "49234379",
+      "title": "Saying No",
+      "url": "https://rozumem.xyz/posts/19",
+      "score": 59,
+      "by": "rozumem",
+      "time": 1786301466,
+      "comments": 47,
+      "source": "firebase"
+    }
+  ]
+}
