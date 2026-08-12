@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-09 20:18 UTC
+> Updated: 2026-08-12 20:42 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 90 | [How I use LLMs to learn complex topics](https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/) | [41](https://news.ycombinator.com/item?id=49234675) |
-| 2 | 455 | [Mea Culpa – Dark Hours](https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html) | [208](https://news.ycombinator.com/item?id=49231154) |
-| 3 | 88 | [Ask HN: What are you working on? (August 2026)](https://news.ycombinator.com/item?id=49233423) | [329](https://news.ycombinator.com/item?id=49233423) |
-| 4 | 55 | [OpenChamber: An Agentic Development Environment](https://openchamber.dev/) | [34](https://news.ycombinator.com/item?id=49233448) |
-| 5 | 109 | [Cool URIs Don't Change (1998)](https://www.w3.org/Provider/Style/URI) | [18](https://news.ycombinator.com/item?id=49231809) |
-| 6 | 96 | [John C. Lilly on solid state intelligence and the elimination of man (1978)](https://kibotronics.net/unlisted/lilly-machines/) | [46](https://news.ycombinator.com/item?id=49231397) |
-| 7 | 50 | [Crickets as Pets](https://en.wikipedia.org/wiki/Crickets_as_pets) | [29](https://news.ycombinator.com/item?id=49183291) |
-| 8 | 85 | [Show HN: A Project Oberon System version running on RISC-V instead of RISC-5](https://github.com/rochus-keller/OberonSystem/tree/op2-rv32) | [16](https://news.ycombinator.com/item?id=49230891) |
-| 9 | 12 | [How Golden Is Silence, Actually?](https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review) | [2](https://news.ycombinator.com/item?id=49199437) |
-| 10 | 59 | [Saying No](https://rozumem.xyz/posts/19) | [47](https://news.ycombinator.com/item?id=49234379) |
+| 1 | 525 | [DeepSeek V4 Pro 0813](https://openrouter.ai/deepseek/deepseek-v4-pro-0813) | [193](https://news.ycombinator.com/item?id=49274600) |
+| 2 | 184 | [Delta](https://zed.dev/blog/introducing-delta) | [63](https://news.ycombinator.com/item?id=49276574) |
+| 3 | 591 | [Tailscale Traces Database Corruption to 16y/o SQLite WAL-Reset Bug](https://tailscale.com/blog/sqlite-wal-reset-bug) | [95](https://news.ycombinator.com/item?id=49272832) |
+| 4 | 331 | [Qwen3.8-2.4T](https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B) | [76](https://news.ycombinator.com/item?id=49273478) |
+| 5 | 225 | [Grok 4.6 scores 61 on the Artificial Analysis Intelligence Index](https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis) | [211](https://news.ycombinator.com/item?id=49275385) |
+| 6 | 428 | [2026 Eclipse Webcams](https://jonty.github.io/2026_eclipse_webcams/) | [116](https://news.ycombinator.com/item?id=49270953) |
+| 7 | 179 | [Tim King, AmigaDOS developer, has died](https://amiga-news.de/en/news/AN-2026-08-00070-EN.html) | [23](https://news.ycombinator.com/item?id=49272655) |
+| 8 | 176 | [Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot](https://knownagents.com/insights) | [121](https://news.ycombinator.com/item?id=49272569) |
+| 9 | 66 | [HTML over WebSockets: real-time SPAs with barely any JavaScript](https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/) | [59](https://news.ycombinator.com/item?id=49275335) |
+| 10 | 200 | [Why tiny JPEGs look different in Chrome](https://guillaumetech.github.io/posts/jpg-scaling-chrome/) | [41](https://news.ycombinator.com/item?id=49272549) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [我误用 Claude 复制了 DarkHours.app](https://news.ycombinator.com/item?id=49231154) | [HN](https://news.ycombinator.com/item?id=49231154) |
-| 2 | [Jill Lepore：硅谷误读科幻，正在瓦解民主](https://news.ycombinator.com/item?id=49232221) | [HN](https://news.ycombinator.com/item?id=49232221) |
-| 3 | [所有阶数的 Magic Hexagons 均存在](https://news.ycombinator.com/item?id=49229174) | [HN](https://news.ycombinator.com/item?id=49229174) |
-| 4 | [硅谷骗局：从戏剧化叙事到刑事欺诈](https://news.ycombinator.com/item?id=49232318) | [HN](https://news.ycombinator.com/item?id=49232318) |
-| 5 | [Microsoft Word 1.1a 原生 x64 移植版](https://news.ycombinator.com/item?id=49228663) | [HN](https://news.ycombinator.com/item?id=49228663) |
-| 6 | [Tom Stanton 的抛石机仅靠重力突破音障](https://news.ycombinator.com/item?id=49232110) | [HN](https://news.ycombinator.com/item?id=49232110) |
-| 7 | [网格如何让松软地基强度翻倍](https://news.ycombinator.com/item?id=49178476) | [HN](https://news.ycombinator.com/item?id=49178476) |
-| 8 | [Cool URIs Don't Change：为何链接总失效？](https://news.ycombinator.com/item?id=49231809) | [HN](https://news.ycombinator.com/item?id=49231809) |
-| 9 | [John C. Lilly 预言：固态智能将取代人类](https://news.ycombinator.com/item?id=49231397) | [HN](https://news.ycombinator.com/item?id=49231397) |
-| 10 | [FCC 拟禁 LiDAR 无人机，称其为军用级](https://news.ycombinator.com/item?id=49232857) | [HN](https://news.ycombinator.com/item?id=49232857) |
+| 1 | [Tailscale 追踪到 SQLite 16 年前的 Bug](https://news.ycombinator.com/item?id=49272832) | [HN](https://news.ycombinator.com/item?id=49272832) |
+| 2 | [AI 正在淘汰软件工程的中间阶层](https://news.ycombinator.com/item?id=49271994) | [HN](https://news.ycombinator.com/item?id=49271994) |
+| 3 | [DeepSeek V4 Pro 0813 正式开放 API](https://news.ycombinator.com/item?id=49274600) | [HN](https://news.ycombinator.com/item?id=49274600) |
+| 4 | [ALPR 历史搜索应需搜查令](https://news.ycombinator.com/item?id=49273165) | [HN](https://news.ycombinator.com/item?id=49273165) |
+| 5 | [2026年日全食：全球Webcam实时追踪](https://news.ycombinator.com/item?id=49270953) | [HN](https://news.ycombinator.com/item?id=49270953) |
+| 6 | [Grok 4.6 发布：长程智能体与代码能力全面升级](https://news.ycombinator.com/item?id=49274027) | [HN](https://news.ycombinator.com/item?id=49274027) |
+| 7 | [Tim Gowers：LLM 擅长哪类数学？](https://news.ycombinator.com/item?id=49270022) | [HN](https://news.ycombinator.com/item?id=49270022) |
+| 8 | [SpaceXAI的Grok 4.6重返智能前沿](https://news.ycombinator.com/item?id=49275385) | [HN](https://news.ycombinator.com/item?id=49275385) |
+| 9 | [为何小尺寸 JPEG 在 Chrome 中显示不同](https://news.ycombinator.com/item?id=49272549) | [HN](https://news.ycombinator.com/item?id=49272549) |
+| 10 | [AmigaDOS 开发者 Dr. Tim King 逝世](https://news.ycombinator.com/item?id=49272655) | [HN](https://news.ycombinator.com/item?id=49272655) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-09T20:18:44.682184+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-12T20:42:42.946094+00:00*

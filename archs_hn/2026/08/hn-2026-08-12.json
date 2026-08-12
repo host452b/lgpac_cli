@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-12",
+  "fetched_at": "2026-08-12T20:42:42.943055+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49274600",
+      "title": "DeepSeek V4 Pro 0813",
+      "url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
+      "score": 525,
+      "by": "explosion-s",
+      "time": 1786550690,
+      "comments": 193,
+      "source": "firebase"
+    },
+    {
+      "id": "49276574",
+      "title": "Delta",
+      "url": "https://zed.dev/blog/introducing-delta",
+      "score": 184,
+      "by": "khy",
+      "time": 1786558799,
+      "comments": 63,
+      "source": "firebase"
+    },
+    {
+      "id": "49272832",
+      "title": "Tailscale Traces Database Corruption to 16y/o SQLite WAL-Reset Bug",
+      "url": "https://tailscale.com/blog/sqlite-wal-reset-bug",
+      "score": 591,
+      "by": "ropbear",
+      "time": 1786544550,
+      "comments": 95,
+      "source": "firebase"
+    },
+    {
+      "id": "49273478",
+      "title": "Qwen3.8-2.4T",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+      "score": 331,
+      "by": "Philpax",
+      "time": 1786546877,
+      "comments": 76,
+      "source": "firebase"
+    },
+    {
+      "id": "49275385",
+      "title": "Grok 4.6 scores 61 on the Artificial Analysis Intelligence Index",
+      "url": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis",
+      "score": 225,
+      "by": "wertyk",
+      "time": 1786553665,
+      "comments": 211,
+      "source": "firebase"
+    },
+    {
+      "id": "49270953",
+      "title": "2026 Eclipse Webcams",
+      "url": "https://jonty.github.io/2026_eclipse_webcams/",
+      "score": 428,
+      "by": "zoenolan",
+      "time": 1786535581,
+      "comments": 116,
+      "source": "firebase"
+    },
+    {
+      "id": "49272655",
+      "title": "Tim King, AmigaDOS developer, has died",
+      "url": "https://amiga-news.de/en/news/AN-2026-08-00070-EN.html",
+      "score": 179,
+      "by": "doener",
+      "time": 1786543751,
+      "comments": 23,
+      "source": "firebase"
+    },
+    {
+      "id": "49272569",
+      "title": "Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot",
+      "url": "https://knownagents.com/insights",
+      "score": 176,
+      "by": "gavinhking",
+      "time": 1786543366,
+      "comments": 121,
+      "source": "firebase"
+    },
+    {
+      "id": "49275335",
+      "title": "HTML over WebSockets: real-time SPAs with barely any JavaScript",
+      "url": "https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/",
+      "score": 66,
+      "by": "redbell",
+      "time": 1786553485,
+      "comments": 59,
+      "source": "firebase"
+    },
+    {
+      "id": "49272549",
+      "title": "Why tiny JPEGs look different in Chrome",
+      "url": "https://guillaumetech.github.io/posts/jpg-scaling-chrome/",
+      "score": 200,
+      "by": "gutechh",
+      "time": 1786543254,
+      "comments": 41,
+      "source": "firebase"
+    }
+  ]
+}

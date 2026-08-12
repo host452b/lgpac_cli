@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-12",
+  "fetched_at": "2026-08-12T20:42:42.944277+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49272832",
+      "title_zh": "Tailscale 追踪到 SQLite 16 年前的 Bug",
+      "abstract": "去年，Tailscale 遭遇了持续数月的服务不稳定，根源竟深藏于 SQLite 数据库中。在经历了 19 次数据库损坏事件后，我们投入大量精力进行排查，最终锁定了一个存在 16 年的 SQLite WAL-Reset 漏洞。虽然我们的架构设计遵循了 SQLite 的最佳实践，但这个深埋的 Bug 导致数据在特定场景下凭空消失。通过与 SQLite 核心开发团队的合作，我们不仅修复了问题，还协助定",
+      "url": "https://tailscale.com/blog/sqlite-wal-reset-bug",
+      "score": 580,
+      "by": "ropbear",
+      "time": 1786544550,
+      "comments": 94,
+      "hn_url": "https://news.ycombinator.com/item?id=49272832",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49271994",
+      "title_zh": "AI 正在淘汰软件工程的中间阶层",
+      "abstract": "想象一下，当你度假回来，发现代码库已是一片狼藉。在 2026 年，这不再是假期后的特例，而是每个周一的常态。AI 移除了工程速度的限制，让缺乏工程文化的团队能以前所未有的速度制造技术债务。如今，工程师一天生成的代码量可能超过过去一年的总和，但理解这些代码却变得异常困难。当团队面对无法解释的架构决策时，往往只能依赖 Claude 或 Fable 等工具盲目修复，陷入恶性循环。坏工程师的代价变得极其昂",
+      "url": "https://blog.florianherrengt.com/ai-removing-middle-class-software-engineering.html",
+      "score": 573,
+      "by": "florianherrengt",
+      "time": 1786540805,
+      "comments": 468,
+      "hn_url": "https://news.ycombinator.com/item?id=49271994",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49274600",
+      "title_zh": "DeepSeek V4 Pro 0813 正式开放 API",
+      "abstract": "DeepSeek 最新推出的 DeepSeek V4 Pro 0813 已通过 OpenRouter 正式对外提供 API 服务。这款大规模混合专家模型（Mixture-of-Experts）拥有 1M 的上下文窗口，专为高级推理、代码编写及长周期 Agent 工作流设计。其输入 Token 价格低至 0.1537 美元/百万，输出为 0.8697 美元/百万，且支持开启 reasoning 参数",
+      "url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
+      "score": 509,
+      "by": "explosion-s",
+      "time": 1786550690,
+      "comments": 189,
+      "hn_url": "https://news.ycombinator.com/item?id=49274600",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49273165",
+      "title_zh": "ALPR 历史搜索应需搜查令",
+      "abstract": "作为一名与警方密切合作的前犯罪分析师，我认为 ALPR 技术本身是降低犯罪成本的有效工具，但当前对历史数据的搜索缺乏有效监管。在 Schmidt v City of Norfolk 一案中，法官裁定目前的 ALPR 监控尚未违宪，但这只是暂时的。随着摄像头普及，未来必然需要搜查令来保护隐私。现行的数据保留政策既无法阻止警察滥用系统跟踪个人，又限制了长期案件调查的合法性。真正的解决方案不是简单删除数",
+      "url": "https://andrewpwheeler.com/2026/08/12/license-plate-reader-searches-should-require-a-warrant/",
+      "score": 446,
+      "by": "apwheele",
+      "time": 1786545819,
+      "comments": 276,
+      "hn_url": "https://news.ycombinator.com/item?id=49273165",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49270953",
+      "title_zh": "2026年日全食：全球Webcam实时追踪",
+      "abstract": "2026年的日全食即将上演，一个名为2026 Eclipse Webcams的项目正在全球范围内部署网络摄像头，实时捕捉这一罕见天象。该项目由jonty开发，通过Leaflet地图库和OpenStreetMap数据，将分布在世界各地的摄像头位置标记在地图上，让无法亲临现场的人们也能通过网络直播感受日全食的震撼。从全食开始到首次被摄像头捕捉，时间精确到秒，为天文爱好者和科技迷提供了一个独特的观察窗口",
+      "url": "https://jonty.github.io/2026_eclipse_webcams/",
+      "score": 424,
+      "by": "zoenolan",
+      "time": 1786535581,
+      "comments": 114,
+      "hn_url": "https://news.ycombinator.com/item?id=49270953",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49274027",
+      "title_zh": "Grok 4.6 发布：长程智能体与代码能力全面升级",
+      "abstract": "今天正式推出 Grok 4.6，它在 Grok 4.5 的基础上，重点强化了长周期智能体任务以及复杂的交互式视觉工作。无论是跨步骤的研究分析、代码库操作，还是将创意转化为完整应用，Grok 4.6 都能保持高度的连贯性。在多项智能体编码和知识工作基准测试中，其表现达到前沿水平，AA Intelligence Index 得分与 GPT-5.6 Sol 持平。该模型现已在 Cursor 和 Grok",
+      "url": "https://x.ai/news/grok-4-6",
+      "score": 252,
+      "by": "iLuddite",
+      "time": 1786548770,
+      "comments": 269,
+      "hn_url": "https://news.ycombinator.com/item?id=49274027",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49270022",
+      "title_zh": "Tim Gowers：LLM 擅长哪类数学？",
+      "abstract": "OpenAI 近期宣布解决了包括非sofic群构造在内的十个重大数学难题，这一突破引发了对LLM能力的重新评估。Tim Gowers指出，尽管LLM在解决特定问题上表现惊人，但它们尚未在所有数学领域超越人类。文章深入探讨了LLM是否特别擅长寻找反例，并通过Vinogradov定理与Gluskin定理的对比，分析了“反例”与“定理”在逻辑结构上的微妙差异。Gowers认为，关键在于问题中量化变量的本",
+      "url": "https://gowers.wordpress.com/2026/08/12/what-sort-of-maths-are-llms-good-at/",
+      "score": 216,
+      "by": "ColinWright",
+      "time": 1786529065,
+      "comments": 113,
+      "hn_url": "https://news.ycombinator.com/item?id=49270022",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49275385",
+      "title_zh": "SpaceXAI的Grok 4.6重返智能前沿",
+      "abstract": "SpaceXAI推出的Grok 4.6在Artificial Analysis Intelligence Index上斩获61分，正式重返智能前沿，与GPT-5.6 Sol并驾齐驱，仅次于Anthropic的Claude Opus 5。这款模型在GDPval-AA v2等代理任务中表现卓越，Elo评分高达1753，同时保持了极具竞争力的成本优势。尽管智能指数提升了5分，Grok 4.6的定价却未变",
+      "url": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis",
+      "score": 214,
+      "by": "wertyk",
+      "time": 1786553665,
+      "comments": 202,
+      "hn_url": "https://news.ycombinator.com/item?id=49275385",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49272549",
+      "title_zh": "为何小尺寸 JPEG 在 Chrome 中显示不同",
+      "abstract": "我曾发现同一个图标在同事电脑上看起来更纤细、更还原，而在我的 Chrome 浏览器中却显得更粗。深入调查后，我发现这并非渲染 Bug，而是 Chrome 的一项巧妙优化。当 JPEG 图片被缩放到极小尺寸时，传统的全量解码再缩放方式极其浪费内存。Chrome 利用 Skia 和 libjpeg-turbo 实现了 partial IDCT scaling 技术，直接跳过高频细节系数，仅解码低频数据",
+      "url": "https://guillaumetech.github.io/posts/jpg-scaling-chrome/",
+      "score": 198,
+      "by": "gutechh",
+      "time": 1786543254,
+      "comments": 38,
+      "hn_url": "https://news.ycombinator.com/item?id=49272549",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49272655",
+      "title_zh": "AmigaDOS 开发者 Dr. Tim King 逝世",
+      "abstract": "AmigaDOS 的核心开发者 Dr. Tim King 已于今年 7 月底离世，其家人近日确认了这一消息。Dr. Tim King 在剑桥大学攻读计算机科学期间便展现出非凡天赋，开发了名为 Tripos 的抢先式多任务操作系统。1984 年，他带着 Tripos 加入 MetaComCo，该系统随后被深度整合进 Amiga 电脑，演变为标志性的 AmigaDOS。离开 MetaComCo 后，D",
+      "url": "https://amiga-news.de/en/news/AN-2026-08-00070-EN.html",
+      "score": 175,
+      "by": "doener",
+      "time": 1786543751,
+      "comments": 23,
+      "hn_url": "https://news.ycombinator.com/item?id=49272655",
+      "source": "zeli_rsc"
+    }
+  ]
+}
