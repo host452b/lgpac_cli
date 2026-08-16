@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-16",
+  "fetched_at": "2026-08-16T20:22:45.441867+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49268580",
+      "title_zh": "ASUS Oxiis：让普通自行车秒变智能电助力",
+      "abstract": "ASUS 推出了全新的 Oxiis 智能自行车助推器，这款设备采用摩擦驱动技术，无需改装齿轮或刹车，即可将普通自行车瞬间转化为智能电助力车。它配备 500W 峰值功率电机和 158Wh 可拆卸电池，支持自适应爬坡辅助和无线踏频感应。产品兼容城市、公路、折叠等多种车型，通过 ASUS Oxiis App 可轻松切换 Eco、Normal 和 Sport 三种骑行模式。其模块化设计不仅安装便捷，还支持",
+      "url": "https://www.asus.com/accessories/bike-booster/asus-oxiis/oxiis-intelligent-bike-booster/",
+      "score": 577,
+      "by": "wiradikusuma",
+      "time": 1786516392,
+      "comments": 403,
+      "hn_url": "https://news.ycombinator.com/item?id=49268580",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49319556",
+      "title_zh": "Claude 系统提示词更新全记录",
+      "abstract": "Claude 的网页版和移动端应用通过系统提示词，在每次对话开始时向模型注入当前日期等关键信息，并规范如使用 Markdown 输出代码片段等行为。这些提示词会定期更新以优化响应质量，但请注意，此类更新仅适用于 Claude 的 Web 界面和 App，并不影响通过 Claude API 调用的模型表现。文档详细梳理了从 Claude Opus 5 到早期版本如 Claude Sonnet 3.5",
+      "url": "https://platform.claude.com/docs/en/release-notes/system-prompts",
+      "score": 412,
+      "by": "tosh",
+      "time": 1786884501,
+      "comments": 181,
+      "hn_url": "https://news.ycombinator.com/item?id=49319556",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49319633",
+      "title_zh": "Firefox for iOS 原生广告拦截器上线",
+      "abstract": "Firefox for iOS 终于迎来了原生广告拦截功能，用户无需再依赖第三方扩展即可屏蔽广告。这一更新标志着 Mozilla 在移动端用户体验上的重要突破，不仅提升了浏览速度，还增强了隐私保护。尽管部分页面因缓存问题显示加载错误，但核心功能的落地无疑为 iOS 用户带来了更清爽的浏览体验。",
+      "url": "https://support.mozilla.org/en-US/kb/block-ads-firefox-ios",
+      "score": 406,
+      "by": "pentagrama",
+      "time": 1786885090,
+      "comments": 176,
+      "hn_url": "https://news.ycombinator.com/item?id=49319633",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49319389",
+      "title_zh": "学术圈怪象：肾衰竭变肾失望",
+      "abstract": "在 Google Scholar 上搜索发现，大量医学研究论文竟将严重的“肾衰竭”错误表述为“肾失望”。这一现象并非个别案例，而是广泛存在于各类学术文章中，甚至出现在讨论机器学习检测慢性肾病的严肃研究里。这种将致命疾病轻描淡写为情绪化词汇的翻译错误，不仅暴露了非英语母语研究者在专业术语上的疏忽，更可能引发严重的临床误解。当“kidney disappointment”取代了“kidney fail",
+      "url": "https://scholar.google.com/scholar?q=%22kidney+disappointment%22",
+      "score": 294,
+      "by": "Alifatisk",
+      "time": 1786882940,
+      "comments": 111,
+      "hn_url": "https://news.ycombinator.com/item?id=49319389",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49243061",
+      "title_zh": "DuckDB 引入异步 I/O，查询速度提升 3 倍",
+      "abstract": "从 v2.0 版本开始，DuckDB 将原生支持 Parquet 和 CSV 文件的异步读取。这一变革专门针对 EC2 和 S3 等远程存储场景，解决了同步 I/O 无法跑满网络带宽的瓶颈。通过引入独立的 ASYNC 线程池和读前策略，DuckDB 让数据获取与计算解码并行执行，避免线程空转等待。在 TPC-H 基准测试中，开启异步 I/O 后，查询耗时从 8.23 秒骤降至 2.84 秒，性能提",
+      "url": "https://duckdb.org/2026/07/31/asynchronous-io",
+      "score": 259,
+      "by": "pdet",
+      "time": 1786366878,
+      "comments": 28,
+      "hn_url": "https://news.ycombinator.com/item?id=49243061",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49314235",
+      "title_zh": "Sam Altman：为什么好点子需要孤独",
+      "abstract": "Sam Altman 曾直言，伟大的想法极其脆弱，在共享办公空间里，他人的嘲笑会让初创者放弃那些听起来荒谬却极具潜力的点子。真正的创造力往往诞生于一种特定的心理状态，而非物理上的独处。数学家 Alexander Grothendieck 和导演 Ingmar Bergman 的笔记揭示了这一真相：在远离外界评判的孤独中，人们才能重新定义概念，甚至“重新发明”已知知识。这种与自我深度连接的能力，才是",
+      "url": "https://www.henrikkarlsson.xyz/p/good-ideas",
+      "score": 253,
+      "by": "felixbraun",
+      "time": 1786827251,
+      "comments": 60,
+      "hn_url": "https://news.ycombinator.com/item?id=49314235",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49320611",
+      "title_zh": "AI 代币经纪人：隐秘的转售黑市",
+      "abstract": "我最近发现了一个正在商业化的隐秘市场：AI 代币经纪人。这些人从初创公司手中收购未使用的 API 额度，然后以 30% 到 80% 的折扣转售给其他开发者。通过联系这些经纪人，我发现有人能每天提供高达 10 万美元的额度，并通过代理转发请求来规避直接提供 API Key 的风险。除了私下交易，AI Credits、AICreditMart 等网站甚至建立了专门的代币交易集市，而 CheapCred",
+      "url": "https://vectoral.com/blog/who-are-the-token-brokers",
+      "score": 172,
+      "by": "mlenhard",
+      "time": 1786891495,
+      "comments": 64,
+      "hn_url": "https://news.ycombinator.com/item?id=49320611",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49321717",
+      "title_zh": "RISC-V：第三世界嵌入式工程师的回应",
+      "abstract": "作为一名来自发展中国家的嵌入式工程师，我注意到关于 RISC-V 的讨论中常有一种居高临下的论调，仿佛只有特定背景的人才能真正理解或驾驭它。然而，现实是，无论身处何地，工程师们都在用有限的资源解决复杂的硬件问题。RISC-V 的开放性和灵活性正是我们这类开发者最需要的工具，而非被质疑的对象。这篇文章旨在打破刻板印象，分享我们在资源受限环境下如何高效利用 RISC-V 架构，并呼吁社区更多关注实际工",
+      "url": "https://rvembedded.com/blog_post/12/",
+      "score": 171,
+      "by": "Narishma",
+      "time": 1786899667,
+      "comments": 92,
+      "hn_url": "https://news.ycombinator.com/item?id=49321717",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49320984",
+      "title_zh": "周末诞生百年，正被混合办公瓦解",
+      "abstract": "周末这一概念诞生仅百年，始于1926年Henry Ford推行五天工作制，旨在对抗流水线带来的疲惫并刺激消费。然而，从苏联曾尝试的无周末制度到如今的混合办公，休息日的边界正变得模糊。随着“摸鱼周五”和四天工作制的兴起，传统周六下午的足球赛和周日家庭聚会正在消解。文章探讨了从“时间奴隶”到“时间所有者”的职场分化，指出当工作与生活界限消失，我们是否正在失去周末所代表的集体自主权。",
+      "url": "https://www.theguardian.com/money/2026/aug/16/the-weekend-is-100-years-old-skiveday-fridays-and-hybrid-working-ruined-it",
+      "score": 127,
+      "by": "lentil_soup",
+      "time": 1786894215,
+      "comments": 73,
+      "hn_url": "https://news.ycombinator.com/item?id=49320984",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49277952",
+      "title_zh": "为何 Postgres 离不开 PgBouncer？",
+      "abstract": "我的一篇关于管理数据库连接的文章在十年后依然适用，这揭示了一个事实：Postgres 在处理大量连接时依然表现不佳。因此，使用本地连接池和 PgBouncer 这样的池化器几乎是行业标准。我调查了主流托管 Postgres 提供商，发现几乎所有服务商都默认捆绑了 PgBouncer 或类似的连接池解决方案。然而，这种普遍依赖外部组件的现状也带来了大量重复配置和文档阅读的工作。如果连接池能像 MyS",
+      "url": "https://brandur.org/fragments/postgres-without-pgbouncer",
+      "score": 122,
+      "by": "abelanger",
+      "time": 1786565586,
+      "comments": 79,
+      "hn_url": "https://news.ycombinator.com/item?id=49277952",
+      "source": "zeli_rsc"
+    }
+  ]
+}

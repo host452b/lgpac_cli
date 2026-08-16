@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-12 20:42 UTC
+> Updated: 2026-08-16 20:22 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 525 | [DeepSeek V4 Pro 0813](https://openrouter.ai/deepseek/deepseek-v4-pro-0813) | [193](https://news.ycombinator.com/item?id=49274600) |
-| 2 | 184 | [Delta](https://zed.dev/blog/introducing-delta) | [63](https://news.ycombinator.com/item?id=49276574) |
-| 3 | 591 | [Tailscale Traces Database Corruption to 16y/o SQLite WAL-Reset Bug](https://tailscale.com/blog/sqlite-wal-reset-bug) | [95](https://news.ycombinator.com/item?id=49272832) |
-| 4 | 331 | [Qwen3.8-2.4T](https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B) | [76](https://news.ycombinator.com/item?id=49273478) |
-| 5 | 225 | [Grok 4.6 scores 61 on the Artificial Analysis Intelligence Index](https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis) | [211](https://news.ycombinator.com/item?id=49275385) |
-| 6 | 428 | [2026 Eclipse Webcams](https://jonty.github.io/2026_eclipse_webcams/) | [116](https://news.ycombinator.com/item?id=49270953) |
-| 7 | 179 | [Tim King, AmigaDOS developer, has died](https://amiga-news.de/en/news/AN-2026-08-00070-EN.html) | [23](https://news.ycombinator.com/item?id=49272655) |
-| 8 | 176 | [Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot](https://knownagents.com/insights) | [121](https://news.ycombinator.com/item?id=49272569) |
-| 9 | 66 | [HTML over WebSockets: real-time SPAs with barely any JavaScript](https://en.andros.dev/blog/ef4968f5/html-over-websockets-real-time-spas-with-barely-any-javascript/) | [59](https://news.ycombinator.com/item?id=49275335) |
-| 10 | 200 | [Why tiny JPEGs look different in Chrome](https://guillaumetech.github.io/posts/jpg-scaling-chrome/) | [41](https://news.ycombinator.com/item?id=49272549) |
+| 1 | 94 | [Models Are Getting Dumber on Purpose](https://w4g1.dev/blog/models-are-getting-dumber-on-purpose) | [50](https://news.ycombinator.com/item?id=49322695) |
+| 2 | 176 | [A 3rd World Embedded Engineer Responds to "RISC-V They Should Have Known Better"](https://rvembedded.com/blog_post/12/) | [95](https://news.ycombinator.com/item?id=49321717) |
+| 3 | 415 | [Claude: System Prompts](https://platform.claude.com/docs/en/release-notes/system-prompts) | [182](https://news.ycombinator.com/item?id=49319556) |
+| 4 | 28 | [Protobuf has LSP support. You're welcome](https://buf.build/blog/protobuf-lsp) | [4](https://news.ycombinator.com/item?id=49322573) |
+| 5 | 174 | [The AI Credit Resale Economy](https://vectoral.com/blog/who-are-the-token-brokers) | [64](https://news.ycombinator.com/item?id=49320611) |
+| 6 | 25 | [MathCode, Mathematical Coding Agent](https://math-ai-org.github.io/mathcode/) | [9](https://news.ycombinator.com/item?id=49322330) |
+| 7 | 96 | [NIH is ending a key grant for budding clinical researchers](https://www.science.org/content/article/nih-ending-key-grant-budding-clinical-researchers) | [37](https://news.ycombinator.com/item?id=49321353) |
+| 8 | 113 | [St Lucie Nuclear Reactor Unit 1 manually shutdown, 3 control rods drop into core](https://www.wptv.com/news/treasure-coast/region-st-lucie-county/saint-lucie-nuclear-power-plant-unit-1-manually-shut-down-after-3-control-rods-drop-into-reactor-core) | [82](https://news.ycombinator.com/item?id=49320856) |
+| 9 | 41 | [Anton Chekhov played at love most of his life](https://commonreader.wustl.edu/winning-and-losing-at-the-great-game-of-intimacy/) | [5](https://news.ycombinator.com/item?id=49306021) |
+| 10 | 56 | [Clamiga: Common Lisp for the Amiga](https://nnamgreb.de/blog/Clamiga+-+Common+Lisp+for+the+Amiga) | [4](https://news.ycombinator.com/item?id=49281352) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Tailscale 追踪到 SQLite 16 年前的 Bug](https://news.ycombinator.com/item?id=49272832) | [HN](https://news.ycombinator.com/item?id=49272832) |
-| 2 | [AI 正在淘汰软件工程的中间阶层](https://news.ycombinator.com/item?id=49271994) | [HN](https://news.ycombinator.com/item?id=49271994) |
-| 3 | [DeepSeek V4 Pro 0813 正式开放 API](https://news.ycombinator.com/item?id=49274600) | [HN](https://news.ycombinator.com/item?id=49274600) |
-| 4 | [ALPR 历史搜索应需搜查令](https://news.ycombinator.com/item?id=49273165) | [HN](https://news.ycombinator.com/item?id=49273165) |
-| 5 | [2026年日全食：全球Webcam实时追踪](https://news.ycombinator.com/item?id=49270953) | [HN](https://news.ycombinator.com/item?id=49270953) |
-| 6 | [Grok 4.6 发布：长程智能体与代码能力全面升级](https://news.ycombinator.com/item?id=49274027) | [HN](https://news.ycombinator.com/item?id=49274027) |
-| 7 | [Tim Gowers：LLM 擅长哪类数学？](https://news.ycombinator.com/item?id=49270022) | [HN](https://news.ycombinator.com/item?id=49270022) |
-| 8 | [SpaceXAI的Grok 4.6重返智能前沿](https://news.ycombinator.com/item?id=49275385) | [HN](https://news.ycombinator.com/item?id=49275385) |
-| 9 | [为何小尺寸 JPEG 在 Chrome 中显示不同](https://news.ycombinator.com/item?id=49272549) | [HN](https://news.ycombinator.com/item?id=49272549) |
-| 10 | [AmigaDOS 开发者 Dr. Tim King 逝世](https://news.ycombinator.com/item?id=49272655) | [HN](https://news.ycombinator.com/item?id=49272655) |
+| 1 | [ASUS Oxiis：让普通自行车秒变智能电助力](https://news.ycombinator.com/item?id=49268580) | [HN](https://news.ycombinator.com/item?id=49268580) |
+| 2 | [Claude 系统提示词更新全记录](https://news.ycombinator.com/item?id=49319556) | [HN](https://news.ycombinator.com/item?id=49319556) |
+| 3 | [Firefox for iOS 原生广告拦截器上线](https://news.ycombinator.com/item?id=49319633) | [HN](https://news.ycombinator.com/item?id=49319633) |
+| 4 | [学术圈怪象：肾衰竭变肾失望](https://news.ycombinator.com/item?id=49319389) | [HN](https://news.ycombinator.com/item?id=49319389) |
+| 5 | [DuckDB 引入异步 I/O，查询速度提升 3 倍](https://news.ycombinator.com/item?id=49243061) | [HN](https://news.ycombinator.com/item?id=49243061) |
+| 6 | [Sam Altman：为什么好点子需要孤独](https://news.ycombinator.com/item?id=49314235) | [HN](https://news.ycombinator.com/item?id=49314235) |
+| 7 | [AI 代币经纪人：隐秘的转售黑市](https://news.ycombinator.com/item?id=49320611) | [HN](https://news.ycombinator.com/item?id=49320611) |
+| 8 | [RISC-V：第三世界嵌入式工程师的回应](https://news.ycombinator.com/item?id=49321717) | [HN](https://news.ycombinator.com/item?id=49321717) |
+| 9 | [周末诞生百年，正被混合办公瓦解](https://news.ycombinator.com/item?id=49320984) | [HN](https://news.ycombinator.com/item?id=49320984) |
+| 10 | [为何 Postgres 离不开 PgBouncer？](https://news.ycombinator.com/item?id=49277952) | [HN](https://news.ycombinator.com/item?id=49277952) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-12T20:42:42.946094+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-16T20:22:45.443281+00:00*
