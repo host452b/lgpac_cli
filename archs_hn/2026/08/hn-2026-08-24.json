@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-24",
+  "fetched_at": "2026-08-24T20:17:00.250828+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49420873",
+      "title": "Xiaomi: New CPU matches Apple cores single threaded, much faster multithreaded",
+      "url": "https://twitter.com/lemire/status/2091894299289874926",
+      "score": 541,
+      "by": "tosh",
+      "time": 1787584097,
+      "comments": 358,
+      "source": "firebase"
+    },
+    {
+      "id": "49424606",
+      "title": "Oceans hit highest temperature on record",
+      "url": "https://www.bbc.com/news/articles/c62m4gpnp78o",
+      "score": 103,
+      "by": "tcp_handshaker",
+      "time": 1787599148,
+      "comments": 28,
+      "source": "firebase"
+    },
+    {
+      "id": "49421158",
+      "title": "MS Paint and Photos inivisibly watermark even locally generated output with GUID",
+      "url": "https://xusheng.dev/posts/reversing/mspaint_invisible_watermark/main/",
+      "score": 377,
+      "by": "ComputerGuru",
+      "time": 1787585284,
+      "comments": 153,
+      "source": "firebase"
+    },
+    {
+      "id": "49422784",
+      "title": "The entire city of San Francisco as a video game",
+      "url": "https://sf.thijs.gg/",
+      "score": 172,
+      "by": "centrosphere",
+      "time": 1787591138,
+      "comments": 59,
+      "source": "firebase"
+    },
+    {
+      "id": "49421489",
+      "title": "IPFS Maintainers Winding Down",
+      "url": "https://ipshipyard.com/blog/2026-the-end-of-ipfs-at-shipyard/",
+      "score": 249,
+      "by": "iand",
+      "time": 1787586525,
+      "comments": 121,
+      "source": "firebase"
+    },
+    {
+      "id": "49424758",
+      "title": "A Claude Code skill that recovers export-blocked Kindle highlights",
+      "url": "https://github.com/l3a0/claude-plugins",
+      "score": 15,
+      "by": "l3a0",
+      "time": 1787599938,
+      "comments": 2,
+      "source": "firebase"
+    },
+    {
+      "id": "49424387",
+      "title": "LLMs could control their host machines by exploiting inference engines",
+      "url": "https://boydkane.com/essays/llms-could-control-their-host-machines-by-exploiting-inference-engines",
+      "score": 27,
+      "by": "zdw",
+      "time": 1787598186,
+      "comments": 7,
+      "source": "firebase"
+    },
+    {
+      "id": "49419237",
+      "title": "How Europe is killing makers and micro-entrepreneurs",
+      "url": "https://lectronz.com/u/lectronz/articles/how-europe-is-killing-makers-and-micro-entrepreneurs",
+      "score": 833,
+      "by": "l-one-lone",
+      "time": 1787576725,
+      "comments": 564,
+      "source": "firebase"
+    },
+    {
+      "id": "49421536",
+      "title": "Jabber/XMPP: 25 Years of Digital Independence",
+      "url": "https://gultsch.de/posts/25-years-of-digital-independence/",
+      "score": 91,
+      "by": "inputmice",
+      "time": 1787586691,
+      "comments": 38,
+      "source": "firebase"
+    },
+    {
+      "id": "49422548",
+      "title": "Hot Chips 2026: CUDA Targets RISC-V – By Chester Lam",
+      "url": "https://chipsandcheese.com/p/hot-chips-2026-cuda-targets-risc",
+      "score": 51,
+      "by": "rbanffy",
+      "time": 1787590321,
+      "comments": 5,
+      "source": "firebase"
+    }
+  ]
+}

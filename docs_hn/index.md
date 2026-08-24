@@ -1,37 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-16 20:22 UTC
+> Updated: 2026-08-24 20:17 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 94 | [Models Are Getting Dumber on Purpose](https://w4g1.dev/blog/models-are-getting-dumber-on-purpose) | [50](https://news.ycombinator.com/item?id=49322695) |
-| 2 | 176 | [A 3rd World Embedded Engineer Responds to "RISC-V They Should Have Known Better"](https://rvembedded.com/blog_post/12/) | [95](https://news.ycombinator.com/item?id=49321717) |
-| 3 | 415 | [Claude: System Prompts](https://platform.claude.com/docs/en/release-notes/system-prompts) | [182](https://news.ycombinator.com/item?id=49319556) |
-| 4 | 28 | [Protobuf has LSP support. You're welcome](https://buf.build/blog/protobuf-lsp) | [4](https://news.ycombinator.com/item?id=49322573) |
-| 5 | 174 | [The AI Credit Resale Economy](https://vectoral.com/blog/who-are-the-token-brokers) | [64](https://news.ycombinator.com/item?id=49320611) |
-| 6 | 25 | [MathCode, Mathematical Coding Agent](https://math-ai-org.github.io/mathcode/) | [9](https://news.ycombinator.com/item?id=49322330) |
-| 7 | 96 | [NIH is ending a key grant for budding clinical researchers](https://www.science.org/content/article/nih-ending-key-grant-budding-clinical-researchers) | [37](https://news.ycombinator.com/item?id=49321353) |
-| 8 | 113 | [St Lucie Nuclear Reactor Unit 1 manually shutdown, 3 control rods drop into core](https://www.wptv.com/news/treasure-coast/region-st-lucie-county/saint-lucie-nuclear-power-plant-unit-1-manually-shut-down-after-3-control-rods-drop-into-reactor-core) | [82](https://news.ycombinator.com/item?id=49320856) |
-| 9 | 41 | [Anton Chekhov played at love most of his life](https://commonreader.wustl.edu/winning-and-losing-at-the-great-game-of-intimacy/) | [5](https://news.ycombinator.com/item?id=49306021) |
-| 10 | 56 | [Clamiga: Common Lisp for the Amiga](https://nnamgreb.de/blog/Clamiga+-+Common+Lisp+for+the+Amiga) | [4](https://news.ycombinator.com/item?id=49281352) |
+| 1 | 541 | [Xiaomi: New CPU matches Apple cores single threaded, much faster multithreaded](https://twitter.com/lemire/status/2091894299289874926) | [358](https://news.ycombinator.com/item?id=49420873) |
+| 2 | 103 | [Oceans hit highest temperature on record](https://www.bbc.com/news/articles/c62m4gpnp78o) | [28](https://news.ycombinator.com/item?id=49424606) |
+| 3 | 377 | [MS Paint and Photos inivisibly watermark even locally generated output with GUID](https://xusheng.dev/posts/reversing/mspaint_invisible_watermark/main/) | [153](https://news.ycombinator.com/item?id=49421158) |
+| 4 | 172 | [The entire city of San Francisco as a video game](https://sf.thijs.gg/) | [59](https://news.ycombinator.com/item?id=49422784) |
+| 5 | 249 | [IPFS Maintainers Winding Down](https://ipshipyard.com/blog/2026-the-end-of-ipfs-at-shipyard/) | [121](https://news.ycombinator.com/item?id=49421489) |
+| 6 | 15 | [A Claude Code skill that recovers export-blocked Kindle highlights](https://github.com/l3a0/claude-plugins) | [2](https://news.ycombinator.com/item?id=49424758) |
+| 7 | 27 | [LLMs could control their host machines by exploiting inference engines](https://boydkane.com/essays/llms-could-control-their-host-machines-by-exploiting-inference-engines) | [7](https://news.ycombinator.com/item?id=49424387) |
+| 8 | 833 | [How Europe is killing makers and micro-entrepreneurs](https://lectronz.com/u/lectronz/articles/how-europe-is-killing-makers-and-micro-entrepreneurs) | [564](https://news.ycombinator.com/item?id=49419237) |
+| 9 | 91 | [Jabber/XMPP: 25 Years of Digital Independence](https://gultsch.de/posts/25-years-of-digital-independence/) | [38](https://news.ycombinator.com/item?id=49421536) |
+| 10 | 51 | [Hot Chips 2026: CUDA Targets RISC-V – By Chester Lam](https://chipsandcheese.com/p/hot-chips-2026-cuda-targets-risc) | [5](https://news.ycombinator.com/item?id=49422548) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [ASUS Oxiis：让普通自行车秒变智能电助力](https://news.ycombinator.com/item?id=49268580) | [HN](https://news.ycombinator.com/item?id=49268580) |
-| 2 | [Claude 系统提示词更新全记录](https://news.ycombinator.com/item?id=49319556) | [HN](https://news.ycombinator.com/item?id=49319556) |
-| 3 | [Firefox for iOS 原生广告拦截器上线](https://news.ycombinator.com/item?id=49319633) | [HN](https://news.ycombinator.com/item?id=49319633) |
-| 4 | [学术圈怪象：肾衰竭变肾失望](https://news.ycombinator.com/item?id=49319389) | [HN](https://news.ycombinator.com/item?id=49319389) |
-| 5 | [DuckDB 引入异步 I/O，查询速度提升 3 倍](https://news.ycombinator.com/item?id=49243061) | [HN](https://news.ycombinator.com/item?id=49243061) |
-| 6 | [Sam Altman：为什么好点子需要孤独](https://news.ycombinator.com/item?id=49314235) | [HN](https://news.ycombinator.com/item?id=49314235) |
-| 7 | [AI 代币经纪人：隐秘的转售黑市](https://news.ycombinator.com/item?id=49320611) | [HN](https://news.ycombinator.com/item?id=49320611) |
-| 8 | [RISC-V：第三世界嵌入式工程师的回应](https://news.ycombinator.com/item?id=49321717) | [HN](https://news.ycombinator.com/item?id=49321717) |
-| 9 | [周末诞生百年，正被混合办公瓦解](https://news.ycombinator.com/item?id=49320984) | [HN](https://news.ycombinator.com/item?id=49320984) |
-| 10 | [为何 Postgres 离不开 PgBouncer？](https://news.ycombinator.com/item?id=49277952) | [HN](https://news.ycombinator.com/item?id=49277952) |
+| 1 | [欧盟新规正扼杀创客与微型创业者](https://news.ycombinator.com/item?id=49419237) | [HN](https://news.ycombinator.com/item?id=49419237) |
+| 2 | [你的可执行文件其实是一个 SQLite 数据库](https://news.ycombinator.com/item?id=49415271) | [HN](https://news.ycombinator.com/item?id=49415271) |
+| 3 | [Microsoft Paint 本地生成图片竟被植入 GUID 水印](https://news.ycombinator.com/item?id=49421158) | [HN](https://news.ycombinator.com/item?id=49421158) |
+| 4 | [AI 编码将导致开发者技能崩塌](https://news.ycombinator.com/item?id=49421554) | [HN](https://news.ycombinator.com/item?id=49421554) |
+| 5 | [IPFS 维护团队 Shipyard 即将停止运营](https://news.ycombinator.com/item?id=49421489) | [HN](https://news.ycombinator.com/item?id=49421489) |
+| 6 | [OpenAI：GPT-5.6 Sol 价格下调](https://news.ycombinator.com/item?id=49421074) | [HN](https://news.ycombinator.com/item?id=49421074) |
+| 7 | [FDA 批准 PrecivityAD2 血液检测助力阿尔茨海默病诊断](https://news.ycombinator.com/item?id=49415893) | [HN](https://news.ycombinator.com/item?id=49415893) |
+| 8 | [seL4在AArch64上的安全证明终于完成](https://news.ycombinator.com/item?id=49418255) | [HN](https://news.ycombinator.com/item?id=49418255) |
+| 9 | [全球海洋温度创历史新高](https://news.ycombinator.com/item?id=49424606) | [HN](https://news.ycombinator.com/item?id=49424606) |
+| 10 | [XMPP：被遗忘的25年数字独立](https://news.ycombinator.com/item?id=49421536) | [HN](https://news.ycombinator.com/item?id=49421536) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-16T20:22:45.443281+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-24T20:17:00.254001+00:00*

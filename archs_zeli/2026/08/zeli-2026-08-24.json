@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-24",
+  "fetched_at": "2026-08-24T20:17:00.252063+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49419237",
+      "title_zh": "欧盟新规正扼杀创客与微型创业者",
+      "abstract": "我是 Lectronz 的创始人，我们是一个专为开源硬件创客和 DIY 爱好者打造的市场。这里的卖家大多不是大厂，而是从车库起步的工程师。然而，欧盟新的包装法规 PPWR 正在摧毁这个生态。虽然生产者责任延伸（EPR）理念很好，但执行却支离破碎：微型创业者若向四个国家各卖几块板子，就需在每个国家单独注册并支付数千欧元的合规费用，而实际包装重量仅几百克。这种不成比例的行政负担让创新无从谈起，迫使创客",
+      "url": "https://lectronz.com/u/lectronz/articles/how-europe-is-killing-makers-and-micro-entrepreneurs",
+      "score": 832,
+      "by": "l-one-lone",
+      "time": 1787576725,
+      "comments": 564,
+      "hn_url": "https://news.ycombinator.com/item?id=49419237",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49415271",
+      "title_zh": "你的可执行文件其实是一个 SQLite 数据库",
+      "abstract": "我最近沉迷于一个大胆的想法：用 SQLite 彻底取代 ELF 作为可执行文件格式。ELF 本质上已经是一个拒绝承认的数据库，却需要各种工具重复解析。我开发了 SELF 原型，将程序头、符号表直接存入 SQLite，让 strip 变成简单的 DELETE 事务，让 ldd 变成 SQL 查询。虽然文件体积略有增加，但动态链接完全可以通过 SQL 实现。这不仅简化了工具链，更让二进制文件变得像数据",
+      "url": "https://fzakaria.com/2026/08/23/your-executable-is-a-sqlite-database",
+      "score": 417,
+      "by": "setheron",
+      "time": 1787546900,
+      "comments": 85,
+      "hn_url": "https://news.ycombinator.com/item?id=49415271",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49421158",
+      "title_zh": "Microsoft Paint 本地生成图片竟被植入 GUID 水印",
+      "abstract": "通过逆向工程，我深入分析了 Microsoft Paint 和 Photos 的 AI 绘图功能。虽然图像生成过程在本地运行，但用户提示词会先发送至远程服务器进行内容审核。服务器在返回审核后的提示词时，会附带一个唯一的 GUID。这个 GUID 随后被作为隐形水印，通过复杂的量化算法嵌入到最终生成的图像像素中。即便用户关闭了可见的 Copilot 水印设置，这个由服务器下发的 GUID 隐形水印依",
+      "url": "https://xusheng.dev/posts/reversing/mspaint_invisible_watermark/main/",
+      "score": 375,
+      "by": "ComputerGuru",
+      "time": 1787585284,
+      "comments": 153,
+      "hn_url": "https://news.ycombinator.com/item?id=49421158",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49421554",
+      "title_zh": "AI 编码将导致开发者技能崩塌",
+      "abstract": "当前行业存在一个悖论：新手被要求使用 AI 工具以保持竞争力，但有效驾驭这些工具恰恰需要深厚的专家经验。JetBrains 的研究发现，过度依赖 AI 的初级开发者往往陷入“能力错觉”，跳过了关键的规划与调试阶段，导致真正的理解缺失。相反，那些刻意保留学习摩擦、将 AI 仅作为苏格拉底式对话伙伴而非代码生成器的开发者，反而能更好地掌握技能。如果我们将 AI 视为消除所有困难的捷径，而非辅助思考的工",
+      "url": "https://larsfaye.com/articles/ai-coding-will-prevent-expertise",
+      "score": 305,
+      "by": "larsfaye",
+      "time": 1787586753,
+      "comments": 336,
+      "hn_url": "https://news.ycombinator.com/item?id=49421554",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49421489",
+      "title_zh": "IPFS 维护团队 Shipyard 即将停止运营",
+      "abstract": "我们遗憾地宣布，由于 Protocol Labs 不再续期资助，Shipyard 将于 2026 年 9 月 30 日停止所有 IPFS 相关的工程维护与基础设施运营。过去三年，我们致力于重塑现代 IPFS 生态，推出了 inbrowser.link 等创新方案，并大幅优化了网关架构。随着我们工作的结束，Kubo、Helia、Boxo 等核心项目将失去专职维护者，ipfs.io 等公共服务也将停止",
+      "url": "https://ipshipyard.com/blog/2026-the-end-of-ipfs-at-shipyard/",
+      "score": 247,
+      "by": "iand",
+      "time": 1787586525,
+      "comments": 121,
+      "hn_url": "https://news.ycombinator.com/item?id=49421489",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49421074",
+      "title_zh": "OpenAI：GPT-5.6 Sol 价格下调",
+      "abstract": "OpenAI 正式宣布调整 API 定价策略，GPT-5.6 Sol 模型的调用成本迎来显著下降。此次降价涵盖标准模式与批量处理模式，针对短上下文和长上下文场景均提供了更具竞争力的价格。对于开发者而言，这意味着构建基于 GPT-5.6 Sol 的应用程序成本将大幅降低，尤其是在需要大量 Token 输入输出的场景下。此次价格调整至少将持续到 11 月 21 日，为团队优化成本结构提供了宝贵的时间窗",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "score": 215,
+      "by": "tosh",
+      "time": 1787584963,
+      "comments": 194,
+      "hn_url": "https://news.ycombinator.com/item?id=49421074",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49415893",
+      "title_zh": "FDA 批准 PrecivityAD2 血液检测助力阿尔茨海默病诊断",
+      "abstract": "FDA 正式批准了由 WashU Medicine 团队研发、C2N Diagnostics 商业化的 PrecivityAD2 血液检测。这项创新技术利用高分辨率质谱法，仅需一次抽血即可检测与阿尔茨海默病相关的淀粉样蛋白斑块，准确率超过 90%。相比传统的腰椎穿刺和脑部扫描，这种非侵入式检测方式不仅更安全，还能帮助医生更早发现病情。鉴于目前已有能延缓疾病进展的药物问世，早期精准诊断对治疗效果至关",
+      "url": "https://medicine.washu.edu/news/fda-clears-blood-test-to-aid-evaluation-for-alzheimers-disease/",
+      "score": 164,
+      "by": "dabinat",
+      "time": 1787553007,
+      "comments": 79,
+      "hn_url": "https://news.ycombinator.com/item?id=49415893",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49418255",
+      "title_zh": "seL4在AArch64上的安全证明终于完成",
+      "abstract": "Proofcraft宣布，seL4微内核在AArch64架构上的安全证明已全面达成。在继功能正确性和完整性证明之后，团队成功建立了机密性（confidentiality）的数学证明，确保运行在seL4之上的应用程序无法未经授权获取信息。这一里程碑得益于NCSC的持续支持，标志着seL4在AArch64上的安全隔离机制得到形式化验证。此外，Proofcraft还在RISC-V架构上完成了seL4的M",
+      "url": "https://proofcraft.systems/news-2026/#2026-08-21",
+      "score": 150,
+      "by": "snvzz",
+      "time": 1787571171,
+      "comments": 33,
+      "hn_url": "https://news.ycombinator.com/item?id=49418255",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49424606",
+      "title_zh": "全球海洋温度创历史新高",
+      "abstract": "最新数据显示，受人为气候变化与日益增强的 El Niño 现象双重影响，全球海洋表面平均温度已突破历史极值。欧洲 Copernicus 气候变化服务统计指出，非极地海域平均水温已达 21.1 摄氏度，超越 2024 年 3 月纪录。科学家警告，海洋通常在 3 月或 4 月达到年度峰值，如今在 8 月便刷新纪录，预示着 El Niño 可能成为数世纪以来最强一次。 warmer 海洋不仅加剧极端天气",
+      "url": "https://www.bbc.com/news/articles/c62m4gpnp78o",
+      "score": 96,
+      "by": "tcp_handshaker",
+      "time": 1787599148,
+      "comments": 24,
+      "hn_url": "https://news.ycombinator.com/item?id=49424606",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49421536",
+      "title_zh": "XMPP：被遗忘的25年数字独立",
+      "abstract": "我们常把通信工具视为普通应用，却忘了它们应像水电一样成为公共基础设施。Signal、Wire 等工具虽标榜隐私，却仍是无法逃离的围墙花园。真正的数字主权不靠开源代码，而依赖开放标准。XMPP 诞生于25年前，历经技术周期更迭仍屹立不倒，支持自托管与联邦互操作。相比之下，Matrix 虽理念相似，却因单一厂商主导而陷入封闭陷阱。在巨头垄断与地缘政治变局下，我们需要的不是新造轮子，而是重新拥抱那个早已",
+      "url": "https://gultsch.de/posts/25-years-of-digital-independence/",
+      "score": 90,
+      "by": "inputmice",
+      "time": 1787586691,
+      "comments": 37,
+      "hn_url": "https://news.ycombinator.com/item?id=49421536",
+      "source": "zeli_rsc"
+    }
+  ]
+}
