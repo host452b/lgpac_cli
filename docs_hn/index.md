@@ -1,37 +1,36 @@
 # HN Daily Top 10
 
-> Updated: 2026-08-24 20:17 UTC
+> Updated: 2026-09-03 22:07 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 541 | [Xiaomi: New CPU matches Apple cores single threaded, much faster multithreaded](https://twitter.com/lemire/status/2091894299289874926) | [358](https://news.ycombinator.com/item?id=49420873) |
-| 2 | 103 | [Oceans hit highest temperature on record](https://www.bbc.com/news/articles/c62m4gpnp78o) | [28](https://news.ycombinator.com/item?id=49424606) |
-| 3 | 377 | [MS Paint and Photos inivisibly watermark even locally generated output with GUID](https://xusheng.dev/posts/reversing/mspaint_invisible_watermark/main/) | [153](https://news.ycombinator.com/item?id=49421158) |
-| 4 | 172 | [The entire city of San Francisco as a video game](https://sf.thijs.gg/) | [59](https://news.ycombinator.com/item?id=49422784) |
-| 5 | 249 | [IPFS Maintainers Winding Down](https://ipshipyard.com/blog/2026-the-end-of-ipfs-at-shipyard/) | [121](https://news.ycombinator.com/item?id=49421489) |
-| 6 | 15 | [A Claude Code skill that recovers export-blocked Kindle highlights](https://github.com/l3a0/claude-plugins) | [2](https://news.ycombinator.com/item?id=49424758) |
-| 7 | 27 | [LLMs could control their host machines by exploiting inference engines](https://boydkane.com/essays/llms-could-control-their-host-machines-by-exploiting-inference-engines) | [7](https://news.ycombinator.com/item?id=49424387) |
-| 8 | 833 | [How Europe is killing makers and micro-entrepreneurs](https://lectronz.com/u/lectronz/articles/how-europe-is-killing-makers-and-micro-entrepreneurs) | [564](https://news.ycombinator.com/item?id=49419237) |
-| 9 | 91 | [Jabber/XMPP: 25 Years of Digital Independence](https://gultsch.de/posts/25-years-of-digital-independence/) | [38](https://news.ycombinator.com/item?id=49421536) |
-| 10 | 51 | [Hot Chips 2026: CUDA Targets RISC-V – By Chester Lam](https://chipsandcheese.com/p/hot-chips-2026-cuda-targets-risc) | [5](https://news.ycombinator.com/item?id=49422548) |
+| 1 | 959 | [GPT-6 Astra](https://openai.com/index/gpt-6-astra/) | [689](https://news.ycombinator.com/item?id=49554643) |
+| 2 | 355 | [Qwen 3.8 27B available on Cerebras at 1500 tokens/s](https://inference-docs.cerebras.ai/models/overview) | [113](https://news.ycombinator.com/item?id=49554520) |
+| 3 | 1144 | [.name Termination](https://neil.fraser.name/news/2026/09/03/) | [335](https://news.ycombinator.com/item?id=49550772) |
+| 4 | 95 | [The largest electric aircraft just flew [video]](https://www.youtube.com/watch?v=nM86DBOqgPM) | [60](https://news.ycombinator.com/item?id=49526453) |
+| 5 | 225 | [K2 Horizon: A connected fleet of six open models](https://ifm.ai/blog/k2/) | [74](https://news.ycombinator.com/item?id=49551760) |
+| 6 | 138 | [Porting my 1993 Amiga game to Godot, with an LLM reading the 68000 assembly](https://babyloniantwins.com/blog/porting-a-1993-amiga-game-to-godot/) | [48](https://news.ycombinator.com/item?id=49550375) |
+| 7 | 390 | [Any Human Ever – One life, drawn at random from all who have ever lived](https://anyhumanever.com/) | [187](https://news.ycombinator.com/item?id=49550698) |
+| 8 | 99 | [Artificial beaver dams saw juvenile coho salmon survival rates go from 8% to 60%](https://www.discoverwildlife.com/animal-facts/artificial-beaver-dams-california) | [26](https://news.ycombinator.com/item?id=49552572) |
+| 9 | 115 | [OpenAI's GPT-6 Astra on ARC-AGI-3](https://arcprize.org/blog/astra) | [59](https://news.ycombinator.com/item?id=49555691) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [欧盟新规正扼杀创客与微型创业者](https://news.ycombinator.com/item?id=49419237) | [HN](https://news.ycombinator.com/item?id=49419237) |
-| 2 | [你的可执行文件其实是一个 SQLite 数据库](https://news.ycombinator.com/item?id=49415271) | [HN](https://news.ycombinator.com/item?id=49415271) |
-| 3 | [Microsoft Paint 本地生成图片竟被植入 GUID 水印](https://news.ycombinator.com/item?id=49421158) | [HN](https://news.ycombinator.com/item?id=49421158) |
-| 4 | [AI 编码将导致开发者技能崩塌](https://news.ycombinator.com/item?id=49421554) | [HN](https://news.ycombinator.com/item?id=49421554) |
-| 5 | [IPFS 维护团队 Shipyard 即将停止运营](https://news.ycombinator.com/item?id=49421489) | [HN](https://news.ycombinator.com/item?id=49421489) |
-| 6 | [OpenAI：GPT-5.6 Sol 价格下调](https://news.ycombinator.com/item?id=49421074) | [HN](https://news.ycombinator.com/item?id=49421074) |
-| 7 | [FDA 批准 PrecivityAD2 血液检测助力阿尔茨海默病诊断](https://news.ycombinator.com/item?id=49415893) | [HN](https://news.ycombinator.com/item?id=49415893) |
-| 8 | [seL4在AArch64上的安全证明终于完成](https://news.ycombinator.com/item?id=49418255) | [HN](https://news.ycombinator.com/item?id=49418255) |
-| 9 | [全球海洋温度创历史新高](https://news.ycombinator.com/item?id=49424606) | [HN](https://news.ycombinator.com/item?id=49424606) |
-| 10 | [XMPP：被遗忘的25年数字独立](https://news.ycombinator.com/item?id=49421536) | [HN](https://news.ycombinator.com/item?id=49421536) |
+| 1 | [Verisign 决定终止 .name 域名](https://news.ycombinator.com/item?id=49550772) | [HN](https://news.ycombinator.com/item?id=49550772) |
+| 2 | [Audacity 4.0 基于 Qt 全面重构](https://news.ycombinator.com/item?id=49548395) | [HN](https://news.ycombinator.com/item?id=49548395) |
+| 3 | [Polars 2.0 预览：默认开启流式引擎](https://news.ycombinator.com/item?id=49546753) | [HN](https://news.ycombinator.com/item?id=49546753) |
+| 4 | [随机抽取一个人类：你的祖先是谁？](https://news.ycombinator.com/item?id=49550698) | [HN](https://news.ycombinator.com/item?id=49550698) |
+| 5 | [Qwen 3.8 27B 在 Cerebras 跑出 1500 tok/s](https://news.ycombinator.com/item?id=49554520) | [HN](https://news.ycombinator.com/item?id=49554520) |
+| 6 | [Google Antigravity条款：第三方使用可封号](https://news.ycombinator.com/item?id=49548452) | [HN](https://news.ycombinator.com/item?id=49548452) |
+| 7 | [IFM 发布 K2 Horizon：全尺寸性能新标杆](https://news.ycombinator.com/item?id=49551760) | [HN](https://news.ycombinator.com/item?id=49551760) |
+| 8 | [风险投资已死：癌症资本的崛起](https://news.ycombinator.com/item?id=49543220) | [HN](https://news.ycombinator.com/item?id=49543220) |
+| 9 | [Shin 逆转击败 KataGo，人类棋手首胜 AI](https://news.ycombinator.com/item?id=49544762) | [HN](https://news.ycombinator.com/item?id=49544762) |
+| 10 | [如何免费获取一个 .arpa 域名](https://news.ycombinator.com/item?id=49515558) | [HN](https://news.ycombinator.com/item?id=49515558) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-08-24T20:17:00.254001+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-09-03T22:07:39.839555+00:00*

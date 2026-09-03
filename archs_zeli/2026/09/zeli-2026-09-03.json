@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-03",
+  "fetched_at": "2026-09-03T22:07:39.837794+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "49550772",
+      "title_zh": "Verisign 决定终止 .name 域名",
+      "abstract": "近二十五年前，我注册了 neil.fraser.name，它承载了我的网站、邮箱和 API 服务。然而，Verisign 提议并获 ICANN 批准，将彻底销毁整个 '.name' 域名的第三级层级。这意味着我的网站将在二月消失，邮箱失效，所有依赖该域名的 IoT 设备将变砖。更可怕的是，一旦域名被释放，他人可能抢注 fraser.name，从而劫持我名下数百个关联账户和 IoT 设备。作为 22",
+      "url": "https://neil.fraser.name/news/2026/09/03/",
+      "score": 1037,
+      "by": "pavel_lishin",
+      "time": 1788447279,
+      "comments": 311,
+      "hn_url": "https://news.ycombinator.com/item?id=49550772",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49548395",
+      "title_zh": "Audacity 4.0 基于 Qt 全面重构",
+      "abstract": "Audacity 4.0 带来了基于 Qt 的界面全面重构，引入了全新的剪辑编辑模型。现在你可以直接点击剪辑头进行选择，支持多剪辑同步移动、修剪和时间拉伸，甚至能自由在单声道与立体声轨道间拖动。软件新增了现代、经典和音乐三种工作区布局，支持高 DPI 渲染及深浅色主题切换。项目格式升级为 .aup4，虽然不再支持 Time Tracks 和 Mixer 等功能，但内置效果器、VST3 插件支持以及",
+      "url": "https://github.com/audacity/audacity/releases/tag/Audacity-4.0.0",
+      "score": 965,
+      "by": "ClydeN",
+      "time": 1788432788,
+      "comments": 214,
+      "hn_url": "https://news.ycombinator.com/item?id=49548395",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49546753",
+      "title_zh": "Polars 2.0 预览：默认开启流式引擎",
+      "abstract": "Polars 2.0 发布候选版，这次升级主打“无聊”的稳定性，旨在通过更合理的默认设置提升性能。最核心的变化是 LazyFrame 查询默认启用 streaming engine，预计带来 5 倍性能提升和巨大的内存优化，但部分操作不再默认保证行顺序。新版本还大幅增强了严格性，例如 is_in 操作在类型不匹配时将直接报错而非静默转换，水平拼接也会检查长度一致性，避免隐藏的数据 bug。针对 A",
+      "url": "https://pola.rs/posts/announcing-polars-2/",
+      "score": 366,
+      "by": "komape",
+      "time": 1788418748,
+      "comments": 121,
+      "hn_url": "https://news.ycombinator.com/item?id=49546753",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49550698",
+      "title_zh": "随机抽取一个人类：你的祖先是谁？",
+      "abstract": "超过1000亿人类曾在这片星球上生活过。Any Human Ever 项目利用真实数据，让你随机抽取其中一人的生命轨迹。从出生年份到出生地点，再到完整的人生故事，每一步都基于统计学随机生成。有趣的是，由于人口呈指数级增长，随机抽取的结果极大概率会落在近现代。这个交互体验不仅揭示了人类历史的分布规律，更让你有机会与某个陌生人的生平产生奇妙的连接，感受个体在宏大历史中的独特位置。",
+      "url": "https://anyhumanever.com/",
+      "score": 343,
+      "by": "thinkingemote",
+      "time": 1788447070,
+      "comments": 158,
+      "hn_url": "https://news.ycombinator.com/item?id=49550698",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49554520",
+      "title_zh": "Qwen 3.8 27B 在 Cerebras 跑出 1500 tok/s",
+      "abstract": "Cerebras 公开端点现已上线 Qwen 3.8 27B 模型，推理速度高达每秒 1500 个 token。平台明确承诺，所有公开服务均提供未经剪枝的原始模型版本，确保架构不被擅自修改。虽然 Cerebras 在 Hugging Face 上分享了基于 REAP 技术的剪枝模型供研究使用，但生产环境 API 仅保留完整精度。通过选择性权重量化技术，系统在存储时优化了资源占用，而在推理过程中，激",
+      "url": "https://inference-docs.cerebras.ai/models/overview",
+      "score": 291,
+      "by": "altertable",
+      "time": 1788460333,
+      "comments": 97,
+      "hn_url": "https://news.ycombinator.com/item?id=49554520",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49548452",
+      "title_zh": "Google Antigravity条款：第三方使用可封号",
+      "abstract": "Gergely Orosz 在 X 上指出，Google Antigravity 的服务条款明确规定，若系统判定用户存在第三方使用行为（例如使用 OpenClaw），Google 有权直接暂停其整个 Google 账号。Theo 也强调，将 Google Gemini 订阅用于官方界面之外的风险极高，这不仅仅是产品封禁，而是可能导致整个 Google 账号被封，后果不堪设想。尽管 Antigrav",
+      "url": "https://twitter.com/GergelyOrosz/status/2095453567955968398",
+      "score": 220,
+      "by": "tosh",
+      "time": 1788433264,
+      "comments": 154,
+      "hn_url": "https://news.ycombinator.com/item?id=49548452",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49551760",
+      "title_zh": "IFM 发布 K2 Horizon：全尺寸性能新标杆",
+      "abstract": "IFM 正式推出 K2 Horizon 模型家族，涵盖从 0.9B 到 375B-A23B 的六个尺寸，在推理、数学、代码及 Agent 任务上均达到各自量级的顶尖水平。此次发布不仅是性能突破，更是开源透明度的里程碑：IFM 首次公开了从预训练到 Agent 后训练的完整生命周期，包括中间检查点、训练数据配方、代码及详细日志。无论是运行在智能手表上的 0.9B 模型，还是企业级部署的 375B-A",
+      "url": "https://ifm.ai/blog/k2/",
+      "score": 203,
+      "by": "karimf",
+      "time": 1788449803,
+      "comments": 70,
+      "hn_url": "https://news.ycombinator.com/item?id=49551760",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49543220",
+      "title_zh": "风险投资已死：癌症资本的崛起",
+      "abstract": "作为一名曾筹集数千万美元风投的创业者，我必须指出：现在的风险投资已不再是风险投资。少数亿万富翁利用“VC”的外衣，建立了一个不受市场、监管或选民约束的寡头体系，我称之为“癌症资本”。这些巨头不再承担投资风险，仅靠管理费就能年入十亿，甚至不再受法律约束。他们通过操控政治、发布极端宣言，将创始人变成了执行其议程的工具。更可怕的是，普通人的养老金正被迫为这些高风险行为买单，而科技行业IPO的减少更助长了",
+      "url": "https://www.anildash.com/2026/09/02/cancer-capital/",
+      "score": 140,
+      "by": "cdrnsf",
+      "time": 1788386739,
+      "comments": 132,
+      "hn_url": "https://news.ycombinator.com/item?id=49543220",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49544762",
+      "title_zh": "Shin 逆转击败 KataGo，人类棋手首胜 AI",
+      "abstract": "世界排名第一的围棋棋手 Shin Jin-seo 在首尔与顶级 AI 引擎 KataGo 的三番棋中上演惊天逆转，最终以 2-1 的总比分获胜。这是人类棋手首次在正式系列赛中战胜最先进的围棋 AI。尽管首局惨败，Shin Jin-seo 在后续比赛中调整策略，放弃盲目模仿 AI，转而发挥自身风格，在让两子的条件下以 11.5 目的优势锁定胜局。这场胜利不仅打破了自 AlphaGo 时代以来人类无法",
+      "url": "https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007",
+      "score": 97,
+      "by": "gmays",
+      "time": 1788397882,
+      "comments": 25,
+      "hn_url": "https://news.ycombinator.com/item?id=49544762",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "49515558",
+      "title_zh": "如何免费获取一个 .arpa 域名",
+      "abstract": "通常 .arpa 顶级域名是互联网基础设施的保留地，不对公众开放注册。但我发现了一个利用 ip6.arpa 反向 DNS 查询机制的巧妙方法。通过 Hurricane Electric 的 Tunnelbroker 服务获取一个 IPv6 前缀，将其转换为特定的域名格式，再配合 deSEC 进行 DNS 解析，最后使用 Surge 托管网页，你就能拥有一个完全运行在保留基础设施顶级域名上的网站。虽",
+      "url": "https://hawksley.dev/blog/get-free-arpa-domain",
+      "score": 85,
+      "by": "ethanhawksley",
+      "time": 1788214918,
+      "comments": 8,
+      "hn_url": "https://news.ycombinator.com/item?id=49515558",
+      "source": "zeli_rsc"
+    }
+  ]
+}
