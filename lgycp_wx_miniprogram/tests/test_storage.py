@@ -108,6 +108,7 @@ def test_checked_in_archive_migrates_and_round_trips_as_v2(tmp_path):
     source = Path(__file__).parents[1] / "data" / "archive.json"
     working = tmp_path / "archive.json"
     working.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+    original = json.loads(working.read_text(encoding="utf-8"))
 
     migrated = load_archive(working)
     save_archive(working, migrated)
@@ -115,5 +116,8 @@ def test_checked_in_archive_migrates_and_round_trips_as_v2(tmp_path):
 
     assert reloaded == migrated
     assert reloaded["schema_version"] == 2
-    assert len(reloaded["courses"]) == 52
-    assert all(record["baseline"] for record in reloaded["courses"].values())
+    # Daily snapshots can add courses with different baseline states.
+    assert reloaded["courses"].keys() == original["courses"].keys()
+    for course_id, record in original["courses"].items():
+        for field, value in record.items():
+            assert reloaded["courses"][course_id][field] == value
