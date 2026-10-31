@@ -1,36 +1,37 @@
 # HN Daily Top 10
 
-> Updated: 2026-09-03 22:07 UTC
+> Updated: 2026-10-31 23:04 UTC
 > HN source: `firebase` | zeli source: `zeli_rsc`
 
 ## Hacker News Top 10
 
 | # | Score | Title | Comments |
 |---|-------|-------|----------|
-| 1 | 959 | [GPT-6 Astra](https://openai.com/index/gpt-6-astra/) | [689](https://news.ycombinator.com/item?id=49554643) |
-| 2 | 355 | [Qwen 3.8 27B available on Cerebras at 1500 tokens/s](https://inference-docs.cerebras.ai/models/overview) | [113](https://news.ycombinator.com/item?id=49554520) |
-| 3 | 1144 | [.name Termination](https://neil.fraser.name/news/2026/09/03/) | [335](https://news.ycombinator.com/item?id=49550772) |
-| 4 | 95 | [The largest electric aircraft just flew [video]](https://www.youtube.com/watch?v=nM86DBOqgPM) | [60](https://news.ycombinator.com/item?id=49526453) |
-| 5 | 225 | [K2 Horizon: A connected fleet of six open models](https://ifm.ai/blog/k2/) | [74](https://news.ycombinator.com/item?id=49551760) |
-| 6 | 138 | [Porting my 1993 Amiga game to Godot, with an LLM reading the 68000 assembly](https://babyloniantwins.com/blog/porting-a-1993-amiga-game-to-godot/) | [48](https://news.ycombinator.com/item?id=49550375) |
-| 7 | 390 | [Any Human Ever – One life, drawn at random from all who have ever lived](https://anyhumanever.com/) | [187](https://news.ycombinator.com/item?id=49550698) |
-| 8 | 99 | [Artificial beaver dams saw juvenile coho salmon survival rates go from 8% to 60%](https://www.discoverwildlife.com/animal-facts/artificial-beaver-dams-california) | [26](https://news.ycombinator.com/item?id=49552572) |
-| 9 | 115 | [OpenAI's GPT-6 Astra on ARC-AGI-3](https://arcprize.org/blog/astra) | [59](https://news.ycombinator.com/item?id=49555691) |
+| 1 | 436 | [HackerTube: YouTube built from videos recommended by HN](https://karpathy.bearblog.dev/hacker-tube/) | [167](https://news.ycombinator.com/item?id=50319510) |
+| 2 | 231 | [TCP Use-After-Free: CVE-2026-98432 / CVSS 9.8](https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf) | [109](https://news.ycombinator.com/item?id=50319143) |
+| 3 | 37 | [With 86% of the words, you might understand only 38% of an anime's lines](https://learnfromx.com/research/anime-word-coverage-vs-lines-understood) | [24](https://news.ycombinator.com/item?id=50320028) |
+| 4 | 83 | [It's the Memory Latency, Stupid](https://pivotlake.io/blog/its-the-memory-latency-stupid/) | [22](https://news.ycombinator.com/item?id=50318720) |
+| 5 | 5 | [An Italian Farmer Found Some Unknown Seeds in His Attic and Planted Them](https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/) | [1](https://news.ycombinator.com/item?id=50320963) |
+| 6 | 70 | [The Duty of a Scholar](https://www.daemonology.net/blog/2026-10-31-The-Duty-of-a-Scholar.html) | [22](https://news.ycombinator.com/item?id=50319061) |
+| 7 | 30 | [Surviving "The Graduate"](https://www.newyorker.com/culture/the-weekend-essay/dustin-hoffman-on-surviving-the-graduate) | [8](https://news.ycombinator.com/item?id=50319563) |
+| 8 | 290 | [Molly (Signal fork) has not been updated since 3 months and is vulnerable](https://piefed.world/post/1503394) | [167](https://news.ycombinator.com/item?id=50314666) |
+| 9 | 31 | [Show HN: NES Contra (1987) port (ASM –> C and then C –> WebAssembly)](https://epoyraz.github.io/nes-contra-us/) | [18](https://news.ycombinator.com/item?id=50319169) |
+| 10 | 164 | [Jepsen: ParticleDB 1.1.4](https://jepsen.io/analyses/particledb-1.1.4) | [91](https://news.ycombinator.com/item?id=50316100) |
 
 ## zeli.app 中文摘要
 
 | # | 标题 | 链接 |
 |---|------|------|
-| 1 | [Verisign 决定终止 .name 域名](https://news.ycombinator.com/item?id=49550772) | [HN](https://news.ycombinator.com/item?id=49550772) |
-| 2 | [Audacity 4.0 基于 Qt 全面重构](https://news.ycombinator.com/item?id=49548395) | [HN](https://news.ycombinator.com/item?id=49548395) |
-| 3 | [Polars 2.0 预览：默认开启流式引擎](https://news.ycombinator.com/item?id=49546753) | [HN](https://news.ycombinator.com/item?id=49546753) |
-| 4 | [随机抽取一个人类：你的祖先是谁？](https://news.ycombinator.com/item?id=49550698) | [HN](https://news.ycombinator.com/item?id=49550698) |
-| 5 | [Qwen 3.8 27B 在 Cerebras 跑出 1500 tok/s](https://news.ycombinator.com/item?id=49554520) | [HN](https://news.ycombinator.com/item?id=49554520) |
-| 6 | [Google Antigravity条款：第三方使用可封号](https://news.ycombinator.com/item?id=49548452) | [HN](https://news.ycombinator.com/item?id=49548452) |
-| 7 | [IFM 发布 K2 Horizon：全尺寸性能新标杆](https://news.ycombinator.com/item?id=49551760) | [HN](https://news.ycombinator.com/item?id=49551760) |
-| 8 | [风险投资已死：癌症资本的崛起](https://news.ycombinator.com/item?id=49543220) | [HN](https://news.ycombinator.com/item?id=49543220) |
-| 9 | [Shin 逆转击败 KataGo，人类棋手首胜 AI](https://news.ycombinator.com/item?id=49544762) | [HN](https://news.ycombinator.com/item?id=49544762) |
-| 10 | [如何免费获取一个 .arpa 域名](https://news.ycombinator.com/item?id=49515558) | [HN](https://news.ycombinator.com/item?id=49515558) |
+| 1 | [塞尔维亚选出全球最聪明议会](https://news.ycombinator.com/item?id=50314654) | [HN](https://news.ycombinator.com/item?id=50314654) |
+| 2 | [点开 ChatGPT 分享链接，账号就被接管了](https://news.ycombinator.com/item?id=50314699) | [HN](https://news.ycombinator.com/item?id=50314699) |
+| 3 | [Molly 停更三月，漏洞隐患待解](https://news.ycombinator.com/item?id=50314666) | [HN](https://news.ycombinator.com/item?id=50314666) |
+| 4 | [Vitalik：我如何逃离X的算法漩涡](https://news.ycombinator.com/item?id=50313661) | [HN](https://news.ycombinator.com/item?id=50313661) |
+| 5 | [Linux 致命漏洞：Claude 写出远程提权利用代码](https://news.ycombinator.com/item?id=50319143) | [HN](https://news.ycombinator.com/item?id=50319143) |
+| 6 | [四个神经元，如何构建出复杂行为？](https://news.ycombinator.com/item?id=50261253) | [HN](https://news.ycombinator.com/item?id=50261253) |
+| 7 | [1980s Casio手表：从计算器到G-SHOCK](https://news.ycombinator.com/item?id=50317363) | [HN](https://news.ycombinator.com/item?id=50317363) |
+| 8 | [GCC 如何将 switch 语句转化为高效代码](https://news.ycombinator.com/item?id=50314085) | [HN](https://news.ycombinator.com/item?id=50314085) |
+| 9 | [GPT-5.6 Sol 在 Factorio 中完成和平通关](https://news.ycombinator.com/item?id=50318871) | [HN](https://news.ycombinator.com/item?id=50318871) |
+| 10 | [Anthropic 封禁用户：触碰模型训练即被封](https://news.ycombinator.com/item?id=50319358) | [HN](https://news.ycombinator.com/item?id=50319358) |
 
 ---
-*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-09-03T22:07:39.839555+00:00*
+*Generated by [lgpac](https://github.com/host452b/lgpac_cli) at 2026-10-31T23:04:53.787866+00:00*

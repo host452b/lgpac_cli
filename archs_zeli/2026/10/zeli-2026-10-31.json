@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-31",
+  "fetched_at": "2026-10-31T23:04:53.785968+00:00",
+  "source": "zeli_rsc",
+  "count": 10,
+  "stories": [
+    {
+      "id": "50314654",
+      "title_zh": "塞尔维亚选出全球最聪明议会",
+      "abstract": "塞尔维亚学生运动在选举中获胜，组建了由天体物理学家、工程师、医生和科研人员构成的议会，其中过半数成员拥有博士或医学博士学位。这一被称为“全球最聪明议会”的群体，承诺终结Aleksandar Vučić长达13年的威权统治，推动反腐、 meritocracy 和法治建设。学术界期待新政府能恢复学术自由、稳定科研经费，并遏制人才外流。这场由学生抗议引发的变革，不仅重塑了政治格局，也重新定义了科学家在社",
+      "url": "https://www.science.org/content/article/serbia-just-elected-world-s-brainiest-parliament",
+      "score": 780,
+      "by": "input_sh",
+      "time": 1793442090,
+      "comments": 447,
+      "hn_url": "https://news.ycombinator.com/item?id=50314654",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50314699",
+      "title_zh": "点开 ChatGPT 分享链接，账号就被接管了",
+      "abstract": "我们在 2026 年 10 月发现了一个严重漏洞：攻击者只需创建一个恶意的 ChatGPT 对话并公开分享，受害者点击链接后，恶意 JavaScript 就会在受害者已登录的会话中执行。这利用了 MathLive 图形组件和 HTML Preview 功能的组合缺陷，导致沙箱逃逸。攻击者不仅能读取受害者从未分享的私密对话内容，还能以受害者身份调用 ChatGPT 的认证 API，实现账号完全接管。",
+      "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai",
+      "score": 292,
+      "by": "armcat",
+      "time": 1793442611,
+      "comments": 141,
+      "hn_url": "https://news.ycombinator.com/item?id=50314699",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50314666",
+      "title_zh": "Molly 停更三月，漏洞隐患待解",
+      "abstract": "Signal 的分支版本 Molly 已经三个月没有更新，最后一次发布停留在 7 月 31 日。这意味着它依然包含 Signal 主线版本早已修复的安全漏洞，例如近期曝光的通话挂断后音视频可能继续传输的问题。目前 Signal 官方已修复这些风险，而 Molly 用户仍处于暴露状态。社区建议暂时弃用 Molly，转回使用官方 Signal 客户端，直到其恢复更新。虽然部分用户因多设备同步或无需 G",
+      "url": "https://piefed.world/post/1503394",
+      "score": 287,
+      "by": "DeepLogin",
+      "time": 1793442221,
+      "comments": 165,
+      "hn_url": "https://news.ycombinator.com/item?id=50314666",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50313661",
+      "title_zh": "Vitalik：我如何逃离X的算法漩涡",
+      "abstract": "我长期践行物理极简主义，但如今认为数字极简主义更为关键。面对X平台上日益严重的毒性内容和算法陷阱，我选择离开X的原生界面，转而使用Firefly聚合客户端，成功摆脱了算法的操控。此外，我还进行了为期100天的“无蜂窝数据”实验，手机常开飞行模式，仅依赖Wi-Fi和CoMaps等本地应用。这不仅提升了隐私安全，更让我在离线状态下重获内心的平静与思考空间。我鼓励大家尝试缩小社交媒体使用范围，获取信息的",
+      "url": "https://vitalik.eth.limo/general/2026/10/31/digital_minimalism.html",
+      "score": 286,
+      "by": "wilbertliu",
+      "time": 1793427396,
+      "comments": 218,
+      "hn_url": "https://news.ycombinator.com/item?id=50313661",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50319143",
+      "title_zh": "Linux 致命漏洞：Claude 写出远程提权利用代码",
+      "abstract": "Linux 内核曝出严重 Use-After-Free 漏洞 CVE-2026-98432，CVSS 评分高达 9.8。Anthropic 的 Claude 模型已生成可远程获取 root 权限的利用代码，无需任何凭证。该漏洞影响自 4.4 版本以来的所有内核，在 TCP 握手阶段即可触发。尽管上游已在 10 月中旬发布修复补丁，但截至 10 月 29 日，Ubuntu 和 RHEL 等多个主流发",
+      "url": "https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf",
+      "score": 204,
+      "by": "oger",
+      "time": 1793474190,
+      "comments": 95,
+      "hn_url": "https://news.ycombinator.com/item?id=50319143",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50261253",
+      "title_zh": "四个神经元，如何构建出复杂行为？",
+      "abstract": "海狸筑坝、鸟儿鸣唱，这些复杂行为背后是神经元的精密协作。文章通过构建一个名为 spark 的虚拟生物，仅用四个神经元和简单的电路连接，演示了行为如何从底层涌现。从最初无法转向的盲目移动，到通过交叉连接实现精准避障，再到引入抑制性连接让生物学会在光源前停下，每一步微小的电路调整都带来了截然不同的行为模式。当连接强度产生变异时，spark 甚至展现出了类似“喜好”的个体差异。这揭示了一个深刻道理：看似",
+      "url": "https://aatishb.com/myriad/lets-build-a-brain/",
+      "score": 195,
+      "by": "aatish",
+      "time": 1793116866,
+      "comments": 64,
+      "hn_url": "https://news.ycombinator.com/item?id=50261253",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50317363",
+      "title_zh": "1980s Casio手表：从计算器到G-SHOCK",
+      "abstract": "回顾1980年代，Casio彻底重新定义了腕表的边界。从1980年首款计算器手表C-80，到1983年颠覆认知的G-SHOCK，再到集成体温计、词典甚至脉搏检测的创新，Casio将腕表变成了真正的可穿戴信息设备。特别是G-SHOCK，经过200多次原型测试，成功打造出抗摔耐用的革命性结构，不仅征服了极限运动者，更成为全球街头文化的标志。这一时期，Casio在不到十年内出货量突破1亿块，证明了其将实",
+      "url": "https://www.casio.com/us/watches/50th/Heritage/1980s/",
+      "score": 195,
+      "by": "karagenit",
+      "time": 1793462448,
+      "comments": 99,
+      "hn_url": "https://news.ycombinator.com/item?id=50317363",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50314085",
+      "title_zh": "GCC 如何将 switch 语句转化为高效代码",
+      "abstract": "switch 语句看似简单，背后却藏着编译器的复杂优化逻辑。在 GCC 中，编译器会根据 case 标签的分布密度，智能选择跳转表、比较树或位集测试等不同策略。例如，当 case 值密集时，GCC 会生成跳转表；若分布稀疏，则转为比较树；甚至能利用 bitset 指令处理非连续值。文章通过多个代码示例，揭示了 GCC 在 switch 语句降低过程中的启发式规则，比如“每 8 个 case 标签对",
+      "url": "https://xoranth.net/gcc-switch/",
+      "score": 194,
+      "by": "signa11",
+      "time": 1793433746,
+      "comments": 36,
+      "hn_url": "https://news.ycombinator.com/item?id=50314085",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50318871",
+      "title_zh": "GPT-5.6 Sol 在 Factorio 中完成和平通关",
+      "abstract": "我让运行在 Codex 中的 GPT-5.6 Sol 在低思考模式下挑战 Factorio，最终在 13.5 小时游戏时间内完成了和平模式（无 Biter 攻击）的通关。这次尝试通过 Python 编写的游戏管理器，让模型在遵守人类玩家相同限制（如视野和移动范围）的前提下程序化操作游戏。观察过程令人着迷：Sol 在某些方面超出了我的预期，但也暴露了明显的短板。虽然它在后期因扩展性问题进度放缓，火箭",
+      "url": "https://ryanmadden.net/gpt-56-beats-factorio/",
+      "score": 135,
+      "by": "ryanmadden",
+      "time": 1793472634,
+      "comments": 141,
+      "hn_url": "https://news.ycombinator.com/item?id=50318871",
+      "source": "zeli_rsc"
+    },
+    {
+      "id": "50319358",
+      "title_zh": "Anthropic 封禁用户：触碰模型训练即被封",
+      "abstract": "我从未蒸馏 Claude，只是用它提交任务和分析数据，rollouts 来自开源模型。但 Anthropic 仍给我贴上“训练竞品”的标签，导致任何涉及 RFT、SFT 或训练更大模型的操作都会触发封禁、Opus 5.5 降级为 Opus 5，甚至直接终止会话。讽刺的是，Anthropic 的模型建立在公开网络数据之上，却将付费用户的研究自动化视为敌人。这种双重标准令人失望：一边利用开源世界的知识",
+      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
+      "score": 86,
+      "by": "pretext",
+      "time": 1793475559,
+      "comments": 18,
+      "hn_url": "https://news.ycombinator.com/item?id=50319358",
+      "source": "zeli_rsc"
+    }
+  ]
+}

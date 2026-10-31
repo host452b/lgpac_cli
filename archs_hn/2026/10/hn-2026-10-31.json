@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-31",
+  "fetched_at": "2026-10-31T23:04:53.784710+00:00",
+  "source": "firebase",
+  "count": 10,
+  "stories": [
+    {
+      "id": "50319510",
+      "title": "HackerTube: YouTube built from videos recommended by HN",
+      "url": "https://karpathy.bearblog.dev/hacker-tube/",
+      "score": 436,
+      "by": "karpathy",
+      "time": 1793476613,
+      "comments": 167,
+      "source": "firebase"
+    },
+    {
+      "id": "50319143",
+      "title": "TCP Use-After-Free: CVE-2026-98432 / CVSS 9.8",
+      "url": "https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf",
+      "score": 231,
+      "by": "oger",
+      "time": 1793474190,
+      "comments": 109,
+      "source": "firebase"
+    },
+    {
+      "id": "50320028",
+      "title": "With 86% of the words, you might understand only 38% of an anime's lines",
+      "url": "https://learnfromx.com/research/anime-word-coverage-vs-lines-understood",
+      "score": 37,
+      "by": "lakesare",
+      "time": 1793479599,
+      "comments": 24,
+      "source": "firebase"
+    },
+    {
+      "id": "50318720",
+      "title": "It's the Memory Latency, Stupid",
+      "url": "https://pivotlake.io/blog/its-the-memory-latency-stupid/",
+      "score": 83,
+      "by": "ntur1337",
+      "time": 1793471896,
+      "comments": 22,
+      "source": "firebase"
+    },
+    {
+      "id": "50320963",
+      "title": "An Italian Farmer Found Some Unknown Seeds in His Attic and Planted Them",
+      "url": "https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/",
+      "score": 5,
+      "by": "ecares",
+      "time": 1793486466,
+      "comments": 1,
+      "source": "firebase"
+    },
+    {
+      "id": "50319061",
+      "title": "The Duty of a Scholar",
+      "url": "https://www.daemonology.net/blog/2026-10-31-The-Duty-of-a-Scholar.html",
+      "score": 70,
+      "by": "gslin",
+      "time": 1793473656,
+      "comments": 22,
+      "source": "firebase"
+    },
+    {
+      "id": "50319563",
+      "title": "Surviving \"The Graduate\"",
+      "url": "https://www.newyorker.com/culture/the-weekend-essay/dustin-hoffman-on-surviving-the-graduate",
+      "score": 30,
+      "by": "samizdis",
+      "time": 1793476926,
+      "comments": 8,
+      "source": "firebase"
+    },
+    {
+      "id": "50314666",
+      "title": "Molly (Signal fork) has not been updated since 3 months and is vulnerable",
+      "url": "https://piefed.world/post/1503394",
+      "score": 290,
+      "by": "DeepLogin",
+      "time": 1793442221,
+      "comments": 167,
+      "source": "firebase"
+    },
+    {
+      "id": "50319169",
+      "title": "Show HN: NES Contra (1987) port (ASM –> C and then C –> WebAssembly)",
+      "url": "https://epoyraz.github.io/nes-contra-us/",
+      "score": 31,
+      "by": "tevlon",
+      "time": 1793474328,
+      "comments": 18,
+      "source": "firebase"
+    },
+    {
+      "id": "50316100",
+      "title": "Jepsen: ParticleDB 1.1.4",
+      "url": "https://jepsen.io/analyses/particledb-1.1.4",
+      "score": 164,
+      "by": "aphyr",
+      "time": 1793453992,
+      "comments": 91,
+      "source": "firebase"
+    }
+  ]
+}
