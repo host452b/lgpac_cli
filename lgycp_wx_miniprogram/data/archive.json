@@ -1447,7 +1447,7 @@
       "course_start_date": "2026-11-05",
       "course_type": "体适能",
       "first_seen_at": "2026-11-05T18:43:59.016025+08:00",
-      "last_seen_at": "2026-11-05T18:43:59.016025+08:00",
+      "last_seen_at": "2026-11-06T18:42:39.144074+08:00",
       "notified_at": "2026-11-05T18:43:59.016025+08:00",
       "price_yuan": "920.00",
       "published_at": "2026-10-31T16:55:29+08:00"
@@ -1459,7 +1459,7 @@
       "course_start_date": "2026-11-05",
       "course_type": "篮球",
       "first_seen_at": "2026-11-05T18:43:59.016025+08:00",
-      "last_seen_at": "2026-11-05T18:43:59.016025+08:00",
+      "last_seen_at": "2026-11-06T18:42:39.144074+08:00",
       "notified_at": "2026-11-05T18:43:59.016025+08:00",
       "price_yuan": "840.00",
       "published_at": "2026-10-31T17:01:00+08:00"
@@ -1471,7 +1471,7 @@
       "course_start_date": "2026-11-05",
       "course_type": "乒乓球",
       "first_seen_at": "2026-11-05T18:43:59.016025+08:00",
-      "last_seen_at": "2026-11-05T18:43:59.016025+08:00",
+      "last_seen_at": "2026-11-06T18:42:39.144074+08:00",
       "notified_at": "2026-11-05T18:43:59.016025+08:00",
       "price_yuan": "960.00",
       "published_at": "2026-10-31T17:03:20+08:00"
@@ -1479,19 +1479,19 @@
   },
   "initialized_at": "2026-07-07T13:44:30.257135+08:00",
   "last_run": {
-    "eligible_count": 3,
-    "finished_at": "2026-11-05T18:44:03.425632+08:00",
+    "eligible_count": 0,
+    "finished_at": "2026-11-06T18:42:41.055200+08:00",
     "missing_count": 120,
     "newest_published_at": "2026-10-31T17:03:20+08:00",
-    "newly_seen_count": 3,
-    "notified_count": 3,
+    "newly_seen_count": 0,
+    "notified_count": 0,
     "oldest_published_at": "2026-10-31T16:55:29+08:00",
     "parsed_count": 3,
-    "run_id": "20261105T184359+0800-42013113580",
+    "run_id": "20261106T184239+0800-42204714481",
     "skipped_invalid_count": 0,
     "source_total": 3,
-    "started_at": "2026-11-05T18:43:59.016025+08:00"
+    "started_at": "2026-11-06T18:42:39.144074+08:00"
   },
-  "last_success_at": "2026-11-05T18:44:03.425632+08:00",
+  "last_success_at": "2026-11-06T18:42:41.055200+08:00",
   "schema_version": 2
 }
